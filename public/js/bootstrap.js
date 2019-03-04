@@ -36637,7 +36637,7 @@ if (token) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /home/gogotchuri/Documents/PowerShare/Web/Powershare_V1.1/resources/js/libraries/bootstrap.js */"./resources/js/libraries/bootstrap.js");
+module.exports = __webpack_require__(/*! /home/gogotchuri/Documents/Workspace/Powershare_V1.1/resources/js/libraries/bootstrap.js */"./resources/js/libraries/bootstrap.js");
 
 
 /***/ })

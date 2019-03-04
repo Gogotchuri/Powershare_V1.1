@@ -27,6 +27,8 @@
 </template>
 
 <script>
+    import JwtService from "../js/common/JwtService.js";
+
     export default {
         data(){
             return {
@@ -35,7 +37,7 @@
             }
         },
         mounted(){
-            this.isLoggedIn = localStorage.getItem('jwt');
+            this.isLoggedIn = JwtService.getToken();
             this.name = localStorage.getItem('name');
         }
 

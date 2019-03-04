@@ -25,7 +25,7 @@
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary" @click="handleSubmit">
+                                        <button type="submit" class="btn btn-primary" @click="handleLogin">
                                             Login
                                         </button>
                                     </div>
@@ -39,6 +39,9 @@
     </template>
 
 <script>
+    import JwtService from "../../js/common/JwtService.js";
+    import ApiService from "../../js/common/ApiService.js";
+
     export default {
         data(){
             return {
@@ -47,28 +50,28 @@
             }
         },
         methods : {
-            handleSubmit(e){
+            handleLogin(e){
                 e.preventDefault();
                 if (this.password.length > 0) {
-                    axios.post('api/login', {
+                    ApiService.post('login', 
+                    {
                         email: this.email,
                         password: this.password
-                      })
-                      .then(response => {
-                        localStorage.setItem('name',response.data.success.name);
-                        localStorage.setItem('jwt',response.data.success.token);
-                        if (localStorage.getItem('jwt') != null){
+                    })
+                    .then(response => {
+                        JwtService.saveToken(response.data.success.token);
+                        localStorage.setItem('name', response.data.success.name);
+                        ApiService.setHeader();
+                        if (JwtService.getToken() != null){
                             this.$router.push({name: 'Home'});
                         }
-                      })
-                      .catch(function (error) {
-                        console.error(error);
-                      });
+                    });
+
                 }
             }
         },
         beforeRouteEnter (to, from, next) { 
-            if (localStorage.getItem('jwt')) {
+            if (JwtService.getToken() != null) {
                 return next({name: 'Home'});
             }
             next();

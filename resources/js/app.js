@@ -1,11 +1,18 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import ApiService from "./common/ApiService.js"
+
+
 Vue.use(VueRouter);
+ApiService.init();
+
 
 import App from "../views/App";
 import Home from "../views/public/Home";
 import Login from "../views/auth/Login";
 import Register from "../views/auth/Register";
+import Profile from "../views/management/Profile";
+
 
 const router = new VueRouter({
     mode: 'history',
@@ -25,8 +32,14 @@ const router = new VueRouter({
             name: 'Register',
             component: Register,
         },
+        {
+            path: '/profile',
+            name: 'Profile',
+            component: Profile,
+        }
     ],
 });
+
 const app = new Vue({
     el: '#app',
     components: { App },

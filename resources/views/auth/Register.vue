@@ -46,6 +46,8 @@
 </template>
 
 <script>
+    import JwtService from "../../js/common/JwtService.js";
+
     export default {
         data(){
             return {
@@ -68,8 +70,9 @@
                     })
                     .then(response => {
                         localStorage.setItem('name',response.data.success.name);
-                        localStorage.setItem('jwt',response.data.success.token);
-                        if (localStorage.getItem('jwt') != null){
+                        JwtService.saveToken(response.data.success.token);
+                        ApiService.setHeader();
+                        if (JwtService.getToken()){
                             this.$router.push({name: 'Home'});
                         }
                     })
@@ -84,7 +87,7 @@
             }
         },
         beforeRouteEnter (to, from, next) { 
-            if (localStorage.getItem('jwt')) {
+            if (JwtService.getToken()) {
                 return next({name: 'Home'});
             }
             next();

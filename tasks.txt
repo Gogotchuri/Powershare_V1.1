@@ -1,4 +1,4 @@
-2) need to implement logout on frontend
+2) Need to implement logout on frontend
 4) need to update main component/navbar everytime user logs in or out
 5) Parse and display auth errors on frontend
 
