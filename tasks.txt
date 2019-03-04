@@ -1,0 +1,3 @@
+1) need to add authorization api throttlers
+2) need to implement logout on frontend
+3) need to check if access token exists before giving permission to access api path
