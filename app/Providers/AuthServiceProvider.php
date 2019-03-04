@@ -30,6 +30,6 @@ class AuthServiceProvider extends ServiceProvider
             $router->forAccessTokens();
         });
         
-        Passport::tokensExpireIn(now()->addDays(2));
+        Passport::tokensExpireIn(now()->addDays(1));
     }
 }

@@ -132,7 +132,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.isLoggedIn = localStorage.getItem('jwt');
-    this.name = localStorage.getItem('user');
+    this.name = localStorage.getItem('name');
   }
 });
 
@@ -205,7 +205,7 @@ __webpack_require__.r(__webpack_exports__);
           email: this.email,
           password: this.password
         }).then(function (response) {
-          localStorage.setItem('user', response.data.success.name);
+          localStorage.setItem('name', response.data.success.name);
           localStorage.setItem('jwt', response.data.success.token);
 
           if (localStorage.getItem('jwt') != null) {
@@ -310,7 +310,7 @@ __webpack_require__.r(__webpack_exports__);
           password: this.password,
           c_password: this.password_confirmation
         }).then(function (response) {
-          localStorage.setItem('user', response.data.success.name);
+          localStorage.setItem('name', response.data.success.name);
           localStorage.setItem('jwt', response.data.success.token);
 
           if (localStorage.getItem('jwt') != null) {
@@ -915,7 +915,7 @@ var render = function() {
                           "router-link",
                           {
                             staticClass: "nav-link",
-                            attrs: { to: { name: "Board" } }
+                            attrs: { to: { name: "Home" } }
                           },
                           [_vm._v("LogOut")]
                         )

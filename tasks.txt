@@ -1,3 +1,8 @@
-1) need to add authorization api throttlers
 2) need to implement logout on frontend
-3) need to check if access token exists before giving permission to access api path
+4) need to update main component/navbar everytime user logs in or out
+5) Parse and display auth errors on frontend
+
+feature:
+1) after many request to login display password reset
+2)need to parse throttle report "message": "Too Many Attempts."
+3)user last login

@@ -11,6 +11,12 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    /**
+        Method to authenticate user via Api and give away password grant token;
+        Request should have valid @email and @password of existing user;
+        Method removes first access token after 4 token has been issued from user
+        At maximum, every user can have 5 access tokens.
+    */
     public function login(Request $request){
         
         $credentials = [
@@ -19,14 +25,25 @@ class AuthController extends Controller
         ];
 
         if (Auth::attempt($credentials)) {
+            
+            if(Auth::user()->tokens->count() > 4){
+                Auth::user()->tokens->last()->delete();
+            }
+            
             $success['token'] = Auth::user()->createToken('powershare_token')->accessToken;
-
+            $success['name'] = Auth::user()->name;
             return response()->json(['success' => $success]);
         }
 
         return response()->json(['error' => 'Unauthorised'], 401);
     }
 
+    /**
+        Method to register user via Api.
+        Takes request which should have valid @name, @email and @password.
+        Conditions are checked by validator class.
+        Upon successful registration we give user an access token.
+    */
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
@@ -42,13 +59,19 @@ class AuthController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        $success['token'] = $user->createToken('powershare_token')->accessToken;
-        $success['name'] = $user->name;
+        $answer['token'] = $user->createToken('powershare_token')->accessToken;
+        $answer['name'] = $user->name;
 
-        return response()->json(['success' => $success]);
+        return response()->json(['success' => $answer]);
     }
 
     public function logout(){
+        Auth::user()->token()->delete();
+
+        return response()->json('Logged out successfuly');
+    }
+
+    public function logoutFromAll(){
         Auth::user()->tokens->each(function ($token, $key){
             $token->delete();
         });

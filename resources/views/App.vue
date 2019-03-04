@@ -15,7 +15,7 @@
                         <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
                         <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
                         <li class="nav-link" v-if="isLoggedIn"> Hi, {{name}}</li>
-                        <router-link :to="{ name: 'Board' }" class="nav-link" v-if="isLoggedIn">LogOut</router-link>
+                        <router-link :to="{ name: 'Home' }" class="nav-link" v-if="isLoggedIn">LogOut</router-link>
                     </ul>
                 </div>
             </div>
@@ -35,8 +35,10 @@
             }
         },
         mounted(){
-            this.isLoggedIn = localStorage.getItem('jwt')
-            this.name = localStorage.getItem('user')
+            this.isLoggedIn = localStorage.getItem('jwt');
+            this.name = localStorage.getItem('name');
         }
+
+
     }
 </script>
