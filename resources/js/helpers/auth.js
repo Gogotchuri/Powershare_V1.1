@@ -1,11 +1,10 @@
-import JwtService from "../common/JwtService";
 import axios from "axios";
 
 export function login(credentials) {
     return new Promise((resolve, reject) => {
         axios.post('api/login', credentials)
         .then(response => {
-            resolve(response.data);
+            resolve(response);
         })
         .catch(err => {
             reject("Wrong Credentials");

@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use App\Http\Resources\UserResource;
 
 class AuthController extends Controller
 {
@@ -31,8 +32,7 @@ class AuthController extends Controller
             }
             
             $success['token'] = Auth::user()->createToken('powershare_token')->accessToken;
-            $success['name'] = Auth::user()->name;
-            $success['user'] = Auth::user();
+            $success['user'] = $this->getUser(Auth::user());
 
             return response()->json($success);
         }
@@ -62,8 +62,7 @@ class AuthController extends Controller
 
         $user = User::create($input);
         $answer['token'] = $user->createToken('powershare_token')->accessToken;
-        $answer['name'] = $user->name;
-        $answer['user'] = $user;
+        $answer['user'] = $this->getUser($user);
 
         return response()->json($answer);
     }
@@ -85,5 +84,13 @@ class AuthController extends Controller
     public function details()
     {
         return response()->json(Auth::user());
+    }
+
+    private function getUser($user)
+    {
+        $user_object["id"] = $user->id;
+        $user_object["name"] = $user->name;
+        $user_object["email"] = $user->email;
+        return $user_object;
     }
 }

@@ -1818,8 +1818,7 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_common_JwtService_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../js/common/JwtService.js */ "./resources/js/common/JwtService.js");
-/* harmony import */ var _js_common_ApiService_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../js/common/ApiService.js */ "./resources/js/common/ApiService.js");
-/* harmony import */ var _js_helpers_auth__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../js/helpers/auth */ "./resources/js/helpers/auth.js");
+/* harmony import */ var _js_helpers_auth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../js/helpers/auth */ "./resources/js/helpers/auth.js");
 //
 //
 //
@@ -1860,7 +1859,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -1879,7 +1877,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.$store.dispatch("login");
-      Object(_js_helpers_auth__WEBPACK_IMPORTED_MODULE_2__["login"])(this.$data.credentials).then(function (response) {
+      Object(_js_helpers_auth__WEBPACK_IMPORTED_MODULE_1__["login"])(this.$data.credentials).then(function (response) {
         _this.$store.commit("loginSuccessful", response);
 
         _this.$router.push({
@@ -1888,28 +1886,11 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (error) {
         _this.$store.commit("loginFailed", error);
       });
-    },
-    authnticate: function authnticate(e) {
-      var _this2 = this;
-
-      e.preventDefault();
-
-      if (this.password.length > 0) {
-        axios.post('login', {
-          email: this.email,
-          password: this.password
-        }).then(function (response) {
-          _js_common_JwtService_js__WEBPACK_IMPORTED_MODULE_0__["default"].saveToken(response.data.success.token);
-          localStorage.setItem('name', response.data.success.name);
-          _js_common_ApiService_js__WEBPACK_IMPORTED_MODULE_1__["default"].setHeader();
-
-          if (_js_common_JwtService_js__WEBPACK_IMPORTED_MODULE_0__["default"].getToken() != null) {
-            _this2.$router.push({
-              name: 'Home'
-            });
-          }
-        });
-      }
+      console.log("log");
+      console.log("log");
+      console.log("log");
+      console.log("log");
+      console.log("log");
     }
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
@@ -1920,11 +1901,6 @@ __webpack_require__.r(__webpack_exports__);
     }
 
     next();
-  },
-  computed: {
-    token: function token() {
-      return this.$store.getters.getToken;
-    }
   }
 });
 
@@ -37310,8 +37286,8 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.email,
-                        expression: "email"
+                        value: _vm.credentials.email,
+                        expression: "credentials.email"
                       }
                     ],
                     staticClass: "form-control",
@@ -37321,13 +37297,13 @@ var render = function() {
                       required: "",
                       autofocus: ""
                     },
-                    domProps: { value: _vm.email },
+                    domProps: { value: _vm.credentials.email },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.email = $event.target.value
+                        _vm.$set(_vm.credentials, "email", $event.target.value)
                       }
                     }
                   })
@@ -37350,19 +37326,23 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.password,
-                        expression: "password"
+                        value: _vm.credentials.password,
+                        expression: "credentials.password"
                       }
                     ],
                     staticClass: "form-control",
                     attrs: { id: "password", type: "password", required: "" },
-                    domProps: { value: _vm.password },
+                    domProps: { value: _vm.credentials.password },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.password = $event.target.value
+                        _vm.$set(
+                          _vm.credentials,
+                          "password",
+                          $event.target.value
+                        )
                       }
                     }
                   })
@@ -53571,15 +53551,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "register", function() { return register; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "getLocalUser", function() { return getLocalUser; });
-/* harmony import */ var _common_JwtService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../common/JwtService */ "./resources/js/common/JwtService.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_1__);
-
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
 function login(credentials) {
   return new Promise(function (resolve, reject) {
-    axios__WEBPACK_IMPORTED_MODULE_1___default.a.post('api/login', credentials).then(function (response) {
-      resolve(response.data);
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/login', credentials).then(function (response) {
+      resolve(response);
     }).catch(function (err) {
       reject("Wrong Credentials");
     });
@@ -53711,11 +53689,18 @@ var localUser = _helpers_auth__WEBPACK_IMPORTED_MODULE_0__["getLocalUser"];
       state.user.authError = null;
       state.user.loggedIn = true;
       state.user.loading = false;
+      state.user.currentUser = res.data;
+      localStorage.setItem("user", response.data);
     },
     loginFailed: function loginFailed(state, err) {
       state.user.authError = err;
       state.user.loggedIn = false;
       state.user.loading = false;
+    }
+  },
+  actions: {
+    login: function login(context) {
+      context.commit("login");
     }
   }
 });

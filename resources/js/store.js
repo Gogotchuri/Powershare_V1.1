@@ -36,12 +36,21 @@ export default {
             state.user.authError = null;
             state.user.loggedIn = true;
             state.user.loading = false;
+            state.user.currentUser = res.data;
+
+            localStorage.setItem("user", response.data);
         },
 
         loginFailed(state, err){
             state.user.authError = err;
             state.user.loggedIn = false;
             state.user.loading = false;            
+        }
+    },
+
+    actions: {
+        login(context){
+            context.commit("login");
         }
     }
 
