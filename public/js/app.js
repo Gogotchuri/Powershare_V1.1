@@ -1883,14 +1883,13 @@ __webpack_require__.r(__webpack_exports__);
         _this.$router.push({
           name: 'Home'
         });
+
+        console.log(response);
       }).catch(function (error) {
+        console.log(error);
+
         _this.$store.commit("loginFailed", error);
       });
-      console.log("log");
-      console.log("log");
-      console.log("log");
-      console.log("log");
-      console.log("log");
     }
   },
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
@@ -37269,7 +37268,7 @@ var render = function() {
           _c("div", { staticClass: "card-header" }, [_vm._v("Login")]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
-            _c("form", { attrs: { method: "POST", action: "/login" } }, [
+            _c("form", [
               _c("div", { staticClass: "form-group row" }, [
                 _c(
                   "label",
@@ -53690,7 +53689,7 @@ var localUser = _helpers_auth__WEBPACK_IMPORTED_MODULE_0__["getLocalUser"];
       state.user.loggedIn = true;
       state.user.loading = false;
       state.user.currentUser = res.data;
-      localStorage.setItem("user", response.data);
+      localStorage.setItem("user", JSON.stringify(response.data));
     },
     loginFailed: function loginFailed(state, err) {
       state.user.authError = err;

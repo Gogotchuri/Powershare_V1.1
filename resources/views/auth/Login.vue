@@ -6,7 +6,7 @@
                         <div class="card-header">Login</div>
 
                         <div class="card-body">
-                            <form method="POST" action="/login">
+                            <form>
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
 
@@ -61,17 +61,12 @@
                 .then(response => {
                     this.$store.commit("loginSuccessful", response);
                     this.$router.push({name: 'Home'});
+                    console.log(response);
                 })
                 .catch(error => {
+                    console.log(error);
                     this.$store.commit("loginFailed", error);
                 });
-
-                console.log("log");
-                console.log("log");
-                console.log("log");
-                console.log("log");
-                console.log("log");
-
             },
 
         },

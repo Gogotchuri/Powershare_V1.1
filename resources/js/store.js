@@ -38,7 +38,7 @@ export default {
             state.user.loading = false;
             state.user.currentUser = res.data;
 
-            localStorage.setItem("user", response.data);
+            localStorage.setItem("user", JSON.stringify(response.data));
         },
 
         loginFailed(state, err){
