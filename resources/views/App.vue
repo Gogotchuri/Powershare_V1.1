@@ -14,7 +14,7 @@
                         <!-- Authentication Links -->
                         <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
                         <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
-                        <li class="nav-link" v-if="isLoggedIn"> Hi, {{name}}</li>
+                        <router-link :to="{ name: 'Profile' }" class="nav-link" v-if="isLoggedIn">Profile of {{name}}</router-link>                        
                         <router-link :to="{ name: 'Home' }" class="nav-link" v-if="isLoggedIn">LogOut</router-link>
                     </ul>
                 </div>

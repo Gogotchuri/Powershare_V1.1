@@ -32,7 +32,9 @@ class AuthController extends Controller
             
             $success['token'] = Auth::user()->createToken('powershare_token')->accessToken;
             $success['name'] = Auth::user()->name;
-            return response()->json(['success' => $success]);
+            $success['user'] = Auth::user();
+
+            return response()->json($success);
         }
 
         return response()->json(['error' => 'Unauthorised'], 401);
@@ -61,8 +63,9 @@ class AuthController extends Controller
         $user = User::create($input);
         $answer['token'] = $user->createToken('powershare_token')->accessToken;
         $answer['name'] = $user->name;
+        $answer['user'] = $user;
 
-        return response()->json(['success' => $answer]);
+        return response()->json($answer);
     }
 
     public function logout(){
@@ -81,6 +84,6 @@ class AuthController extends Controller
 
     public function details()
     {
-        return response()->json(['success' => Auth::user()]);
+        return response()->json(Auth::user());
     }
 }

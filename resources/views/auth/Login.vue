@@ -25,7 +25,7 @@
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary" @click="handleLogin">
+                                        <button type="submit" class="btn btn-primary" v-on:click="authenticate">
                                             Login
                                         </button>
                                     </div>
@@ -41,19 +41,37 @@
 <script>
     import JwtService from "../../js/common/JwtService.js";
     import ApiService from "../../js/common/ApiService.js";
+    import {login} from "../../js/helpers/auth";
+
 
     export default {
+        name: "Login",
         data(){
             return {
-                email : "",
-                password : ""
+                credentials: {
+                    email : "",
+                    password : ""
+                },
+                error: null
             }
         },
         methods : {
-            handleLogin(e){
+            authenticate(){
+                this.$store.dispatch("login");
+                login(this.$data.credentials)
+                .then(response => {
+                    this.$store.commit("loginSuccessful", response);
+                    this.$router.push({name: 'Home'});
+                })
+                .catch(error => {
+                    this.$store.commit("loginFailed", error);
+                });
+            },
+
+            authnticate(e){
                 e.preventDefault();
                 if (this.password.length > 0) {
-                    ApiService.post('login', 
+                    axios.post('login', 
                     {
                         email: this.email,
                         password: this.password
@@ -75,6 +93,13 @@
                 return next({name: 'Home'});
             }
             next();
+        },
+
+        computed: {
+            token(){
+                return this.$store.getters.getToken;
+            }
         }
     }
+
 </script>

@@ -47,8 +47,11 @@
 
 <script>
     import JwtService from "../../js/common/JwtService.js";
+    import ApiService from "../../js/common/ApiService.js";
+    import {post} from "../../js/common/ApiService.js";
 
     export default {
+        name: "Register",
         data(){
             return {
                 name : "",
@@ -62,7 +65,7 @@
                 e.preventDefault();
                 if (this.password === this.password_confirmation && this.password.length > 0)
                 {
-                    axios.post('api/register', {
+                    post('register', {
                         name: this.name,
                         email: this.email,
                         password: this.password,

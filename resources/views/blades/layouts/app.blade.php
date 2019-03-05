@@ -19,7 +19,7 @@
         </noscript>
 
         <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
+        <!-- <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet"> -->
 
         <!-- Styles -->
         <link href="{{ mix('css/app.css') }}" rel="stylesheet">
@@ -39,14 +39,13 @@
             <meta property="og:image:width" content="1024">
             <meta property="og:image:height" content="1024">
         @else
-            <meta property="og:image" content="https://powershare.fund/img/pwrshr_alpha_logo.png">
+            <!-- <meta property="og:image" content="https://powershare.fund/img/pwrshr_alpha_logo.png"> -->
         @endif
         
     </head>
 
     @yield('body')
 
-    <script src="{{asset('js/bootstrap.js')}}"></script>
     <script src="{{mix('js/app.js')}}"></script>
     
 </html>

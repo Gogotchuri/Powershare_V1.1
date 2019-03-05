@@ -6,7 +6,7 @@
                     Powershare
                 </h2>
                 <h3>
-                    Future of crowdfunding
+                    Future of crowdfunding!
                 </h3>
             </div>
         </div>

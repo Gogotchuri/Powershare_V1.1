@@ -3,12 +3,12 @@ import JwtService from "./JwtService";
 
 const API_PATH = 'api/';
 
+
+export const Log = (msg) => {
+    console.log(msg);
+};
+
 const ApiService = {
-    
-    __handleCatch(err){
-        console.log("ApiError");
-        console.log(err);
-    },
 
     setHeader(){
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + JwtService.getToken();
@@ -20,16 +20,16 @@ const ApiService = {
     },
 
     get(resource) {
-        return axios.get(API_PATH +`${resource}`).catch(error => __handleCatch(error));
+        return axios.get(API_PATH +`${resource}`).catch(Log);
     },
     
     getWithSlug(resource, slug = "") {
-        return axios.get(API_PATH +`${resource}/${slug}`).catch(error => __handleCatch(error));
+        return axios.get(API_PATH +`${resource}/${slug}`).catch(Log);
     },
 
     
     post(resource, props) {
-        return axios.post(API_PATH + `${resource}`, props).catch(error => __handleCatch(error));
+        return axios.post(API_PATH + `${resource}`, props).catch(Log);
     },
     
     update(resource, slug, props) {
@@ -41,8 +41,16 @@ const ApiService = {
     },
     
     delete(resource, slug) {
-        return axios.delete(`${resource}/${slug}`).catch(error => __handleCatch(error));
+        return axios.delete(`${resource}/${slug}`).catch(Log);
     }
 };
 
 export default ApiService;
+
+export const post = (resource, props) => {
+    return ApiService.post(resource, props);
+};
+
+export const get = (resource) => {
+    return ApiService.get(resource);
+};
