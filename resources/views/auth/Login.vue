@@ -53,13 +53,13 @@
                 credentials: {
                     email : "",
                     password : ""
-                },
-                error: null
+                }
             }
         },
         methods: {
             authenticate(){
                 this.$store.dispatch("login");
+
                 login(this.$data.credentials)
                 .then(response => {
                     this.$store.commit("loginSuccessful", response);
@@ -67,6 +67,7 @@
                 })
                 .catch(error => {
                     this.$store.commit("loginFailed", error);
+
                 });
             },
 

@@ -14,7 +14,7 @@
                         <!-- Authentication Links -->
                         <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
                         <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
-                        <router-link :to="{ name: 'Profile' }" class="nav-link" v-if="isLoggedIn">Profile of {{currentUser.name}}</router-link>                        
+                        <router-link :to="{ name: 'Profile' }" class="nav-link" v-if="currentUser">Profile of {{currentUser.name}}</router-link>                        
                         <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">LogOut</a>
                     </ul>
                 </div>
@@ -27,8 +27,9 @@
 </template>
 
 <script>
-    import JwtService from "../js/common/JwtService.js";
-
+    import {logout} from "../js/helpers/auth";
+    import ApiService from "../js/common/ApiService";
+    
     export default {
         data(){
             return {};
@@ -43,11 +44,17 @@
         },
         methods: {
             logout(){
-                this.$store.dispatch("logout");
-                this.$router.push({name: 'Login'});
+                logout()
+                .then(response => {
+                    alert(response.data);
+                    this.$store.dispatch("logout");
+                    this.$router.push({name: 'Login'});
+                })
+                .catch(err => {
+                    console.error(err);
+                });
             }
         }
-
 
     }
 </script>

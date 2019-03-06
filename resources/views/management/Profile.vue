@@ -1,30 +1,19 @@
 <template>
     <div>
-        Name {{name}}
+        Name {{user.name}}
         <br>
-        Email {{email}}
+        Email {{user.email}}
     </div>
 </template>
 
 <script>
-    import ApiService from "../../js/common/ApiService.js";
-    import {get} from "../../js/common/ApiService.js";
-
     export default {
         name: "Profile",
-        data() {
-            return {
-                email: "",
-                name: ""
+        computed: {
+            user(){
+                return this.$store.getters.currentUser;
             }
-        },
-
-        mounted() {
-            get("user")
-            .then(response => {
-                this.name = response.data.success.name;
-                this.email = response.data.success.email;
-            });
         }
+
     }
 </script>

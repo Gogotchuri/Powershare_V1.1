@@ -8,16 +8,39 @@ export function login(credentials) {
         })
         .catch(err => {
             reject("Wrong Credentials");
+
         });
     });
 };
 
+/**
+ * 
+ * @param {email, name, password} information 
+ */
 export function register(information) {
+    return new Promise((resolve, reject) => {
+        axios.post('api/register', information)
+        .then(response => {
+            resolve(response);
+        })
+        .catch(err => {
+            reject("Something went wrong");
 
+        });
+    });
 };
 
 export function logout() {
+    return new Promise((resolve, reject) => {
+        axios.post('api/logout')
+        .then(response => {
+            resolve(response);
+        })
+        .catch(err => {
+            reject("Couldn't logout");
 
+        });
+    });
 };
 
 export function getLocalUser(){

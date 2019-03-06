@@ -1,17 +1,13 @@
 import axios from "axios";
-import JwtService from "./JwtService";
-
-const API_PATH = 'api/';
-
-
-export const Log = (msg) => {
-    console.log(msg);
-};
 
 const ApiService = {
 
-    setHeaderToken(){
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + JwtService.getToken();
+    setDefaultHeader(){
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem("user")).token;
+    },
+    
+    setHeaderToken(token){
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     },
 
     removeHeaderToken(){
@@ -20,16 +16,8 @@ const ApiService = {
 
     init(){
         axios.defaults.headers.common['Content-Type'] = 'application/json';
-        this.setHeader();
+        this.setDefaultHeader();        
     }
 };
 
 export default ApiService;
-
-export const post = (resource, props) => {
-    return ApiService.post(resource, props);
-};
-
-export const get = (resource) => {
-    return ApiService.get(resource);
-};

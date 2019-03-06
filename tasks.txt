@@ -1,11 +1,8 @@
-2) Need to implement logout on frontend
-4) need to update main component/navbar everytime user logs in or out
-5) Parse and display auth errors on frontend
-6) Need to reimplement register with store methods and state management
-7) need to use APi and jwt custom services in store.js, add and remove bearers upon authentication
-8) make another component for displaying errors
+1) Axios interceptors.response need to be set properly, so we deny access after token is down
+8) make another component for displaying errors and display errors on registration page
 
 feature:
 1) after many request to login display password reset
 2)need to parse throttle report "message": "Too Many Attempts."
-3)user last login
+3)user last login in db
+4)direc_donations table
