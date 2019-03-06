@@ -1,6 +1,7 @@
 import { getLocalUser } from "./helpers/auth";
-
-const localUser = getLocalUser;
+import ApiService from "./common/ApiService";
+import JwtService from "./common/JwtService";
+const localUser = getLocalUser();
 
 export default {
     state: {
@@ -38,19 +39,29 @@ export default {
             state.user.loading = false;
             state.user.currentUser = res.data;
 
-            localStorage.setItem("user", JSON.stringify(response.data));
+            localStorage.setItem("user", JSON.stringify(res.data));
         },
 
         loginFailed(state, err){
             state.user.authError = err;
             state.user.loggedIn = false;
             state.user.loading = false;            
+        },
+
+        logout(state){
+            state.user.currentUser = null;
+            state.user.loggedIn = false;
+            localStorage.removeItem("user");
         }
     },
 
     actions: {
         login(context){
             context.commit("login");
+        },
+
+        logout(context){
+            context.commit("logout");
         }
     }
 

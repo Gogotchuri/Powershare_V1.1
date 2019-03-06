@@ -9,21 +9,33 @@ export const routes = [
     {
         path: '/',
         name: 'Home',
-        component: Home
+        component: Home,
+        meta: {
+            authRequired: false
+        }
     },
     {
         path: '/login',
         name: 'Login',
         component: Login,
+        meta: {
+            authRequired: false
+        }
     },
     {
         path: '/register',
         name: 'Register',
         component: Register,
+        meta: {
+            authRequired: false
+        }
     },
     {
         path: '/profile',
         name: 'Profile',
         component: Profile,
+        meta: {
+            authRequired: true
+        }
     }
 ];

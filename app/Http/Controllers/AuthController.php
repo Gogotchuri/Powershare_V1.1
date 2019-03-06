@@ -31,8 +31,8 @@ class AuthController extends Controller
                 Auth::user()->tokens->last()->delete();
             }
             
+            $success = $this->getUser(Auth::user());
             $success['token'] = Auth::user()->createToken('powershare_token')->accessToken;
-            $success['user'] = $this->getUser(Auth::user());
 
             return response()->json($success);
         }
@@ -61,8 +61,8 @@ class AuthController extends Controller
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
+        $answer= $this->getUser($user);
         $answer['token'] = $user->createToken('powershare_token')->accessToken;
-        $answer['user'] = $this->getUser($user);
 
         return response()->json($answer);
     }

@@ -10,38 +10,17 @@ export const Log = (msg) => {
 
 const ApiService = {
 
-    setHeader(){
+    setHeaderToken(){
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + JwtService.getToken();
+    },
+
+    removeHeaderToken(){
+        axios.defaults.headers.common['Authorization'] = 'Bearer Dummy';
     },
 
     init(){
         axios.defaults.headers.common['Content-Type'] = 'application/json';
         this.setHeader();
-    },
-
-    get(resource) {
-        return axios.get(API_PATH +`${resource}`).catch(Log);
-    },
-    
-    getWithSlug(resource, slug = "") {
-        return axios.get(API_PATH +`${resource}/${slug}`).catch(Log);
-    },
-
-    
-    post(resource, props) {
-        return axios.post(API_PATH + `${resource}`, props).catch(Log);
-    },
-    
-    update(resource, slug, props) {
-        return axios.put(`${resource}/${slug}`, props);
-    },
-    
-    put(resource, props) {
-        return axios.put(`${resource}`, props);
-    },
-    
-    delete(resource, slug) {
-        return axios.delete(`${resource}/${slug}`).catch(Log);
     }
 };
 

@@ -1,6 +1,8 @@
 2) Need to implement logout on frontend
 4) need to update main component/navbar everytime user logs in or out
 5) Parse and display auth errors on frontend
+6) Need to reimplement register with store methods and state management
+7) need to use APi and jwt custom services in store.js, add and remove bearers upon authentication
 
 feature:
 1) after many request to login display password reset

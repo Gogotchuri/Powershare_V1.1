@@ -6,7 +6,7 @@
                         <div class="card-header">Login</div>
 
                         <div class="card-body">
-                            <form>
+                            <form @submit.prevent="authenticate">
                                 <div class="form-group row">
                                     <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
 
@@ -25,9 +25,14 @@
 
                                 <div class="form-group row mb-0">
                                     <div class="col-md-8 offset-md-4">
-                                        <button type="submit" class="btn btn-primary" @click="authenticate">
+                                        <button type="submit" class="btn btn-primary">
                                             Login
                                         </button>
+                                    </div>
+                                </div>
+                                <div class="form-group row" v-if="authError">
+                                    <div class="error">
+                                        {{authError}}
                                     </div>
                                 </div>
                             </form>
@@ -39,9 +44,7 @@
     </template>
 
 <script>
-    import JwtService from "../../js/common/JwtService.js";
     import {login} from "../../js/helpers/auth";
-
 
     export default {
         name: "Login",
@@ -54,28 +57,33 @@
                 error: null
             }
         },
-        methods : {
+        methods: {
             authenticate(){
                 this.$store.dispatch("login");
                 login(this.$data.credentials)
                 .then(response => {
                     this.$store.commit("loginSuccessful", response);
                     this.$router.push({name: 'Home'});
-                    console.log(response);
                 })
                 .catch(error => {
-                    console.log(error);
                     this.$store.commit("loginFailed", error);
                 });
             },
 
         },
-        beforeRouteEnter (to, from, next) { 
-            if (JwtService.getToken() != null) {
-                return next({name: 'Home'});
+
+        computed: {
+            authError(){
+                return this.$store.getters.authError;
             }
-            next();
-        },
+        }
     }
 
 </script>
+
+<style scoped>
+    .error{
+        color:red;
+        text-align: center;
+    }
+</style>

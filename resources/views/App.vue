@@ -14,8 +14,8 @@
                         <!-- Authentication Links -->
                         <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
                         <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
-                        <router-link :to="{ name: 'Profile' }" class="nav-link" v-if="isLoggedIn">Profile of {{name}}</router-link>                        
-                        <router-link :to="{ name: 'Home' }" class="nav-link" v-if="isLoggedIn">LogOut</router-link>
+                        <router-link :to="{ name: 'Profile' }" class="nav-link" v-if="isLoggedIn">Profile of {{currentUser.name}}</router-link>                        
+                        <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">LogOut</a>
                     </ul>
                 </div>
             </div>
@@ -31,14 +31,21 @@
 
     export default {
         data(){
-            return {
-                isLoggedIn : null,
-                name : null
-            }
+            return {};
         },
-        mounted(){
-            this.isLoggedIn = JwtService.getToken();
-            this.name = localStorage.getItem('name');
+        computed: {
+            isLoggedIn(){
+                return this.$store.getters.isAuthenticated;
+            },
+            currentUser(){
+                return this.$store.getters.currentUser;
+            }   
+        },
+        methods: {
+            logout(){
+                this.$store.dispatch("logout");
+                this.$router.push({name: 'Login'});
+            }
         }
 
 

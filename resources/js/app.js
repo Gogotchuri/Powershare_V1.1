@@ -20,6 +20,19 @@ const router = new VueRouter({
     routes
 });
 
+router.beforeEach((to, from, next) => {
+    const authRequired = to.matched.some(record => record.meta.authRequired);
+    const user = store.state.user.currentUser;
+
+    if(authRequired && !user){
+        next('/login');
+    }else if((to.path == "/login" || to.path == "/register")&& !!user){
+        next('/');
+    }else{
+        next();
+    }
+
+});
 
 const app = new Vue({
     el: '#app',
