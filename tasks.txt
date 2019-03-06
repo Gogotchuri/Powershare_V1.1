@@ -3,6 +3,7 @@
 5) Parse and display auth errors on frontend
 6) Need to reimplement register with store methods and state management
 7) need to use APi and jwt custom services in store.js, add and remove bearers upon authentication
+8) make another component for displaying errors
 
 feature:
 1) after many request to login display password reset
