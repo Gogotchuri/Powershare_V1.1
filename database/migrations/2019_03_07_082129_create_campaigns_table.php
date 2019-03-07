@@ -30,9 +30,6 @@ class CreateCampaignsTable extends Migration
             
             $table->string("ethereum_address")->nullable();
 
-            $table->unsignedInteger("featured_image_id")->nullable();
-            $table->foreign("featured_image_id")->references("id")->on("images")->onDelete("set null");
-
             $table->unsignedInteger("category_id")->nullable();
             $table->foreign("category_id")->references("id")->on("campaign_categories")->onDelete("set null");
             

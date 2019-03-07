@@ -20,7 +20,8 @@ class CreateTeamMemberSocialLinksTable extends Migration
             $table->unsignedInteger("team_member_id");
             $table->foreign("team_member_id")->references("id")->on("team_members")->onDelete("cascade");
 
-            $table->unsignedInteger("platform_id")->references("id")->on("social_platforms")->onDelete("cascade");
+            $table->unsignedInteger("platform_id");
+            $table->foreign("platform_id")->references("id")->on("social_platforms")->onDelete("cascade");
 
             $table->timestamps();
         });

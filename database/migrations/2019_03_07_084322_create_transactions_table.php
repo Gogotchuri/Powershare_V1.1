@@ -15,10 +15,9 @@ class CreateTransactionsTable extends Migration
     {
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
-
             
             $table->unsignedInteger("platform_id")->nullable();
-            $table->foreign("platform_id")->references("id")->on("transaction_platform")->onDelete("set null");
+            $table->foreign("platform_id")->references("id")->on("transaction_platforms")->onDelete("set null");
             
             $table->unsignedDecimal("amount");
             
