@@ -54159,7 +54159,9 @@ __webpack_require__.r(__webpack_exports__);
 
 var ApiService = {
   setDefaultHeader: function setDefaultHeader() {
-    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem("user")).token;
+    var token = JSON.parse(localStorage.getItem("user"));
+    token = token ? token.token : "";
+    axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
   },
   setHeaderToken: function setHeaderToken(token) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.defaults.headers.common['Authorization'] = 'Bearer ' + token;
@@ -54836,8 +54838,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/gogotchuri/Documents/PowerShare/Web/Powershare_V1.1/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/gogotchuri/Documents/PowerShare/Web/Powershare_V1.1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/gogotchuri/Documents/Workspace/Powershare_V1.1/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/gogotchuri/Documents/Workspace/Powershare_V1.1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -3,7 +3,9 @@ import axios from "axios";
 const ApiService = {
 
     setDefaultHeader(){
-        axios.defaults.headers.common['Authorization'] = 'Bearer ' + JSON.parse(localStorage.getItem("user")).token;
+        let token = JSON.parse(localStorage.getItem("user"));
+        token = token ? token.token : ""
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + token;
     },
     
     setHeaderToken(token){
