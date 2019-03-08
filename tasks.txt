@@ -4,5 +4,5 @@
 feature:
 1) after many request to login display password reset
 2)need to parse throttle report "message": "Too Many Attempts."
-3)user last login in db
+3)user last login in db(added, need relationships)
 4)direc_donations table
