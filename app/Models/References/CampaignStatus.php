@@ -2,11 +2,16 @@
 
 namespace App\Models\References;
 
-use Illuminate\Database\Eloquent\Model;
-
-class CampaignStatus extends Model
+class CampaignStatus extends Category
 {
     public const APPROVED = 1;
     public const PROPOSAL = 2;
     public const DRAFT = 3;
+
+    protected static $stringRepresentation = [
+        self::DRAFT => "Draft",
+        self::PROPOSAL => "Proposal",
+        self::APPROVED => "Approved"
+    ];
+
 }

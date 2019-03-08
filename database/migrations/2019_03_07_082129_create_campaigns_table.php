@@ -39,6 +39,8 @@ class CreateCampaignsTable extends Migration
             $table->integer("order")->nullable();
             $table->boolean("is_hidden")->default(false);
 
+            $table->softDeletes();
+
             $table->timestamps();
         
         });
