@@ -34,6 +34,8 @@ class CreateCampaignsTable extends Migration
             $table->foreign("category_id")->references("id")->on("campaign_categories")->onDelete("set null");
             
             $table->unsignedDecimal("required_funding")->default(0);
+
+            $table->unsignedDecimal("realized_funding")->default(0);
             $table->dateTime("funding_checked_at")->nullable();
 
             $table->integer("order")->nullable();

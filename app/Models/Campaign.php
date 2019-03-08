@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use App\Models\Reference\CampaignCategory;
-use App\Models\Reference\CampaignStatus;
+use App\Models\References\CampaignCategory;
+use App\Models\References\CampaignStatus;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;

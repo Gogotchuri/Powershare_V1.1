@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\References\Models\ImageCategory;
+use App\Models\References\ImageCategory;
 
 class ImageCategorySeeder extends Seeder
 {
@@ -13,10 +13,11 @@ class ImageCategorySeeder extends Seeder
     public function run()
     {
         //currently have 4 image categories
-        for ($i=1; $i <= ImageCategory::numCategories(); $i++) { 
+        for ($id=1; $id <= ImageCategory::numCategories(); $id++) { 
             $cat = new ImageCategory();
-            $cat->id = $i;
-            $cat->name = ImageCategory::nameFromId($i);
+            $cat->id = $id;
+            $cat->name = ImageCategory::nameFromId($id);
+            $cat->save();
         }
     }
 }

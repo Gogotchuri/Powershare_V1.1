@@ -12,11 +12,11 @@ class RoleSeeder extends Seeder
      */
     public function run()
     {
-        //currently have 2 roles
-        for($i = 1; $i < 3; $i++){
+ 
+        for ($id = 1; $id <= Role::numCategories(); $id++) { 
             $role = new Role();
-            $role->id = $i;
-            $role->name = Role::nameFromId($i);
+            $role->id = $id;
+            $role->name = Role::nameFromId($id);
             $role->save();
         }
     }

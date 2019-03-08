@@ -2,6 +2,7 @@
 
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
+use App\Models\User;
 
 class UserSeeder extends Seeder
 {
@@ -29,12 +30,12 @@ class UserSeeder extends Seeder
         ];
 
         foreach ($users as $userData) {
-            $user = new \App\User();
+            $user = new User();
 
             $user->name = $userData['name'];
             $user->email_verified_at = $userData['email_verified_at'];
             $user->email = $userData['email'];
-            $user->password = bcrypt($userData['password']);
+            $user->password = Hash::make($userData['password']);
             $user->role_id = $userData['role_id'] ?? 2;
 
             $user->save();

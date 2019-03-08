@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-use \App\Models\SocialPlatform;
+use App\Models\References\SocialPlatform;
 
 class SocialPlatformSeeder extends Seeder
 {
@@ -12,18 +12,11 @@ class SocialPlatformSeeder extends Seeder
      * @return void
      */
     public function run()
-    {
-        $platforms = [
-            SocialPlatform::FACEBOOK,
-            SocialPlatform::TWITTER,
-            SocialPlatform::LINKEDIN,
-            SocialPlatform::OTHER,
-        ];
-
-        foreach ($platforms as $platformId) {
+    {   
+        for ($id = 1; $id <= SocialPlatform::numCategories(); $id++) { 
             $projectStatus = new SocialPlatform();
-            $projectStatus->id = $platformId;
-            $projectStatus->name = SocialPlatform::string($platformId);
+            $projectStatus->id = $id;
+            $projectStatus->name = SocialPlatform::nameFromId($id);
             $projectStatus->save();
         }
     }

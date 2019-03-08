@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use \App\Models\Reference\CampaignStatus;
+use App\Models\References\CampaignStatus;
 
 class CampaignStatusSeeder extends Seeder
 {
@@ -12,16 +12,11 @@ class CampaignStatusSeeder extends Seeder
      */
     public function run()
     {
-        $statuses = [
-            CampaignStatus::APPROVED,
-            CampaignStatus::PROPOSAL,
-            CampaignStatus::DRAFT,
-        ];
-
-        foreach ($statuses as $statusId) {
+        //currently have 2 roles
+        for($id = 1; $id <= CampaignStatus::numCategories(); $id++){
             $projectStatus = new CampaignStatus();
-            $projectStatus->id = $statusId;
-            $projectStatus->name = CampaignStatus::nameFromId($statusId);
+            $projectStatus->id = $id;
+            $projectStatus->name = CampaignStatus::nameFromId($id);
             $projectStatus->save();
         }
     }

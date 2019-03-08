@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use App\Models\References\Currency;
 
 class CurrencySeeder extends Seeder
 {
@@ -11,6 +12,12 @@ class CurrencySeeder extends Seeder
      */
     public function run()
     {
-        //
+        for ($id = 1; $id <= Currency::numCategories(); $id++) { 
+            $currency = new Currency();
+            $currency->id = $id;
+            $currency->abbr = Currency::nameFromId($id);
+            $currency->name = Currency::fullNameFromId($id);
+            $currency->save();
+        }
     }
 }

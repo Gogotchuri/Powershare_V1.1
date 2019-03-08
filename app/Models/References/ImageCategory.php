@@ -1,8 +1,8 @@
 <?php
 
-namespace App\References\Models;
+namespace App\Models\References;
 
-use App\Models\References\Category;
+use App\Models\References\Category as Category;
 
 class ImageCategory extends Category
 {

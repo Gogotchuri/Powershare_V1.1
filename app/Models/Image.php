@@ -76,11 +76,15 @@ class Image extends Model
     }
 
     public function campaign() {
-        $this->belongsTo(Campaign::class);
+        $this->belongsTo(Campaign::class, "campaign_id");
     }
 
     public function user(){
-        $this->belongsTo(user::class);
+        $this->belongsTo(user::class, "user_id");
+    }
+
+    public function category(){
+        $this->belongsTo(ImageCategory::class, "category_id");
     }
 
     protected function storeNormal(UploadedFile $file, $dims)
