@@ -24,4 +24,8 @@ class Category extends Model
 
         return -1;
     }
+
+    public static function numCategories(): int{
+        return count(static::$stringRepresentation);
+    }
 }
