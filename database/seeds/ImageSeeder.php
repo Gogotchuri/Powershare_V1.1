@@ -27,5 +27,7 @@ class ImageSeeder extends Seeder
         $image->url = 'https://cz-public-images-test.s3.amazonaws.com/powershare-5YtTOa2JOVkjdl4GvVqOpx23YMsKug1kjg6Y9j50.png';
         $image->thumbnail_url = 'https://cz-public-images-test.s3.amazonaws.com/powershare-thumbnail-5YtTOa2JOVkjdl4GvVqOpx23YMsKug1kjg6Y9j50.png';
         $image->save();
+
+        factory("App\Models\Image", 30)->create();
     }
 }

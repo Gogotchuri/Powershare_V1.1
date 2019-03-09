@@ -16,47 +16,50 @@ class Campaign extends Model
     use SoftDeletes;
     
     protected $with = [
-        'status'
+        "status"
     ];
 
-    protected $visible = [ 'id', 'name', 'featured_image_url', 'category_id', 'required_funding', 'realized_funding'];
-    protected $appends = [ 'featured_image_url', 'featured_image_thumbnail_url'];
+    protected $visible = [ "id", "name", "featured_image_thumbnail_url", "category_id", 
+                            "required_funding", "realized_funding", "category_name", 
+                            "video_url", "ethereum_address", "details"];
+                            
+    protected $appends = [ "featured_image_url", "featured_image_thumbnail_url", "category_name"];
 
     protected static function boot()
     {
         parent::boot();
 
         static::creating(function ($model) {
-            $last = Campaign::orderBy('id', 'desc')->first();
-            $model->attributes['order'] = optional($last)->id * 10 + 10;
+            $last = Campaign::orderBy("id", "desc")->first();
+            $model->attributes["order"] = optional($last)->id * 10 + 10;
         });
     }
 
     public static function createPath()
     {
         return Auth::user() && Auth::user()->role_id === 1
-            ? route('admin.campaigns.create')
-            : route('user.campaigns.create');
+            ? route("admin.campaigns.create")
+            : route("user.campaigns.create");
     }
 
     public static function baseRules()
     {
         return [
-            'name' => 'required|string|max:30',
-            'target_audience' => 'required|string|max:50',
-            'details' => 'required|string|max:3000',
+            "name" => "required|string|max:30",
+            "target_audience" => "required|string|max:50",
+            "details" => "required|string|max:3000",
         ];
     }
     public static function updateRules()
     {
         return array_merge(Campaign::baseRules(), [
-            'category' => 'required|exists:campaign_categories,id',
-            'initiator' => 'required|string|max:40',
-            'required_funding' => 'required|numeric',
+            "category" => "required|exists:campaign_categories,id",
+            "initiator" => "required|string|max:40",
+            "required_funding" => "required|numeric",
             //TODO: Conditionally add required rule here if campaign have no image
-            'featured-image' => 'image|mimes:jpeg,png,jpg,gif',
-            'ethereum_address' => 'nullable|string|max:255',
-            'video_url' => 'nullable|url',
+            "featured-image" => "image|mimes:jpeg,png,jpg,gif",
+            "ethereum_address" => "nullable|string|max:255",
+            "video_url" => "nullable|url",
         ]);
     }
 
@@ -82,7 +85,7 @@ class Campaign extends Model
 
     public function public_comments()
     {
-        return $this->comments()->where('is_public', 1);
+        return $this->comments()->where("is_public", true);
     }
 
     public function social_links()
@@ -132,9 +135,9 @@ class Campaign extends Model
         }
 
         $parts = parse_url($this->video_url);
-        parse_str($parts['query'], $query);
+        parse_str($parts["query"], $query);
 
-        return Arr::get($query, 'v');
+        return Arr::get($query, "v");
     }
 
     public function getFeaturedImageAttribute()

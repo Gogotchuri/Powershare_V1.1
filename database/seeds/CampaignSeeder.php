@@ -68,5 +68,7 @@ class CampaignSeeder extends Seeder
 
             $n_camp->save();
         }
+
+        factory("App\Models\Campaign", 30)->create();
     }
 }

@@ -4,6 +4,7 @@ namespace App\Models\References;
 
 class CampaignCategory extends Category
 {
+    protected $visible = ["id", "name"];
     public const CHARITY = 1;
     public const INOVATION = 2;
     public const OTHER = 3;

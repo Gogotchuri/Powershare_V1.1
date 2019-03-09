@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    protected $visible = ["id", "author_name", "body", "date"];
     protected $appends = ["author_name"];
     
     public function campaign(){

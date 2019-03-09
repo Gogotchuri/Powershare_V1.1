@@ -40,5 +40,7 @@ class UserSeeder extends Seeder
 
             $user->save();
         }
+
+        factory("App\Models\User", 10)->create();
     }
 }

@@ -11,7 +11,7 @@ use App\References\Models\ImageCategory;
 
 class Image extends Model
 {
-    public $visible = ['id', 'category','url', 'thumbnail_url', 'name'];
+    public $visible = ["id", "url", "thumbnail_url", "name"];
 
     /*Called when image is ploaded for Gallery
         @param $file uploaded image
@@ -109,7 +109,7 @@ class Image extends Model
         })
         ->stream()->detach();
 
-        $this->url = $this->upload('powershare-'.$file->hashName(), $content);
+        $this->url = $this->upload("powershare-".$file->hashName(), $content);
     }
 
     protected function storeThumbnail(UploadedFile $file, $dims)
@@ -122,13 +122,13 @@ class Image extends Model
 
         $content = $content->fit(320, 240)->stream()->detach();
 
-        $this->thumbnail_url = $this->upload('powershare-thumbnail-'.$file->hashName(), $content);
+        $this->thumbnail_url = $this->upload("powershare-thumbnail-".$file->hashName(), $content);
     }
 
     protected function upload($name, $content)
     {
-        Storage::disk('s3')->put($name, $content, 'public');
+        Storage::disk("s3")->put($name, $content, "public");
 
-        return Storage::disk('s3')->url($name);
+        return Storage::disk("s3")->url($name);
     }
 }

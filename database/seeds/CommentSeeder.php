@@ -11,6 +11,7 @@ class CommentSeeder extends Seeder
      */
     public function run()
     {
+        factory("App\Models\Comment", rand(1, 15))->create();
 
     }
 }

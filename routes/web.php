@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/{any}', 'SPAController@index')->where('any', '.*');
+Route::get('/{any}', 'General\SPAController@index')->where('any', '.*');
 
 
