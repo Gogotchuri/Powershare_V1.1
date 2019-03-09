@@ -30,7 +30,7 @@ class CampaignController extends Controller
         //Might need for later filters
         $categories = CampaignCategory::all();
 
-        return response()->json($campaigns);
+        return response()->json(["campaigns" => $campaigns]);
     }
 
     public function show($id)
