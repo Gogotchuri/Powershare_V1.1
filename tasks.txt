@@ -1,4 +1,5 @@
 3) Create Api resources for Campaigns and format json properly before passing
+4) Should configure subroutes of campaigns
 1) Axios interceptors.response need to be set properly, so we deny access after token is down
 2) make another component for displaying errors and display errors on registration page
 
