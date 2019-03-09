@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\Models\References\CampaignCategory;
 use App\Models\References\CampaignStatus;
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\References\ImageCategory;
 
 class Campaign extends Model
 {
@@ -67,11 +68,6 @@ class Campaign extends Model
     public function status()
     {
         return $this->belongsTo(CampaignStatus::class);
-    }
-
-    public function featured_image()
-    {
-       //To-Do create featured_image_url attribute and derieve from all images and categories 
     }
 
     public function images()
@@ -141,6 +137,21 @@ class Campaign extends Model
         return Arr::get($query, 'v');
     }
 
+    public function getFeaturedImageAttribute()
+    {
+        $images = $this->images;
+        //might need to add default campaign image
+        if(isset($images)){
+            return $images->firstWhere("category_id", ImageCategory::FEATURED);
+        }
+        return null;
+    }
+
+    public function getGalleryImagesAttribute()
+    {
+        return optional($this->images)->Where("category_id", ImageCategory::GALLERY);
+    }
+
     public function getFeaturedImageThumbnailUrlAttribute()
     {
         return optional($this->featured_image)->thumbnail_url;
@@ -149,6 +160,11 @@ class Campaign extends Model
     public function getFeaturedImageUrlAttribute()
     {
         return optional($this->featured_image)->url;
+    }
+
+    public function getCategoryNameAttribute()
+    {
+        return optional($this->category)->name;
     }
 
     public function getExcerptAttribute()

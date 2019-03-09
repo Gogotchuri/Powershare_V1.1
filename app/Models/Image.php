@@ -76,15 +76,23 @@ class Image extends Model
     }
 
     public function campaign() {
-        $this->belongsTo(Campaign::class, "campaign_id");
+        return $this->belongsTo(Campaign::class, "campaign_id");
     }
 
     public function user(){
-        $this->belongsTo(user::class, "user_id");
+        return $this->belongsTo(User::class, "user_id");
     }
 
     public function category(){
-        $this->belongsTo(ImageCategory::class, "category_id");
+        return $this->belongsTo(ImageCategory::class, "category_id");
+    }
+
+    public function getCategoryNameAttribute(){
+        return optional($this->category)->name;
+    }
+
+    public function getCampaignIdAttribute(){
+        return optional($this->campaign)->id;
     }
 
     protected function storeNormal(UploadedFile $file, $dims)
