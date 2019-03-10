@@ -1,5 +1,6 @@
 <template>
     <div>
+      <!-- Nav-Bar -->
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <router-link :to="{name: 'Home'}" class="navbar-brand">Powershare</router-link>
@@ -21,6 +22,7 @@
                 </div>
             </div>
         </nav>
+        <!-- Content -->
         <main class="py-4">
             <router-view></router-view>
         </main>

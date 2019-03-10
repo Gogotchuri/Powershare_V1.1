@@ -1,22 +1,36 @@
 <template>
-<div id="explore" class="container campaigns-page">
-	<div class="explore-container">
-		<div class="row" style="justify-content: space-around">
-			<h1 class="col-sm-8 main-heading main-heading-campaigns">campaigns</h1>
-		</div>
-		<div class="row center-campaigns">
-            <campaign v-for="campaign in campaigns" v-bind:key="campaign.id"> </campaign>
-		</div>
-	</div>
-</div>
+    <div id="explore" class="container campaigns-page">
+        <div class="explore-container">
+            <div class="row" style="justify-content: space-around">
+                <h1 class="col-sm-8 main-heading main-heading-campaigns">campaigns</h1>
+            </div>
+            <div class="row center-campaigns">
+                <template v-if="!campaigns.length">
+                    <div>
+                        No Campaigns To see!
+                    </div>
+                </template>
+                <campaign-thumbnail v-else 
+                    v-for="campaign in campaigns" 
+                    :key="campaign.id"
+                    :campaign="campaign"    
+                > </campaign-thumbnail>
+                <!-- <campaign :campaign="C" \>
+                <campaign v-for="campaign in campaigns" :key="campaign.id" :campaign="campaign"> </campaign> -->
+
+            </div>
+        </div>
+    </div>
 </template>
 
 <script>
-import campaign from "./partials/Campaign.vue";
+
+import campaignThumbnail from "./partials/CampaignThumbnail.vue";
+
 export default {
     name: "Campaigns",
     components: {
-        campaign
+        campaignThumbnail
     },
     data(){
         return {
@@ -32,7 +46,7 @@ export default {
             axios.get("api/campaigns")
             .then(res => {
                 console.log(res);
-                this.campaigns = res.data.campaigns;
+                this.campaigns = res.data.data;
             })
             .catch(err => {
 

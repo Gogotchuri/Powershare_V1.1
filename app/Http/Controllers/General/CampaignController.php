@@ -8,6 +8,9 @@ use App\Models\References\CampaignCategory;
 use App\Models\References\CampaignStatus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Resources\Campaign as CampaignResource;
+use App\Http\Resources\Campaigns as CampaignsResource;
+
 
 class CampaignController extends Controller
 {
@@ -30,17 +33,14 @@ class CampaignController extends Controller
         //Might need for later filters
         $categories = CampaignCategory::all();
 
-        return response()->json(["campaigns" => $campaigns]);
+        return CampaignsResource::collection($campaigns);
     }
 
     public function show($id)
     {
         $campaign = Campaign::where('status_id', CampaignStatus::APPROVED)->findOrFail($id);
 
-        $comments = $campaign->public_comments;
-        $comments = ($comments->count() == 0) ? null : $comments;
-
-        return response()->json(compact("campaign", "comments"));
+        return new CampaignResource($campaign);
     }
 
     public function addComment($id, Request $request)

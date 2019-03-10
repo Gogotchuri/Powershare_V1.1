@@ -3,6 +3,7 @@ import Login from "../views/auth/Login";
 import Register from "../views/auth/Register";
 import Profile from "../views/management/Profile";
 import Campaigns from "../views/public/Campaigns";
+import Campaign from "../views/public/Campaign";
 
 
 export const routes = [
@@ -39,12 +40,19 @@ export const routes = [
             authRequired: true
         }
     },
+
     {
         path: '/campaigns',
         name: 'Campaigns',
         component: Campaigns,
         meta: {
             authRequired: false
-        }
+        },
+    },
+    
+    {
+        path: '/campaigns/:id',
+        name: "Campaign",
+        component: Campaign
     },
 ];

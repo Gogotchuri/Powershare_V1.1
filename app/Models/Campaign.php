@@ -19,12 +19,6 @@ class Campaign extends Model
         "status"
     ];
 
-    protected $visible = [ "id", "name", "featured_image_thumbnail_url", "category_id", 
-                            "required_funding", "realized_funding", "category_name", 
-                            "video_url", "ethereum_address", "details"];
-                            
-    protected $appends = [ "featured_image_url", "featured_image_thumbnail_url", "category_name"];
-
     protected static function boot()
     {
         parent::boot();
