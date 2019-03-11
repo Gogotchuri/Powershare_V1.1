@@ -1794,6 +1794,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -2066,7 +2068,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   date: function date() {
     return {
-      id: 0
+      id: -1
     };
   },
   beforeMount: function beforeMount() {
@@ -2122,7 +2124,7 @@ __webpack_require__.r(__webpack_exports__);
       campaigns: []
     };
   },
-  beforeMount: function beforeMount() {
+  created: function created() {
     this.fetchCampaigns();
   },
   methods: {
@@ -2176,7 +2178,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -38612,9 +38613,7 @@ var render = function() {
     { staticClass: "col-xs-12 col-sm-6 col-md-4 campaign-holder" },
     [
       _c("p", [_vm._v(_vm._s(_vm.campaign.name))]),
-      _vm._v(
-        "                                                                     \n        ?\n\t\t"
-      ),
+      _vm._v(" "),
       _c(
         "router-link",
         {
@@ -55410,8 +55409,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/gogotchuri/Documents/Workspace/Powershare_V1.1/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/gogotchuri/Documents/Workspace/Powershare_V1.1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/gogotchuri/Documents/PowerShare/Web/Powershare_V1.1/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/gogotchuri/Documents/PowerShare/Web/Powershare_V1.1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

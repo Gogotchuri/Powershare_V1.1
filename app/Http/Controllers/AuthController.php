@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class AuthController extends Controller
 {
@@ -32,6 +33,12 @@ class AuthController extends Controller
             
             $success = $this->getUser(Auth::user());
             $success['token'] = Auth::user()->createToken('powershare_token')->accessToken;
+
+            /*
+                Set user last login time to this login
+            */
+            Auth::user()->last_login = Carbon::now();
+            Auth::user()->save();
 
             return response()->json($success);
         }

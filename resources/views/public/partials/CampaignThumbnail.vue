@@ -1,9 +1,8 @@
 <template>
     <div class="col-xs-12 col-sm-6 col-md-4 campaign-holder">
         <p>{{campaign.name}}</p>                                                                     
-        ?
 		<router-link class ="explore-card" :to="`/campaigns/${campaign.id}`">
-            <!-- <div class="photo" style="background-image: url(`${$campaign.featured_image_thumbnail_url}`)"></div> -->
+            <!-- <img class="photo" :src="campaign.featured_image_thumbnail_url"> -->
                 <div class="row explore-card-text">
                     <div class="col-sm-12 campaign-holder-left">
                         {{campaign.name}}

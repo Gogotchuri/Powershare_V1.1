@@ -37,7 +37,7 @@ export default {
             campaigns: [],
         }
     },
-    beforeMount(){
+    created(){
         this.fetchCampaigns();
     },
 
