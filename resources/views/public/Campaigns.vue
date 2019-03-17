@@ -11,10 +11,10 @@
                     </div>
                 </template>
                 <campaign-thumbnail v-else 
-                    v-for="campaign in campaigns" 
+                    v-for="campaign in campaigns"
                     :key="campaign.id"
-                    :campaign="campaign"    
-                > </campaign-thumbnail>
+                    :campaign="campaign" 
+                />
                 <!-- <campaign :campaign="C" \>
                 <campaign v-for="campaign in campaigns" :key="campaign.id" :campaign="campaign"> </campaign> -->
 

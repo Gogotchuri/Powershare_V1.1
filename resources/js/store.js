@@ -12,6 +12,7 @@ export default {
         },
 
     },
+
     getters: {
         currentUser(state){
             return state.user.currentUser;
@@ -26,6 +27,7 @@ export default {
             return state.user.loading;
         }
     },
+    
     mutations: {
         register(state, res, error)
         {

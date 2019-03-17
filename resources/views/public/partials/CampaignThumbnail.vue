@@ -22,7 +22,6 @@
                                 :(campaign.realized_funding)*100/campaign.required_funding}}%"/> -->
                 </div>
             </div>
-            
 		</router-link>
 	</div>
 </template>
