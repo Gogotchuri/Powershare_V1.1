@@ -20,7 +20,8 @@ class CreateSocialLinksTable extends Migration
             $table->unsignedInteger("campaign_id");
             $table->foreign("campaign_id")->references("id")->on("campaigns")->onDelete("cascade");
 
-            $table->unsignedInteger("platform_id")->references("id")->on("social_platforms")->onDelete("cascade");
+            $table->unsignedInteger("platform_id")->nullable();
+            $table->foreign("platform_id")->references("id")->on("social_platforms")->onDelete("set null");
 
             $table->timestamps();
         });
