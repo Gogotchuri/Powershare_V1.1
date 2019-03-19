@@ -41,6 +41,9 @@ class CreateCampaignsTable extends Migration
             $table->integer("order")->nullable();
             $table->boolean("is_hidden")->default(false);
 
+            $table->unsignedInteger("location_id")->nullable();
+            $table->foreign("location_id")->references("id")->on("locations")->onDelete("set null");
+
             $table->softDeletes();
 
             $table->timestamps();

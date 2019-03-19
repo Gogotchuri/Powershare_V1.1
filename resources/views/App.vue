@@ -14,6 +14,7 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>                                                
+                        <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
                         <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
                         <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
                         <router-link :to="{ name: 'Profile' }" class="nav-link" v-if="currentUser">Profile of {{currentUser.name}}</router-link>                        

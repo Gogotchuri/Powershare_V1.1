@@ -4,12 +4,15 @@ const localUser = getLocalUser();
 
 export default {
     state: {
+        loading: false,
+
         user:{
             currentUser: localUser,
             loggedIn: !!localUser,
             authError: null,
-            loading: false,
         },
+        
+        campaigns:[]
 
     },
 
@@ -24,14 +27,17 @@ export default {
             return state.user.authError;
         },
         isLoading(state){
-            return state.user.loading;
+            return state.loading;
+        },
+        campaigns(state){
+            return state.campaigns;
         }
     },
     
     mutations: {
         register(state, res, error)
         {
-            state.user.loading = true;
+            state.loading = true;
             if(error){
                 state.user.authError = error;
                 state.user.currentUser = null;
@@ -45,19 +51,19 @@ export default {
             }else{
                 console.error("Something went Wrong during registration");
             }
-            state.user.loading = false;
+            state.loading = false;
         },
 
 
         login(state){
-            state.user.loading = true;
+            state.loading = true;
             state.user.authError = null;
         },
 
         loginSuccessful(state, res){
             state.user.authError = null;
             state.user.loggedIn = true;
-            state.user.loading = false;
+            state.loading = false;
             state.user.currentUser = res.data;
             
             ApiService.setHeaderToken(state.user.currentUser.token);
@@ -67,7 +73,7 @@ export default {
         loginFailed(state, err){
             state.user.authError = err;
             state.user.loggedIn = false;
-            state.user.loading = false;     
+            state.loading = false;     
         },
 
         logout(state){
@@ -75,6 +81,16 @@ export default {
             state.user.currentUser = null;
             state.user.loggedIn = false;
             localStorage.removeItem("user");
+        },
+
+        fetchCampaigns(state){
+            axios.get("api/campaigns")
+                .then(res => {
+                    state.campaigns = res.data.data;
+                })
+                .catch(err => {
+                    console.error(err);
+                });
         }
     },
 
@@ -89,7 +105,12 @@ export default {
 
         register(context, res, error){
             context.commit("register", res, error);
+        },
+        fetchCampaigns(context){
+            context.commit("fetchCampaigns");
         }
+
+
     }
 
 };

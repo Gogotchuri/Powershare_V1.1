@@ -32,25 +32,19 @@ export default {
     components: {
         campaignThumbnail
     },
-    data(){
-        return {
-            campaigns: [],
-        }
-    },
+
     created(){
         this.fetchCampaigns();
     },
 
     methods:{
         fetchCampaigns(){
-            axios.get("api/campaigns")
-            .then(res => {
-                console.log(res);
-                this.campaigns = res.data.data;
-            })
-            .catch(err => {
-
-            });
+            this.$store.dispatch("fetchCampaigns");
+        }
+    },
+    computed: {
+        campaigns(){
+            return this.$store.getters.campaigns;
         }
     }
 }

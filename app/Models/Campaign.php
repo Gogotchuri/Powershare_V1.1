@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Models\References\ImageCategory;
+use App\Models\References\Location;
 
 class Campaign extends Model
 {
@@ -92,9 +93,19 @@ class Campaign extends Model
         return $this->belongsTo(CampaignCategory::class);
     }
 
+    public function bankAccount(){
+        
+        return $this->hasOne(BankAccount::class);
+    }
+
     public function members()
     {
         return $this->hasMany(TeamMember::class);
+    }
+
+    public function location(){
+        
+        return $this->hasOne(Location);
     }
 
     public function getIsApprovedAttribute()
