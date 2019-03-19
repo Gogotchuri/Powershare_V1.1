@@ -31,7 +31,7 @@ class AuthController extends Controller
                 Auth::user()->tokens->last()->delete();
             }
             
-            $success = $this->getUser(Auth::user());
+            $success = $this->formatUser(Auth::user());
             $success['token'] = Auth::user()->createToken('powershare_token')->accessToken;
 
             /*
@@ -43,7 +43,7 @@ class AuthController extends Controller
             return response()->json($success);
         }
 
-        return response()->json(['error' => 'Unauthorised'], 401);
+        return response()->json(['errors' => ['Unauthorised']], 401);
     }
 
     /**
@@ -60,31 +60,37 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['errors' => $validator->errors()], 401);
         }
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        $answer= $this->getUser($user);
+        $answer= $this->formatUser($user);
         $answer['token'] = $user->createToken('powershare_token')->accessToken;
 
         return response()->json($answer);
     }
 
     public function logout(){
-        Auth::user()->token()->delete();
+        if(Auth::user() && Auth::user()->token()){
+            Auth::user()->token()->delete();
+            return response()->json('Logged out successfuly');
+        }
 
-        return response()->json('Logged out successfuly');
+        return response()->json(["errors" => ["Couldn't Log out, Access Token missing"]], 401);
     }
 
     public function logoutFromAll(){
-        Auth::user()->tokens->each(function ($token, $key){
-            $token->delete();
-        });
+        if(Auth::user() && Auth::user()->tokens){
+            Auth::user()->tokens->each(function ($token, $key){
+              $token->delete();
+            });
 
-        return response()->json('Logged out successfuly');
+            return response()->json('Logged out successfuly');
+        }
+        return response()->json(["errors" => ["Couldn't Log out, Access Token missing"]], 401);
     }
 
     public function details()
@@ -92,11 +98,12 @@ class AuthController extends Controller
         return response()->json(Auth::user());
     }
 
-    private function getUser($user)
+    private function formatUser($user)
     {
         $user_object["id"] = $user->id;
         $user_object["name"] = $user->name;
         $user_object["email"] = $user->email;
+        $user_object["role_id"] = $user->role_id;
         return $user_object;
     }
 }

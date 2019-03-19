@@ -17,7 +17,7 @@ class APITest extends TestCase
         ]);
 
         $response->assertStatus(200)->assertJsonStructure([
-            'success' => ['token', 'name']
+            "id", "name", "email", "token", "role_id"
         ]);
     }
 
@@ -29,7 +29,29 @@ class APITest extends TestCase
         ]);
 
         $response->assertStatus(200)->assertJsonStructure([
-            'success' => ['token']
+            "id", "name", "email", "token", "role_id"
         ]);
+    }
+
+
+
+    public function testLogout()
+    {
+        $user = $this->json('POST', '/api/login', [
+            'email' => 'Dummy@dummy.com',
+            'password' => '123456789'
+        ]);
+
+        $user->assertStatus(200);
+
+        $response = $this->json("POST", "/api/logout")->header("Authorization: Bearer ".$user["token"]);
+          
+        $response->assertStatus(200)->assertExactJson('Logged out successfuly');
+
+        $unauthenticatedReq = $this->json("GET", "/api/user")->header("Authorization: Bearer ".$user["token"]);
+        
+        $unauthenticatedReq->assertStatus(401);
+
+        User::where("id", $user["id"])->delete();
     }
 }
