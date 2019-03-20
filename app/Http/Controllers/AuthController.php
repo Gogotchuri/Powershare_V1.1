@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Cookie\CookieJar as Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -24,8 +25,7 @@ class AuthController extends Controller
             'email' => $request->email, 
             'password' => $request->password
         ];
-
-        if (Auth::attempt($credentials)) {
+        if (Auth::once($credentials)) {
             
             if(Auth::user()->tokens->count() > 4){
                 Auth::user()->tokens->last()->delete();
@@ -47,11 +47,13 @@ class AuthController extends Controller
     }
 
     /**
-        Method to register user via Api.
-        Takes request which should have valid @name, @email and @password.
-        Conditions are checked by validator class.
-        Upon successful registration we give user an access token.
-    */
+     * Method to register user via Api.
+     * Takes request which should have valid @name, @email and @password.
+     * Conditions are checked by validator class.
+     * Upon successful registration we give user an access token.
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function register(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => ['required', 'string', 'max:255'],
@@ -68,13 +70,15 @@ class AuthController extends Controller
 
         $user = User::create($input);
         $answer= $this->formatUser($user);
+        $answer["role_id"] = 2;
         $answer['token'] = $user->createToken('powershare_token')->accessToken;
 
         return response()->json($answer);
     }
 
-    public function logout(){
+    public function logout(Request $request){
         if(Auth::user() && Auth::user()->token()){
+            Auth::user()->token()->revoke();
             Auth::user()->token()->delete();
             return response()->json('Logged out successfuly');
         }
