@@ -15,7 +15,17 @@ use App\Models\References\Location;
 class Campaign extends Model
 {
     use SoftDeletes;
-    
+
+    protected $fillable = [
+        "name",
+        "details",
+        "video_url",
+        "ethereum_address",
+        "category_id",
+        "required_funding",
+        "location_id"
+    ];
+
     protected $with = [
         "status"
     ];
@@ -40,21 +50,18 @@ class Campaign extends Model
     public static function baseRules()
     {
         return [
-            "name" => "required|string|max:30",
-            "target_audience" => "required|string|max:50",
-            "details" => "required|string|max:3000",
+            "name" => ["required", "string", "max:30"],
+            "category_id" => ["required", "integer", "min:1", "max:".CampaignCategory::numCategories()],
+            "details" => ["required", "string", "min:10", "max:3000"],
         ];
     }
     public static function updateRules()
     {
         return array_merge(Campaign::baseRules(), [
-            "category" => "required|exists:campaign_categories,id",
-            "initiator" => "required|string|max:40",
-            "required_funding" => "required|numeric",
-            //TODO: Conditionally add required rule here if campaign have no image
-            "featured-image" => "image|mimes:jpeg,png,jpg,gif",
-            "ethereum_address" => "nullable|string|max:255",
-            "video_url" => "nullable|url",
+            "required_funding" => ["required", "numeric"],
+            "ethereum_address" => ["nullable", "string", "max:255"],
+            "video_url" => ["nullable", "url"],
+            "location_id" => ["integer", "min:1", "max:".Location::numCategories()]
         ]);
     }
 

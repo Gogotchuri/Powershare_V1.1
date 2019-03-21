@@ -13,6 +13,7 @@ use Carbon\Carbon;
 
 class AuthController extends Controller
 {
+
     /**
         Method to authenticate user via Api and give away password grant token;
         Request should have valid @email and @password of existing user;
@@ -62,7 +63,7 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 401);
+            return response()->json(['errors' => $validator->errors()], 412);
         }
 
         $input = $request->all();

@@ -53,7 +53,7 @@ class User extends Authenticatable
 
     public function ownsCampaign($id)
     {
-        return $this->campaigns()->where('id', $id)->count() > 0;
+        return $this->campaigns()->where('id', $id)->count();
     }
 
     /**Need To implements other relations with comments, team members
