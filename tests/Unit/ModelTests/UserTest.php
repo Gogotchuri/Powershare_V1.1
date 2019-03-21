@@ -23,6 +23,7 @@ class UserTest extends TestCase
         $this->assertNotNull($author);
         $this->assertTrue($author->ownsCampaign($campaign->id));
     }
+
     public function testIsAdmin(){
         $admin = User::where("role_id", 1)->first();
         if($admin != null)

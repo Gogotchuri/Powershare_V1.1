@@ -33,9 +33,8 @@ Route::middleware("throttle:10,1")->group(function (){
 });
 
 //User feature paths
+Route::get("/user", "AuthController@details")->middleware("auth:api");
 Route::middleware("auth:api")->namespace("User")->prefix("/user")->group(function (){
-    Route::get("", "AuthController@details");
-
     Route::resource("/campaigns", "CampaignController");
 
 });

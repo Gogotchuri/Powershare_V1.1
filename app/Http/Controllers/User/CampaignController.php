@@ -73,7 +73,7 @@ class CampaignController extends Controller
 
     /**
      * Update existing campaign in storage.
-     * HTTP Method: PATCH
+     * HTTP Method: PUT (Need to attach property _method => PUT)
      * @param Request $request
      * @param  int $id
      * @return CampaignResource
@@ -97,7 +97,7 @@ class CampaignController extends Controller
         $campaign->video_url = $request["video_url"];
         $campaign->ethereum_address = $request["ethereum_address"];
         //Avoiding injections of status, campaign can only be published by admin
-        if($request["status_id"] != CampaignStatus::APPROVED)
+        if($request["status_id"] && $request["status_id"] != CampaignStatus::APPROVED)
             $campaign->status_id = $request["status_id"];
         $campaign->save();
 
