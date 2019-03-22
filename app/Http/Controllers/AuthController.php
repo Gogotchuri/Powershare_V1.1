@@ -74,7 +74,7 @@ class AuthController extends Controller
         $answer["role_id"] = 2;
         $answer['token'] = $user->createToken('powershare_token')->accessToken;
 
-        return response()->json($answer);
+        return response()->json($answer, 201);
     }
 
     public function logout(Request $request){

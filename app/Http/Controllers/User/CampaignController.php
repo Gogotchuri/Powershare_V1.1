@@ -121,6 +121,6 @@ class CampaignController extends Controller
 
         $campaign->delete();
 
-        return response()->json("Campaign has been deleted successfully");
+        return response()->json("Campaign has been deleted successfully", 200);
     }
 }

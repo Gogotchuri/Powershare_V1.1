@@ -11,9 +11,9 @@ class AuthTest extends APITest
      * Sends a post request to api to test if user can be created successfully and
      * if it returns correct information
      */
-    public function testUserCreation()
+    public function testFailedUserCreation()
     {
-        $this->registerUser()->assertOk()->assertJsonStructure(["id", "name", "email", "token", "role_id"]);
+        $this->registerUser()->assertStatus(412);
     }
 
     /**
@@ -22,10 +22,7 @@ class AuthTest extends APITest
      */
     public function testUserLogin()
     {
-        $this->registerUser()->assertOk();
-        $this->login()
-            ->assertOk()
-            ->assertJsonStructure(["id", "name", "email", "token", "role_id"]);
+        $this->login()->assertJsonStructure(["id", "name", "email", "token", "role_id"]);
     }
 
 
@@ -35,11 +32,10 @@ class AuthTest extends APITest
      */
     public function testLogout()
     {
-        $user = $this->registerUser();
-        $user->assertOk();
+        $user = $this->login();
         //dummy logout
-        $this->logout("lll")->assertStatus(401);
+        $this->logout("lll", false);
         //Real deal
-        $this->logout($user->json("token"))->assertOk();
+        $this->logout($user->json("token"), true);
     }
 }

@@ -17,7 +17,7 @@ class ArticleController extends Controller
     public function show($id){
         $article = Article::where("id", $id)->first();
         if($article == null)
-            return response()->json("Article with id ".$id." not found", 404);
+            return response()->json(["errors" => ["Article with id ".$id." not found"]], 404);
         return new ArticleResource($article);
     }
 }

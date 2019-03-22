@@ -11,7 +11,7 @@ Route::namespace("General")->middleware("throttle:60,1")->group(function (){
     });
 
     Route::prefix("/articles")->group(function () {
-        Route::get("", "ArtileController@index");
+        Route::get("", "ArticleController@index");
         Route::get("/{id}", "ArticleController@show");
     });
 
@@ -34,7 +34,18 @@ Route::middleware("throttle:10,1")->group(function (){
 
 //User feature paths
 Route::get("/user", "AuthController@details")->middleware("auth:api");
-Route::middleware("auth:api")->namespace("User")->prefix("/user")->group(function (){
-    Route::resource("/campaigns", "CampaignController");
-
+Route::namespace("User")->prefix("/user")->group(function (){
+    //Campaign Crud
+    Route::apiResource("/campaigns", "CampaignController")->middleware("auth:api");
+    //Comment Crud group
+    Route::prefix("/{campaign_id}/comments")->group(function () {
+        Route::get("", "CommentController@index");
+        Route::get("/{comment_id}", "CommentController@show");
+        //Authorized comment routes
+        Route::middleware("auth:api")->group(function (){
+            Route::post("", "CommentController@store");
+            Route::put("/{comment_id}", "CommentController@update");
+            Route::delete("/{comment_id}", "CommentController@destroy");
+        });
+    });
 });

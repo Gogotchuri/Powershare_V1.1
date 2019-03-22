@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    protected $visible = ["id", "author_name", "body", "date"];
-    protected $appends = ["author_name"];
+    protected $guarded = ["date", "author_id"];
+    protected $visible = ["id", "author_name", "body", "date", "is_edited"];
+    protected $appends = ["author_name", "date", "is_edited"];
     
     public function campaign(){
         return $this->BelongsTo(Campaign::class);
@@ -17,11 +18,15 @@ class Comment extends Model
         return $this->BelongsTo(User::class);
     }
 
-    public function date(){
-        return $this->date;
+    public function getDateAttribute(){
+        return $this->updated_at;
     }
 
     public function getAuthorNameAttribute(){
         return $this->author->name;
+    }
+
+    public function getIsEditedAttribute(){
+        return $this->created_at != $this->updated_at;
     }
 }
