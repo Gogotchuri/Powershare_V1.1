@@ -26,11 +26,3 @@ const app = new Vue({
 	components: { App },
 	router
 });
-
-// side nav open/close function
-function openNav() {
-	document.getElementById('Sidenav').style.width = '250px';
-}
-function closeNav() {
-	document.getElementById('Sidenav').style.width = '0';
-}

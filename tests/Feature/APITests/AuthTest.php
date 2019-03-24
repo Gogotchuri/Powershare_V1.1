@@ -22,7 +22,7 @@ class AuthTest extends APITest
      */
     public function testUserLogin()
     {
-        $this->login()->assertJsonStructure(["id", "name", "email", "token", "role_id"]);
+        $this->login()->assertJsonStructure(["data" => ["id", "name", "email", "token", "role_id"]]);
     }
 
 
@@ -36,6 +36,7 @@ class AuthTest extends APITest
         //dummy logout
         $this->logout("lll", false);
         //Real deal
-        $this->logout($user->json("token"), true);
+        $this->logout(self::unwrapResponse($user)["token"], true);
+        return $user;
     }
 }

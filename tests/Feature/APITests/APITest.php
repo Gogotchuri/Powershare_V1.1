@@ -2,15 +2,35 @@
 namespace Tests\Feature\APITests;
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\TestResponse;
 use Tests\TestCase;
 class APITest extends TestCase
 {
-    private $initialized = false;
+    private static $initialized = false;
     protected $user_data = [
         'name' => 'Dummy User',
         'email' => 'Dummy@dummy.com',
         'password' => '123456789',
     ];
+    protected $campaign_data = [
+        "name" => "First User Campaign",
+        "details" => "The details field is required.",
+        "category_id" => 2,
+        "required_funding" => 50000
+    ];
+
+    /**
+     * This method should go first to initialize db and registers user
+     **/
+    public function testRegistrationAndInitialize(){
+        if(!self::$initialized) {
+            Artisan::call("migrate:fresh --seed --env=testing");
+            Artisan::call("passport:install --env=testing");
+            $this->registerUser()->assertStatus(201)->assertJsonStructure(["data" => ["id", "name", "email", "token", "role_id"]]);
+            self::$initialized = true;
+        }else
+            $this->assertTrue(true);
+    }
     /**
      * Created and saves to testing db new user instance
      * with data from $this->user_data
@@ -24,6 +44,7 @@ class APITest extends TestCase
     /**
      * Sends post request to api login route and returns response
      * User data is defined in $this->user_data
+     * Asserts upon unsuccessful login
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     protected function login(){
@@ -55,10 +76,10 @@ class APITest extends TestCase
 
 
     /**
-     * Request wrapper
+     * Request wrapper, for token base auth requests
      * @param string $token
      * @param string $method
-     * @param string $uri
+     * @param string $uri uri address after *./api
      * @param array $body
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
@@ -68,16 +89,42 @@ class APITest extends TestCase
         return $res;
     }
 
+    /**
+     * Creates campaign with api request given user access token and campaign data
+     * @param string $token
+     * @param array $data
+     * @return \Illuminate\Foundation\Testing\TestResponse
+     */
+    protected function createCampaign(string $token, array $data) {
+        return $this->authorizedRequest($token, "POST", "/user/campaigns", $data);
+    }
 
     /**
-     * This method should go first to initialize db and registers user
-     **/
-    public function testRegistrationAndInitialize(){
-        if(!$this->initialized) {
-            Artisan::call("migrate:fresh --seed --env=testing");
-            Artisan::call("passport:install --env=testing");
-            $this->registerUser()->assertStatus(201)->assertJsonStructure(["id", "name", "email", "token", "role_id"]);
-        }else
-            $this->assertTrue(true);
+     * Returns TestResponse with user campaigns, given a access token
+     * @param string $token
+     * @return \Illuminate\Foundation\Testing\TestResponse
+     */
+    protected function getUserCampaigns(string $token){
+        return $this->authorizedRequest($token, "GET", "/user/campaigns");
+    }
+
+    /**
+     * Retrieves a campaign with $id based on given token
+     * @param string $token
+     * @param int $id
+     * @return \Illuminate\Foundation\Testing\TestResponse
+     */
+    protected function getUserCampaign(string $token, int $id){
+        return $this->authorizedRequest($token, "GET", "/user/campaigns/".$id);
+    }
+
+    /**
+     * @param TestResponse $response
+     * @return array
+     */
+    protected static function unwrapResponse(TestResponse $response){
+        $response = $response->json("data");
+        if(!is_array($response)) array($response);
+        return $response;
     }
 }

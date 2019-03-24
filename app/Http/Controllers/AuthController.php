@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\Entity\UserResource;
 use App\Models\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Cookie\CookieJar as Cookie;
@@ -15,11 +16,13 @@ class AuthController extends Controller
 {
 
     /**
-        Method to authenticate user via Api and give away password grant token;
-        Request should have valid @email and @password of existing user;
-        Method removes first access token after 4 token has been issued from user
-        At maximum, every user can have 5 access tokens.
-    */
+     * Method to authenticate user via Api and give away password grant token;
+     * Request should have valid @email and @password of existing user;
+     * Method removes first access token after 4 token has been issued from user
+     * At maximum, every user can have 5 access tokens.
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function login(Request $request){
         
         $credentials = [
@@ -32,7 +35,7 @@ class AuthController extends Controller
                 Auth::user()->tokens->last()->delete();
             }
             
-            $success = $this->formatUser(Auth::user());
+            $success = (new UserResource(Auth::user()))->toArray(null);
             $success['token'] = Auth::user()->createToken('powershare_token')->accessToken;
 
             /*
@@ -41,10 +44,10 @@ class AuthController extends Controller
             Auth::user()->last_login = Carbon::now();
             Auth::user()->save();
 
-            return response()->json($success);
+            return $this->responseData($success);
         }
 
-        return response()->json(['errors' => ['Unauthorised']], 401);
+        return $this->responseErrors("Unauthorized", 401);
     }
 
     /**
@@ -63,52 +66,45 @@ class AuthController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return response()->json(['errors' => $validator->errors()], 412);
+            return self::responseErrors($validator->errors(), 412);
         }
 
         $input = $request->all();
         $input['password'] = Hash::make($input['password']);
 
         $user = User::create($input);
-        $answer= $this->formatUser($user);
+        $answer = (new UserResource($user))->toArray(null);
         $answer["role_id"] = 2;
         $answer['token'] = $user->createToken('powershare_token')->accessToken;
 
-        return response()->json($answer, 201);
+        return self::responseData($answer, 201);
     }
 
-    public function logout(Request $request){
+    public function logout(){
         if(Auth::user() && Auth::user()->token()){
             Auth::user()->token()->revoke();
             Auth::user()->token()->delete();
-            return response()->json('Logged out successfuly');
+            return self::responseData("Logged out successfuly");
         }
 
-        return response()->json(["errors" => ["Couldn't Log out, Access Token missing"]], 401);
+        return self::responseErrors("Couldn't Log out, Access Token missing", 401);
     }
 
     public function logoutFromAll(){
-        if(Auth::user() && Auth::user()->tokens){
+        if(Auth::user() && count(Auth::user()->tokens) > 0){
             Auth::user()->tokens->each(function ($token, $key){
-              $token->delete();
+                $token->revoke();
+                $token->delete();
             });
 
-            return response()->json('Logged out successfuly');
+            return self::responseData("Logged out successfuly");
         }
-        return response()->json(["errors" => ["Couldn't Log out, Access Token missing"]], 401);
+        return self::responseErrors("Couldn't Log out, Access Token missing", 401);
     }
 
     public function details()
     {
-        return response()->json(Auth::user());
+        return self::responseData(new UserResource(Auth::user()));
     }
 
-    private function formatUser($user)
-    {
-        $user_object["id"] = $user->id;
-        $user_object["name"] = $user->name;
-        $user_object["email"] = $user->email;
-        $user_object["role_id"] = $user->role_id;
-        return $user_object;
-    }
 }

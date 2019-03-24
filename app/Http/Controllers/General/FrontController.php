@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\General;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\FaqQuestion;
 
@@ -16,7 +15,7 @@ class FrontController extends Controller
      */
     public function home(){
         //This is just a dummy
-        return response()->json("Home content!",200);
+        return self::responseData("Home content!");
     }
 
 
@@ -35,7 +34,7 @@ class FrontController extends Controller
                 })
             ->take($NUM_TO_SHOW);
 
-        return response()->json($questions);
+        return self::responseData($questions);
     }
 
 
@@ -44,7 +43,7 @@ class FrontController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function privacyPolicy(){
-        return response()->json("PrivacyPolicy Text");
+        return self::responseData("PrivacyPolicy Text");
     }
 
     /**
@@ -52,7 +51,7 @@ class FrontController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function terms(){
-        return response()->json("Terms!");
+        return self::responseData("Terms!");
     }
 
     /**
@@ -60,6 +59,6 @@ class FrontController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function about(){
-        return response()->json("This is a about page content");
+        return self::responseData("This is a about page content");
     }
 }

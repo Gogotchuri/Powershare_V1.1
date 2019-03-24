@@ -1759,9 +1759,82 @@ module.exports = {
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/App.vue?vue&type=script&lang=js& ***!
   \******************************************************************************************************************************************************/
 /*! exports provided: default */
-/***/ (function(module, exports) {
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: /home/lasha/Documents/Workspace/Powershare_V1.1/resources/views/App.vue: Unexpected token, expected \",\" (97:4)\n\n\u001b[0m \u001b[90m  95 | \u001b[39m        })\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m  96 | \u001b[39m    }\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m  97 | \u001b[39m    openNav\u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m() {\u001b[0m\n\u001b[0m \u001b[90m     | \u001b[39m    \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m  98 | \u001b[39m        document\u001b[33m.\u001b[39mgetElementById(\u001b[32m\"Sidenav\"\u001b[39m)\u001b[33m.\u001b[39mstyle\u001b[33m.\u001b[39mwidth \u001b[33m=\u001b[39m \u001b[32m\"250px\"\u001b[39m\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m  99 | \u001b[39m    }\u001b[0m\n\u001b[0m \u001b[90m 100 | \u001b[39m    closeNav\u001b[33m:\u001b[39m \u001b[36mfunction\u001b[39m() {\u001b[0m\n    at Parser.raise (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:3831:17)\n    at Parser.unexpected (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5143:16)\n    at Parser.expect (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5135:28)\n    at Parser.parseObj (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:6600:14)\n    at Parser.parseExprAtom (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:6229:21)\n    at Parser.parseExprSubscripts (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5862:23)\n    at Parser.parseMaybeUnary (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5842:21)\n    at Parser.parseExprOps (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5729:23)\n    at Parser.parseMaybeConditional (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5702:23)\n    at Parser.parseMaybeAssign (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5647:21)\n    at Parser.parseObjectProperty (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:6730:101)\n    at Parser.parseObjPropValue (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:6755:101)\n    at Parser.parseObj (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:6670:12)\n    at Parser.parseExprAtom (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:6229:21)\n    at Parser.parseExprSubscripts (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5862:23)\n    at Parser.parseMaybeUnary (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5842:21)\n    at Parser.parseExprOps (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5729:23)\n    at Parser.parseMaybeConditional (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5702:23)\n    at Parser.parseMaybeAssign (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:5647:21)\n    at Parser.parseExportDefaultExpression (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:8405:24)\n    at Parser.parseExport (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:8299:31)\n    at Parser.parseStatementContent (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:7347:27)\n    at Parser.parseStatement (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:7243:17)\n    at Parser.parseBlockOrModuleBlockBody (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:7810:25)\n    at Parser.parseBlockBody (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:7797:10)\n    at Parser.parseTopLevel (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:7181:10)\n    at Parser.parse (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:8660:17)\n    at parse (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/parser/lib/index.js:10660:38)\n    at parser (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/core/lib/transformation/normalize-file.js:170:34)\n    at normalizeFile (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/core/lib/transformation/normalize-file.js:138:11)\n    at runSync (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/core/lib/transformation/index.js:44:43)\n    at runAsync (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/core/lib/transformation/index.js:35:14)\n    at process.nextTick (/home/lasha/Documents/Workspace/Powershare_V1.1/node_modules/@babel/core/lib/transform.js:34:34)\n    at _combinedTickCallback (internal/process/next_tick.js:131:7)\n    at process._tickCallback (internal/process/next_tick.js:180:9)");
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_helpers_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../js/helpers/auth */ "./resources/js/helpers/auth.js");
+/* harmony import */ var _js_common_ApiService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../js/common/ApiService */ "./resources/js/common/ApiService.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      smallMedia: false
+    };
+  },
+  computed: {
+    isLoggedIn: function isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
+    currentUser: function currentUser() {
+      return this.$store.getters.currentUser;
+    }
+  },
+  methods: {
+    logout: function logout() {
+      var _this = this;
+
+      Object(_js_helpers_auth__WEBPACK_IMPORTED_MODULE_0__["logout"])().then(function (response) {
+        alert(response.data);
+
+        _this.$store.dispatch("logout");
+
+        _this.$router.push({
+          name: "Login"
+        });
+      }).catch(function (err) {
+        console.error(err);
+      });
+    },
+    changeWidth: function changeWidth() {
+      if (this.smallMedia === false) this.smallMedia = true;else this.smallMedia = false;
+    }
+  }
+});
 
 /***/ }),
 
@@ -37969,113 +38042,6 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c(
-      "nav",
-      { staticClass: "navbar navbar-expand-md navbar-light navbar-laravel" },
-      [
-        _c(
-          "div",
-          { staticClass: "container" },
-          [
-            _c(
-              "router-link",
-              { staticClass: "navbar-brand", attrs: { to: { name: "Home" } } },
-              [_vm._v("Powershare")]
-            ),
-            _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "collapse navbar-collapse",
-                attrs: { id: "navbarSupportedContent" }
-              },
-              [
-                _c("ul", { staticClass: "navbar-nav mr-auto" }),
-                _vm._v(" "),
-                _c(
-                  "ul",
-                  { staticClass: "navbar-nav ml-auto" },
-                  [
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link",
-                        attrs: { to: { name: "Campaigns" } }
-                      },
-                      [_vm._v("Campaigns")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "router-link",
-                      {
-                        staticClass: "nav-link",
-                        attrs: { to: { name: "Articles" } }
-                      },
-                      [_vm._v("Articles")]
-                    ),
-                    _vm._v(" "),
-                    !_vm.isLoggedIn
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: { name: "Login" } }
-                          },
-                          [_vm._v("Login")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    !_vm.isLoggedIn
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: { name: "Register" } }
-                          },
-                          [_vm._v("Register")]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.currentUser
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { to: { name: "Profile" } }
-                          },
-                          [_vm._v("Profile of " + _vm._s(_vm.currentUser.name))]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.isLoggedIn
-                      ? _c(
-                          "a",
-                          {
-                            staticClass: "nav-link",
-                            attrs: { href: "#" },
-                            on: {
-                              click: function($event) {
-                                $event.preventDefault()
-                                return _vm.logout($event)
-                              }
-                            }
-                          },
-                          [_vm._v("LogOut")]
-                        )
-                      : _vm._e()
-                  ],
-                  1
-                )
-              ]
-            )
-          ],
-          1
-        )
-      ]
-    ),
-    _vm._v(" "),
     _c("nav", { staticClass: "navbar navbar-expand-md" }, [
       _c(
         "div",
@@ -38089,7 +38055,7 @@ var render = function() {
           _vm._v(" "),
           _c(
             "span",
-            { staticClass: "openNav", attrs: { onclick: "openNav()" } },
+            { staticClass: "openNav", on: { click: _vm.changeWidth } },
             [_vm._v("❮")]
           ),
           _vm._v(" "),
@@ -38097,15 +38063,13 @@ var render = function() {
             "ul",
             {
               staticClass: "navbar-nav ml-auto sideNav",
+              class: { visible: _vm.smallMedia },
               attrs: { id: "Sidenav" }
             },
             [
               _c(
-                "a",
-                {
-                  staticClass: "closeNav",
-                  attrs: { href: "javascript:void(0)", onclick: "closeNav()" }
-                },
+                "span",
+                { staticClass: "closeNav", on: { click: _vm.changeWidth } },
                 [_vm._v("❯")]
               ),
               _vm._v(" "),
@@ -38187,28 +38151,7 @@ var render = function() {
     _c("main", { staticClass: "py-4" }, [_c("router-view")], 1)
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "button",
-      {
-        staticClass: "navbar-toggler",
-        attrs: {
-          type: "button",
-          "data-toggle": "collapse",
-          "data-target": "#navbarSupportedContent",
-          "aria-controls": "navbarSupportedContent",
-          "aria-expanded": "false",
-          "aria-label": "Toggle navigation"
-        }
-      },
-      [_c("span", { staticClass: "navbar-toggler-icon" })]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -54842,15 +54785,7 @@ var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
     App: _views_App__WEBPACK_IMPORTED_MODULE_3__["default"]
   },
   router: router
-}); // side nav open/close function
-
-function openNav() {
-  document.getElementById('Sidenav').style.width = '250px';
-}
-
-function closeNav() {
-  document.getElementById('Sidenav').style.width = '0';
-}
+});
 
 /***/ }),
 
@@ -54964,7 +54899,7 @@ __webpack_require__.r(__webpack_exports__);
 function login(credentials) {
   return new Promise(function (resolve, reject) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/login', credentials).then(function (response) {
-      resolve(response);
+      resolve(response.data);
     }).catch(function (err) {
       reject("Wrong Credentials");
     });
@@ -54979,7 +54914,7 @@ function login(credentials) {
 function register(information) {
   return new Promise(function (resolve, reject) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/register', information).then(function (response) {
-      resolve(response);
+      resolve(response.data);
     }).catch(function (err) {
       reject("Something went wrong");
     });
@@ -54989,7 +54924,7 @@ function register(information) {
 function logout() {
   return new Promise(function (resolve, reject) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/logout').then(function (response) {
-      resolve(response);
+      resolve(response.data);
     }).catch(function (err) {
       reject("Couldn't logout");
     });
@@ -55177,6 +55112,9 @@ var routes = [//public routes
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/auth */ "./resources/js/helpers/auth.js");
 /* harmony import */ var _common_ApiService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common/ApiService */ "./resources/js/common/ApiService.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var localUser = Object(_helpers_auth__WEBPACK_IMPORTED_MODULE_0__["getLocalUser"])();
@@ -55251,7 +55189,7 @@ var localUser = Object(_helpers_auth__WEBPACK_IMPORTED_MODULE_0__["getLocalUser"
       localStorage.removeItem("user");
     },
     fetchCampaigns: function fetchCampaigns(state) {
-      axios.get("api/campaigns").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("api/campaigns").then(function (res) {
         state.campaigns = res.data.data;
       }).catch(function (err) {
         console.error(err);

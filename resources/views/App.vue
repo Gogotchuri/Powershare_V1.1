@@ -1,51 +1,16 @@
 <template>
   <div>
-    <!-- Nav-Bar -->
-    <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-      <div class="container">
-        <router-link :to="{name: 'Home'}" class="navbar-brand">Powershare</router-link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <!-- Left Side Of Navbar -->
-          <ul class="navbar-nav mr-auto"></ul>
-          <!-- Right Side Of Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <!-- Authentication Links -->
-            <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
-            <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
-            <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
-            <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
-            <router-link
-              :to="{ name: 'Profile' }"
-              class="nav-link"
-              v-if="currentUser"
-            >Profile of {{currentUser.name}}</router-link>
-            <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">LogOut</a>
-          </ul>
-        </div>
-      </div>
-    </nav>
     <nav class="navbar navbar-expand-md">
       <div class="container">
         <!-- logo/brand -->
         <router-link :to="{name: 'Home'}" class="navbar-brand">Powershare</router-link>
         <!-- side navbar toggler -->
-        <span class="openNav" onclick="openNav()">&#10094;</span>
+        <span class="openNav" @click="changeWidth">&#10094;</span>
 
         <!-- right side of navbar -->
-        <ul id="Sidenav" class="navbar-nav ml-auto sideNav">
+        <ul id="Sidenav" class="navbar-nav ml-auto sideNav" v-bind:class="{ visible : smallMedia }">
           <!-- Authentication Links -->
-          <a href="javascript:void(0)" class="closeNav" onclick="closeNav()">&#10095;</a>
+          <span class="closeNav" @click="changeWidth">&#10095;</span>
           <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
           <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
           <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
@@ -72,7 +37,9 @@ import ApiService from "../js/common/ApiService";
 
 export default {
   data() {
-    return {};
+    return {
+      smallMedia: false
+    };
   },
   computed: {
     isLoggedIn() {
@@ -93,20 +60,11 @@ export default {
         .catch(err => {
           console.error(err);
         });
-    }
-    openNav: function() {
-        document.getElementById("Sidenav").style.width = "250px";
-    }
-    closeNav: function() {
-        document.getElementById("Sidenav").style.width = "0";
+    },
+    changeWidth() {
+      if (this.smallMedia === false) this.smallMedia = true;
+      else this.smallMedia = false;
     }
   }
 };
-
-function openNav() {
-  document.getElementById("Sidenav").style.width = "250px";
-}
-function closeNav() {
-  document.getElementById("Sidenav").style.width = "0";
-}
 </script>

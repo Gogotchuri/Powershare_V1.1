@@ -10655,9 +10655,18 @@ a.text-dark:focus {
   }
 }
 
+#app {
+  width: 100%;
+  min-height: 100vh;
+}
+
 .navbar-laravel {
   background-color: #38c172;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+.navbar {
+  border-bottom: 1px solid #111;
 }
 
 .navbar > .container {
@@ -10665,7 +10674,7 @@ a.text-dark:focus {
 }
 
 span.openNav,
-.closeNav {
+span.closeNav {
   padding-left: inherit;
   padding-right: inherit;
   position: absolute;
@@ -10694,11 +10703,18 @@ span.openNav,
   }
 
   .sideNav .closeNav {
+    display: block;
     position: absolute;
     top: 0;
-    right: 25px;
+    left: 25px;
     font-size: 36px;
-    margin-left: 50px;
+    margin-right: 50px;
+    color: #818181;
+    transition: 0.3s;
+  }
+
+  .sideNav .closeNav:hover {
+    color: #f1f1f1;
   }
 
   .sideNav .nav-link {
@@ -10712,6 +10728,10 @@ span.openNav,
 
   .sideNav .nav-link:hover {
     color: #f1f1f1;
+  }
+
+  .visible {
+    width: 250px;
   }
 }
 
