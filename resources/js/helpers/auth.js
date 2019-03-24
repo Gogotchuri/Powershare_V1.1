@@ -4,7 +4,7 @@ export function login(credentials) {
     return new Promise((resolve, reject) => {
         axios.post('api/login', credentials)
         .then(response => {
-            resolve(response);
+            resolve(response.data);
         })
         .catch(err => {
             reject("Wrong Credentials");
@@ -21,7 +21,7 @@ export function register(information) {
     return new Promise((resolve, reject) => {
         axios.post('api/register', information)
         .then(response => {
-            resolve(response);
+            resolve(response.data);
         })
         .catch(err => {
             reject("Something went wrong");
@@ -34,7 +34,7 @@ export function logout() {
     return new Promise((resolve, reject) => {
         axios.post('api/logout')
         .then(response => {
-            resolve(response);
+            resolve(response.data);
         })
         .catch(err => {
             reject("Couldn't logout");

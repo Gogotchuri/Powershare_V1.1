@@ -7,9 +7,8 @@ use App\Models\Campaign;
 use App\Models\References\CampaignCategory;
 use App\Models\References\CampaignStatus;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Resources\Campaign as CampaignResource;
-use App\Http\Resources\Campaigns as CampaignsResource;
+use App\Http\Resources\Entity\CampaignResource;
+use App\Http\Resources\Collection\CampaignsResource;
 
 
 class CampaignController extends Controller
@@ -43,28 +42,10 @@ class CampaignController extends Controller
         return CampaignsResource::collection($campaigns);
     }
 
-    public function show($id)
+    public function show(int $id)
     {
-        $campaign = Campaign::where("status_id", CampaignStatus::APPROVED)->findOrFail($id);
-
-        return new CampaignResource($campaign);
-    }
-
-    public function addComment($id, Request $request)
-    {
-        $this->validate($request, [
-            "body" => "required|string"
-        ]);
-
-        $campaign = Campaign::where("status_id", CampaignStatus::APPROVED)->findOrFail($id);
-
-        $comment = new Comment();
-        $comment->author_id = Auth::user()->id;
-        $comment->body = $request->input("body");
-        $comment->is_public = true;
-
-        $campaign->comments()->save($comment);
-
-        return redirect(route("public.campaign.show", compact("campaign")))->with("submitted_comment_id", $comment->id);
+        $campaign = Campaign::where("status_id", CampaignStatus::APPROVED)->where("id", $id)->first();
+        if($campaign == null) return self::responseErrors("Campaign not found",404);
+        return self::responseData(new CampaignResource($campaign));
     }
 }

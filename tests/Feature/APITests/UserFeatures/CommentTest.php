@@ -15,7 +15,8 @@ class CommentTest extends APITest
      */
     public function testFetchingComments()
     {
-        $campaigns = $this->json("GET", "/api/campaigns")->assertOk()->json("data");
+        $user = self::unwrapResponse($this->login());
+        $campaigns = self::unwrapResponse($this->authorizedRequest($user["token"], "GET", "/api/campaigns?pagination=0")->assertOk());
         //Check if campaigns are retrieved correctly
         $this->assertTrue(is_array($campaigns));
 

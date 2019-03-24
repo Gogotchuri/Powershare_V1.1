@@ -36,6 +36,7 @@ class AuthTest extends APITest
         //dummy logout
         $this->logout("lll", false);
         //Real deal
-        $this->logout($user->json("token"), true);
+        $this->logout(self::unwrapResponse($user)["token"], true);
+        return $user;
     }
 }

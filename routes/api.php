@@ -16,7 +16,6 @@ Route::namespace("General")->middleware("throttle:60,1")->group(function (){
     });
 
     Route::get("/faq", "FrontController@FAQ");
-    //need to create controller methods for them
     Route::get("/about", "FrontController@about");
     Route::get("/terms", "FrontController@terms");
     Route::get("/privacy-policy", "FrontController@privacyPolicy");
@@ -25,6 +24,7 @@ Route::namespace("General")->middleware("throttle:60,1")->group(function (){
     Route::post('/contact', 'ContactController@store');
 
 });
+
 //Authentication Routes
 Route::middleware("throttle:10,1")->group(function (){
 	Route::post("/login", "AuthController@login");
@@ -33,24 +33,22 @@ Route::middleware("throttle:10,1")->group(function (){
 });
 
 //User features
-Route::get("/user", "AuthController@details")->middleware("auth:api");
-Route::middleware("throttle:60,1")->namespace("User")->group(function (){
+Route::get("/user", "AuthController@details")->middleware(["auth:api", "throttle:60,1"]);
+Route::middleware("throttle:60,1")->middleware("auth:api")->namespace("User")->group(function (){
+    Route::apiResource("/user/campaigns", "CampaignController");
     //Comment Crud group
-    Route::prefix("campaigns/{campaign_id}/comments")->group(function () {
+    Route::prefix("/campaigns/{campaign_id}/comments")->group(function () {
         Route::get("", "CommentController@index");
-        Route::get("/{comment_id}", "CommentController@show");
-        //Authorized comment routes
-        Route::middleware("auth:api")->group(function (){
-            Route::post("", "CommentController@store");
+        Route::post("", "CommentController@store");
+    });
+    Route::prefix("/user")->group(function (){
+        Route::prefix("/comments")->group(function () {
+            //might not be necessary
+            Route::get("", "CommentController@all");
+            Route::get("/{comment_id}", "CommentController@show");
             Route::put("/{comment_id}", "CommentController@update");
             Route::delete("/{comment_id}", "CommentController@destroy");
         });
-    });
-
-    // /user routes where authentication is required
-    Route::middleware("auth:api")->prefix("/user")->group(function (){
-        //Campaign Crud
-        Route::apiResource("/campaigns", "CampaignController");
     });
 
 });

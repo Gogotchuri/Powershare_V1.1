@@ -1,5 +1,6 @@
 import { getLocalUser } from "./helpers/auth";
 import ApiService from "./common/ApiService";
+import axios from "axios";
 const localUser = getLocalUser();
 
 export default {

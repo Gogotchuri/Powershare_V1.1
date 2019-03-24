@@ -54915,7 +54915,7 @@ __webpack_require__.r(__webpack_exports__);
 function login(credentials) {
   return new Promise(function (resolve, reject) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/login', credentials).then(function (response) {
-      resolve(response);
+      resolve(response.data);
     }).catch(function (err) {
       reject("Wrong Credentials");
     });
@@ -54930,7 +54930,7 @@ function login(credentials) {
 function register(information) {
   return new Promise(function (resolve, reject) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/register', information).then(function (response) {
-      resolve(response);
+      resolve(response.data);
     }).catch(function (err) {
       reject("Something went wrong");
     });
@@ -54940,7 +54940,7 @@ function register(information) {
 function logout() {
   return new Promise(function (resolve, reject) {
     axios__WEBPACK_IMPORTED_MODULE_0___default.a.post('api/logout').then(function (response) {
-      resolve(response);
+      resolve(response.data);
     }).catch(function (err) {
       reject("Couldn't logout");
     });
@@ -55128,6 +55128,9 @@ var routes = [//public routes
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _helpers_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./helpers/auth */ "./resources/js/helpers/auth.js");
 /* harmony import */ var _common_ApiService__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./common/ApiService */ "./resources/js/common/ApiService.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+
 
 
 var localUser = Object(_helpers_auth__WEBPACK_IMPORTED_MODULE_0__["getLocalUser"])();
@@ -55202,7 +55205,7 @@ var localUser = Object(_helpers_auth__WEBPACK_IMPORTED_MODULE_0__["getLocalUser"
       localStorage.removeItem("user");
     },
     fetchCampaigns: function fetchCampaigns(state) {
-      axios.get("api/campaigns").then(function (res) {
+      axios__WEBPACK_IMPORTED_MODULE_2___default.a.get("api/campaigns").then(function (res) {
         state.campaigns = res.data.data;
       }).catch(function (err) {
         console.error(err);

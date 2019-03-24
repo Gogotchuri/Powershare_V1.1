@@ -2,6 +2,7 @@
 namespace Tests\Feature\APITests;
 
 use Illuminate\Support\Facades\Artisan;
+use Illuminate\Foundation\Testing\TestResponse;
 use Tests\TestCase;
 class APITest extends TestCase
 {
@@ -25,7 +26,7 @@ class APITest extends TestCase
         if(!self::$initialized) {
             Artisan::call("migrate:fresh --seed --env=testing");
             Artisan::call("passport:install --env=testing");
-            $this->registerUser()->assertStatus(201)->assertJsonStructure(["id", "name", "email", "token", "role_id"]);
+            $this->registerUser()->assertStatus(201)->assertJsonStructure(["data" => ["id", "name", "email", "token", "role_id"]]);
             self::$initialized = true;
         }else
             $this->assertTrue(true);
@@ -115,5 +116,15 @@ class APITest extends TestCase
      */
     protected function getUserCampaign(string $token, int $id){
         return $this->authorizedRequest($token, "GET", "/user/campaigns/".$id);
+    }
+
+    /**
+     * @param TestResponse $response
+     * @return array
+     */
+    protected static function unwrapResponse(TestResponse $response){
+        $response = $response->json("data");
+        if(!is_array($response)) array($response);
+        return $response;
     }
 }
