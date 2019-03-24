@@ -10660,3 +10660,68 @@ a.text-dark:focus {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.navbar > .container {
+  position: relative;
+}
+
+span.openNav,
+.closeNav {
+  padding-left: inherit;
+  padding-right: inherit;
+  position: absolute;
+  cursor: pointer;
+  font-size: 25px;
+  right: 0;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  span.openNav {
+    display: block;
+  }
+
+  .sideNav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+  }
+
+  .sideNav .closeNav {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+
+  .sideNav .nav-link {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+
+  .sideNav .nav-link:hover {
+    color: #f1f1f1;
+  }
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+
+  .sidenav .nav-link {
+    font-size: 18px;
+  }
+}
+
