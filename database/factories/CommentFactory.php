@@ -11,5 +11,6 @@ $factory->define(Comment::class, function (Faker $faker) {
         "body" => $faker->sentences(2, true),
         "campaign_id" => Campaign::inRandomOrder()->first()->id,
         "is_public" => rand(0,1),
+        "date" => \Carbon\Carbon::now()
     ];
 });

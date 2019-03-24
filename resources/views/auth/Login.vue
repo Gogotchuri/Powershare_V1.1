@@ -49,7 +49,7 @@
     export default {
         name: "Login",
         data(){
-            return {
+            return{
                 credentials: {
                     email : "",
                     password : ""

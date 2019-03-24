@@ -1,7 +1,7 @@
+php artisan clear:config
 composer install
 npm install
-npm run dev/production
+npm run dev
 php artisan migrate:fresh --seed
-[php artisan clear:config]
 php artisan key:generate 
 php artisan passport:install

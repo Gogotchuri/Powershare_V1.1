@@ -25,8 +25,6 @@ class CreateCommentsTable extends Migration
             $table->text("body");
             $table->boolean("is_public")->default(true);
 
-            $table->timestamp("date");
-
             $table->timestamps();
         });
     }

@@ -11,10 +11,10 @@
                     </div>
                 </template>
                 <campaign-thumbnail v-else 
-                    v-for="campaign in campaigns" 
+                    v-for="campaign in campaigns"
                     :key="campaign.id"
-                    :campaign="campaign"    
-                > </campaign-thumbnail>
+                    :campaign="campaign" 
+                />
                 <!-- <campaign :campaign="C" \>
                 <campaign v-for="campaign in campaigns" :key="campaign.id" :campaign="campaign"> </campaign> -->
 
@@ -32,25 +32,19 @@ export default {
     components: {
         campaignThumbnail
     },
-    data(){
-        return {
-            campaigns: [],
-        }
-    },
-    beforeMount(){
+
+    created(){
         this.fetchCampaigns();
     },
 
     methods:{
         fetchCampaigns(){
-            axios.get("api/campaigns")
-            .then(res => {
-                console.log(res);
-                this.campaigns = res.data.data;
-            })
-            .catch(err => {
-
-            });
+            this.$store.dispatch("fetchCampaigns");
+        }
+    },
+    computed: {
+        campaigns(){
+            return this.$store.getters.campaigns;
         }
     }
 }
