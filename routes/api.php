@@ -52,3 +52,8 @@ Route::middleware("throttle:60,1")->middleware("auth:api")->namespace("User")->g
     });
 
 });
+
+//Admin routes
+Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->group(function () {
+    Route::get("/campaigns", "CampaignController@index");
+});
