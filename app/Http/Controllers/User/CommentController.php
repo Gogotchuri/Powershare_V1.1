@@ -21,10 +21,10 @@ class CommentController extends Controller
     public function index($campaign_id)
     {
         //Need to create resources for it
-        return response()->json(Comment::where("is_public", true)->where("campaign_id",$campaign_id)->all());
+        return response()->json(Comment::where("is_public", true)->where("campaign_id",$campaign_id)->get());
     }
 
-    public function show($comment_id)
+    public function show($campaign_id, $comment_id)
     {
         $comment = Comment::where("id", $comment_id)->where("is_public", true)->first();
         if(!$comment)
@@ -69,7 +69,7 @@ class CommentController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse Updated Comment
      */
-    public function update($comment_id, Request $request) {
+    public function update($campaign_id, $comment_id, Request $request) {
         //Getting comment
         $comment = Comment::where("id", $comment_id)->first();
         if(!$comment || $comment->author->id != Auth::user()->id)
@@ -89,7 +89,7 @@ class CommentController extends Controller
         return response()->json($comment);
     }
 
-    public function destroy($comment_id)
+    public function destroy($campaign_id, $comment_id)
     {
         //Getting comment
         $comment = Comment::where("id", $comment_id)->first();

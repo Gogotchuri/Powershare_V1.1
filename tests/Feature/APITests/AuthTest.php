@@ -22,7 +22,7 @@ class AuthTest extends APITest
      */
     public function testUserLogin()
     {
-        $this->login()->assertJsonStructure(["id", "name", "email", "token", "role_id"]);
+        $this->login()->assertJsonStructure(["data" => ["id", "name", "email", "token", "role_id"]]);
     }
 
 

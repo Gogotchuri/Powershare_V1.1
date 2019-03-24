@@ -32,13 +32,11 @@ Route::middleware("throttle:10,1")->group(function (){
     Route::post("/logout", "AuthController@logout")->middleware("auth:api");
 });
 
-//User feature paths
+//User features
 Route::get("/user", "AuthController@details")->middleware("auth:api");
-Route::namespace("User")->prefix("/user")->group(function (){
-    //Campaign Crud
-    Route::apiResource("/campaigns", "CampaignController")->middleware("auth:api");
+Route::middleware("throttle:60,1")->namespace("User")->group(function (){
     //Comment Crud group
-    Route::prefix("/{campaign_id}/comments")->group(function () {
+    Route::prefix("campaigns/{campaign_id}/comments")->group(function () {
         Route::get("", "CommentController@index");
         Route::get("/{comment_id}", "CommentController@show");
         //Authorized comment routes
@@ -48,4 +46,11 @@ Route::namespace("User")->prefix("/user")->group(function (){
             Route::delete("/{comment_id}", "CommentController@destroy");
         });
     });
+
+    // /user routes where authentication is required
+    Route::middleware("auth:api")->prefix("/user")->group(function (){
+        //Campaign Crud
+        Route::apiResource("/campaigns", "CampaignController");
+    });
+
 });

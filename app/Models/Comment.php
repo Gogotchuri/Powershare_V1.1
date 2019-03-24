@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $guarded = ["date", "author_id"];
-    protected $visible = ["id", "author_name", "body", "date", "is_edited"];
+    protected $visible = ["id", "author_name", "body", "date", "is_edited", "campaign_id"];
     protected $appends = ["author_name", "date", "is_edited"];
     
     public function campaign(){

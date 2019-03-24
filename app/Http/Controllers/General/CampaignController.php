@@ -14,22 +14,29 @@ use App\Http\Resources\Campaigns as CampaignsResource;
 
 class CampaignController extends Controller
 {
+    private const DEFAULT_PAGINATION = 10;
     public function index(Request $request)
     {
         $query = Campaign::where("status_id", CampaignStatus::APPROVED)->where("is_hidden", 0)->orderBy("order", "asc");
 
-        $category = $request->input("category_id");
-        $name = $request->input("name");
+        $category = $request["category_id"];
+        $name = $request["name"];
+        $pagination = $request["pagination"];
 
-        if($category !== null) {
+        if($category !== null)
             $query->where("category_id", $category);
-        }
 
-        if($name !== null) {
+        if($name !== null)
             $query->where("name", "like", "%" . $name . "%");
-        }
 
-        $campaigns = $query->paginate(9);
+        //Default pagination if not provided
+        if($pagination === null)
+            $campaigns = $query->paginate(self::DEFAULT_PAGINATION);
+        else if(is_numeric($pagination) && $pagination <= 0)
+            $campaigns = $query->get();
+        else
+            $campaigns = $query->paginate($pagination);
+
         //Might need for later filters
         $categories = CampaignCategory::all();
 

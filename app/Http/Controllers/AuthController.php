@@ -41,7 +41,7 @@ class AuthController extends Controller
             Auth::user()->last_login = Carbon::now();
             Auth::user()->save();
 
-            return response()->json($success);
+            return response()->json(["data" => $success]);
         }
 
         return response()->json(['errors' => ['Unauthorised']], 401);
@@ -74,14 +74,14 @@ class AuthController extends Controller
         $answer["role_id"] = 2;
         $answer['token'] = $user->createToken('powershare_token')->accessToken;
 
-        return response()->json($answer, 201);
+        return response()->json(["data" =>$answer], 201);
     }
 
     public function logout(Request $request){
         if(Auth::user() && Auth::user()->token()){
             Auth::user()->token()->revoke();
             Auth::user()->token()->delete();
-            return response()->json('Logged out successfuly');
+            return response()->json(["data" => 'Logged out successfuly']);
         }
 
         return response()->json(["errors" => ["Couldn't Log out, Access Token missing"]], 401);
@@ -93,7 +93,7 @@ class AuthController extends Controller
               $token->delete();
             });
 
-            return response()->json('Logged out successfuly');
+            return response()->json(["data" => 'Logged out successfuly']);
         }
         return response()->json(["errors" => ["Couldn't Log out, Access Token missing"]], 401);
     }
