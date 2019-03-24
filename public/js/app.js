@@ -1797,11 +1797,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
-    return {};
+    return {
+      colour: "red"
+    };
   },
   computed: {
     isLoggedIn: function isLoggedIn() {
@@ -1826,6 +1829,9 @@ __webpack_require__.r(__webpack_exports__);
       }).catch(function (err) {
         console.error(err);
       });
+    },
+    changeColour: function changeColour() {
+      if (this.colour === "red") this.colour = "yellow";else this.colour = "red";
     }
   }
 });
@@ -38069,6 +38075,7 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "nav-link",
+                        style: { color: _vm.colour },
                         attrs: { to: { name: "Campaigns" } }
                       },
                       [_vm._v("Campaigns")]
@@ -38143,7 +38150,18 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("main", { staticClass: "py-4" }, [_c("router-view")], 1)
+    _c(
+      "main",
+      { staticClass: "py-4" },
+      [
+        _c("button", { on: { click: _vm.changeColour } }, [
+          _vm._v("Change Color")
+        ]),
+        _vm._v(" "),
+        _c("router-view")
+      ],
+      1
+    )
   ])
 }
 var staticRenderFns = [

@@ -13,7 +13,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>                                                
+                        <router-link :to="{ name: 'Campaigns' }" class="nav-link" v-bind:style="{color: colour}">Campaigns</router-link>
                         <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
                         <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
                         <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
@@ -25,6 +25,7 @@
         </nav>
         <!-- Content -->
         <main class="py-4">
+            <button @click="changeColour">Change Color</button>
             <router-view></router-view>
         </main>
     </div>
@@ -36,7 +37,9 @@
     
     export default {
         data(){
-            return {};
+            return {
+                colour:"red"
+            };
         },
         computed: {
             isLoggedIn(){
@@ -57,6 +60,12 @@
                 .catch(err => {
                     console.error(err);
                 });
+            },
+            changeColour(){
+                if(this.colour === "red")
+                    this.colour = "yellow";
+                else
+                    this.colour = "red";
             }
         }
 
