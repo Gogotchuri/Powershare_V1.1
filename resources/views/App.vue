@@ -62,8 +62,7 @@ export default {
         });
     },
     changeWidth() {
-      if (this.smallMedia === false) this.smallMedia = true;
-      else this.smallMedia = false;
+      this.smallMedia = !this.smallMedia;
     }
   }
 };

@@ -83,7 +83,7 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return self::responseData(new CommentsResource($comment));
+        return self::responseData(new CommentsResource($comment), 201);
     }
 
     /**
