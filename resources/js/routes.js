@@ -11,6 +11,8 @@ import About from "../views/public/About";
 import Faq from "../views/public/Faq";
 import PrivacyPolicy from "../views/public/PrivacyPolicy";
 import TermsConditions from "../views/public/TermsConditions";
+import CampaignCreate from "../views/management/CampaignCreate";
+import CampaignEdit from "../views/management/CampaignEdit";
 
 export const routes = [
     //public routes
@@ -121,5 +123,21 @@ export const routes = [
         meta: {
             authRequired: false
         },
-    }
+    },
+    {
+        path: "/user/campaigns/create",
+        name: "CampaignCreate",
+        component: CampaignCreate,
+        meta: {
+            authRequired: true
+        }
+    },
+    {
+        path: "/user/campaigns/:id/edit",
+        name: "CampaignEdit",
+        component: CampaignEdit,
+        meta: {
+            authRequired: true
+        }
+    },
 ];

@@ -16,9 +16,9 @@ export function initialize(router, store){
         const user = store.state.user.currentUser;
 
         if(authRequired && !user){
-            next('/login');
-        }else if((to.path == "/login" || to.path == "/register")&& !!user){
-            next('/');
+            router.push({name : "Login", query : {redirect : to.name}});
+        }else if((to.path === "/login" || to.path === "/register")&& !!user){
+            next("/");
         }else{
             next();
         }
@@ -31,7 +31,7 @@ export function initialize(router, store){
      * bearer token has been expired, we log the user out
      */
     Axios.interceptors.response.use(null, err => {
-        if(err.response.status == 401){
+        if(err.response.status === 401){
             store.commit("logout");
             router.push({name: "Login"});
         }

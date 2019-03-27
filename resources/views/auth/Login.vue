@@ -63,7 +63,7 @@
                 login(this.$data.credentials)
                 .then(response => {
                     this.$store.commit("loginSuccessful", response);
-                    this.$router.push({name: 'Home'});
+                    this.$router.push({name : this.$route.query.redirect || "Home"});
                 })
                 .catch(error => {
                     this.$store.commit("loginFailed", error);
