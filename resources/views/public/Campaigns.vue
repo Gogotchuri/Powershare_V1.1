@@ -15,17 +15,15 @@
                     :key="campaign.id"
                     :campaign="campaign" 
                 />
-                <!-- <campaign :campaign="C" \>
-                <campaign v-for="campaign in campaigns" :key="campaign.id" :campaign="campaign"> </campaign> -->
-
             </div>
         </div>
     </div>
 </template>
 
 <script>
-
-import campaignThumbnail from "./partials/CampaignThumbnail.vue";
+import campaignThumbnail from "@views/public/partials/CampaignThumbnail.vue";
+import store from "@js/store";
+import {app} from "@js/app";
 
 export default {
     name: "Campaigns",
@@ -33,14 +31,22 @@ export default {
         campaignThumbnail
     },
 
-    created(){
-        this.fetchCampaigns();
-    },
-
-    methods:{
-        fetchCampaigns(){
-            this.$store.dispatch("fetchCampaigns");
-        }
+    /*
+    * Components fetches campaign and gives a progress indicator
+    * once campaigns are fetched progress is fulfilled
+    */
+    beforeRouteEnter(to, from, next){
+        app.$Progress.start();
+        store.dispatch("fetchCampaigns")
+            .then(() => {
+                app.$Progress.finish();
+                next();
+            })
+            .catch(reason => {
+                app.$Progress.fail();
+                console.error(reason);
+                next();
+            })
     },
     computed: {
         campaigns(){

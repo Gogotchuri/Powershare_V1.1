@@ -51,7 +51,7 @@
 </template>
 
 <script>
-    import {register} from "../../js/helpers/auth";
+    import {register} from "@js/helpers/auth";
 
     export default {
         name: "Register",
