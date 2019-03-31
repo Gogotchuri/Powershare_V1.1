@@ -1,9 +1,15 @@
-import { getLocalUser } from "./helpers/auth";
-import ApiService from "./common/ApiService";
+import {getLocalUser} from "@js/helpers/auth";
+import ApiService from "@js/common/ApiService";
 import axios from "axios";
-const localUser = getLocalUser();
+import Vue from "vue";
+import Vuex from "vuex";
 
-export default {
+Vue.use(Vuex);
+
+const localUser = getLocalUser();
+//exports store
+/*Store data.*/
+const storeData = {
     state: {
         loading: false,
 
@@ -13,7 +19,7 @@ export default {
             authError: null,
         },
         
-        campaigns:[]
+        campaigns: null
 
     },
 
@@ -84,14 +90,8 @@ export default {
             localStorage.removeItem("user");
         },
 
-        fetchCampaigns(state){
-            axios.get("api/campaigns")
-                .then(res => {
-                    state.campaigns = res.data.data;
-                })
-                .catch(err => {
-                    console.error(err);
-                });
+        setCampaigns(state, campaigns){
+            state.campaigns = campaigns;
         }
     },
 
@@ -108,10 +108,24 @@ export default {
             context.commit("register", res, error);
         },
         fetchCampaigns(context){
-            context.commit("fetchCampaigns");
+            return new Promise((resolve, reject) => {
+                axios.get('api/campaigns')
+                    .then(response => {
+                        let campaigns = response.data.data;
+                        context.commit("setCampaigns", campaigns);
+                        resolve("Campaigns Fetched successfully!");
+                    })
+                    .catch(reason => {
+                        console.error(reason);
+                        reject("Error while fetching campaigns!");
+                    })
+            });
         }
 
 
     }
 
 };
+
+const store = new Vuex.Store(storeData);
+export default store;

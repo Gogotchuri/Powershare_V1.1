@@ -12,6 +12,7 @@ class APITest extends TestCase
         'email' => 'Dummy@dummy.com',
         'password' => '123456789',
     ];
+
     protected $campaign_data = [
         "name" => "First User Campaign",
         "details" => "The details field is required.",
@@ -65,7 +66,7 @@ class APITest extends TestCase
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     protected function logout(string $token, bool $valid=true){
-        $res = $this->authorizedRequest($token, "POST", "/logout");
+        $res = $this->authorizedRequest($token, "POST", "/api/logout");
         if($valid)
             $res->assertOk();
         else
@@ -84,7 +85,7 @@ class APITest extends TestCase
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     protected function authorizedRequest(string $token, string $method, string $uri, array $body = []){
-        $res = $this->json($method, "/api".$uri, $body, ["Authorization" => "Bearer ".$token]);
+        $res = $this->json($method, $uri, $body, ["Authorization" => "Bearer ".$token]);
         $this->refreshApplication();
         return $res;
     }
@@ -96,7 +97,7 @@ class APITest extends TestCase
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     protected function createCampaign(string $token, array $data) {
-        return $this->authorizedRequest($token, "POST", "/user/campaigns", $data);
+        return $this->authorizedRequest($token, "POST", "/api/user/campaigns", $data);
     }
 
     /**
@@ -105,7 +106,7 @@ class APITest extends TestCase
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     protected function getUserCampaigns(string $token){
-        return $this->authorizedRequest($token, "GET", "/user/campaigns");
+        return $this->authorizedRequest($token, "GET", "/api/user/campaigns");
     }
 
     /**
@@ -115,7 +116,7 @@ class APITest extends TestCase
      * @return \Illuminate\Foundation\Testing\TestResponse
      */
     protected function getUserCampaign(string $token, int $id){
-        return $this->authorizedRequest($token, "GET", "/user/campaigns/".$id);
+        return $this->authorizedRequest($token, "GET", "/api/user/campaigns/".$id);
     }
 
     /**

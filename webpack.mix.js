@@ -1,5 +1,17 @@
-const mix = require('laravel-mix');
+class WebPackConf {
+    webpackConfig(webpackConfig){
+        webpackConfig.resolve.alias = {
+            "vue$": "vue/dist/vue.esm.js",
+            "@": __dirname + "/resources",
+            "@js": __dirname + "/resources/js",
+            "@views": __dirname + "/resources/views"
+        };
+    }
+};
 
+const mix = require("laravel-mix");
+mix.extend("customConfig", new WebPackConf);
+mix.customConfig();
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -10,6 +22,5 @@ const mix = require('laravel-mix');
  | file for the application as well as bundling up all the JS files.
  |
  */
-
-mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+mix.js("resources/js/app.js", "public/js")
+   .sass("resources/sass/app.scss", "public/css");

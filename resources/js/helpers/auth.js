@@ -7,6 +7,7 @@ export function login(credentials) {
             resolve(response.data);
         })
         .catch(err => {
+            console.error("Login error" + err);
             reject("Wrong Credentials");
 
         });
@@ -24,6 +25,7 @@ export function register(information) {
             resolve(response.data);
         })
         .catch(err => {
+            console.error("Register error" + err);
             reject("Something went wrong");
 
         });
@@ -37,6 +39,7 @@ export function logout() {
             resolve(response.data);
         })
         .catch(err => {
+            console.error("Logout error" + err);
             reject("Couldn't logout");
 
         });

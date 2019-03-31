@@ -1,6 +1,7 @@
 <template>
   <div>
-    <nav id="mainNav" class="navbar navbar-expand-md">
+    <vue-progress-bar></vue-progress-bar>
+    <nav class="navbar navbar-expand-md">
       <div class="container">
         <!-- logo/brand -->
         <router-link :to="{name: 'Home'}" class="navbar-brand">Powershare</router-link>
@@ -12,6 +13,7 @@
           <!-- Authentication Links -->
           <span class="closeNav" @click="changeWidth">&#10095;</span>
           <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
+          <router-link :to="{ name: 'CampaignCreate' }" class="nav-link">Create Campaign</router-link>
           <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
           <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
           <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
@@ -32,10 +34,12 @@
 </template>
 
 <script>
-import { logout } from "../js/helpers/auth";
-import ApiService from "../js/common/ApiService";
+import { logout } from "@js/helpers/auth";
 
 export default {
+  mounted () {
+    this.$Progress.finish();
+  },
   data() {
     return {
       smallMedia: false
@@ -51,19 +55,21 @@ export default {
   },
   methods: {
     logout() {
+      this.$Progress.start();
+      this.$store.state.loading = true;
       logout()
-        .then(response => {
-          alert(response.data);
+        .then(() => {
           this.$store.dispatch("logout");
           this.$router.push({ name: "Login" });
+          this.$Progress.finish();
         })
         .catch(err => {
           console.error(err);
+          this.$Progress.fail();
         });
     },
     changeWidth() {
-      if (this.smallMedia === false) this.smallMedia = true;
-      else this.smallMedia = false;
+      this.smallMedia = !this.smallMedia;
     }
   }
 };

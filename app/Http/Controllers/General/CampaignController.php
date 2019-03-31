@@ -31,8 +31,10 @@ class CampaignController extends Controller
         //Default pagination if not provided
         if($pagination === null)
             $campaigns = $query->paginate(self::DEFAULT_PAGINATION);
-        else if(is_numeric($pagination) && $pagination <= 0)
+        else if(is_numeric($pagination) && $pagination <= 0) {
             $campaigns = $query->get();
+            return self::responseData(CampaignsResource::collection($campaigns));
+        }
         else
             $campaigns = $query->paginate($pagination);
 

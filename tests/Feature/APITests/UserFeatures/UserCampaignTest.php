@@ -35,15 +35,15 @@ class UserCampaignTest extends APITest
         $campaign["name"] = $newName;
         $campaign["category_id"] = 2;
         //Submitted change
-        $this->authorizedRequest($user_token, "PUT", "/user/campaigns/".$campaign_id, $campaign)->assertOk();
+        $this->authorizedRequest($user_token, "PUT", "/api/user/campaigns/".$campaign_id, $campaign)->assertOk();
         $campaign= self::unwrapResponse($this->getUserCampaign($user_token, $campaign_id)->assertOk());
         //Make sure change is persistent
         $this->assertEquals($newName, $campaign["name"]);
         //Now deleting campaign as an unauthenticated user
         $this->refreshApplication();
-        $this->authorizedRequest("bla", "DELETE", "/user/campaigns/".$campaign_id)->assertStatus(401);
+        $this->authorizedRequest("bla", "DELETE", "/api/user/campaigns/".$campaign_id)->assertStatus(401);
         //Now trying as authorized user
-        $this->authorizedRequest($user_token, "DELETE", "/user/campaigns/".$campaign_id)->assertOk();
+        $this->authorizedRequest($user_token, "DELETE", "/api/user/campaigns/".$campaign_id)->assertOk();
         //Campaign shouldn't be accessible after delete
         $this->getUserCampaign($user_token, $campaign_id)->assertStatus(404);
     }
@@ -62,12 +62,12 @@ class UserCampaignTest extends APITest
     private function userCampaign(string $user_token){
         $this->createCampaign($user_token, $this->campaign_data)->assertStatus(201);
         //Got all the campaigns and picked first one
-        $campaigns = $this->getUserCampaigns($user_token)->assertOk()->json("data");
+        $campaigns = self::unwrapResponse($this->getUserCampaigns($user_token)->assertOk());
         $this->assertTrue(is_array($campaigns));
         $this->assertTrue(!!count($campaigns));
         $first_id = $campaigns[0]["id"];
 
         //Got first campaign details
-        return $this->getUserCampaign($user_token, $first_id)->assertOk()->json("data");
+        return self::unwrapResponse($this->getUserCampaign($user_token, $first_id)->assertOk());
     }
 }
