@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav class="navbar navbar-expand-md">
+    <nav id="mainNav" class="navbar navbar-expand-md">
       <div class="container">
         <!-- logo/brand -->
         <router-link :to="{name: 'Home'}" class="navbar-brand">Powershare</router-link>
@@ -25,7 +25,7 @@
       </div>
     </nav>
     <!-- Content -->
-    <main class="py-4">
+    <main>
       <router-view></router-view>
     </main>
   </div>

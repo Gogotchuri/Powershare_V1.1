@@ -18,9 +18,14 @@
 }
 
 //navbar
+#mainNav {
+	height: 12vh;
+}
+
 .navbar {
 	border-bottom: 1px solid #111;
 }
+
 .navbar > .container {
 	position: relative;
 }
@@ -37,6 +42,9 @@ span.closeNav {
 }
 
 @media (max-width: 768px) {
+	.navbar-expand-md .navbar-nav {
+		flex-direction: column;
+	}
 	span.openNav {
 		display: block;
 	}
@@ -88,4 +96,57 @@ span.closeNav {
 	.sidenav .nav-link {
 		font-size: 18px;
 	}
+}
+// end of navbar
+
+//main content container
+main {
+	width: 66.6vw;
+	margin: 2vh auto;
+	padding: 2vh;
+	background-color: gray;
+}
+@media (max-width: 768px) {
+	main {
+		width: 83.2vw;
+	}
+}
+//end of main container
+
+//capmaign page
+div.details-main,
+div.details-header,
+div.details-secondary {
+	width: 100%;
+	margin-bottom: 2vh;
+	background-color: lightgray;
+	min-height: 75px;
+	position: relative;
+}
+div.details-main {
+	display: grid;
+	grid-template-columns: 7fr 3fr;
+	grid-column-gap: 4vh;
+	height: 60vh;
+}
+@media (max-width: 768px) {
+	div.details-main {
+		height: 45vh;
+	}
+}
+.details-main div.photo {
+	height: 100%;
+}
+.details-main div.details-main-right {
+	height: 100%;
+	display: grid;
+	grid-template-rows: 2fr 8fr;
+	grid-row-gap: 2vh;
+	background-color: darkgray;
+}
+div.details-main-right > div:nth-child(odd) {
+	background-color: rgb(94, 94, 94);
+}
+.details-header {
+	padding: 30px 0;
 }

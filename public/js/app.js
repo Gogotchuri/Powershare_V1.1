@@ -2132,6 +2132,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   date: function date() {
     return {
@@ -38042,113 +38052,117 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("nav", { staticClass: "navbar navbar-expand-md" }, [
-      _c(
-        "div",
-        { staticClass: "container" },
-        [
-          _c(
-            "router-link",
-            { staticClass: "navbar-brand", attrs: { to: { name: "Home" } } },
-            [_vm._v("Powershare")]
-          ),
-          _vm._v(" "),
-          _c(
-            "span",
-            { staticClass: "openNav", on: { click: _vm.changeWidth } },
-            [_vm._v("❮")]
-          ),
-          _vm._v(" "),
-          _c(
-            "ul",
-            {
-              staticClass: "navbar-nav ml-auto sideNav",
-              class: { visible: _vm.smallMedia },
-              attrs: { id: "Sidenav" }
-            },
-            [
-              _c(
-                "span",
-                { staticClass: "closeNav", on: { click: _vm.changeWidth } },
-                [_vm._v("❯")]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "Campaigns" } }
-                },
-                [_vm._v("Campaigns")]
-              ),
-              _vm._v(" "),
-              _c(
-                "router-link",
-                {
-                  staticClass: "nav-link",
-                  attrs: { to: { name: "Articles" } }
-                },
-                [_vm._v("Articles")]
-              ),
-              _vm._v(" "),
-              !_vm.isLoggedIn
-                ? _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "Login" } }
-                    },
-                    [_vm._v("Login")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              !_vm.isLoggedIn
-                ? _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "Register" } }
-                    },
-                    [_vm._v("Register")]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.currentUser
-                ? _c(
-                    "router-link",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { to: { name: "Profile" } }
-                    },
-                    [_vm._v("Profile of " + _vm._s(_vm.currentUser.name))]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _vm.isLoggedIn
-                ? _c(
-                    "a",
-                    {
-                      staticClass: "nav-link",
-                      attrs: { href: "#" },
-                      on: {
-                        click: function($event) {
-                          $event.preventDefault()
-                          return _vm.logout($event)
+    _c(
+      "nav",
+      { staticClass: "navbar navbar-expand-md", attrs: { id: "mainNav" } },
+      [
+        _c(
+          "div",
+          { staticClass: "container" },
+          [
+            _c(
+              "router-link",
+              { staticClass: "navbar-brand", attrs: { to: { name: "Home" } } },
+              [_vm._v("Powershare")]
+            ),
+            _vm._v(" "),
+            _c(
+              "span",
+              { staticClass: "openNav", on: { click: _vm.changeWidth } },
+              [_vm._v("❮")]
+            ),
+            _vm._v(" "),
+            _c(
+              "ul",
+              {
+                staticClass: "navbar-nav ml-auto sideNav",
+                class: { visible: _vm.smallMedia },
+                attrs: { id: "Sidenav" }
+              },
+              [
+                _c(
+                  "span",
+                  { staticClass: "closeNav", on: { click: _vm.changeWidth } },
+                  [_vm._v("❯")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link",
+                    attrs: { to: { name: "Campaigns" } }
+                  },
+                  [_vm._v("Campaigns")]
+                ),
+                _vm._v(" "),
+                _c(
+                  "router-link",
+                  {
+                    staticClass: "nav-link",
+                    attrs: { to: { name: "Articles" } }
+                  },
+                  [_vm._v("Articles")]
+                ),
+                _vm._v(" "),
+                !_vm.isLoggedIn
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "Login" } }
+                      },
+                      [_vm._v("Login")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                !_vm.isLoggedIn
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "Register" } }
+                      },
+                      [_vm._v("Register")]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.currentUser
+                  ? _c(
+                      "router-link",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { to: { name: "Profile" } }
+                      },
+                      [_vm._v("Profile of " + _vm._s(_vm.currentUser.name))]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.isLoggedIn
+                  ? _c(
+                      "a",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            $event.preventDefault()
+                            return _vm.logout($event)
+                          }
                         }
-                      }
-                    },
-                    [_vm._v("LogOut")]
-                  )
-                : _vm._e()
-            ],
-            1
-          )
-        ],
-        1
-      )
-    ]),
+                      },
+                      [_vm._v("LogOut")]
+                    )
+                  : _vm._e()
+              ],
+              1
+            )
+          ],
+          1
+        )
+      ]
+    ),
     _vm._v(" "),
-    _c("main", { staticClass: "py-4" }, [_c("router-view")], 1)
+    _c("main", [_c("router-view")], 1)
   ])
 }
 var staticRenderFns = []
@@ -38672,10 +38686,31 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._v("\n    This is a campaign! " + _vm._s(_vm.id) + "\n")
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", { staticClass: "details-header" }, [
+      _c("h2", [_vm._v("This is a campaign! " + _vm._s(_vm.id))])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "details-secondary" })
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "details-main" }, [
+      _c("div", { staticClass: "photo" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "details-main-right" }, [
+        _c("div", { staticClass: "owner" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "mining" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
