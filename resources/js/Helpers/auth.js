@@ -1,4 +1,4 @@
-import Http from "@js/common/Http.service";
+import Http from "@js/Common/Http.service";
 
 export function login(credentials) {
     return new Promise((resolve, reject) => {

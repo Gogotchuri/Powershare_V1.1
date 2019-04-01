@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import { logout } from "@js/helpers/auth";
+import { logout } from "@js/Helpers/auth";
 
 export default {
   data() {

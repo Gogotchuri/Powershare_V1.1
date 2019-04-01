@@ -1,10 +1,10 @@
-require('./libraries/bootstrap');
+require('./Libraries/bootstrap');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import VueProgressBar from 'vue-progressbar';
-import Http from "@js/common/Http.service";
+import Http from "@js/Common/Http.service";
 import App from '@views/App';
 import store from '@js/store';
 import router from '@js/router';

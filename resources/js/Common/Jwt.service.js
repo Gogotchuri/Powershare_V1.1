@@ -1,4 +1,4 @@
-import {STORAGE_USER_INSTANCE, JWT_TOKEN_TITLE} from "@js/common/config";
+import {STORAGE_USER_INSTANCE, JWT_TOKEN_TITLE} from "@js/Common/config";
 
 export const getToken = () => {
     let userInstance = window.localStorage.getItem(STORAGE_USER_INSTANCE);

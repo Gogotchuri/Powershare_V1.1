@@ -5,7 +5,7 @@
                 <h1 class="col-sm-8 main-heading main-heading-campaigns">campaigns</h1>
             </div>
             <div class="row center-campaigns">
-                <template v-if="!campaigns.length">
+                <template v-if="!campaigns || !campaigns.length">
                     <div>
                         No Campaigns To see!
                     </div>

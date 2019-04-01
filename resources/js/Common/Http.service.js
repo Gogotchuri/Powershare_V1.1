@@ -1,7 +1,7 @@
 import Vue from "vue";
 import Axios from "axios";
-import {getToken} from "@js/common/Jwt.service";
-import {API_URL} from "@js/common/config";
+import {getToken} from "@js/Common/Jwt.service";
+import {API_URL} from "@js/Common/config";
 
 class HttpService {
     /**

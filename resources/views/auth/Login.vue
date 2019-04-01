@@ -44,7 +44,7 @@
     </template>
 
 <script>
-    import {login} from "@js/helpers/auth";
+    import {login} from "@js/Helpers/auth";
 
     export default {
         name: "Login",

@@ -1,6 +1,5 @@
-import {destroyUser, getUser, storeUser} from "@/js/common/Jwt.service";
-import Http from "@js/common/Http.service";
-import axios from "axios";
+import {destroyUser, getUser, storeUser} from "@/js/Common/Jwt.service";
+import Http from "@js/Common/Http.service";
 import Vue from "vue";
 import Vuex from "vuex";
 
