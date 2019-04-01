@@ -93,7 +93,7 @@
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime.js");
+module.exports = __webpack_require__(/*! regenerator-runtime */ "./node_modules/regenerator-runtime/runtime-module.js");
 
 
 /***/ }),
@@ -2161,6 +2161,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _partials_Tab__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./partials/Tab */ "./resources/views/public/partials/Tab.vue");
 //
 //
 //
@@ -2177,7 +2178,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  components: {
+    Tabs: _partials_Tab__WEBPACK_IMPORTED_MODULE_0__["default"]
+  },
   date: function date() {
     return {
       id: -1
@@ -2415,6 +2422,50 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/public/partials/Tab.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/public/partials/Tab.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: "tabs",
+  data: function data() {
+    return {
+      currentTab: 0,
+      tabs: ["Tab1", "Tab2", "Tab3"]
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/auth/Login.vue?vue&type=style&index=0&id=1bb4da9b&scoped=true&lang=css&":
 /*!********************************************************************************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/auth/Login.vue?vue&type=style&index=0&id=1bb4da9b&scoped=true&lang=css& ***!
@@ -2428,6 +2479,25 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 // module
 exports.push([module.i, "\n.error[data-v-1bb4da9b]{\n    color:red;\n    text-align: center;\n}\n", ""]);
+
+// exports
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-loader/lib/css-base.js */ "./node_modules/css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "\nbutton[data-v-b0553e96] {\n  width: 100%;\n  background-color: lightgray;\n  border: none;\n  border-left: 1px solid lightslategray;\n  border-right: 1px solid lightslategray;\n  outline: none;\n}\nbutton.active[data-v-b0553e96] {\n  background-color: white;\n}\n.tabs-header[data-v-b0553e96] {\n  display: grid;\n  grid-template-columns: 1fr 1fr 1fr;\n}\n.tab-content div[data-v-b0553e96] {\n  padding: 30px;\n  background-color: white;\n  width: 100%;\n  margin: 0 auto;\n}\n", ""]);
 
 // exports
 
@@ -2748,10 +2818,10 @@ process.umask = function() { return 0; };
 
 /***/ }),
 
-/***/ "./node_modules/regenerator-runtime/runtime.js":
-/*!*****************************************************!*\
-  !*** ./node_modules/regenerator-runtime/runtime.js ***!
-  \*****************************************************/
+/***/ "./node_modules/regenerator-runtime/runtime-module.js":
+/*!************************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime-module.js ***!
+  \************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -2762,7 +2832,55 @@ process.umask = function() { return 0; };
  * LICENSE file in the root directory of this source tree.
  */
 
-var runtime = (function (exports) {
+// This method of obtaining a reference to the global object needs to be
+// kept identical to the way it is obtained in runtime.js
+var g = (function() {
+  return this || (typeof self === "object" && self);
+})() || Function("return this")();
+
+// Use `getOwnPropertyNames` because not all browsers support calling
+// `hasOwnProperty` on the global `self` object in a worker. See #183.
+var hadRuntime = g.regeneratorRuntime &&
+  Object.getOwnPropertyNames(g).indexOf("regeneratorRuntime") >= 0;
+
+// Save the old regeneratorRuntime in case it needs to be restored later.
+var oldRuntime = hadRuntime && g.regeneratorRuntime;
+
+// Force reevalutation of runtime.js.
+g.regeneratorRuntime = undefined;
+
+module.exports = __webpack_require__(/*! ./runtime */ "./node_modules/regenerator-runtime/runtime.js");
+
+if (hadRuntime) {
+  // Restore the original runtime.
+  g.regeneratorRuntime = oldRuntime;
+} else {
+  // Remove the global property added by runtime.js.
+  try {
+    delete g.regeneratorRuntime;
+  } catch(e) {
+    g.regeneratorRuntime = undefined;
+  }
+}
+
+
+/***/ }),
+
+/***/ "./node_modules/regenerator-runtime/runtime.js":
+/*!*****************************************************!*\
+  !*** ./node_modules/regenerator-runtime/runtime.js ***!
+  \*****************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+/**
+ * Copyright (c) 2014-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+!(function(global) {
   "use strict";
 
   var Op = Object.prototype;
@@ -2772,6 +2890,23 @@ var runtime = (function (exports) {
   var iteratorSymbol = $Symbol.iterator || "@@iterator";
   var asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator";
   var toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag";
+
+  var inModule = typeof module === "object";
+  var runtime = global.regeneratorRuntime;
+  if (runtime) {
+    if (inModule) {
+      // If regeneratorRuntime is defined globally and we're in a module,
+      // make the exports object identical to regeneratorRuntime.
+      module.exports = runtime;
+    }
+    // Don't bother evaluating the rest of this file if the runtime was
+    // already defined globally.
+    return;
+  }
+
+  // Define the runtime globally (as expected by generated code) as either
+  // module.exports (if we're in a module) or a new, empty object.
+  runtime = global.regeneratorRuntime = inModule ? module.exports : {};
 
   function wrap(innerFn, outerFn, self, tryLocsList) {
     // If outerFn provided and outerFn.prototype is a Generator, then outerFn.prototype instanceof Generator.
@@ -2785,7 +2920,7 @@ var runtime = (function (exports) {
 
     return generator;
   }
-  exports.wrap = wrap;
+  runtime.wrap = wrap;
 
   // Try/catch helper to minimize deoptimizations. Returns a completion
   // record like context.tryEntries[i].completion. This interface could
@@ -2856,7 +2991,7 @@ var runtime = (function (exports) {
     });
   }
 
-  exports.isGeneratorFunction = function(genFun) {
+  runtime.isGeneratorFunction = function(genFun) {
     var ctor = typeof genFun === "function" && genFun.constructor;
     return ctor
       ? ctor === GeneratorFunction ||
@@ -2866,7 +3001,7 @@ var runtime = (function (exports) {
       : false;
   };
 
-  exports.mark = function(genFun) {
+  runtime.mark = function(genFun) {
     if (Object.setPrototypeOf) {
       Object.setPrototypeOf(genFun, GeneratorFunctionPrototype);
     } else {
@@ -2883,7 +3018,7 @@ var runtime = (function (exports) {
   // `yield regeneratorRuntime.awrap(x)`, so that the runtime can test
   // `hasOwn.call(value, "__await")` to determine if the yielded value is
   // meant to be awaited.
-  exports.awrap = function(arg) {
+  runtime.awrap = function(arg) {
     return { __await: arg };
   };
 
@@ -2958,17 +3093,17 @@ var runtime = (function (exports) {
   AsyncIterator.prototype[asyncIteratorSymbol] = function () {
     return this;
   };
-  exports.AsyncIterator = AsyncIterator;
+  runtime.AsyncIterator = AsyncIterator;
 
   // Note that simple async functions are implemented on top of
   // AsyncIterator objects; they just return a Promise for the value of
   // the final result produced by the iterator.
-  exports.async = function(innerFn, outerFn, self, tryLocsList) {
+  runtime.async = function(innerFn, outerFn, self, tryLocsList) {
     var iter = new AsyncIterator(
       wrap(innerFn, outerFn, self, tryLocsList)
     );
 
-    return exports.isGeneratorFunction(outerFn)
+    return runtime.isGeneratorFunction(outerFn)
       ? iter // If outerFn is a generator, return the full iterator.
       : iter.next().then(function(result) {
           return result.done ? result.value : iter.next();
@@ -3065,8 +3200,7 @@ var runtime = (function (exports) {
       context.delegate = null;
 
       if (context.method === "throw") {
-        // Note: ["return"] must be used for ES3 parsing compatibility.
-        if (delegate.iterator["return"]) {
+        if (delegate.iterator.return) {
           // If the delegate iterator has a return method, give it a
           // chance to clean up.
           context.method = "return";
@@ -3186,7 +3320,7 @@ var runtime = (function (exports) {
     this.reset(true);
   }
 
-  exports.keys = function(object) {
+  runtime.keys = function(object) {
     var keys = [];
     for (var key in object) {
       keys.push(key);
@@ -3247,7 +3381,7 @@ var runtime = (function (exports) {
     // Return an iterator with no values.
     return { next: doneResult };
   }
-  exports.values = values;
+  runtime.values = values;
 
   function doneResult() {
     return { value: undefined, done: true };
@@ -3452,35 +3586,14 @@ var runtime = (function (exports) {
       return ContinueSentinel;
     }
   };
-
-  // Regardless of whether this script is executing as a CommonJS module
-  // or not, return the runtime object so that we can declare the variable
-  // regeneratorRuntime in the outer scope, which allows this module to be
-  // injected easily by `bin/regenerator --include-runtime script.js`.
-  return exports;
-
-}(
-  // If this script is executing as a CommonJS module, use module.exports
-  // as the regeneratorRuntime namespace. Otherwise create a new empty
-  // object. Either way, the resulting object will be used to initialize
-  // the regeneratorRuntime variable at the top of this file.
-   true ? module.exports : undefined
-));
-
-try {
-  regeneratorRuntime = runtime;
-} catch (accidentalStrictMode) {
-  // This module should not be running in strict mode, so the above
-  // assignment should always work unless something is misconfigured. Just
-  // in case runtime.js accidentally runs in strict mode, we can escape
-  // strict mode using a global Function call. This could conceivably fail
-  // if a Content Security Policy forbids using Function, but in that case
-  // the proper solution is to fix the accidental strict mode problem. If
-  // you've misconfigured your bundler to force strict mode and applied a
-  // CSP to forbid Function, and you're not willing to fix either of those
-  // problems, please detail your unique predicament in a GitHub issue.
-  Function("r", "regeneratorRuntime = r")(runtime);
-}
+})(
+  // In sloppy mode, unbound `this` refers to the global object, fallback to
+  // Function constructor if we're in global strict mode. That is sadly a form
+  // of indirect eval which violates Content Security Policy.
+  (function() {
+    return this || (typeof self === "object" && self);
+  })() || Function("return this")()
+);
 
 
 /***/ }),
@@ -3706,6 +3819,36 @@ options.transform = transform
 options.insertInto = undefined;
 
 var update = __webpack_require__(/*! ../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
+
+if(content.locals) module.exports = content.locals;
+
+if(false) {}
+
+/***/ }),
+
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css&":
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css& ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+
+var content = __webpack_require__(/*! !../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css&");
+
+if(typeof content === 'string') content = [[module.i, content, '']];
+
+var transform;
+var insertInto;
+
+
+
+var options = {"hmr":true}
+
+options.transform = transform
+options.insertInto = undefined;
+
+var update = __webpack_require__(/*! ../../../../node_modules/style-loader/lib/addStyles.js */ "./node_modules/style-loader/lib/addStyles.js")(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -5012,7 +5155,7 @@ var render = function() {
       _c("h2", [_vm._v("This is a campaign! " + _vm._s(_vm.id))])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "details-secondary" })
+    _c("div", { staticClass: "details-secondary" }, [_c("Tabs")], 1)
   ])
 }
 var staticRenderFns = [
@@ -5337,6 +5480,97 @@ var render = function() {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/public/partials/Tab.vue?vue&type=template&id=b0553e96&scoped=true&":
+/*!**************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/views/public/partials/Tab.vue?vue&type=template&id=b0553e96&scoped=true& ***!
+  \**************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "tabs" }, [
+    _c(
+      "div",
+      { staticClass: "tabs-header" },
+      _vm._l(_vm.tabs, function(tab, index) {
+        return _c(
+          "button",
+          {
+            class: { active: _vm.currentTab === index },
+            on: {
+              click: function($event) {
+                _vm.currentTab = index
+              }
+            }
+          },
+          [_vm._v(_vm._s(tab))]
+        )
+      }),
+      0
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "tab-content" }, [
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.currentTab === 0,
+              expression: "currentTab === 0"
+            }
+          ]
+        },
+        [_c("h3", [_vm._v("Tab1 content")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.currentTab === 1,
+              expression: "currentTab === 1"
+            }
+          ]
+        },
+        [_c("h3", [_vm._v("Tab2 content")])]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.currentTab === 2,
+              expression: "currentTab === 2"
+            }
+          ]
+        },
+        [_c("h3", [_vm._v("Tab3 content")])]
+      )
+    ])
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -8105,7 +8339,7 @@ if (inBrowser && window.Vue) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
- * Vue.js v2.6.10
+ * Vue.js v2.6.8
  * (c) 2014-2019 Evan You
  * Released under the MIT License.
  */
@@ -9965,11 +10199,10 @@ function invokeWithErrorHandling (
   var res;
   try {
     res = args ? handler.apply(context, args) : handler.call(context);
-    if (res && !res._isVue && isPromise(res) && !res._handled) {
-      res.catch(function (e) { return handleError(e, vm, info + " (Promise/async)"); });
+    if (res && !res._isVue && isPromise(res)) {
       // issue #9511
-      // avoid catch triggering multiple times when nested calls
-      res._handled = true;
+      // reassign to res to avoid catch triggering multiple times when nested calls
+      res = res.catch(function (e) { return handleError(e, vm, info + " (Promise/async)"); });
     }
   } catch (e) {
     handleError(e, vm, info);
@@ -10652,8 +10885,7 @@ function normalizeScopedSlots (
   prevSlots
 ) {
   var res;
-  var hasNormalSlots = Object.keys(normalSlots).length > 0;
-  var isStable = slots ? !!slots.$stable : !hasNormalSlots;
+  var isStable = slots ? !!slots.$stable : true;
   var key = slots && slots.$key;
   if (!slots) {
     res = {};
@@ -10665,8 +10897,7 @@ function normalizeScopedSlots (
     prevSlots &&
     prevSlots !== emptyObject &&
     key === prevSlots.$key &&
-    !hasNormalSlots &&
-    !prevSlots.$hasNormal
+    Object.keys(normalSlots).length === 0
   ) {
     // fast path 2: stable scoped slots w/ no normal slots to proxy,
     // only need to normalize once
@@ -10692,7 +10923,6 @@ function normalizeScopedSlots (
   }
   def(res, '$stable', isStable);
   def(res, '$key', key);
-  def(res, '$hasNormal', hasNormalSlots);
   return res
 }
 
@@ -10702,10 +10932,8 @@ function normalizeScopedSlot(normalSlots, key, fn) {
     res = res && typeof res === 'object' && !Array.isArray(res)
       ? [res] // single vnode
       : normalizeChildren(res);
-    return res && (
-      res.length === 0 ||
-      (res.length === 1 && res[0].isComment) // #9658
-    ) ? undefined
+    return res && res.length === 0
+      ? undefined
       : res
   };
   // this is a slot using the new v-slot syntax without scope. although it is
@@ -10885,13 +11113,12 @@ function bindObjectProps (
             : data.attrs || (data.attrs = {});
         }
         var camelizedKey = camelize(key);
-        var hyphenatedKey = hyphenate(key);
-        if (!(camelizedKey in hash) && !(hyphenatedKey in hash)) {
+        if (!(key in hash) && !(camelizedKey in hash)) {
           hash[key] = value[key];
 
           if (isSync) {
             var on = data.on || (data.on = {});
-            on[("update:" + key)] = function ($event) {
+            on[("update:" + camelizedKey)] = function ($event) {
               value[key] = $event;
             };
           }
@@ -11727,7 +11954,7 @@ function resolveAsyncComponent (
   }
 
   var owner = currentRenderingInstance;
-  if (owner && isDef(factory.owners) && factory.owners.indexOf(owner) === -1) {
+  if (isDef(factory.owners) && factory.owners.indexOf(owner) === -1) {
     // already pending
     factory.owners.push(owner);
   }
@@ -11736,11 +11963,9 @@ function resolveAsyncComponent (
     return factory.loadingComp
   }
 
-  if (owner && !isDef(factory.owners)) {
+  if (!isDef(factory.owners)) {
     var owners = factory.owners = [owner];
-    var sync = true;
-    var timerLoading = null;
-    var timerTimeout = null
+    var sync = true
 
     ;(owner).$on('hook:destroyed', function () { return remove(owners, owner); });
 
@@ -11751,14 +11976,6 @@ function resolveAsyncComponent (
 
       if (renderCompleted) {
         owners.length = 0;
-        if (timerLoading !== null) {
-          clearTimeout(timerLoading);
-          timerLoading = null;
-        }
-        if (timerTimeout !== null) {
-          clearTimeout(timerTimeout);
-          timerTimeout = null;
-        }
       }
     };
 
@@ -11805,8 +12022,7 @@ function resolveAsyncComponent (
           if (res.delay === 0) {
             factory.loading = true;
           } else {
-            timerLoading = setTimeout(function () {
-              timerLoading = null;
+            setTimeout(function () {
               if (isUndef(factory.resolved) && isUndef(factory.error)) {
                 factory.loading = true;
                 forceRender(false);
@@ -11816,8 +12032,7 @@ function resolveAsyncComponent (
         }
 
         if (isDef(res.timeout)) {
-          timerTimeout = setTimeout(function () {
-            timerTimeout = null;
+          setTimeout(function () {
             if (isUndef(factory.resolved)) {
               reject(
                  true
@@ -12365,21 +12580,11 @@ var getNow = Date.now;
 // timestamp can either be hi-res (relative to page load) or low-res
 // (relative to UNIX epoch), so in order to compare time we have to use the
 // same timestamp type when saving the flush timestamp.
-// All IE versions use low-res event timestamps, and have problematic clock
-// implementations (#9632)
-if (inBrowser && !isIE) {
-  var performance = window.performance;
-  if (
-    performance &&
-    typeof performance.now === 'function' &&
-    getNow() > document.createEvent('Event').timeStamp
-  ) {
-    // if the event timestamp, although evaluated AFTER the Date.now(), is
-    // smaller than it, it means the event is using a hi-res timestamp,
-    // and we need to use the hi-res version for event listener timestamps as
-    // well.
-    getNow = function () { return performance.now(); };
-  }
+if (inBrowser && getNow() > document.createEvent('Event').timeStamp) {
+  // if the low-res timestamp which is bigger than the event timestamp
+  // (which is evaluated AFTER) it means the event is using a hi-res timestamp,
+  // and we need to use the hi-res version for event listeners as well.
+  getNow = function () { return performance.now(); };
 }
 
 /**
@@ -13548,7 +13753,7 @@ Object.defineProperty(Vue, 'FunctionalRenderContext', {
   value: FunctionalRenderContext
 });
 
-Vue.version = '2.6.10';
+Vue.version = '2.6.8';
 
 /*  */
 
@@ -15642,10 +15847,8 @@ function add$1 (
         e.target === e.currentTarget ||
         // event is fired after handler attachment
         e.timeStamp >= attachedTimestamp ||
-        // bail for environments that have buggy event.timeStamp implementations
-        // #9462 iOS 9 bug: event.timeStamp is 0 after history.pushState
-        // #9681 QtWebEngine event.timeStamp is negative value
-        e.timeStamp <= 0 ||
+        // #9462 bail for iOS 9 bug: event.timeStamp is 0 after history.pushState
+        e.timeStamp === 0 ||
         // #9448 bail if event is fired in another document in a multi-page
         // electron/nw.js app, since event.timeStamp will be using a different
         // starting reference
@@ -15712,11 +15915,10 @@ function updateDOMProps (oldVnode, vnode) {
   }
 
   for (key in oldProps) {
-    if (!(key in props)) {
+    if (isUndef(props[key])) {
       elm[key] = '';
     }
   }
-
   for (key in props) {
     cur = props[key];
     // ignore children if the node has textContent or innerHTML,
@@ -16264,8 +16466,8 @@ function enter (vnode, toggleDisplay) {
   var context = activeInstance;
   var transitionNode = activeInstance.$vnode;
   while (transitionNode && transitionNode.parent) {
-    context = transitionNode.context;
     transitionNode = transitionNode.parent;
+    context = transitionNode.context;
   }
 
   var isAppear = !context._isMounted || !vnode.isRootInsert;
@@ -17977,7 +18179,7 @@ function parse (
         text = preserveWhitespace ? ' ' : '';
       }
       if (text) {
-        if (!inPre && whitespaceOption === 'condense') {
+        if (whitespaceOption === 'condense') {
           // condense consecutive whitespaces into single space
           text = text.replace(whitespaceRE$1, ' ');
         }
@@ -18840,7 +19042,7 @@ function isDirectChildOfTemplateFor (node) {
 
 /*  */
 
-var fnExpRE = /^([\w$_]+|\([^)]*?\))\s*=>|^function\s*(?:[\w$]+)?\s*\(/;
+var fnExpRE = /^([\w$_]+|\([^)]*?\))\s*=>|^function\s*\(/;
 var fnInvokeRE = /\([^)]*?\);*$/;
 var simplePathRE = /^[A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*|\['[^']*?']|\["[^"]*?"]|\[\d+]|\[[A-Za-z_$][\w$]*])*$/;
 
@@ -23276,6 +23478,93 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/views/public/partials/Tab.vue":
+/*!*************************************************!*\
+  !*** ./resources/views/public/partials/Tab.vue ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _Tab_vue_vue_type_template_id_b0553e96_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./Tab.vue?vue&type=template&id=b0553e96&scoped=true& */ "./resources/views/public/partials/Tab.vue?vue&type=template&id=b0553e96&scoped=true&");
+/* harmony import */ var _Tab_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./Tab.vue?vue&type=script&lang=js& */ "./resources/views/public/partials/Tab.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _Tab_vue_vue_type_style_index_0_id_b0553e96_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css& */ "./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
+  _Tab_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _Tab_vue_vue_type_template_id_b0553e96_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _Tab_vue_vue_type_template_id_b0553e96_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  "b0553e96",
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/views/public/partials/Tab.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/views/public/partials/Tab.vue?vue&type=script&lang=js&":
+/*!**************************************************************************!*\
+  !*** ./resources/views/public/partials/Tab.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./Tab.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/public/partials/Tab.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css&":
+/*!**********************************************************************************************************!*\
+  !*** ./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css& ***!
+  \**********************************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_style_index_0_id_b0553e96_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/style-loader!../../../../node_modules/css-loader??ref--6-1!../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../node_modules/postcss-loader/src??ref--6-2!../../../../node_modules/vue-loader/lib??vue-loader-options!./Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/public/partials/Tab.vue?vue&type=style&index=0&id=b0553e96&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_style_index_0_id_b0553e96_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_style_index_0_id_b0553e96_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_style_index_0_id_b0553e96_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_style_index_0_id_b0553e96_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_style_index_0_id_b0553e96_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+
+/***/ "./resources/views/public/partials/Tab.vue?vue&type=template&id=b0553e96&scoped=true&":
+/*!********************************************************************************************!*\
+  !*** ./resources/views/public/partials/Tab.vue?vue&type=template&id=b0553e96&scoped=true& ***!
+  \********************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_template_id_b0553e96_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./Tab.vue?vue&type=template&id=b0553e96&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/views/public/partials/Tab.vue?vue&type=template&id=b0553e96&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_template_id_b0553e96_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_Tab_vue_vue_type_template_id_b0553e96_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ 0:
 /*!*************************************************************!*\
   !*** multi ./resources/js/app.js ./resources/sass/app.scss ***!
@@ -23283,8 +23572,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/gogotchuri/Documents/PowerShare/Web/Powershare_V1.1/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/gogotchuri/Documents/PowerShare/Web/Powershare_V1.1/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/lasha/Documents/Workspace/Powershare_V1.1/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/lasha/Documents/Workspace/Powershare_V1.1/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
