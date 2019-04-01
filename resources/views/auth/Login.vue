@@ -30,9 +30,9 @@
                                         </button>
                                     </div>
                                 </div>
-                                <div class="form-group row" v-if="authError">
+                                <div class="form-group row" v-if="authErrors">
                                     <div class="error">
-                                        {{authError}}
+                                        {{authErrors}}
                                     </div>
                                 </div>
                             </form>
@@ -44,8 +44,6 @@
     </template>
 
 <script>
-    import {login} from "@js/Helpers/auth";
-
     export default {
         name: "Login",
         data(){
@@ -58,25 +56,15 @@
         },
         methods: {
             authenticate(){
-                this.$Progress.start();
-                this.$store.dispatch("login");
-                login(this.$data.credentials)
-                .then(response => {
-                    this.$store.commit("loginSuccessful", response);
-                    this.$Progress.finish();
-                    this.$router.push({name : this.$route.query.redirect || "Home"});
-                })
-                .catch(error => {
-                    this.$store.commit("loginFailed", error);
-                    this.$Progress.fail();
-                });
+                this.$store.dispatch("login", this.credentials)
+                    .then(() => this.$router.push({name : this.$route.query.redirect || "Home"}));
             },
 
         },
 
         computed: {
-            authError(){
-                return this.$store.getters.authError;
+            authErrors(){
+                return this.$store.getters.authErrors;
             }
         }
     }

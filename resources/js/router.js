@@ -25,7 +25,7 @@ export const router = new VueRouter({
  */
 router.beforeEach((to, from, next) => {
     const authRequired = to.matched.some(record => record.meta.authRequired);
-    const user = store.state.user.currentUser;
+    const user = store.getters.currentUser;
 
     if(authRequired && !user){
         //Using Get request query param to redirect after

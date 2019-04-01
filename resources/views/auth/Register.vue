@@ -37,9 +37,9 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="form-group row" v-if="authError">
+                            <div class="form-group row" v-if="authErrors">
                                 <div class="error">
-                                    {{authError}}
+                                    {{authErrors}}
                                 </div>
                             </div>
                         </form>
@@ -51,8 +51,6 @@
 </template>
 
 <script>
-    import {register} from "@js/Helpers/auth";
-
     export default {
         name: "Register",
         data(){
@@ -68,19 +66,13 @@
         methods : {
             //Handle validation, Please!
             register(){
-                register(this.form)
-                .then(response => {
-                    this.$store.dispatch("register", response, null);
-                    this.$router.push({name: "Home"});
-                })
-                .catch(error => {
-                    this.$store.dispatch("register", null, error);
-                })
+                this.$store.dispatch("register", this.form)
+                .then( () => this.$router.push({name: "Home"}));
             },
         },
         computed: {
-            authError(){
-                return this.$store.getters.authError;
+            authErrors(){
+                return this.$store.getters.authErrors;
             }
         }
     }

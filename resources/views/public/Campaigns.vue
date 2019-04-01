@@ -36,14 +36,25 @@ export default {
     * once campaigns are fetched progress is fulfilled
     */
     beforeRouteEnter(to, from, next){
-        store.dispatch("fetchCampaigns")
-            .then(() => {
-                next();
-            })
-            .catch(reason => {
-                console.error(reason);
-                next();
-            })
+        let campaigns = store.getters.campaigns;
+        let campaignsExist =
+            campaigns !== null &&
+            campaigns.length !== 0;
+
+        if(!campaignsExist) {
+            store.dispatch("fetchCampaigns")
+                .then(() => {
+                    next();
+                })
+                .catch(reason => {
+                    console.error(reason);
+                    next();
+                })
+        }else{
+            store.dispatch("fetchCampaigns")
+                .catch(err => console.error("Error while fetching campaigns: " + err));
+            next();
+        }
     },
     computed: {
         campaigns(){

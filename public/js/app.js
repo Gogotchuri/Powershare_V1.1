@@ -1775,7 +1775,6 @@ module.exports = {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_Helpers_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @js/Helpers/auth */ "./resources/js/Helpers/auth.js");
 //
 //
 //
@@ -1811,7 +1810,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -1830,9 +1828,7 @@ __webpack_require__.r(__webpack_exports__);
     logout: function logout() {
       var _this = this;
 
-      Object(_js_Helpers_auth__WEBPACK_IMPORTED_MODULE_0__["logout"])().then(function () {
-        _this.$store.dispatch("logout");
-
+      this.$store.dispatch("logout").then(function () {
         _this.$router.push({
           name: "Login"
         });
@@ -1857,7 +1853,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_Helpers_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @js/Helpers/auth */ "./resources/js/Helpers/auth.js");
 //
 //
 //
@@ -1903,7 +1898,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Login",
   data: function data() {
@@ -1918,26 +1912,16 @@ __webpack_require__.r(__webpack_exports__);
     authenticate: function authenticate() {
       var _this = this;
 
-      this.$Progress.start();
-      this.$store.dispatch("login");
-      Object(_js_Helpers_auth__WEBPACK_IMPORTED_MODULE_0__["login"])(this.$data.credentials).then(function (response) {
-        _this.$store.commit("loginSuccessful", response);
-
-        _this.$Progress.finish();
-
-        _this.$router.push({
+      this.$store.dispatch("login", this.credentials).then(function () {
+        return _this.$router.push({
           name: _this.$route.query.redirect || "Home"
         });
-      }).catch(function (error) {
-        _this.$store.commit("loginFailed", error);
-
-        _this.$Progress.fail();
       });
     }
   },
   computed: {
-    authError: function authError() {
-      return this.$store.getters.authError;
+    authErrors: function authErrors() {
+      return this.$store.getters.authErrors;
     }
   }
 });
@@ -1953,7 +1937,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _js_Helpers_auth__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @js/Helpers/auth */ "./resources/js/Helpers/auth.js");
 //
 //
 //
@@ -2006,7 +1989,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Register",
   data: function data() {
@@ -2024,20 +2006,16 @@ __webpack_require__.r(__webpack_exports__);
     register: function register() {
       var _this = this;
 
-      Object(_js_Helpers_auth__WEBPACK_IMPORTED_MODULE_0__["register"])(this.form).then(function (response) {
-        _this.$store.dispatch("register", response, null);
-
-        _this.$router.push({
+      this.$store.dispatch("register", this.form).then(function () {
+        return _this.$router.push({
           name: "Home"
         });
-      }).catch(function (error) {
-        _this.$store.dispatch("register", null, error);
       });
     }
   },
   computed: {
-    authError: function authError() {
-      return this.$store.getters.authError;
+    authErrors: function authErrors() {
+      return this.$store.getters.authErrors;
     }
   }
 });
@@ -2260,12 +2238,22 @@ __webpack_require__.r(__webpack_exports__);
   * once campaigns are fetched progress is fulfilled
   */
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
-    _js_store__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("fetchCampaigns").then(function () {
+    var campaigns = _js_store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.campaigns;
+    var campaignsExist = campaigns !== null && campaigns.length !== 0;
+
+    if (!campaignsExist) {
+      _js_store__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("fetchCampaigns").then(function () {
+        next();
+      }).catch(function (reason) {
+        console.error(reason);
+        next();
+      });
+    } else {
+      _js_store__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch("fetchCampaigns").catch(function (err) {
+        return console.error("Error while fetching campaigns: " + err);
+      });
       next();
-    }).catch(function (reason) {
-      console.error(reason);
-      next();
-    });
+    }
   },
   computed: {
     campaigns: function campaigns() {
@@ -4574,12 +4562,12 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(0),
                 _vm._v(" "),
-                _vm.authError
+                _vm.authErrors
                   ? _c("div", { staticClass: "form-group row" }, [
                       _c("div", { staticClass: "error" }, [
                         _vm._v(
                           "\n                                " +
-                            _vm._s(_vm.authError) +
+                            _vm._s(_vm.authErrors) +
                             "\n                            "
                         )
                       ])
@@ -4803,12 +4791,12 @@ var render = function() {
                 _vm._v(" "),
                 _vm._m(0),
                 _vm._v(" "),
-                _vm.authError
+                _vm.authErrors
                   ? _c("div", { staticClass: "form-group row" }, [
                       _c("div", { staticClass: "error" }, [
                         _vm._v(
                           "\n                                " +
-                            _vm._s(_vm.authError) +
+                            _vm._s(_vm.authErrors) +
                             "\n                            "
                         )
                       ])
@@ -21531,61 +21519,6 @@ var JWT_TOKEN_TITLE = "token";
 
 /***/ }),
 
-/***/ "./resources/js/Helpers/auth.js":
-/*!**************************************!*\
-  !*** ./resources/js/Helpers/auth.js ***!
-  \**************************************/
-/*! exports provided: login, register, logout */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "login", function() { return login; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "register", function() { return register; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "logout", function() { return logout; });
-/* harmony import */ var _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @js/Common/Http.service */ "./resources/js/Common/Http.service.js");
-
-function login(credentials) {
-  return new Promise(function (resolve, reject) {
-    _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_0__["default"].POST('login', credentials).then(function (response) {
-      resolve(response.data);
-    }).catch(function (err) {
-      console.error("Login error" + err);
-      reject("Wrong Credentials");
-    });
-  });
-}
-;
-/**
- * 
- * @param {email, name, password} information 
- */
-
-function register(information) {
-  return new Promise(function (resolve, reject) {
-    _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_0__["default"].POST('register', information).then(function (response) {
-      resolve(response.data);
-    }).catch(function (err) {
-      console.error("Register error" + err);
-      reject("Something went wrong");
-    });
-  });
-}
-;
-function logout() {
-  return new Promise(function (resolve, reject) {
-    _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_0__["default"].POST('logout').then(function (response) {
-      resolve(response.data);
-    }).catch(function (err) {
-      console.error("Logout error" + err);
-      reject("Couldn't logout");
-    });
-  });
-}
-;
-
-/***/ }),
-
 /***/ "./resources/js/Libraries/bootstrap.js":
 /*!*********************************************!*\
   !*** ./resources/js/Libraries/bootstrap.js ***!
@@ -21646,6 +21579,130 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/Modules/Auth/Store.module.js":
+/*!***************************************************!*\
+  !*** ./resources/js/Modules/Auth/Store.module.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @js/Common/Jwt.service */ "./resources/js/Common/Jwt.service.js");
+/* harmony import */ var _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @js/Common/Http.service */ "./resources/js/Common/Http.service.js");
+/**
+ * This is a Vuex store module for auth
+ * Managing registration and login currently
+ */
+
+
+/**
+ * State for auth module
+ */
+
+var localUser = Object(_js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__["getUser"])();
+var state = {
+  currentUser: localUser,
+  authErrors: null
+};
+/**
+ * Getters for auth module
+ */
+
+var getters = {
+  currentUser: function currentUser(state) {
+    return state.currentUser;
+  },
+  isAuthenticated: function isAuthenticated(state) {
+    return !!state.currentUser;
+  },
+  authErrors: function authErrors(state) {
+    return state.authErrors;
+  }
+};
+/**
+ * Mutations for auth module
+ */
+
+var mutations = {
+  login: function login(state, user, errors) {
+    if (errors) {
+      state.authErrors = errors;
+      state.currentUser = null;
+    } else if (user) {
+      state.authErrors = null;
+      state.currentUser = user;
+      _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].setJwtHeader(user.token);
+      Object(_js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__["storeUser"])(user);
+    } else {
+      console.error("Something went Wrong during authentication");
+    }
+  },
+  logout: function logout(state) {
+    _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].removeJwtHeader();
+    state.currentUser = null;
+    Object(_js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__["destroyUser"])();
+  }
+};
+/**
+ * Actions for auth module
+ */
+
+var actions = {
+  login: function login(context, credentials) {
+    return new Promise(function (resolve, reject) {
+      _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].POST("login", credentials).then(function (value) {
+        var user = value.data.data;
+        context.commit("login", user, null);
+        resolve();
+      }).catch(function (reason) {
+        context.commit("login", null, reason);
+        reject();
+      });
+    });
+  },
+  logout: function logout(context) {
+    return new Promise(function (resolve, reject) {
+      _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].POST("logout").then(function () {
+        context.commit("logout");
+        resolve("Logged out!");
+      }).catch(function (reason) {
+        reject(reason);
+      });
+    });
+  },
+
+  /**
+   *
+   * @param context
+   * @param {email, name, password} data
+   */
+  register: function register(context, data) {
+    return new Promise(function (resolve, reject) {
+      _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].POST("register", data).then(function (value) {
+        var user = value.data;
+        context.commit("login", user, null);
+        resolve();
+      }).catch(function (reason) {
+        context.commit("login", null, reason);
+        reject();
+      });
+    });
+  }
+};
+/**
+ * Exporting auth module store
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
+
+/***/ }),
+
 /***/ "./resources/js/Modules/Management/Routes.module.js":
 /*!**********************************************************!*\
   !*** ./resources/js/Modules/Management/Routes.module.js ***!
@@ -21683,6 +21740,51 @@ __webpack_require__.r(__webpack_exports__);
     authRequired: true
   }
 }]);
+
+/***/ }),
+
+/***/ "./resources/js/Modules/Management/Store.module.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/Modules/Management/Store.module.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/**
+ * This is a Vuex store module for management
+ */
+
+/**
+ * State for management module
+ */
+var state = {};
+/**
+ * Getters for management module
+ */
+
+var getters = {};
+/**
+ * Mutations for management module
+ */
+
+var mutations = {};
+/**
+ * Actions for management module
+ */
+
+var actions = {};
+/**
+ * Exporting management module store
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
 
 /***/ }),
 
@@ -21756,6 +21858,76 @@ __webpack_require__.r(__webpack_exports__);
   name: "TermsConditions",
   component: _views_public_TermsConditions__WEBPACK_IMPORTED_MODULE_9__["default"]
 }]);
+
+/***/ }),
+
+/***/ "./resources/js/Modules/Public/Store.module.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/Modules/Public/Store.module.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @js/Common/Http.service */ "./resources/js/Common/Http.service.js");
+/**
+ * This is a Vuex store module for public
+ */
+
+/**
+ * State for public module
+ */
+
+var state = {
+  campaigns: []
+};
+/**
+ * Getters for public module
+ */
+
+var getters = {
+  campaigns: function campaigns(state) {
+    return state.campaigns;
+  }
+};
+/**
+ * Mutations for public module
+ */
+
+var mutations = {
+  setCampaigns: function setCampaigns(state, campaigns) {
+    state.campaigns = campaigns;
+  }
+};
+/**
+ * Actions for public module
+ */
+
+var actions = {
+  fetchCampaigns: function fetchCampaigns(context) {
+    return new Promise(function (resolve, reject) {
+      _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_0__["default"].GET('campaigns').then(function (response) {
+        var campaigns = response.data.data;
+        context.commit("setCampaigns", campaigns);
+        resolve("Campaigns Fetched successfully!");
+      }).catch(function (reason) {
+        console.error(reason);
+        reject("Error while fetching campaigns!");
+      });
+    });
+  }
+};
+/**
+ * Exporting public module store
+ */
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  state: state,
+  getters: getters,
+  mutations: mutations,
+  actions: actions
+});
 
 /***/ }),
 
@@ -21842,7 +22014,7 @@ router.beforeEach(function (to, from, next) {
   var authRequired = to.matched.some(function (record) {
     return record.meta.authRequired;
   });
-  var user = _js_store__WEBPACK_IMPORTED_MODULE_1__["default"].state.user.currentUser;
+  var user = _js_store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.currentUser;
 
   if (authRequired && !user) {
     //Using Get request query param to redirect after
@@ -21873,117 +22045,31 @@ router.beforeEach(function (to, from, next) {
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/Common/Jwt.service */ "./resources/js/Common/Jwt.service.js");
-/* harmony import */ var _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @js/Common/Http.service */ "./resources/js/Common/Http.service.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
-/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+/* harmony import */ var _js_Modules_Public_Store_module__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @js/Modules/Public/Store.module */ "./resources/js/Modules/Public/Store.module.js");
+/* harmony import */ var _js_Modules_Auth_Store_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @js/Modules/Auth/Store.module */ "./resources/js/Modules/Auth/Store.module.js");
+/* harmony import */ var _js_Modules_Management_Store_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @js/Modules/Management/Store.module */ "./resources/js/Modules/Management/Store.module.js");
+/* harmony import */ var _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @js/Common/Http.service */ "./resources/js/Common/Http.service.js");
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+/* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_2__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_3__["default"]);
-var localUser = Object(_js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__["getUser"])(); //exports store
+
+
+
+vue__WEBPACK_IMPORTED_MODULE_5__["default"].use(vuex__WEBPACK_IMPORTED_MODULE_6__["default"]); //exports store
 
 /*Store data.*/
 
 var storeData = {
-  state: {
-    loading: false,
-    user: {
-      currentUser: localUser,
-      loggedIn: !!localUser,
-      authError: null
-    },
-    campaigns: null
-  },
-  getters: {
-    currentUser: function currentUser(state) {
-      return state.user.currentUser;
-    },
-    isAuthenticated: function isAuthenticated(state) {
-      return state.user.loggedIn;
-    },
-    authError: function authError(state) {
-      return state.user.authError;
-    },
-    isLoading: function isLoading(state) {
-      return state.loading;
-    },
-    campaigns: function campaigns(state) {
-      return state.campaigns;
-    }
-  },
-  mutations: {
-    register: function register(state, res, error) {
-      state.loading = true;
-
-      if (error) {
-        state.user.authError = error;
-        state.user.currentUser = null;
-        state.user.loggedIn = false;
-      } else if (res) {
-        state.user.authError = null;
-        state.user.currentUser = res.data;
-        state.user.loggedIn = true;
-        _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].setJwtHeader(state.user.currentUser.token);
-        Object(_js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__["storeUser"])(state.user.currentUser);
-      } else {
-        console.error("Something went Wrong during registration");
-      }
-
-      state.loading = false;
-    },
-    login: function login(state) {
-      state.loading = true;
-      state.user.authError = null;
-    },
-    loginSuccessful: function loginSuccessful(state, res) {
-      state.user.authError = null;
-      state.user.loggedIn = true;
-      state.loading = false;
-      state.user.currentUser = res.data;
-      _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].setJwtHeader(state.user.currentUser.token);
-      Object(_js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__["storeUser"])(state.user.currentUser);
-    },
-    loginFailed: function loginFailed(state, err) {
-      state.user.authError = err;
-      state.user.loggedIn = false;
-      state.loading = false;
-    },
-    logout: function logout(state) {
-      _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].removeJwtHeader();
-      state.user.currentUser = null;
-      state.user.loggedIn = false;
-      Object(_js_Common_Jwt_service__WEBPACK_IMPORTED_MODULE_0__["destroyUser"])();
-    },
-    setCampaigns: function setCampaigns(state, campaigns) {
-      state.campaigns = campaigns;
-    }
-  },
-  actions: {
-    login: function login(context) {
-      context.commit("login");
-    },
-    logout: function logout(context) {
-      context.commit("logout");
-    },
-    register: function register(context, res, error) {
-      context.commit("register", res, error);
-    },
-    fetchCampaigns: function fetchCampaigns(context) {
-      return new Promise(function (resolve, reject) {
-        _js_Common_Http_service__WEBPACK_IMPORTED_MODULE_1__["default"].GET('campaigns').then(function (response) {
-          var campaigns = response.data.data;
-          context.commit("setCampaigns", campaigns);
-          resolve("Campaigns Fetched successfully!");
-        }).catch(function (reason) {
-          console.error(reason);
-          reject("Error while fetching campaigns!");
-        });
-      });
-    }
+  modules: {
+    PublicModule: _js_Modules_Public_Store_module__WEBPACK_IMPORTED_MODULE_1__["default"],
+    AuthModule: _js_Modules_Auth_Store_module__WEBPACK_IMPORTED_MODULE_2__["default"],
+    ManagementModule: _js_Modules_Management_Store_module__WEBPACK_IMPORTED_MODULE_3__["default"]
   }
 };
-var store = new vuex__WEBPACK_IMPORTED_MODULE_3__["default"].Store(storeData);
+var store = new vuex__WEBPACK_IMPORTED_MODULE_6__["default"].Store(storeData);
 /* harmony default export */ __webpack_exports__["default"] = (store);
 
 /***/ }),
