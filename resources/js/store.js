@@ -1,12 +1,11 @@
-import {getLocalUser} from "@js/helpers/auth";
-import ApiService from "@js/common/ApiService";
-import axios from "axios";
+import {destroyUser, getUser, storeUser} from "@/js/Common/Jwt.service";
+import Http from "@js/Common/Http.service";
 import Vue from "vue";
 import Vuex from "vuex";
 
 Vue.use(Vuex);
 
-const localUser = getLocalUser();
+const localUser = getUser();
 //exports store
 /*Store data.*/
 const storeData = {
@@ -53,8 +52,8 @@ const storeData = {
                 state.user.authError = null;
                 state.user.currentUser = res.data;
                 state.user.loggedIn = true;
-                ApiService.setHeaderToken(state.user.currentUser.token);
-                localStorage.setItem("user", JSON.stringify(res.data));
+                Http.setJwtHeader(state.user.currentUser.token);
+                storeUser(state.user.currentUser);
             }else{
                 console.error("Something went Wrong during registration");
             }
@@ -72,9 +71,8 @@ const storeData = {
             state.user.loggedIn = true;
             state.loading = false;
             state.user.currentUser = res.data;
-            
-            ApiService.setHeaderToken(state.user.currentUser.token);
-            localStorage.setItem("user", JSON.stringify(res.data));
+            Http.setJwtHeader(state.user.currentUser.token);
+            storeUser(state.user.currentUser);
         },
 
         loginFailed(state, err){
@@ -84,10 +82,10 @@ const storeData = {
         },
 
         logout(state){
-            ApiService.removeHeaderToken();
+            Http.removeJwtHeader();
             state.user.currentUser = null;
             state.user.loggedIn = false;
-            localStorage.removeItem("user");
+            destroyUser();
         },
 
         setCampaigns(state, campaigns){
@@ -109,7 +107,7 @@ const storeData = {
         },
         fetchCampaigns(context){
             return new Promise((resolve, reject) => {
-                axios.get('api/campaigns')
+                Http.GET('campaigns')
                     .then(response => {
                         let campaigns = response.data.data;
                         context.commit("setCampaigns", campaigns);

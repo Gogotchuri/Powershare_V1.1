@@ -1,64 +1,25 @@
 import VueRouter from "vue-router";
 import store from "@js/store";
-import PublicRoutes from "@js/modules/public/routes.js";
-import Login from "../views/auth/Login";
-import Register from "../views/auth/Register";
-import Profile from "../views/management/Profile";
-import CampaignCreate from "../views/management/CampaignCreate";
-import CampaignEdit from "../views/management/CampaignEdit";
 
-let routes = [
-    {
-        path: "/login",
-        name: "Login",
-        component: Login,
-        meta: {
-            authRequired: false
-        }
-    },
-    {
-        path: "/register",
-        name: "Register",
-        component: Register,
-        meta: {
-            authRequired: false
-        }
-    },
-    {
-        path: "/profile",
-        name: "Profile",
-        component: Profile,
-        meta: {
-            authRequired: true
-        }
-    },
-    {
-        path: "/user/campaigns/create",
-        name: "CampaignCreate",
-        component: CampaignCreate,
-        meta: {
-            authRequired: true
-        }
-    },
-    {
-        path: "/user/campaigns/:id/edit",
-        name: "CampaignEdit",
-        component: CampaignEdit,
-        meta: {
-            authRequired: true
-        }
-    },
-];
+//Module routes
+import PublicRoutes from "@js/Modules/Public/Routes.module";
+import AuthRoutes from "@js/Modules/Auth/Routes.module";
+import ManagementRoutes from "@js/Modules/Management/Routes.module";
 
 /**
  * Concatenating routes from different modules
  */
-routes = routes.concat(PublicRoutes);
+let routes = []
+    .concat(PublicRoutes)
+    .concat(AuthRoutes)
+    .concat(ManagementRoutes);
 
+//Creating and exporting Vue router instance
 export const router = new VueRouter({
     mode:"history",
     routes
 });
+
 /**
  * Getting auth required property and redirecting user properly
  */
@@ -67,6 +28,8 @@ router.beforeEach((to, from, next) => {
     const user = store.state.user.currentUser;
 
     if(authRequired && !user){
+        //Using Get request query param to redirect after
+        // Redirection to login cause of unauthorized request
         router.push({name : "Login", query : {redirect : to.name}});
     }else if((to.path === "/login" || to.path === "/register")&& !!user){
         next("/");

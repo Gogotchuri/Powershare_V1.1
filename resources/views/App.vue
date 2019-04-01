@@ -34,12 +34,9 @@
 </template>
 
 <script>
-import { logout } from "@js/helpers/auth";
+import { logout } from "@js/Helpers/auth";
 
 export default {
-  mounted () {
-    this.$Progress.finish();
-  },
   data() {
     return {
       smallMedia: false
@@ -55,17 +52,13 @@ export default {
   },
   methods: {
     logout() {
-      this.$Progress.start();
-      this.$store.state.loading = true;
       logout()
         .then(() => {
           this.$store.dispatch("logout");
           this.$router.push({ name: "Login" });
-          this.$Progress.finish();
         })
         .catch(err => {
           console.error(err);
-          this.$Progress.fail();
         });
     },
     changeWidth() {

@@ -1,8 +1,8 @@
-import axios from "axios";
+import Http from "@js/Common/Http.service";
 
 export function login(credentials) {
     return new Promise((resolve, reject) => {
-        axios.post('api/login', credentials)
+        Http.POST('login', credentials)
         .then(response => {
             resolve(response.data);
         })
@@ -20,7 +20,7 @@ export function login(credentials) {
  */
 export function register(information) {
     return new Promise((resolve, reject) => {
-        axios.post('api/register', information)
+        Http.POST('register', information)
         .then(response => {
             resolve(response.data);
         })
@@ -34,7 +34,7 @@ export function register(information) {
 
 export function logout() {
     return new Promise((resolve, reject) => {
-        axios.post('api/logout')
+        Http.POST('logout')
         .then(response => {
             resolve(response.data);
         })
@@ -45,12 +45,3 @@ export function logout() {
         });
     });
 };
-
-export function getLocalUser(){
-    const user = localStorage.getItem("user");
-
-    if(!user)
-        return null;
-        
-    return JSON.parse(user);
-}

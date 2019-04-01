@@ -5,7 +5,7 @@
                 <h1 class="col-sm-8 main-heading main-heading-campaigns">campaigns</h1>
             </div>
             <div class="row center-campaigns">
-                <template v-if="!campaigns.length">
+                <template v-if="!campaigns || !campaigns.length">
                     <div>
                         No Campaigns To see!
                     </div>
@@ -36,14 +36,11 @@ export default {
     * once campaigns are fetched progress is fulfilled
     */
     beforeRouteEnter(to, from, next){
-        app.$Progress.start();
         store.dispatch("fetchCampaigns")
             .then(() => {
-                app.$Progress.finish();
                 next();
             })
             .catch(reason => {
-                app.$Progress.fail();
                 console.error(reason);
                 next();
             })

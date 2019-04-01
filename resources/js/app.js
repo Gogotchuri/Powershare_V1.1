@@ -1,19 +1,17 @@
-require('./libraries/bootstrap');
+require('./Libraries/bootstrap');
 
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import VueProgressBar from 'vue-progressbar';
+import Http from "@js/Common/Http.service";
 import App from '@views/App';
 import store from '@js/store';
 import router from '@js/router';
-import { initialize } from '@js/common/General';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
 Vue.use(VueProgressBar);
-
-initialize(router, store);
 
 export const app = new Vue({
 	el: '#app',
@@ -21,3 +19,5 @@ export const app = new Vue({
 	components: { App },
 	router
 });
+
+Http.initializeInterceptors(store, router, app.$Progress);
