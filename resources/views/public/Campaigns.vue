@@ -36,14 +36,11 @@ export default {
     * once campaigns are fetched progress is fulfilled
     */
     beforeRouteEnter(to, from, next){
-        app.$Progress.start();
         store.dispatch("fetchCampaigns")
             .then(() => {
-                app.$Progress.finish();
                 next();
             })
             .catch(reason => {
-                app.$Progress.fail();
                 console.error(reason);
                 next();
             })
