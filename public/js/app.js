@@ -2180,6 +2180,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -5151,8 +5156,14 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
+    _c("div", { staticClass: "hidden-donate" }, [_vm._v("Donate")]),
+    _vm._v(" "),
     _c("div", { staticClass: "details-header" }, [
-      _c("h2", [_vm._v("This is a campaign! " + _vm._s(_vm.id))])
+      _c("span", { staticClass: "subject" }, [
+        _vm._v("This is a campaign! " + _vm._s(_vm.id))
+      ]),
+      _vm._v(" "),
+      _c("span", { staticClass: "social" }, [_vm._v("social icons")])
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "details-secondary" }, [_c("Tabs")], 1)
@@ -5167,7 +5178,11 @@ var staticRenderFns = [
       _c("div", { staticClass: "photo" }),
       _vm._v(" "),
       _c("div", { staticClass: "details-main-right" }, [
-        _c("div", { staticClass: "owner" }),
+        _c("div", { staticClass: "owner" }, [
+          _c("div", { staticClass: "hidden-subject" }, [_vm._v("Subject")]),
+          _vm._v(" "),
+          _c("div", { staticClass: "owner-name" }, [_vm._v("owner")])
+        ]),
         _vm._v(" "),
         _c("div", { staticClass: "mining" })
       ])

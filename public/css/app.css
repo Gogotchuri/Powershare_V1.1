@@ -10766,13 +10766,19 @@ main {
   }
 }
 
+@media (min-width: 768px) {
+  main {
+    width: 76vw;
+  }
+}
+
 div.details-main,
 div.details-header,
 div.details-secondary {
   width: 100%;
   margin-bottom: 2vh;
   background-color: lightgray;
-  min-height: 75px;
+  min-height: 50px;
   position: relative;
 }
 
@@ -10780,13 +10786,7 @@ div.details-main {
   display: grid;
   grid-template-columns: 7fr 3fr;
   grid-column-gap: 4vh;
-  height: 60vh;
-}
-
-@media (max-width: 768px) {
-  div.details-main {
-    height: 45vh;
-  }
+  height: 70vh;
 }
 
 .details-main div.photo {
@@ -10806,6 +10806,83 @@ div.details-main-right > div:nth-child(odd) {
 }
 
 .details-header {
-  padding: 30px 0;
+  padding: 10px 0;
+}
+
+.details-header .social,
+.details-header .subject {
+  font-size: 15px;
+}
+
+.details-header .social {
+  margin-right: 0;
+}
+
+.owner {
+  display: grid;
+  grid-template-columns: 9fr 3fr;
+  grid-column-gap: 2vh;
+  text-align: center;
+}
+
+.owner-name {
+  padding: 20px 0;
+}
+
+.owner-icon {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  background-color: lightgray;
+  margin: auto;
+}
+
+.hidden-subject {
+  text-align: center;
+  display: none;
+}
+
+.hidden-donate {
+  display: none;
+  padding: 10px 0;
+  width: 100%;
+  margin-bottom: 2vh;
+  background-color: lightgray;
+  min-height: 50px;
+  position: relative;
+  text-align: center;
+}
+
+@media (max-width: 868px) {
+  .mining {
+    display: none;
+  }
+
+  div.details-main {
+    grid-template-columns: 1fr;
+    grid-template-rows: 5fr 1fr;
+  }
+
+  .details-main div.details-main-right {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr;
+  }
+
+  .hidden-subject {
+    display: block;
+  }
+
+  .owner {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr;
+  }
+
+  .details-header {
+    display: none;
+  }
+
+  .hidden-donate {
+    display: block;
+  }
 }
 
