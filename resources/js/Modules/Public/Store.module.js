@@ -1,9 +1,7 @@
 /**
  * This is a Vuex store module for public
  */
-
-
-
+import Http from "@js/Common/Http.service";
 
 /**
  * State for public module
@@ -16,6 +14,9 @@ const state = {
  * Getters for public module
  */
 const getters = {
+    campaigns(state){
+        return state.campaigns;
+    },
 
 };
 
@@ -23,7 +24,9 @@ const getters = {
  * Mutations for public module
  */
 const mutations = {
-
+    setCampaigns(state, campaigns){
+        state.campaigns = campaigns;
+    }
 };
 
 /**
@@ -31,6 +34,20 @@ const mutations = {
  */
 const actions = {
 
+    fetchCampaigns(context){
+        return new Promise((resolve, reject) => {
+            Http.GET('campaigns')
+                .then(response => {
+                    let campaigns = response.data.data;
+                    context.commit("setCampaigns", campaigns);
+                    resolve("Campaigns Fetched successfully!");
+                })
+                .catch(reason => {
+                    console.error(reason);
+                    reject("Error while fetching campaigns!");
+                })
+        });
+    }
 };
 
 

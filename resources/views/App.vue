@@ -34,8 +34,6 @@
 </template>
 
 <script>
-import { logout } from "@js/Helpers/auth";
-
 export default {
   data() {
     return {
@@ -52,15 +50,15 @@ export default {
   },
   methods: {
     logout() {
-      logout()
+      this.$store.dispatch("logout")
         .then(() => {
-          this.$store.dispatch("logout");
           this.$router.push({ name: "Login" });
         })
         .catch(err => {
           console.error(err);
         });
     },
+
     changeWidth() {
       this.smallMedia = !this.smallMedia;
     }
