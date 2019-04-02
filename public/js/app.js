@@ -2236,6 +2236,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 
@@ -2246,9 +2254,9 @@ __webpack_require__.r(__webpack_exports__);
   },
 
   /*
-  * Components fetches campaign and gives a progress indicator
-  * once campaigns are fetched progress is fulfilled
-  */
+   * Components fetches campaign and gives a progress indicator
+   * once campaigns are fetched progress is fulfilled
+   */
   beforeRouteEnter: function beforeRouteEnter(to, from, next) {
     var campaigns = _js_store__WEBPACK_IMPORTED_MODULE_1__["default"].getters.campaigns;
     var campaignsExist = campaigns !== null && campaigns.length !== 0;
@@ -5212,34 +5220,24 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "container campaigns-page", attrs: { id: "explore" } },
+    { staticClass: "center-campaigns" },
     [
-      _c("div", { staticClass: "explore-container" }, [
-        _vm._m(0),
-        _vm._v(" "),
-        _c(
-          "div",
-          { staticClass: "row center-campaigns" },
-          [
-            !_vm.campaigns || !_vm.campaigns.length
-              ? [
-                  _c("div", [
-                    _vm._v(
-                      "\n                    No Campaigns To see!\n                "
-                    )
-                  ])
-                ]
-              : _vm._l(_vm.campaigns, function(campaign) {
-                  return _c("campaign-thumbnail", {
-                    key: campaign.id,
-                    attrs: { campaign: campaign }
-                  })
-                })
-          ],
-          2
-        )
-      ])
-    ]
+      _c("div", { staticClass: "search" }, [_vm._v("Search")]),
+      _vm._v(" "),
+      _vm._m(0),
+      _vm._v(" "),
+      _vm._m(1),
+      _vm._v(" "),
+      !_vm.campaigns || !_vm.campaigns.length
+        ? [_c("div", [_vm._v("No Campaigns To see!")])]
+        : _vm._l(_vm.campaigns, function(campaign) {
+            return _c("campaign-thumbnail", {
+              key: campaign.id,
+              attrs: { campaign: campaign }
+            })
+          })
+    ],
+    2
   )
 }
 var staticRenderFns = [
@@ -5247,20 +5245,35 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: "row",
-        staticStyle: { "justify-content": "space-around" }
-      },
-      [
-        _c(
-          "h1",
-          { staticClass: "col-sm-8 main-heading main-heading-campaigns" },
-          [_vm._v("campaigns")]
-        )
-      ]
-    )
+    return _c("div", { staticClass: "sort" }, [
+      _c("div", [_vm._v("Category")]),
+      _vm._v(" "),
+      _c("div", [_vm._v("Sorted by")])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "campaigns" }, [
+      _c("div"),
+      _vm._v(" "),
+      _c("div"),
+      _vm._v(" "),
+      _c("div"),
+      _vm._v(" "),
+      _c("div"),
+      _vm._v(" "),
+      _c("div"),
+      _vm._v(" "),
+      _c("div"),
+      _vm._v(" "),
+      _c("div"),
+      _vm._v(" "),
+      _c("div"),
+      _vm._v(" "),
+      _c("div")
+    ])
   }
 ]
 render._withStripped = true

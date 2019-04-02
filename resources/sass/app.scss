@@ -105,6 +105,7 @@ main {
 	margin: 2vh auto;
 	padding: 2vh;
 	background-color: gray;
+	min-height: 100vh;
 }
 @media (max-width: 768px) {
 	main {
@@ -214,3 +215,57 @@ div.details-main-right > div:nth-child(odd) {
 	}
 }
 //end of details
+
+//explore page
+.search {
+	text-align: center;
+	min-height: 5vh;
+	width: 100%;
+	background-color: #c2c2c2;
+	margin-bottom: 2vh;
+	padding: 5px 0;
+}
+.sort {
+	text-align: center;
+	min-height: 5vh;
+	width: 100%;
+	background-color: #c2c2c2;
+	margin-bottom: 2vh;
+	padding: 5px 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+}
+.campaigns {
+	margin-top: 8vh;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-rows: 1fr 1fr 1fr;
+	grid-row-gap: 6vh;
+	grid-column-gap: 12vh;
+	width: 100%;
+}
+.campaigns div {
+	background-color: #c2c2c2;
+	width: 100%;
+	height: 50vh;
+}
+@media (max-width: 868px) {
+	.campaigns {
+		grid-template-columns: 1fr 1fr;
+	}
+	.campaigns div {
+		height: 60vh;
+	}
+}
+@media (max-width: 768px) {
+	.campaigns {
+		margin: auto;
+		margin-top: 4vh;
+		grid-template-columns: 1fr;
+		grid-gap: 3vh;
+		width: 90%;
+	}
+	.campaigns div {
+		height: 75vh;
+	}
+}
