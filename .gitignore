@@ -1,8 +1,8 @@
 /node_modules
-/public/js
+public/js
 public/js/app.js
-public/js/app.css
-/public/css
+public/css/app.css
+public/css
 /public/hot
 /public/storage
 /storage/*.key
