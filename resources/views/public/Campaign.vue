@@ -3,12 +3,17 @@
     <div class="details-main">
       <div class="photo"></div>
       <div class="details-main-right">
-        <div class="owner"></div>
+        <div class="owner">
+          <div class="hidden-subject">Subject</div>
+          <div class="owner-name">owner</div>
+        </div>
         <div class="mining"></div>
       </div>
     </div>
+    <div class="hidden-donate">Donate</div>
     <div class="details-header">
-      <h2>This is a campaign! {{id}}</h2>
+      <span class="subject">This is a campaign! {{id}}</span>
+      <span class="social">social icons</span>
     </div>
     <div class="details-secondary">
       <Tabs></Tabs>
