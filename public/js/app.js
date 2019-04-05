@@ -2146,6 +2146,28 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: "Blogs"
 });
@@ -5135,11 +5157,58 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { attrs: { id: "container" } }, [
-    _vm._v("\n    This is a blogs page!\n")
-  ])
+  return _vm._m(0)
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { attrs: { id: "blog-container" } }, [
+      _c("div", { staticClass: "blog-first-row" }, [
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" })
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "blog-entire" }, [
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "blog" })
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 

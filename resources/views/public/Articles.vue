@@ -1,10 +1,32 @@
 <template>
-    <div id="container">
-        This is a blogs page!
+  <div id="blog-container">
+    <div class="blog-first-row">
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
     </div>
+    <div class="blog-entire">
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+      <div class="blog"></div>
+    </div>
+  </div>
 </template>
 <script>
 export default {
-    name: "Blogs"
-}
+  name: "Blogs"
+};
 </script>
