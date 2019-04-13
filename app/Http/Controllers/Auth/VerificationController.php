@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
 
 class VerificationController extends Controller
 {
@@ -21,12 +23,35 @@ class VerificationController extends Controller
     use VerifiesEmails;
 
     /**
-     * Where to redirect users after verification.
+     * Mark the authenticated user's email address as verified.
      *
-     * @var string
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected $redirectTo = '/home';
+    public function verify(Request $request)
+    {
+        $user = $request->user();
+        if ($request->route("id") === $user->getKey() && $user->markEmailAsVerified())
+            event(new Verified($user));
 
+        return self::responseData("Email verified");
+    }
+
+    /**
+     * Resend the email verification notification.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function resend(Request $request)
+    {
+        if ($request->user()->is_verified)
+            return response()->json('User already have verified email!', 422);
+
+        $request->user()->sendEmailVerificationNotification();
+
+        return self::responseData('The notification has been resubmitted');
+    }
     /**
      * Create a new controller instance.
      *

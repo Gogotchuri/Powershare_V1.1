@@ -1824,6 +1824,9 @@ __webpack_require__.r(__webpack_exports__);
       return this.$store.getters.currentUser;
     }
   },
+  mounted: function mounted() {
+    console.log(this.$route.query);
+  },
   methods: {
     logout: function logout() {
       var _this = this;
