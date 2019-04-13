@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Resources\Entity\UserResource;
 use App\Models\User;
 use App\Http\Controllers\Controller;
-use Illuminate\Cookie\CookieJar as Cookie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;

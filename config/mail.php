@@ -17,6 +17,7 @@ return [
     */
 
     'driver' => env('MAIL_DRIVER', 'smtp'),
+    "to_email" => env("TO_EMAIL", "powershare2018@gmail.com"),
 
     /*
     |--------------------------------------------------------------------------
