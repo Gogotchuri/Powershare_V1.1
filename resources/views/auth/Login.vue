@@ -57,7 +57,8 @@
         methods: {
             authenticate(){
                 this.$store.dispatch("login", this.credentials)
-                    .then(() => this.$router.push({name : this.$route.query.redirect || "Home"}));
+                    .then(() => this.$router.push({name : this.$route.query.redirect || "Home"}))
+                    .catch(error => console.error(error));
             },
 
         },

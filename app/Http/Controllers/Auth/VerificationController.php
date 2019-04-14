@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
+use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
@@ -27,12 +29,20 @@ class VerificationController extends Controller
      *
      * @param Request $request
      * @return \Illuminate\Http\JsonResponse
+     * @throws AuthorizationException
      */
     public function verify(Request $request)
     {
-        $user = $request->user();
-        if ($request->route("id") === $user->getKey() && $user->markEmailAsVerified())
+        $user = $request -> user();
+        if ($request->route('id') != $user->getKey()) {
+            throw new AuthorizationException;
+        }
+
+        if ($user->markEmailAsVerified()) {
             event(new Verified($user));
+            $user->email_verified_at = Carbon::now();
+            $user->save();
+        }
 
         return self::responseData("Email verified");
     }
