@@ -173,7 +173,7 @@ class HttpService {
             return Promise.resolve(value);
         }, (err) => {
             progressBar.fail();
-            console.log(err);
+            console.error(err);
             if(err.response.status === 401){
                 store.commit("logout");
                 router.push({name: "Login"});

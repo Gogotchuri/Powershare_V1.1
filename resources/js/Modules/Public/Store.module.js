@@ -47,6 +47,18 @@ const actions = {
                     reject("Error while fetching campaigns!");
                 })
         });
+    },
+
+    postLetter(context, data){
+        return new Promise((resolve, reject) => {
+            Http.POST('contact', data)
+                .then(value => {
+                    resolve(value)
+                })
+                .catch(reason => {
+                    reject(reason);
+                })
+        })
     }
 };
 

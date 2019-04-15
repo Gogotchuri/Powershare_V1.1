@@ -5,8 +5,8 @@ import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 import VueProgressBar from 'vue-progressbar';
 import Http from "@js/Common/Http.service";
-import App from '@views/App';
 import store from '@js/store';
+import App from '@views/App';
 import router from '@js/router';
 
 Vue.use(VueRouter);

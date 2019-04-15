@@ -21,19 +21,23 @@ Route::namespace("General")->middleware("throttle:60,1")->group(function (){
     Route::get("/privacy-policy", "FrontController@privacyPolicy");
 
     //Posts contact message to the server
-    Route::post('/contact', 'ContactController@store');
+    Route::post("/contact", "ContactController@store");
 
 });
 
 //Authentication Routes
-Route::middleware("throttle:10,1")->group(function (){
+Route::middleware("throttle:20,1")->namespace("Auth")->group(function (){
 	Route::post("/login", "AuthController@login");
 	Route::post("/register", "AuthController@register");
-    Route::post("/logout", "AuthController@logout")->middleware("auth:api");
+	Route::middleware("auth:api")->group(function (){
+        Route::post("email/verify/{id}", "VerificationController@verify")->name("verification.verify");
+        Route::post("email/resend", "VerificationController@resend")->name("verification.resend");
+        Route::post("/logout", "AuthController@logout");
+        Route::get("/user", "AuthController@details");
+    });
 });
 
 //User features
-Route::get("/user", "AuthController@details")->middleware(["auth:api", "throttle:60,1"]);
 Route::middleware("throttle:60,1")->middleware("auth:api")->namespace("User")->group(function (){
     Route::apiResource("/user/campaigns", "CampaignController");
     //Comment Crud group
