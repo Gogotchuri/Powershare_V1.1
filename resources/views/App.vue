@@ -48,18 +48,9 @@ export default {
       return this.$store.getters.currentUser;
     }
   },
-  mounted(){
-    console.log(this.$route.query);
-  },
   methods: {
     logout() {
-      this.$store.dispatch("logout")
-        .then(() => {
-          this.$router.push({ name: "Login" });
-        })
-        .catch(err => {
-          console.error(err);
-        });
+      this.$router.push({name: "Logout"});
     },
 
     changeWidth() {

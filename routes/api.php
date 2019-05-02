@@ -30,6 +30,7 @@ Route::middleware("throttle:20,1")->namespace("Auth")->group(function (){
 	Route::post("/login", "AuthController@login");
 	Route::post("/register", "AuthController@register");
 	Route::middleware("auth:api")->group(function (){
+	    Route::post("/user/is_admin", "AuthController@checkAdmin")->middleware("admin");
         Route::post("email/verify/{id}", "VerificationController@verify")->name("verification.verify");
         Route::post("email/resend", "VerificationController@resend")->name("verification.resend");
         Route::post("/logout", "AuthController@logout");
@@ -60,4 +61,5 @@ Route::middleware("throttle:60,1")->middleware("auth:api")->namespace("User")->g
 //Admin routes
 Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->group(function () {
     Route::get("/campaigns", "CampaignController@index");
+
 });

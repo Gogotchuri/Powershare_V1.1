@@ -1,6 +1,8 @@
 1) Create constant function name file with extension *.type.js
 2) make another component for displaying errors and display errors on registration page
 3) handle errors in components
+4) Fix redirection after logout! should't be doing that, also fix redirection before going to admin panel.
+5) Make new base route and clean setup for admin
 feature:
 1) after many request to login display password reset
 2) need to parse throttle report "message": "Too Many Attempts."
