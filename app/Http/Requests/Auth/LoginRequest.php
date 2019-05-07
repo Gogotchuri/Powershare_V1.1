@@ -24,7 +24,7 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            "password" => "unique:users|required|".config("validation.password"),
+            "password" => "required|".config("validation.password"),
             "email" => "required|".config("validation.email")
         ];
     }

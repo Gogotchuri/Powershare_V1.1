@@ -1,15 +1,17 @@
 <template>
-    <p>
-        This is an admin panel!
-    </p>
+    <div>
+        <admin-nav/>
+        <!-- Content of admin pages-->
+        <div>
+            <router-view/>
+        </div>
+    </div>
 </template>
 
 <script>
+    import AdminNav from "@/views/admin/partials/AdminNav";
     export default {
-        name: "Index"
+        name: "Index",
+        components: {AdminNav}
     }
 </script>
-
-<style scoped>
-
-</style>

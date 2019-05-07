@@ -30,14 +30,12 @@
 
         mounted(){
             const redirect = () => this.$router.push({name: "Home"});
-            setTimeout(redirect, 3000);
+            setTimeout(redirect, 5);
         },
         methods: {
             logout(){
                 this.$store.dispatch("logout")
-                    .then(() => {
-                        this.$router.push({ name: "Login" });
-                    })
+                    .then(() => window.alert("Logged out successfully!"))
                     .catch(err => {
                         this.errors = err;
                         console.error(err);

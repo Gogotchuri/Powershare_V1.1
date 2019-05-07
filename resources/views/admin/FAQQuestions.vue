@@ -1,12 +1,12 @@
 <template>
     <div>
-        Admin Dash!
+        FAQ!
     </div>
 </template>
 
 <script>
     export default {
-        name: "Dashboard"
+        name: "FAQQuestions"
     }
 </script>
 
