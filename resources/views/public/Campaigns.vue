@@ -5,26 +5,15 @@
       <div>Category</div>
       <div>Sorted by</div>
     </div>
+
     <div class="campaigns">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <campaign-thumbnail
+              v-for="campaign in campaigns"
+              :key="campaign.id"
+              :campaign="campaign"
+      />
     </div>
-    <template v-if="!campaigns || !campaigns.length">
-      <div>No Campaigns To see!</div>
-    </template>
-    <campaign-thumbnail
-      v-else
-      v-for="campaign in campaigns"
-      :key="campaign.id"
-      :campaign="campaign"
-    />
+
   </div>
 </template>
 

@@ -11,7 +11,7 @@
                 <!-- Authentication Links -->
                 <span class="closeNav" @click="changeWidth">&#10095;</span>
                 <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
-                <router-link :to="{ name: 'CampaignCreate' }" class="nav-link">Create Campaign</router-link>
+                <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link">Create Campaign</router-link>
                 <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
                 <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
                 <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>

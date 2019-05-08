@@ -7,7 +7,6 @@
           <div class="hidden-subject">Subject</div>
           <div class="owner-name">owner</div>
         </div>
-        <div class="mining"></div>
       </div>
     </div>
     <div class="hidden-donate">Donate</div>
