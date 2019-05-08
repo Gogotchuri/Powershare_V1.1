@@ -20,7 +20,6 @@
 <script>
 import campaignThumbnail from "@views/public/partials/CampaignThumbnail.vue";
 import store from "@js/store";
-import { app } from "@js/app";
 
 export default {
   name: "Campaigns",
