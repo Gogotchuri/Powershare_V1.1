@@ -1,16 +1,12 @@
 <template>
   <div>
     <vue-progress-bar/>
-    <div v-if="!isAdminPanel">
-      <main-nav/>
-      <!-- Content -->
-      <main>
-        <router-view/>
-      </main>
-    </div>
-    <div v-else>
-      <admin-nav class="sidebar"/>
-    </div>
+    <main-nav v-if="!isAdminPanel && !isUserManagement"/>
+    <!-- Content -->
+    <main>
+      <router-view/>
+    </main>
+
   </div>
 </template>
 
@@ -19,12 +15,17 @@
   import AdminNav from "@/views/admin/partials/AdminNav";
 
   import {checkAdmin} from "@/js/Helpers/auth";
+  import AdminIndex from "@views/admin/Index";
+  import UserIndex from "@/views/management/Index";
 
   export default {
-    components: {AdminNav, MainNav},
+    components: {UserIndex, AdminIndex, AdminNav, MainNav},
     computed:{
       isAdminPanel(){
-        return this.$route.meta.adminRequired;
+        return this.$route.matched.some(r => r.meta.adminRequired);
+      },
+      isUserManagement(){
+        return this.$route.matched.some(r => r.meta.userManagement);
       }
     },
     mounted() {

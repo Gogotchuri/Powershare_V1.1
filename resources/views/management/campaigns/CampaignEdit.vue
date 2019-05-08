@@ -9,7 +9,3 @@
         name: "CampaignEdit"
     }
 </script>
-
-<style scoped>
-
-</style>

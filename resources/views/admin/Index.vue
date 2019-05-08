@@ -11,7 +11,7 @@
 <script>
     import AdminNav from "@/views/admin/partials/AdminNav";
     export default {
-        name: "Index",
+        name: "AdminIndex",
         components: {AdminNav}
     }
 </script>

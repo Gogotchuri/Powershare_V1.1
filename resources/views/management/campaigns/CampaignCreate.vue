@@ -9,7 +9,3 @@
         name: "CampaignCreate"
     }
 </script>
-
-<style scoped>
-
-</style>

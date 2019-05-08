@@ -16,7 +16,7 @@
                 <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
                 <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
                 <router-link
-                        :to="{ name: 'Profile' }"
+                        :to="{ name: 'User.Profile' }"
                         class="nav-link"
                         v-if="currentUser"
                 >Profile of {{currentUser.name}}</router-link>
