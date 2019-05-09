@@ -108,7 +108,7 @@ class HttpService {
             baggage = {"_method": "DELETE"};
 
         return new Promise((resolve, reject) => {
-            this._axios.post(uri, baggage)
+            this._axios.delete(uri, baggage)
                 .then(value => {
                     resolve(value);
                 })
