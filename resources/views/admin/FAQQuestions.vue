@@ -1,12 +1,12 @@
 <template>
     <div>
-        Campaign Edit form
+        FAQ!
     </div>
 </template>
 
 <script>
     export default {
-        name: "CampaignEdit"
+        name: "FAQQuestions"
     }
 </script>
 

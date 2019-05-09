@@ -1,18 +1,21 @@
 import VueRouter from "vue-router";
 import store from "@js/store";
+import {checkAdmin} from "@js/Helpers/auth";
 
 //Module routes
 import PublicRoutes from "@js/Modules/Public/Routes.module";
 import AuthRoutes from "@js/Modules/Auth/Routes.module";
 import ManagementRoutes from "@js/Modules/Management/Routes.module";
+import AdminRoutes from "@js/Modules/Admin/Routes.module";
 
-/**
+    /**
  * Concatenating routes from different modules
  */
 let routes = []
     .concat(PublicRoutes)
     .concat(AuthRoutes)
-    .concat(ManagementRoutes);
+    .concat(ManagementRoutes)
+        .concat(AdminRoutes);
 
 //Creating and exporting Vue router instance
 export const router = new VueRouter({
@@ -23,17 +26,33 @@ export const router = new VueRouter({
 /**
  * Getting auth required property and redirecting user properly
  */
-router.beforeEach((to, from, next) => {
+router.beforeEach(async (to, from, next) => {
     const authRequired = to.matched.some(record => record.meta.authRequired);
+    const adminRequired = to.matched.some(record => record.meta.adminRequired);
     const user = store.getters.currentUser;
+    let isAdmin = !!user && user.role_id == 1;
 
-    if(authRequired && !user){
+    if(adminRequired){
+        if(!isAdmin){
+            console.error("Admin Required! Not an admin!");
+            if(!!user)
+                next("/");
+            else
+                router.push({name: "Login", query: {redirect: to.name}});
+        }else{
+            next();
+        }
+        return;
+    }
+
+
+     if (authRequired && !user) {
         //Using Get request query param to redirect after
         // Redirection to login cause of unauthorized request
-        router.push({name : "Login", query : {redirect : to.name}});
-    }else if((to.path === "/login" || to.path === "/register")&& !!user){
+        router.push({name: "Login", query: {redirect: to.name}});
+    } else if ((to.path === "/login" || to.path === "/register") && !!user) {
         next("/");
-    }else{
+    } else {
         next();
     }
 

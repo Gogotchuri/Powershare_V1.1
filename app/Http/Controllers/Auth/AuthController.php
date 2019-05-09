@@ -97,4 +97,10 @@ class AuthController extends Controller
         return self::responseData(new UserResource(auth()->user()));
     }
 
+    public function checkAdmin(){
+        if(auth()->user()->is_admin)
+            return self::responseData("User is an admin! let him through!");
+        return self::responseErrors("User isn't an admin", 401);
+    }
+
 }

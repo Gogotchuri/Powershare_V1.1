@@ -19,5 +19,4 @@ export const app = new Vue({
 	components: { App },
 	router
 });
-
 Http.initializeInterceptors(store, router, app.$Progress);

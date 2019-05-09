@@ -24,7 +24,7 @@ class RegisterRequest extends FormRequest
     public function rules()
     {
         return [
-            "email" => "required|".config("validation.email"),
+            "email" => "unique:users|required|".config("validation.email"),
             "name" => "required|".config("validation.name"),
             "password" => "required|".config("validation.password")
         ];
