@@ -1,5 +1,5 @@
 <template>
-    <div class="col-xs-12 col-sm-6 col-md-4 campaign-holder">
+    <div>
         <p>{{campaign.name}}</p>                                                                     
 		<router-link class ="explore-card" :to="`/campaigns/${campaign.id}`">
             <!-- <img class="photo" :src="campaign.featured_image_thumbnail_url"> -->

@@ -67,7 +67,10 @@
             //Handle validation, Please!
             register(){
                 this.$store.dispatch("register", this.form)
-                .then( () => this.$router.push({name: "Home"}));
+                .then( () => {
+                    window.alert("Registered successfully! Please Sign in and confirm email.")
+                    this.$router.push({name: "Login"})
+                });
             },
         },
         computed: {

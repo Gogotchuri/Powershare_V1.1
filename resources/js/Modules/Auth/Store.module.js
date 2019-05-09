@@ -5,7 +5,6 @@
 
 import {destroyUser, getUser, storeUser} from "@js/Common/Jwt.service";
 import Http from "@js/Common/Http.service";
-
 /**
  * State for auth module
  */
@@ -100,12 +99,9 @@ const actions = {
     register(context, data) {
         return new Promise((resolve, reject) => {
             Http.POST("register", data)
-                .then(value => {
-                    let user = value.data;
-                    context.commit("login", user, null);
-                    resolve();
-                })
+                .then(() => resolve())
                 .catch(reason => {
+                    //just displays errors
                     context.commit("login", null, reason);
                     reject();
                 })

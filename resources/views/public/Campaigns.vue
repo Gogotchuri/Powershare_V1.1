@@ -5,33 +5,21 @@
       <div>Category</div>
       <div>Sorted by</div>
     </div>
+
     <div class="campaigns">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+      <campaign-thumbnail
+              v-for="campaign in campaigns"
+              :key="campaign.id"
+              :campaign="campaign"
+      />
     </div>
-    <template v-if="!campaigns || !campaigns.length">
-      <div>No Campaigns To see!</div>
-    </template>
-    <campaign-thumbnail
-      v-else
-      v-for="campaign in campaigns"
-      :key="campaign.id"
-      :campaign="campaign"
-    />
+
   </div>
 </template>
 
 <script>
 import campaignThumbnail from "@views/public/partials/CampaignThumbnail.vue";
 import store from "@js/store";
-import { app } from "@js/app";
 
 export default {
   name: "Campaigns",

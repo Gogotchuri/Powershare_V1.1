@@ -34,9 +34,49 @@ const mutations = {
  */
 const actions = {
 
+    fetchArticle(context, id){
+        let uri = "articles/".concat(id);
+        return new Promise((resolve, reject) => {
+            Http.GET(uri)
+                .then(res => {
+                    console.log(res);
+                    resolve(res.data.data);
+                }).catch(reason => {
+                    console.error("Error during article fetch".concat(reason));
+                    reject(reason);
+            })
+        })
+    },
+
+    fetchArticles(context){
+        let uri = "articles";
+        return new Promise((resolve, reject) => {
+            Http.GET(uri)
+                .then(res => {
+                    console.log(res);
+                    resolve(res.data.data);
+                }).catch(reason => {
+                    console.error("Error during articles fetch".concat(reason));
+                    reject(reason);
+            })
+        })
+    },
+
+    fetchCampaign(context, id){
+        let uri = "campaigns/".concat(id);
+        return new Promise((resolve, reject) => {
+          Http.GET(uri)
+              .then(res => {
+                  resolve(res.data.data);
+              }).catch(reason => {
+                  console.error("Error during campaign fetch".concat(reason));
+                  reject(reason);
+              })
+        })
+    },
     fetchCampaigns(context){
         return new Promise((resolve, reject) => {
-            Http.GET('campaigns')
+            Http.GET("campaigns")
                 .then(response => {
                     let campaigns = response.data.data;
                     context.commit("setCampaigns", campaigns);
