@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Lang;
@@ -10,7 +11,7 @@ use Illuminate\Auth\Notifications\VerifyEmail as VerifyEmailBase;
 
 class VerifyEmail extends VerifyEmailBase
 {
-//    use Queueable;
+    use Queueable;
 
     /**
      * Build the mail representation of the notification.

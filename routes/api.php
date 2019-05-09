@@ -32,10 +32,14 @@ Route::namespace("General")->middleware("throttle:120,1")->group(function (){
 Route::middleware("throttle:20,1")->namespace("Auth")->group(function (){
 	Route::post("/login", "AuthController@login");
 	Route::post("/register", "AuthController@register");
+    Route::post("/send-password-reset", "ForgotPasswordController@sendResetEmail");
+    Route::post("/reset-password", "ResetPasswordController@callReset");
+
+    //TODO give prefix to this group "/user" and correct those in vue store
 	Route::middleware("auth:api")->group(function (){
 	    Route::post("/user/is_admin", "AuthController@checkAdmin")->middleware("admin");
-        Route::post("email/verify/{id}", "VerificationController@verify")->name("verification.verify");
-        Route::post("email/resend", "VerificationController@resend")->name("verification.resend");
+        Route::post("/email/verify/{id}", "VerificationController@verify")->name("verification.verify");
+        Route::post("/email/resend", "VerificationController@resend")->name("verification.resend");
         Route::post("/logout", "AuthController@logout");
         Route::get("/user", "AuthController@details");
     });
