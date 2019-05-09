@@ -3,8 +3,11 @@
 use Illuminate\Http\Request;
 
 //Public pages
-Route::namespace("General")->middleware("throttle:60,1")->group(function (){
+Route::namespace("General")->middleware("throttle:120,1")->group(function (){
     Route::get("/home", "FrontController@home");
+
+    Route::get("/campaign-categories", "CampaignController@getCategories");
+
     Route::prefix("/campaigns")->group(function () {
         Route::get("", "CampaignController@index");
         Route::get("/{id}", "CampaignController@show");
@@ -60,4 +63,5 @@ Route::middleware("throttle:60,1")->middleware("auth:api")->namespace("User")->g
 //Admin routes
 Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->group(function () {
     Route::get("/campaigns", "CampaignController@index");
+    Route::resource("/campaign-categories", "CampaignCategoryController");
 });

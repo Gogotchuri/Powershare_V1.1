@@ -21,7 +21,9 @@ class TeamMember extends Model
     public function getThumbnailUrlAttribute() {
         return $this->image->thumbnail_url;
     }
-    
-    /**optionally can be implemented function, to add team members as powershare users */
 
+    /**optionally can be implemented function, to add team members as powershare users */
+    public function realUser(){
+        return optional($this->belongsTo(User::class));
+    }
 }

@@ -14,4 +14,9 @@ class CampaignCategory extends Category
         self::INOVATION => "Inovation",
         self::OTHER => "Other"
     ];
+
+    public static function getNumCategories()
+    {
+        return CampaignCategory::all()->count();
+    }
 }

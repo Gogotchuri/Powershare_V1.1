@@ -40,18 +40,11 @@ class Campaign extends Model
         });
     }
 
-    public static function createPath()
-    {
-        return Auth::user() && Auth::user()->role_id === 1
-            ? route("admin.campaigns.create")
-            : route("user.campaigns.create");
-    }
-
     public static function baseRules()
     {
         return [
             "name" => ["required", "string", "max:30"],
-            "category_id" => ["required", "integer", "min:1", "max:".CampaignCategory::numCategories()],
+            "category_id" => ["required", "integer", "min:1", "max:".CampaignCategory::getNumCategories()],
             "details" => ["required", "string", "min:10", "max:3000"],
         ];
     }
@@ -112,7 +105,7 @@ class Campaign extends Model
 
     public function location(){
         
-        return $this->hasOne(Location);
+        return $this->hasOne(Location::class);
     }
 
     public function getIsApprovedAttribute()
@@ -140,17 +133,6 @@ class Campaign extends Model
         return CampaignStatus::nameFromId($this->status_id);
     }
 
-    public function getYoutubeIdAttribute()
-    {
-        if (!$this->video_url) {
-            return null;
-        }
-
-        $parts = parse_url($this->video_url);
-        parse_str($parts["query"], $query);
-
-        return Arr::get($query, "v");
-    }
 
     public function getFeaturedImageAttribute()
     {
@@ -184,7 +166,7 @@ class Campaign extends Model
 
     public function getExcerptAttribute()
     {
-        return str_limit($this->details, 13);
+        return substr($this->details, 0, 100);
     }
 
     public function getAuthorNameAttribute()

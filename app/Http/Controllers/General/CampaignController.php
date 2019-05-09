@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Campaign;
 use App\Models\References\CampaignCategory;
 use App\Models\References\CampaignStatus;
+use App\Models\References\Category;
 use Illuminate\Http\Request;
 use App\Http\Resources\Entity\CampaignResource;
 use App\Http\Resources\Collection\CampaignsResource;
@@ -38,9 +39,6 @@ class CampaignController extends Controller
         else
             $campaigns = $query->paginate($pagination);
 
-        //Might need for later filters
-        $categories = CampaignCategory::all();
-
         return CampaignsResource::collection($campaigns);
     }
 
@@ -49,5 +47,11 @@ class CampaignController extends Controller
         $campaign = Campaign::where("status_id", CampaignStatus::APPROVED)->where("id", $id)->first();
         if($campaign == null) return self::responseErrors("Campaign not found",404);
         return self::responseData(new CampaignResource($campaign));
+    }
+
+    public function getCategories()
+    {
+        $categories = CampaignCategory::all();
+        return self::responseData($categories);
     }
 }
