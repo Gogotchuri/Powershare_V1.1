@@ -20,41 +20,58 @@
 <script>
 import campaignThumbnail from "@views/public/partials/CampaignThumbnail.vue";
 import store from "@js/store";
+import HTTP from "@js/Common/Http.service";
 
 export default {
   name: "Campaigns",
   components: {
     campaignThumbnail
   },
-
+  data(){
+    return{
+      categories: []
+    }
+  },
   /*
-   * Components fetches campaign and gives a progress indicator
-   * once campaigns are fetched progress is fulfilled
-   */
+   * Components fetches campaigns and Categories
+   *  Categories are being saved locally.
+   *  before fetching campaigns it checks if we have previously fetched ones
+   *  and uses those before refetch for snappy experience.
+   *  */
   beforeRouteEnter(to, from, next) {
     let campaigns = store.getters.campaigns;
     let campaignsExist = campaigns !== null && campaigns.length !== 0;
+    //Fetching promises
+    let categoryFetch = HTTP.GET("/campaign-categories");
+    let campaignFetch = store.dispatch("fetchCampaigns");
 
+    //if we already have fetched them previously let's load page with those and fetch during process
     if (!campaignsExist) {
-      store
-        .dispatch("fetchCampaigns")
-        .then(() => {
-          next();
-        })
-        .catch(reason => {
-          console.error(reason);
-          next();
-        });
+      Promise.all([categoryFetch, campaignFetch]).then(value => {
+        let categories = value[0].data.data;
+        next(vm => vm.setCategories(categories));
+      }).catch(err => console.error(err));
     } else {
-      store
-        .dispatch("fetchCampaigns")
-        .catch(err => console.error("Error while fetching campaigns: " + err));
-      next();
+      campaignFetch.catch(err => console.error("Error while fetching campaigns: " + err));
+      categoryFetch.then(value => {
+        let categories = value.data.data;
+        next(vm => vm.setCategories(categories))
+      }).catch(reason => {
+        console.error(reason);
+        next();
+      })
     }
   },
   computed: {
     campaigns() {
       return this.$store.getters.campaigns;
+    },
+  },
+
+  methods:{
+    setCategories(categories){
+      console.log(categories);
+      this.categories = categories;
     }
   }
 };
