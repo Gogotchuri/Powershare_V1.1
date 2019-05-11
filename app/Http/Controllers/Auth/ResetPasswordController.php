@@ -7,6 +7,7 @@ use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
@@ -22,7 +23,6 @@ class ResetPasswordController extends Controller
     */
 
     use ResetsPasswords;
-    use SendsPasswordResetEmails;
 
     /**
      * Create a new controller instance.
@@ -32,24 +32,6 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
-    }
-
-    //Sending part!
-    public function sendResetEmail(Request $request)
-    {
-        $this->sendResetLinkEmail($request);
-    }
-
-
-    protected function sendResetLinkResponse(Request $request, $response)
-    {
-        return self::responseData("Reset email has been sent successfully");
-    }
-
-    protected function sendResetLinkFailedResponse(Request $request, $response)
-    {
-        return self::responseErrors("Can't send password reset link to this email!", 400);
-
     }
 
     //Reset part

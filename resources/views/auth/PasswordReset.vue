@@ -23,7 +23,7 @@
                     </div>
                 </div>
 
-                <div v-if="success">
+                <div v-else-if="success">
                     Password Has been updated, you can login now.
                 </div>
 
@@ -34,9 +34,19 @@
         </div>
     </div>
 </template>
+
 <script>
+    import store from "@js/store";
+    import router from "@js/router";
     export default {
         name: "PasswordReset",
+        beforeRouteEnter(to,from,next){
+            if(store.getters.isAuthenticated){
+                router.push({name: "Logout"});
+                setTimeout(next,1500);
+            }
+            next();
+        },
         data() {
             return {
                 token: null,

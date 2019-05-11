@@ -34,7 +34,7 @@ class ForgotPasswordController extends Controller
 
     public function sendResetEmail(Request $request)
     {
-        $this->sendResetLinkEmail($request);
+        return $this->sendResetLinkEmail($request);
     }
 
 

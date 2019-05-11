@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class PasswordResetEmail extends ResetPassword implements ShouldQueue
+class PasswordResetEmail extends ResetPassword
 {
     use Queueable;
 
