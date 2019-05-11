@@ -33,7 +33,7 @@ class CampaignCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), ["name" => ["min:3", "max:20"]]);
+        $validator = Validator::make($request->all(), ["name" => ["required", "min:3", "max:20"]]);
         if($validator->fails())
             return self::responseErrors($validator->errors(), 422);
         $category = new CampaignCategory();
@@ -66,7 +66,7 @@ class CampaignCategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validator = Validator::make($request->all(), ["name" => ["min:3", "max:20"]]);
+        $validator = Validator::make($request->all(), ["name" => ["required", "min:3", "max:20"]]);
         if($validator->fails() || $request["name"] == null)
             return self::responseErrors($validator->errors(), 422);
         $category =  CampaignCategory::where("id", $id)->first();

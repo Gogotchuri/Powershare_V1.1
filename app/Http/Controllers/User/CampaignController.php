@@ -89,12 +89,19 @@ class CampaignController extends Controller
         if($campaign == null)
             return self::responseErrors("Campaign with id ".$id." not found or doesn't belong to you", 404);
 
-        $campaign->name = $request["name"];
-        $campaign->required_funding = $request["required_funding"];
-        $campaign->category_id = $request["category_id"];
-        $campaign->details = $request["details"];
-        $campaign->video_url = $request["video_url"];
-        $campaign->ethereum_address = $request["ethereum_address"];
+
+        if($request["name"] != null)
+            $campaign->name = $request["name"];
+        if($request["required_funding"] != null)
+            $campaign->required_funding = $request["required_funding"];
+        if($request["category_id"] !== null)
+            $campaign->category_id = $request["category_id"];
+        if($request["details"] != null)
+            $campaign->details = $request["details"];
+        if($request["video_url"] != null)
+            $campaign->video_url = $request["video_url"];
+        if($request["ethereum_address"] != null)
+            $campaign->ethereum_address = $request["ethereum_address"];
         //Avoiding injections of status, campaign can only be published by admin
         if($request["status_id"] && $request["status_id"] != CampaignStatus::APPROVED)
             $campaign->status_id = $request["status_id"];
