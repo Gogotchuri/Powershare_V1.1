@@ -24,6 +24,7 @@ class CampaignResource extends JsonResource
             "featured_image_url" => $this->featured_image_url,
             "featured_image_thumbnail_url" => $this->featured_image_thumbnail_url,
             "category_name" => $this->category_name,
+            "category_id" => $this->category_id,
             "required_funding" => $this->required_funding,
             "realized_funding" => $this->realized_funding,
             "date" => $this->created_at,

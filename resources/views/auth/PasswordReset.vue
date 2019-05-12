@@ -43,7 +43,7 @@
         beforeRouteEnter(to,from,next){
             if(store.getters.isAuthenticated){
                 router.push({name: "Logout"});
-                setTimeout(next,1500);
+                next();
             }
             next();
         },

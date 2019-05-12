@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Http\Requests\CampaignCreateRequest;
+use App\Http\Requests\CampaignUpdateRequest;
 use App\Http\Resources\Collection\CampaignsResource;
 use App\Http\Resources\Entity\CampaignResource;
 use App\Models\Campaign;
@@ -9,7 +11,6 @@ use App\Models\References\CampaignStatus;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
 
 class CampaignController extends Controller
 {
@@ -38,12 +39,8 @@ class CampaignController extends Controller
      *  must contain fields: name, category_id, details
      * @return \Illuminate\Http\JsonResponse
      */
-    public function store(Request $request)
+    public function store(CampaignCreateRequest $request)
     {
-        $validator = Validator::make($request->all(), Campaign::baseRules());
-        if ($validator->fails())
-            return self::responseErrors($validator->errors(), 422);
-
         $campaign = new Campaign();
         $campaign->status_id = CampaignStatus::DRAFT;
         $campaign->name = $request["name"];
@@ -71,40 +68,28 @@ class CampaignController extends Controller
     }
 
     /**
-     * Update existing campaign in storage.
+     * Update existing campaign in storage. Request should have old stats too
      * HTTP Method: PUT (Need to attach property _method => PUT)
      * @param Request $request
      * @param  int $id
      * @return \Illuminate\Http\JsonResponse
      */
-    public function update(Request $request, $id)
+    public function update(CampaignUpdateRequest $request, $id)
     {
-        $validator = Validator::make($request->all(), Campaign::updateRules());
-        if ($validator->fails())
-            return self::responseErrors($validator->errors(), 422);
-
         $campaign = Auth::user()->campaigns
             ->whereIn("status_id", [CampaignStatus::DRAFT, CampaignStatus::PROPOSAL])->firstWhere("id", $id);
 
         if($campaign == null)
             return self::responseErrors("Campaign with id ".$id." not found or doesn't belong to you", 404);
 
-
-        if($request["name"] != null)
-            $campaign->name = $request["name"];
-        if($request["required_funding"] != null)
-            $campaign->required_funding = $request["required_funding"];
-        if($request["category_id"] !== null)
-            $campaign->category_id = $request["category_id"];
-        if($request["details"] != null)
-            $campaign->details = $request["details"];
-        if($request["video_url"] != null)
-            $campaign->video_url = $request["video_url"];
-        if($request["ethereum_address"] != null)
-            $campaign->ethereum_address = $request["ethereum_address"];
+        $campaign->name = $request["name"];
+        $campaign->required_funding = $request["required_funding"];
+        $campaign->category_id = $request["category_id"];
+        $campaign->details = $request["details"];
+        $campaign->video_url = $request["video_url"];
+        $campaign->ethereum_address = $request["ethereum_address"];
         //Avoiding injections of status, campaign can only be published by admin
-        if($request["status_id"] && $request["status_id"] != CampaignStatus::APPROVED)
-            $campaign->status_id = $request["status_id"];
+        $campaign->status_id = $request["status_id"];
         $campaign->save();
 
         return self::responseData(new CampaignResource($campaign));

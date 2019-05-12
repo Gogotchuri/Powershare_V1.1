@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Collection;
+namespace App\Http\Resources\Entity\Admin;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class CampaignsResource extends JsonResource
+class CampaignResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -14,6 +14,8 @@ class CampaignsResource extends JsonResource
      */
     public function toArray($request)
     {
+        $comments = $this->public_comments;
+        $comments = ($comments->count() == 0) ? null : $comments;
         return [
             "id" => $this->id,
             "name" => $this->name,
@@ -23,12 +25,14 @@ class CampaignsResource extends JsonResource
             "featured_image_thumbnail_url" => $this->featured_image_thumbnail_url,
             "category_name" => $this->category_name,
             "category_id" => $this->category_id,
+            "status_id" => $this->status_id,
             "required_funding" => $this->required_funding,
             "realized_funding" => $this->realized_funding,
             "date" => $this->created_at,
             "video_url" => $this->video_url,
             "ethereum_address" => $this->ethereum_address,
             "details" => $this->details,
+            "comments" => $comments
         ];
     }
 }
