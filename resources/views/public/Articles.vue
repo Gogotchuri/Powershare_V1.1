@@ -1,27 +1,23 @@
 <template>
   <div v-if="!!articles" id="blog-container">
     <div class="blog-first-row">
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
+      <div class="blog">
+        <!-- for loopi unda iyos mxolod 4 unda daweros -->
+        <BlogThumbnail
+          v-for="blog in Articles"
+          :key="blog.id"
+          :blog="blog"
+        >
+      </div>
     </div>
     <div class="blog-entire">
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
-      <div class="blog"></div>
+      <div class="blog">
+        <blogThumbnail
+          v-for="blog in Articles"
+          :key="blog.id"
+          :blog="blog"
+        >
+      </div>
     </div>
   </div>
   <div v-else> No Article to display</div>
@@ -29,13 +25,16 @@
 
 
 <script>
+  import BlogThumbnail from "@views/public/partials/BlogThumbnail.vue";
   import store from "@js/store";
   export default {
     name: "Articles",
+    computed: {
+      BlogThumbnail
+    },
     data(){
       return{
-        articles: null //tu ginda aq miawere array ([]) statiebis rac ginda da prosta renderistvis gamoiene
-        //an zevit martivi for ciklit gadauyevi da ise gaakete thumbnail-ebze rogorc campaignsshia
+        articles: []
       }
     },
 
