@@ -3,10 +3,11 @@
     <vue-progress-bar/>
     <main-nav v-if="!isAdminPanel && !isUserManagement"/>
     <!-- Content -->
-    <main>
-      <router-view/>
-    </main>
-
+    <div class="main-container">
+      <main>
+        <router-view/>
+      </main>
+    </div>
   </div>
 </template>
 
