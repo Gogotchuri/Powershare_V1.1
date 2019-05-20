@@ -106,6 +106,31 @@ us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So 
         <p class="comment-content">Great campaign, keep it up. I will donate for sure</p>
       </div>
     </div>
+    <div class="donate-section">
+      <div>
+        <span class="donate-share-save">
+          <p class="donate-header">
+            Let's protect our friends
+          </p>
+          <a href="#">
+          <!-- change with svg -->
+            <img src="/img/share-2.svg" alt="">
+                  Share
+          </a>
+          <a href="#">
+          <!-- change with svg -->
+            <img src="/img/heart.svg" alt="">
+                Save
+          </a>
+        </span>
+        <a href="#" class="donate-button">
+          Donate for free
+        </a>
+      </div> 
+    </div>
+    <div class="donate-underspace">
+    </div>
+
     <!-- <div class="details-main">
       <div class="photo"></div>
       <div class="details-main-right">
