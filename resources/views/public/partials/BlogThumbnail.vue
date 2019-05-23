@@ -2,8 +2,8 @@
     
 </template>
 <script>
-export default {
-    name:"BlogThumbnail",
-    props: ["blog"],
-}
+    export default {
+        name:"BlogThumbnail",
+        props: ["blog"],
+    };
 </script>

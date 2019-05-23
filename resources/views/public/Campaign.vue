@@ -44,8 +44,8 @@
         <div class="fillable-bar">
           <div class="filled-bar"></div>
         </div>
-        <span>150.0$ </br> Funded</span>
-        <span>450.0$ </br> needed</span>
+        <span>150.0$ <br> Funded</span>
+        <span>450.0$ <br> needed</span>
       </div>
       <div class="about hided-on-ms">
         <p class="about-header">About the campaign</p>
@@ -55,8 +55,8 @@ us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So 
       <div class="gallery hided-on-ms">
         <p class="gallery-header">Gallery</p>
         <div class="gallery-content">
-          <div></div>
-          <div></div>
+          <div style="background-image: url(https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80);"></div>
+          <div style="background-image: url(https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);"></div>
           <div></div>
           <div></div>
           <div></div>
@@ -85,8 +85,8 @@ us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So 
     <div class="gallery hided-on-l">
         <p class="gallery-header">Gallery</p>
         <div class="gallery-content">
-          <div></div>
-          <div></div>
+          <div style="background-image: url(https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80)"></div>
+          <div style="background-image: url(https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"></div>
           <div></div>
           <div></div>
           <div></div>
@@ -155,34 +155,30 @@ us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So 
 </template>
 
 <script>
-import Tabs from "./partials/Tab";
-import store from "@js/store";
+  import store from "@js/store";
 
-export default {
-  components: {
-    Tabs
-  },
-  data() {
-    return {
-      campaign: null
-    };
-  },
-  beforeRouteEnter(to, from, next) {
-    store.dispatch("fetchCampaign", to.params.id)
-            .then((campaign) => {
-              console.log(campaign);
-              next(vm => vm.setCampaign(campaign));
-            }).catch(() => next());
-  },
-  computed: {
-    id() {
-      return this.$route.params.id;
+  export default {
+    data() {
+      return {
+        campaign: null
+      };
+    },
+    beforeRouteEnter(to, from, next) {
+      store.dispatch("fetchCampaign", to.params.id)
+              .then((campaign) => {
+                console.log(campaign);
+                next(vm => vm.setCampaign(campaign));
+              }).catch(() => next());
+    },
+    computed: {
+      id() {
+        return this.$route.params.id;
+      }
+    },
+    methods:{
+      setCampaign(campaign){
+        this.campaign = campaign;
+      }
     }
-  },
-  methods:{
-    setCampaign(campaign){
-      this.campaign = campaign;
-    }
-  }
-};
+  };
 </script>

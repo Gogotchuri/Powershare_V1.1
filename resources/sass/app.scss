@@ -379,7 +379,7 @@ main > div > div.gallery-mini{
 }
 main > div > div.gallery-mini > div.static-gallery{
 	width: 387px;
-	max-width: 387px;
+	max-width: 340px;
 	height: 442px;
 	background-image: url(https://images.unsplash.com/photo-1553531384-411a247ccd73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80);//change after test
 	background-position: center;
@@ -387,7 +387,7 @@ main > div > div.gallery-mini > div.static-gallery{
 }
 main > div > div.gallery-mini > div.static-gallery > div.gallerym-overlay{
 	width: 387px;
-	max-width: 387px;
+	max-width: 340px;
 	height: 442px;
   	opacity: 0.6;
   	background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0), #545454);
@@ -740,10 +740,12 @@ p.donate-header{
 	main > div > div.gallery-mini > div.static-gallery{
 		position: fixed;
 		width: 387px;
+		max-width: 387px;
 		height: 540px;
 	}
 	main > div > div.gallery-mini > div.static-gallery > div.gallerym-overlay{
 		width: 387px;
+		max-width: 387px;
 		height: 540px;
 	}
 	main > div > div > div.about-mini{
@@ -805,4 +807,8 @@ p.donate-header{
 		right: 12px;
 	}
 }
-// end of campaign page
+//	end of campaign page
+
+//	start of blog page
+
+//	end of blog page
