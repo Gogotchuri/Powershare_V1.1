@@ -1,7 +1,7 @@
 <template>
   <div v-if="campaign != null">
     <div class="gallery-mini">
-      <div class="static-gallery">    
+      <div class="static-gallery">
         <div class="gallerym-overlay">
 
         </div>
@@ -11,8 +11,8 @@
       <div class="about-mini">
         <div class="header">
           <div>
-            <p class="header-text">Let's protect our friends</p>
-            <p class="header-date">5/16/2016</p>
+            <p class="header-text">{{campaign.name}}</p>
+            <p class="header-date">{{campaign.date}}</p>
           </div>
           <p class="header-dleft">30 days left</p>
         </div>
@@ -20,7 +20,7 @@
           <div class="owner-icon">
           </div>
           <div class="owner-name">
-            <p>Qeti Pagava</p>
+            <p>{{campaign.author_name}}</p>
             <span class="sharesaveHidden">
               <a href="#">
                 <!-- change with svg -->
@@ -44,17 +44,17 @@
         <div class="fillable-bar">
           <div class="filled-bar"></div>
         </div>
-        <span>150.0$ </br> Funded</span>
-        <span>450.0$ </br> needed</span>
+        <span>{{campaign.realized_funding}}$<br> Funded</span>
+        <span>{{campaign.required_funding}}$<br> needed</span>
       </div>
       <div class="about hided-on-ms">
         <p class="about-header">About the campaign</p>
-        <p class="about-content"> We're From Georgia, people who care about homeless dogs. Tianeti is from Tbilisi about 50-60 km and the whole road you're driving in the forest. There is no food or water, no humans, villages or something for dogs. They live there in hunger and cold. Snow is melting in April, and normal temperature is day - +5, night - -10, so they need food for survival. My friend and I are walking twice a week, we bring food and water. This is too expensive for
-us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So if you're interested in this case watch our videos and support us in helping the helpless   </p>
+        <p class="about-content"> {{campaign.details}}</p>
       </div>
       <div class="gallery hided-on-ms">
         <p class="gallery-header">Gallery</p>
         <div class="gallery-content">
+            <!-- ??? -->
           <div></div>
           <div></div>
           <div></div>
@@ -65,23 +65,18 @@ us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So 
       </div>
       <div class="comments hided-on-ms">
         <p class="comments-header">Comments</p>
-        <div class="comment">
+        <div class="comment" v-for="comment in campaign.comments" v-bind:key="comment.id">
           <div class="icon"></div>
-          <p class="comment-name">Tekla Obolashvili</p>
-          <p class="comment-content">Great campaign, keep it up. I will donate for sure</p>
-        </div>
-        <div class="comment">
-          <div class="icon"></div>
-          <p class="comment-name">Tekla Obolashvili</p>
-          <p class="comment-content">Great campaign, keep it up. I will donate for sure</p>
+          <p class="comment-name">{{comment.author_name}}</p>
+          <p class="comment-content">{{comment.body}}</p>
         </div>
       </div>
     </div>
     <div class="about hided-on-l">
         <p class="about-header">About the campaign</p>
-        <p class="about-content"> We're From Georgia, people who care about homeless dogs. Tianeti is from Tbilisi about 50-60 km and the whole road you're driving in the forest. There is no food or water, no humans, villages or something for dogs. They live there in hunger and cold. Snow is melting in April, and normal temperature is day - +5, night - -10, so they need food for survival. My friend and I are walking twice a week, we bring food and water. This is too expensive for
-us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So if you're interested in this case watch our videos and support us in helping the helpless   </p>
-    </div>
+        <p class="about-content"> {{campaign.details}}
+        </p>
+        </div>
     <div class="gallery hided-on-l">
         <p class="gallery-header">Gallery</p>
         <div class="gallery-content">
@@ -95,22 +90,17 @@ us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So 
     </div>
     <div class="comments hided-on-l">
       <p class="comments-header">Comments</p>
-      <div class="comment">
-        <div class="icon"></div>
-        <p class="comment-name">Tekla Obolashvili</p>
-        <p class="comment-content">Great campaign, keep it up. I will donate for sure</p>
-      </div>
-      <div class="comment">
-        <div class="icon"></div>
-        <p class="comment-name">Tekla Obolashvili</p>
-        <p class="comment-content">Great campaign, keep it up. I will donate for sure</p>
-      </div>
+        <div class="comment" v-for="comment in campaign.comments" v-bind:key="comment.id">
+          <div class="icon"></div>
+          <p class="comment-name">{{comment.author_name}}</p>
+          <p class="comment-content">{{comment.body}}</p>
+        </div>
     </div>
     <div class="donate-section">
       <div>
         <span class="donate-share-save">
           <p class="donate-header">
-            Let's protect our friends
+            {{campaign.name}}
           </p>
           <a href="#">
           <!-- change with svg -->
@@ -126,31 +116,10 @@ us, 20kg food is coast 55 Gell (25$) and petrol for a car for one road 15 $. So 
         <a href="#" class="donate-button">
           Donate for free
         </a>
-      </div> 
+      </div>
     </div>
     <div class="donate-underspace">
     </div>
-
-    <!-- <div class="details-main">
-      <div class="photo"></div>
-      <div class="details-main-right">
-        <div class="owner">
-          <div class="hidden-subject">Subject</div>
-          <div class="owner-name">{{campaign.author_name}}</div>
-        </div>
-      </div>
-    </div>
-    <div class="hidden-donate">Donate</div>
-    <div class="details-header">
-      <span class="subject">{{campaign.name}}</span>
-      <span class="social">^^^social icons^^^</span>
-    </div>
-    <div class="details-secondary">
-      <Tabs></Tabs>
-    </div>
-  </div>
-  <div v-else>
-    We are fetching Campaign please wait... (Notifying with this ugly message!) -->
   </div>
 </template>
 

@@ -7,7 +7,7 @@
           v-for="blog in Articles"
           :key="blog.id"
           :blog="blog"
-        >
+        />
       </div>
     </div>
     <div class="blog-entire">
@@ -16,7 +16,7 @@
           v-for="blog in Articles"
           :key="blog.id"
           :blog="blog"
-        >
+        />
       </div>
     </div>
   </div>

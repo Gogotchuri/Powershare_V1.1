@@ -16,6 +16,7 @@ class CampaignResource extends JsonResource
     {
         $comments = $this->public_comments;
         $comments = ($comments->count() == 0) ? null : $comments;
+        $date = date_format(date_create($this->updated_at), "d-m-Y");
         return [
             "id" => $this->id,
             "name" => $this->name,
@@ -31,7 +32,8 @@ class CampaignResource extends JsonResource
             "video_url" => $this->video_url,
             "ethereum_address" => $this->ethereum_address,
             "details" => $this->details,
-            "comments" => $comments
+            "comments" => $comments,
+            "date" => $date
         ];
     }
 }
