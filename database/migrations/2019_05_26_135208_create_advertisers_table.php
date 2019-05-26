@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTransactionPlatformsTable extends Migration
+class CreateAdvertisersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTransactionPlatformsTable extends Migration
      */
     public function up()
     {
-        Schema::create('transaction_platforms', function (Blueprint $table) {
+        Schema::create('advertisers', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("name")->unique();
-            
+            $table->string("name");
+            $table->string("email")->nullable();
+            $table->string("phone_number")->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateTransactionPlatformsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('transaction_platforms');
+        Schema::dropIfExists('advertisers');
     }
 }

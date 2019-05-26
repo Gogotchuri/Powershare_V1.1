@@ -23,19 +23,7 @@ export default [
             {
                 path: "campaigns",
                 name: "User.Campaigns",
-                component: Campaigns,
-                children: [
-                    {
-                        path: "create",
-                        name: "User.Campaigns.Create",
-                        component: CampaignCreate
-                    },
-                    {
-                        path: ":id/edit",
-                        name: "User.Campaigns.Edit",
-                        component: CampaignEdit
-                    }
-                ]
+                component: Campaigns
             },
             {
                 path: "verify-email",
@@ -43,6 +31,22 @@ export default [
                 component: EmailVerification,
             }
         ]
+    },
+    {
+        path: "/user/campaigns/create",
+        name: "User.Campaigns.Create",
+        component: CampaignCreate,
+        meta: {
+            authRequired: true
+        },
+    },
+    {
+        path: "/user/campaigns/:id/edit",
+        name: "User.Campaigns.Edit",
+        component: CampaignEdit,
+        meta: {
+            authRequired: true
+        },
     }
 ];
 
