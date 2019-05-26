@@ -77,5 +77,8 @@ class User extends Authenticatable implements MustVerifyEmail
     /**Need To implements other relations with comments, team members
      * transactions and donations, as platform grows etc.
      */
+    public function filledSurveys(){
+        return $this->hasMany(FilledSurvey::class);
+    }
 
 }

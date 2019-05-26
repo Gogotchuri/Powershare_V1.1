@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocationsTable extends Migration
+class CreateSurveysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,12 @@ class CreateLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('locations', function (Blueprint $table) {
+        Schema::create('surveys', function (Blueprint $table) {
             $table->increments('id');
-            $table->string("abbr");
             $table->string("name");
+            $table->text("json_body");
+            $table->unsignedInteger("advertisers_id")->nullable();
+            $table->foreign("advertisers_id")->references("id")->on("advertisers")->onDelete("set null");
             $table->timestamps();
         });
     }
@@ -28,6 +30,6 @@ class CreateLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('campaign_locations');
+        Schema::dropIfExists('surveys');
     }
 }

@@ -16,33 +16,23 @@ class CreateCampaignsTable extends Migration
     {
         Schema::create("campaigns", function (Blueprint $table) {
             $table->increments("id");
-            
             $table->string("name");
             $table->text("details")->nullable();
-
+            $table->text("description")->nullable();
             $table->unsignedInteger("author_id")->nullable();
             $table->foreign("author_id")->references("id")->on("users")->onDelete("set null");
-            
             $table->unsignedInteger("status_id")->default(CampaignStatus::DRAFT);
             $table->foreign("status_id")->references("id")->on("campaign_statuses");
-
             $table->string("video_url")->nullable();
-            
             $table->string("ethereum_address")->nullable();
-
             $table->unsignedInteger("category_id")->nullable();
             $table->foreign("category_id")->references("id")->on("campaign_categories")->onDelete("set null");
-            
             $table->unsignedDecimal("required_funding")->default(0);
-
             $table->unsignedDecimal("realized_funding")->default(0);
-            $table->dateTime("funding_checked_at")->nullable();
-
             $table->integer("order")->nullable();
             $table->boolean("is_hidden")->default(false);
 
-            $table->unsignedInteger("location_id")->nullable();
-            $table->foreign("location_id")->references("id")->on("locations")->onDelete("set null");
+            $table->date("due_date")->nullable();
 
             $table->softDeletes();
 
