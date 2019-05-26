@@ -44,13 +44,8 @@
         <div class="fillable-bar">
           <div class="filled-bar"></div>
         </div>
-<<<<<<< HEAD
-        <span>150.0$ <br> Funded</span>
-        <span>450.0$ <br> needed</span>
-=======
         <span>{{campaign.realized_funding}}$<br> Funded</span>
         <span>{{campaign.required_funding}}$<br> needed</span>
->>>>>>> 51add3ab58fddaeaa40027beca699343b3a35b28
       </div>
       <div class="about hided-on-ms">
         <p class="about-header">About the campaign</p>
@@ -59,14 +54,8 @@
       <div class="gallery hided-on-ms">
         <p class="gallery-header">Gallery</p>
         <div class="gallery-content">
-<<<<<<< HEAD
           <div style="background-image: url(https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80);"></div>
           <div style="background-image: url(https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);"></div>
-=======
-            <!-- ??? -->
-          <div></div>
-          <div></div>
->>>>>>> 51add3ab58fddaeaa40027beca699343b3a35b28
           <div></div>
           <div></div>
           <div></div>
@@ -159,11 +148,5 @@
         this.campaign = campaign;
       }
     }
-<<<<<<< HEAD
   };
 </script>
-=======
-  }
-};
-</script>
->>>>>>> 51add3ab58fddaeaa40027beca699343b3a35b28
