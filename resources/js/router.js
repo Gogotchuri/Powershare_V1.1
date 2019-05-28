@@ -5,7 +5,7 @@ import {checkAdmin} from "@js/Helpers/auth";
 //Module routes
 import PublicRoutes from "@js/Modules/Public/Routes.module";
 import AuthRoutes from "@js/Modules/Auth/Routes.module";
-import ManagementRoutes from "@js/Modules/Management/Routes.module";
+import ManagementRoutes from "@js/Modules/User/Routes.module";
 import AdminRoutes from "@js/Modules/Admin/Routes.module";
 
     /**

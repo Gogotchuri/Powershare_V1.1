@@ -9,7 +9,7 @@
 </template>
 
 <script>
-    import UserNav from "@/views/management/partials/UserNav";
+    import UserNav from "@/views/user/partials/UserNav";
     export default {
         name: "UserIndex",
         components: {UserNav}

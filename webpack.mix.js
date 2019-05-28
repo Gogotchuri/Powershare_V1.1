@@ -14,7 +14,7 @@ mix.extend("customConfig", new WebPackConf);
 mix.customConfig();
 /*
  |--------------------------------------------------------------------------
- | Mix Asset Management
+ | Mix Asset User
  |--------------------------------------------------------------------------
  |
  | Mix provides a clean, fluent API for defining some Webpack build steps

@@ -17,7 +17,7 @@
 
   import {checkAdmin} from "@/js/Helpers/auth";
   import AdminIndex from "@views/admin/Index";
-  import UserIndex from "@/views/management/Index";
+  import UserIndex from "@/views/user/Index";
 
   export default {
     components: {UserIndex, AdminIndex, AdminNav, MainNav},

@@ -1,24 +1,24 @@
 /**
- * This is a Vuex store module for management
+ * This is a Vuex store module for user
  */
 import Http from "@js/Common/Http.service";
 
 /**
- * State for management module
+ * State for user module
  */
 const state = {
 
 };
 
 /**
- * Getters for management module
+ * Getters for user module
  */
 const getters = {
 
 };
 
 /**
- * Mutations for management module
+ * Mutations for user module
  */
 const mutations = {
     setEmailVerified(state){
@@ -27,7 +27,7 @@ const mutations = {
 };
 
 /**
- * Actions for management module
+ * Actions for user module
  */
 const actions = {
     verifyEmail(context, verification_url){
@@ -44,7 +44,7 @@ const actions = {
 
 
 /**
- * Exporting management module store
+ * Exporting user module store
  */
 export default {
     state,
