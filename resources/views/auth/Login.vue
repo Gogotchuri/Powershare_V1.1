@@ -1,34 +1,46 @@
  <template>
         <div class="container">
             <div class="row justify-content-center">
-                <div class="col-md-8">
+                <div class="col-md-9">
                     <div class="card card-default">
-                        <div class="card-header">Login</div>
+                        <div class="card-header">
+                            <h3>Welcome Back!</h3>
+                            <p>Sign in to continue</p>
+                        </div>
 
                         <div class="card-body">
                             <form @submit.prevent="authenticate">
                                 <div class="form-group row">
-                                    <label for="email" class="col-sm-4 col-form-label text-md-right">E-Mail Address</label>
+                                    <label for="email" class="col-sm-12 col-form-label auth-label">E-Mail Address</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <input id="email" type="email" class="form-control" v-model="credentials.email" required autofocus>
                                     </div>
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                    <label for="password" class="col-md-12 col-form-label auth-label">Password</label>
 
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <input id="password" type="password" class="form-control" v-model="credentials.password" required>
                                     </div>
                                 </div>
 
+                                <div class="form-group row remember-check">
+                                    
+
+                                    <div>
+                                        <input id="remember" type="checkbox" class="form-control">
+                                    </div>
+                                    <label for="remember" class="col-form-label  auth-label">Remember me</label>
+                                </div>
+
                                 <div class="form-group row mb-0">
-                                    <div class="col-md-8 offset-md-4">
-                                        <router-link :to="{name: 'ForgotPassword'}"> Forgot password?</router-link>
-                                        <button type="submit" class="btn btn-primary">
-                                            Login
+                                    <div class="col-md-12">
+                                        <button type="submit" class="btn btn-primary btn-auth">
+                                            Sign in
                                         </button>
+                                        <router-link :to="{name: 'ForgotPassword'}" class="forgot"> Forgot password?</router-link>
                                     </div>
                                 </div>
                                 <div class="form-group row" v-if="authErrors">
