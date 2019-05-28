@@ -26,6 +26,16 @@
                     <p>FAQ</p>
                 </router-link>
             </li>
+            <li>
+                <router-link :to="{name: 'Admin.Surveys'}" class="nav-link">
+                    <p>Surveys</p>
+                </router-link>
+            </li>
+            <li>
+                <router-link :to="{name: 'Admin.CreateSurvey'}" class="nav-link">
+                    <p>Create Survey</p>
+                </router-link>
+            </li>
         </ul>
     </div>
 </template>

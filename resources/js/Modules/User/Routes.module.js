@@ -1,9 +1,9 @@
-import Profile from "@views/management/Profile";
-import Campaigns from "@views/management/campaigns/Campaigns"
-import CampaignCreate from "@views/management/campaigns/CampaignCreate";
-import CampaignEdit from "@views/management/campaigns/CampaignEdit";
-import EmailVerification from "@views/management/EmailVerification";
-import Index from "@/views/management/Index";
+import Profile from "@views/user/Profile";
+import Campaigns from "@views/user/campaigns/Campaigns"
+import CampaignCreate from "@views/user/campaigns/CampaignCreate";
+import CampaignEdit from "@views/user/campaigns/CampaignEdit";
+import EmailVerification from "@views/user/EmailVerification";
+import Index from "@/views/user/Index";
 
 
 export default [
