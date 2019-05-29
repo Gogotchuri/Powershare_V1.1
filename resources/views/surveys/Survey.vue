@@ -60,7 +60,7 @@
               </div>
             </div>
           </div>
-          <div>
+          <div v-if="editable">
             <button type="button" v-on:click="editQuestion(question, index)">Edit</button>
             <button type="button" v-on:click="deleteQuestion(question, index)">Delete</button>
           </div>
@@ -68,6 +68,7 @@
       </div>
       <br>
     </div>
+    <input v-if="submitable" type="button" value="Submit Survey" @click="submitSurvey">
   </div>
 </template>
 
@@ -82,8 +83,8 @@
             };
         },
 
-        props: ['questions', 'readOnly'],
-        
+        props: ['questions', 'readOnly', 'editable', 'submitable'],
+
         components: { SurveyBuilder},
 
         mounted() {
@@ -99,6 +100,9 @@
             deleteQuestion(question, index) {
                 this.questions.splice(index, 1);
             },
+            submitSurvey(){
+                this.$root.$emit("survey-submitted", "data-placeholder");
+            }
         },
     };
 </script>

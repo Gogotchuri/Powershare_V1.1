@@ -4,6 +4,7 @@ import CampaignCreate from "@views/user/campaigns/CampaignCreate";
 import CampaignEdit from "@views/user/campaigns/CampaignEdit";
 import EmailVerification from "@views/user/EmailVerification";
 import Index from "@/views/user/Index";
+import ShowSurvey from "@views/user/surveys/ShowSurvey";
 
 
 export default [
@@ -47,6 +48,14 @@ export default [
         meta: {
             authRequired: true
         },
+    },
+    {
+        path: "/user/survey",
+        name: "User.Survey",
+        component: ShowSurvey,
+        meta: {
+            authRequired: true
+        }
     }
 ];
 

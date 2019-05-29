@@ -2,9 +2,9 @@
   <div class="test-survey-builder">
     <h2 class="text-center">Survey Builder</h2>
     <hr/>
-    <QuestionsView :questions="questionsList" :readOnly="true" />
+    <questions-view :questions="questionsList" :readOnly="true" :editable="true"/>
     <div v-if="addQuestion">
-      <SurveyBuilder :options="sampleQuestion" />
+      <survey-builder :options="sampleQuestion" />
     </div>
     <div class="pt-10">
       <button type="button" class="add_another_btn br-25" v-on:click="addNewQuestion()">Add question</button>
@@ -29,6 +29,8 @@ export default {
     this.$root.$on('add-update-question', q => {
       this.updateQuestionsList(q);
       console.log(this.questionsList);
+      console.log(JSON.stringify(this.questionsList));
+
     });
   },
   components: { SurveyBuilder, QuestionsView },
@@ -44,7 +46,7 @@ export default {
       this.addQuestion = false;
       this.$root.$emit('selected-question', null);
     },
-    
+
     addNewQuestion() {
       this.sampleQuestion = JSON.parse(JSON.stringify(sampleQuestionObj));
       this.addQuestion = true;
