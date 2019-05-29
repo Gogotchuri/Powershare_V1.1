@@ -24,7 +24,6 @@ class CreateCampaignsTable extends Migration
             $table->unsignedInteger("status_id")->default(CampaignStatus::DRAFT);
             $table->foreign("status_id")->references("id")->on("campaign_statuses");
             $table->string("video_url")->nullable();
-            $table->string("ethereum_address")->nullable();
             $table->unsignedInteger("category_id")->nullable();
             $table->foreign("category_id")->references("id")->on("campaign_categories")->onDelete("set null");
             $table->unsignedDecimal("required_funding")->default(0);

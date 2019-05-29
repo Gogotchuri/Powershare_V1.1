@@ -17,6 +17,7 @@ class CampaignResource extends JsonResource
         $comments = $this->public_comments;
         $comments = ($comments->count() == 0) ? null : $comments;
         $date = date_format(date_create($this->updated_at), "d-m-Y");
+        $due_date = date_format(date_create($this->due_date), "d-m-Y");
         return [
             "id" => $this->id,
             "name" => $this->name,
@@ -28,12 +29,12 @@ class CampaignResource extends JsonResource
             "category_id" => $this->category_id,
             "required_funding" => $this->required_funding,
             "realized_funding" => $this->realized_funding,
-            "date" => $this->created_at,
             "video_url" => $this->video_url,
-            "ethereum_address" => $this->ethereum_address,
             "details" => $this->details,
+            "description" => $this->description,
             "comments" => $comments,
-            "date" => $date
+            "date" => $date,
+            "due_date" => $due_date
         ];
     }
 }

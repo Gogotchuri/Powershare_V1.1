@@ -7,15 +7,31 @@ import PublicRoutes from "@js/Modules/Public/Routes.module";
 import AuthRoutes from "@js/Modules/Auth/Routes.module";
 import ManagementRoutes from "@js/Modules/User/Routes.module";
 import AdminRoutes from "@js/Modules/Admin/Routes.module";
+import PageNotFound from "@views/public/errors/PageNotFound";
 
-    /**
+//Error pages routes
+let errors = [
+    {
+        path: "/404",
+        name: "404",
+        component: PageNotFound
+    },
+    {
+        path: "*",
+        name: "NotFound",
+        component: PageNotFound
+    }
+];
+
+/**
  * Concatenating routes from different modules
  */
 let routes = []
     .concat(PublicRoutes)
     .concat(AuthRoutes)
     .concat(ManagementRoutes)
-        .concat(AdminRoutes);
+        .concat(AdminRoutes)
+        .concat(errors);
 
 //Creating and exporting Vue router instance
 export const router = new VueRouter({

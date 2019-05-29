@@ -50,6 +50,5 @@ $factory->define(Campaign::class, function (Faker $faker) {
         "realized_funding" => rand(100, 50000),
         "category_id" => rand(1,2),
         "video_url" => "https://www.youtube.com/watch?v=RSDqSjTO9fs",
-        "ethereum_address" => "0x7614e80bE7E0C1e5aFce4E8e35627dEEc461d2bD"
     ];
 });

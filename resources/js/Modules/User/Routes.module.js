@@ -5,6 +5,7 @@ import CampaignEdit from "@views/user/campaigns/CampaignEdit";
 import EmailVerification from "@views/user/EmailVerification";
 import Index from "@/views/user/Index";
 import ShowSurvey from "@views/user/surveys/ShowSurvey";
+import PageNotFound from "@views/public/errors/PageNotFound";
 
 
 export default [
@@ -30,7 +31,7 @@ export default [
                 path: "verify-email",
                 name: "User.EmailVerification",
                 component: EmailVerification,
-            }
+            },
         ]
     },
     {

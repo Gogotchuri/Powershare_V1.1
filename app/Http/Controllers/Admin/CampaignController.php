@@ -9,7 +9,9 @@ use App\Http\Resources\Entity\Admin\CampaignResource;
 use App\Models\Campaign;
 use App\Http\Controllers\Controller;
 use App\Models\References\CampaignStatus;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Resources\Json\AnonymousResourceCollection;
 use Illuminate\Support\Facades\Auth;
 
 class CampaignController extends Controller
@@ -20,14 +22,14 @@ class CampaignController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
 
     private const DEFAULT_PAGINATION = 10;
 
     /**
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @return JsonResponse|AnonymousResourceCollection
      */
     public function index(Request $request)
     {
@@ -59,7 +61,7 @@ class CampaignController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CampaignCreateRequest $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(CampaignCreateRequest $request)
     {
@@ -67,7 +69,7 @@ class CampaignController extends Controller
         $campaign->status_id = CampaignStatus::DRAFT;
         $campaign->name = $request["name"];
         $campaign->category_id = $request["category_id"];
-        $campaign->details = $request["details"];
+        $campaign->description = $request["description"];
         $campaign->author_id = Auth::user()->id;
         $campaign->save();
 
@@ -78,7 +80,7 @@ class CampaignController extends Controller
      * Display the specified resource.
      *
      * @param  int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function show($id)
     {
@@ -94,7 +96,7 @@ class CampaignController extends Controller
      *
      * @param CampaignUpdateRequest $request
      * @param  int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(CampaignUpdateRequest $request, $id)
     {
@@ -102,12 +104,13 @@ class CampaignController extends Controller
         if($campaign == null)
             return self::responseErrors("Campaign with id ".$id." not found",404);
         $campaign->name = $request["name"];
-        $campaign->required_funding = $request["required_funding"];
         $campaign->category_id = $request["category_id"];
+        $campaign->description = $request["description"];
+        $campaign->required_funding = $request["required_funding"];
         $campaign->details = $request["details"];
         $campaign->video_url = $request["video_url"];
-        $campaign->ethereum_address = $request["ethereum_address"];
         $campaign->status_id = $request["status_id"];
+        $campaign->due_date = $request["due_date"];
         $campaign->save();
 
         return self::responseData(new CampaignResource($campaign));
@@ -117,7 +120,7 @@ class CampaignController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy($id)
     {

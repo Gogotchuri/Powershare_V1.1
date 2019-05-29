@@ -17,6 +17,7 @@ class CreateSurveysTable extends Migration
             $table->increments('id');
             $table->string("name");
             $table->text("json_body");
+            $table->integer("order")->default(100);
             $table->unsignedInteger("advertisers_id")->nullable();
             $table->foreign("advertisers_id")->references("id")->on("advertisers")->onDelete("set null");
             $table->timestamps();

@@ -68,4 +68,7 @@ Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->
     Route::apiResource("/faq", "FAQController");
     Route::apiResource("/campaigns", "CampaignController");
     Route::apiResource("/campaign-categories", "CampaignCategoryController");
+    Route::apiResource("/surveys", "SurveyController");
+    Route::apiResource("/advertisers", "AdvertiserController");
+    Route::get("/advertisers/{id}/get-filled-surveys", "AdvertiserController@filledSurveys");
 });

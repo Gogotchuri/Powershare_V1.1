@@ -15,6 +15,7 @@ class CreateFilledSurveysTable extends Migration
     {
         Schema::create('filled_surveys', function (Blueprint $table) {
             $table->increments('id');
+            $table -> text("survey_data");
             $table->unsignedInteger("campaign_id")->nullable();
             $table->foreign("campaign_id")->references("id")->on("campaigns")->onDelete("set null");
             $table->unsignedInteger("survey_id")->nullable();

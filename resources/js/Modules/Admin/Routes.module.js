@@ -7,6 +7,7 @@ import FAQQuestions from "@/views/admin/FAQQuestions";
 import CreateSurvey from "@views/admin/surveys/CreateSurvey";
 import EditSurvey from "@views/admin/surveys/EditSurvey";
 import Surveys from "@views/admin/surveys/Surveys";
+import PageNotFound from "@views/public/errors/PageNotFound";
 
 export default [
     {

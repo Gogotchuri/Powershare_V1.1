@@ -22,7 +22,6 @@ class CampaignSeeder extends Seeder
                 'author_id' => 1,
                 'status_id' => 1,
                 'video_url' => null,
-                'ethereum_address' => 'LeXUY41u9LXMkox38EHrW5aAAcC8qbodQw'
             ],
 
             [
@@ -35,7 +34,6 @@ class CampaignSeeder extends Seeder
                 'author_id' => 1,
                 'status_id' => 1,
                 'video_url' => null,
-                'ethereum_address' => 'LeXUY41u9LXMkox38EHrW5aAAcC8qbodQw'
             ],
 
             [
@@ -48,7 +46,6 @@ class CampaignSeeder extends Seeder
                 'author_id' => 1,
                 'status_id' => 1,
                 'video_url' => null,
-                'ethereum_address' => 'LeXUY41u9LXMkox38EHrW5aAAcC8qbodQw'
             ],
         ];
 
@@ -64,7 +61,7 @@ class CampaignSeeder extends Seeder
             $n_camp->author_id = $campaign['author_id'];
             $n_camp->status_id = $campaign['status_id'];
             $n_camp->video_url = $campaign['video_url'];
-            $n_camp->ethereum_address = $campaign['ethereum_address'];
+            $n_camp->description = "A campaign Description.";
 
             $n_camp->save();
         }
