@@ -6,4 +6,4 @@ feature:
 2) need to parse throttle report "message": "Too Many Attempts."
 3) Short description for campaigns and due date
 4) limiters on videos and surveys
-5) surveysss!!!
+5) Change login form with login popup everywhere, especially on redirections
