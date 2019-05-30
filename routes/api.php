@@ -61,6 +61,9 @@ Route::middleware("throttle:60,1")->middleware("auth:api")->namespace("User")->g
         });
     });
 
+    Route::get("/user/survey", "SurveyController@survey");
+    Route::post("/campaigns/{campaign_id}/survey", "SurveyController@store");
+
 });
 
 //Admin routes

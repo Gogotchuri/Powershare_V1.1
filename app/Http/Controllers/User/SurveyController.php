@@ -1,0 +1,55 @@
+<?php
+
+namespace App\Http\Controllers\User;
+
+use App\Http\Resources\Collection\Admin\SurveysResource;
+use App\Models\Campaign;
+use App\Models\FilledSurvey;
+use App\Models\Survey;
+use Auth;
+use Illuminate\Http\JsonResponse;
+use App\Http\Controllers\Controller;
+use Request;
+
+class SurveyController extends Controller
+{
+    /**
+     * Returns randomly picked survey for the user
+     * out of the surveys that hasn't filled by him
+     * If limit has been exceeded returns appropriate message
+     * @return JsonResponse
+     */
+    public function survey(){
+        $user = Auth::user();
+        if($user->exceedsSurveyLimit())
+            return self::responseData("Exceeds Daily survey limit. Sorry... Come back later");
+        $filled_surveys = $user->filledSurveys;
+        $IDs = array(0);
+        foreach ($filled_surveys as $surv){
+            $IDs[] = $surv->id;
+        }
+        $surveys_to_choose = Survey::all()->whereNotIn("id", $IDs);
+        if($surveys_to_choose == null || $surveys_to_choose->isEmpty())
+            return self::responseData("No more surveys are available for the time being. Come back later");
+        $survey = $surveys_to_choose->random();
+
+        return self::responseData([
+            "survey" => new SurveysResource($survey),
+            "num_before_limit" => $user->numBeforeSurveyLimit()
+        ]);
+    }
+
+    //TODO need to make request middleware for this request with specific rules and json check
+    //TODO resource formatter for filled survey
+    public function store(int $campaign_id, Request $request){
+        if(Campaign::all()->where("id", $campaign_id)->first() == null)
+            return self::responseErrors("Campaign with given id wasn't found!", 404);
+        $filledSurvey = new FilledSurvey();
+        $filledSurvey->survey_data = $request["survey_data"];
+        $filledSurvey->campaign_id = $campaign_id;
+        $filledSurvey->user_id = Auth::user()->id;
+        $filledSurvey->survey_id = $request["survey_id"];
+        $filledSurvey->save();
+        return self::responseData($filledSurvey);
+    }
+}
