@@ -212,58 +212,7 @@ div.details-main-right > div:nth-child(odd) {
 //end of details
 
 //explore page
-.search {
-	text-align: center;
-	min-height: 5vh;
-	width: 100%;
-	background-color: #c2c2c2;
-	margin-bottom: 2vh;
-	padding: 5px 0;
-}
-.sort {
-	text-align: center;
-	min-height: 5vh;
-	width: 100%;
-	background-color: #c2c2c2;
-	margin-bottom: 2vh;
-	padding: 5px 0;
-	display: grid;
-	grid-template-columns: 1fr 1fr;
-}
-.campaigns {
-	margin-top: 8vh;
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	grid-template-rows: 1fr 1fr 1fr;
-	grid-row-gap: 6vh;
-	grid-column-gap: 12vh;
-	width: 100%;
-}
-.campaigns div {
-	background-color: #c2c2c2;
-	width: 100%;
-	height: 50vh;
-}
-@media (max-width: 868px) {
-	.campaigns {
-		grid-template-columns: 1fr 1fr;
-	}
-	.campaigns div {
-		height: 60vh;
-	}
-}
-@media (max-width: 768px) {
-	.campaigns {
-		margin: auto;
-		margin-top: 4vh;
-		grid-template-columns: 1fr;
-		grid-gap: 3vh;
-		width: 90%;
-	}
-	.campaigns div {
-		height: 75vh;
-	}
-}
+
 //end of explore page
 
 //article page
@@ -335,6 +284,7 @@ main{
 }
 .main-container{
 	background-color: #f4f4f4;
+	position: relative;
 }
 main > div{
 	width: 100%;
@@ -1030,3 +980,179 @@ input#remember{
 	}
 }
 //	end of Pop-up register/login
+
+// start of explore page
+.exploreIllustration{
+	position: absolute;
+	width: 100vw;
+	height: 264px;
+	top: 0;
+	left: 0;
+	background-color: red; //TODO: change background
+}
+.exploreIllUnder{
+	width: 100%;
+	height: 264px;
+	overflow:auto;
+}
+.exploreIllUnder > h3{
+	font-size: 16px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.34;
+	letter-spacing: normal;
+	text-align: left;
+	color: #ffffff;
+	margin-top: 76px;
+	padding-left: 0;
+	z-index: 3;
+}
+input.search,
+select.category,
+select.collection{
+	width: 240px;
+	height: 26px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	padding-left: 10px;
+	border: none;
+	border-radius: 4px;
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.05);
+	background-color: #ffffff;
+	margin-bottom: 20px;
+	font-size: 10px;
+	font-weight: 300;
+}
+.campaigns {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-column-gap: 16.4px;
+	grid-row-gap: 21px;
+	width: 100%;
+	grid-auto-rows: minmax( 170px , 170px);
+}
+h3.header-explore{
+	font-size: 11px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1.36;
+	letter-spacing: normal;
+	text-align: left;
+	color: #000000;
+	margin-bottom: 20px;
+}
+.campaigns > .campaignThumbnail{
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+  	background-color: #f6f6f6;
+}
+.campaignThumbnail > a >.campaignThBackground{
+	width: 100%;
+	height: 106px;
+	background-position: center;
+	background-size: cover;
+	margin-bottom: 6.5px;
+}
+.campaignThumbnail > a >.campaignThText{
+	height: 60px;
+	background-color: #ffffff;
+}
+@media(min-width:768px){
+	.exploreIllustration,
+	.exploreIllUnder{
+		height: 418px;
+	}
+	.exploreIllUnder > h3{
+		font-size: 24px;
+		margin-top: 143px;
+	}
+	input.search,
+	select.category,
+	select.collection{
+		font-size: 14px;
+		width: 160px;
+		height: 28px;
+	}
+	div.explore-input{
+		width: 100%;
+		justify-content: space-between;
+		display: flex;
+	}
+
+	div.explore-input > div{
+		width: 50%;
+		display: flex;
+		justify-content: space-between;
+	}
+	.campaigns{
+		grid-auto-rows: minmax( 310px , 310px);
+		grid-gap: 30px;
+	}
+	h3.header-explore{
+		margin-top: 10px;
+	}
+	.campaignThumbnail > a >.campaignThBackground{
+		height: 205px;
+		margin-bottom: 13px;
+	}
+	.campaignThumbnail > a >.campaignThText{
+		height: 95px;
+	}
+}
+@media(min-width:1280px){
+	.exploreIllustration,
+	.exploreIllUnder{
+		height: 520px;
+	}
+	.exploreIllUnder > h3{
+		font-size: 32px;
+		margin-top: 180px;
+	}
+	input.search,
+	select.category,
+	select.collection{
+		font-size: 18px;
+		width: 282px;
+		height: 48px;
+		padding-top: 13px;
+		padding-bottom: 13px;
+		padding-left: 8px;
+	}
+	h3.header-explore{
+		font-size: 20px;
+		margin-top: 40px;
+	}
+	.campaigns{
+		grid-auto-rows: minmax( 542px , 542px);
+		grid-gap: 30px;
+	}
+	.campaignThumbnail > a >.campaignThBackground{
+		height: 354px;
+		margin-bottom: 22px;
+	}
+	.campaignThumbnail > a >.campaignThText{
+		height: 166px;
+	}
+}
+// end of explore page 
+// @media (max-width: 868px) {
+// 	.campaigns {
+// 		grid-template-columns: 1fr 1fr;
+// 	}
+// 	.campaigns div {
+// 		height: 60vh;
+// 	}
+// }
+// @media (max-width: 768px) {
+// 	.campaigns {
+// 		margin: auto;
+// 		margin-top: 4vh;
+// 		grid-template-columns: 1fr;
+// 		grid-gap: 3vh;
+	
+// 	}
+// 	.campaigns div {
+// 		height: 75vh;
+// 	}
+// }
