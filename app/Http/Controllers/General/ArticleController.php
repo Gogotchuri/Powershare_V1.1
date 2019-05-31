@@ -40,6 +40,6 @@ class ArticleController extends Controller
         $article = Article::where("id", $id)->first();
         if($article == null)
             return self::responseErrors("Article with id ".$id." not found", 404);
-        return new ArticleResource($article);
+        return self::responseData(new ArticleResource($article));
     }
 }
