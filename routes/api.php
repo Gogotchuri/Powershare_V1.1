@@ -1,7 +1,7 @@
 <?php
 
 //Public pages
-Route::namespace("General")->middleware("throttle:120,1")->group(function (){
+Route::middleware("throttle:200,1")->namespace("General")->group(function (){
     Route::get("/home", "FrontController@home");
 
     Route::get("/campaign-categories", "CampaignController@getCategories");
@@ -27,7 +27,7 @@ Route::namespace("General")->middleware("throttle:120,1")->group(function (){
 });
 
 //Authentication Routes
-Route::middleware("throttle:20,1")->namespace("Auth")->group(function (){
+Route::middleware("throttle:40,1")->namespace("Auth")->group(function (){
 	Route::post("/login", "AuthController@login");
 	Route::post("/register", "AuthController@register");
     Route::post("/send-password-reset", "ForgotPasswordController@sendResetEmail");
@@ -44,7 +44,7 @@ Route::middleware("throttle:20,1")->namespace("Auth")->group(function (){
 });
 
 //User features
-Route::middleware("throttle:60,1")->middleware("auth:api")->namespace("User")->group(function (){
+Route::middleware("throttle:120,1")->middleware("auth:api")->namespace("User")->group(function (){
     Route::apiResource("/user/campaigns", "CampaignController");
     //Comment Crud group
     Route::prefix("/campaigns/{campaign_id}/comments")->group(function () {

@@ -8,22 +8,27 @@
         <div>Question</div>
         <input type="text" placeholder="Enter question text" v-model="question.body">
       </div>
-      <div v-if="selectedType === 'BOOLEAN'">
-        <div>Answer Choices</div>
-        <div v-for="(option, index) in question.options" :key="index">
-          <div>
-            <input type="text" placeholder="Enter an answer choice" v-model="option.body">
-            <button v-on:click="deleteQuestionOptionItem(question.options, index)" v-if="index > 1">Remove</button>
-          </div>
-        </div>
-      </div>
-      <div v-if="selectedType === 'DATE'">
-        <div>
-          <label><input type="radio" v-model="question.dateFormat" value="MM/DD/YY"> MM/DD/YY</label>
-          <label><input type="radio" v-model="question.dateFormat" value="DD/MM/YY"> DD/MM/YY</label>
-          <label><input type="radio" v-model="question.dateFormat" value="MM/DD/YYYY"> MM/DD/YYYY</label>
-          <label><input type="radio" v-model="question.dateFormat" value="DD/MM/YYYY"> DD/MM/YYYY</label>
-        </div>
+      <div class="" v-if="selectedType === 'NUMBER'">
+        <label>
+          <input type="checkbox" v-model="question.hasUnits" name="hasUnits" />
+          <span>Answer label <input type="text" class="width-10" placeholder="ex. mins, lbs, days" v-model="question.units" :disabled="!question.hasUnits"></span>
+        </label>
+        <label>
+          <input type="checkbox" v-model="question.hasMinMax" name="subType" />
+          <span>Min/max value
+            <input type="number" class="width-10" v-model="question.minValue" placeholder="min" min="1" max="2048" :disabled="!question.hasMinMax">
+            <span class="width-10">to</span>
+            <input type="number" class="width-10" v-model="question.maxValue" placeholder="max" min="1" max="2048" :disabled="!question.hasMinMax">
+          </span>
+        </label>
+        <label>
+          <input type="checkbox" v-model="question.allowDecimals" value="Single" name="subType" />
+          <span class="">Allow decimals</span>
+        </label>
+        <label>
+          <input type="checkbox" v-model="question.required" value="Single" name="subType" />
+          <span class="">Required</span>
+        </label>
       </div>
       <div v-if="selectedType === 'MULTI_CHOICE'">
         <div>Answer Choices</div>
@@ -36,24 +41,9 @@
         <div>
           <button v-on:click="addAnotherAnswer()">Add another answer</button>
         </div>
-      </div>
-
-      <div v-if="selectedType === 'NUMBER'">
         <label>
-          <input type="checkbox" v-model="question.hasUnits" name="hasUnits" />
-          <span>Answer label <input type="text" placeholder="ex. mins, lbs, days" v-model="question.units" :disabled="!question.hasUnits"></span>
-        </label>
-        <label>
-          <input type="checkbox" v-model="question.hasMinMax" name="subType" />
-          <span>Min/max value
-            <input type="number" v-model="question.minValue" placeholder="min" min="1" max="2048" :disabled="!question.hasMinMax">
-            <span>to</span>
-            <input type="number" v-model="question.maxValue" placeholder="max" min="1" max="2048" :disabled="!question.hasMinMax">
-          </span>
-        </label>
-        <label>
-          <input type="checkbox" v-model="question.allowDecimals" value="Single" name="subType" />
-          <span>Allow decimals</span>
+          <input type="checkbox" v-model="question.required" value="Single" name="subType" />
+          <span class="">Required</span>
         </label>
       </div>
       <div v-if="selectedType === 'SINGLE_CHOICE'">
@@ -67,18 +57,20 @@
         <div>
           <button v-on:click="addAnotherAnswer()">Add another answer</button>
         </div>
+        <label>
+          <input type="checkbox" v-model="question.required" value="Single" name="subType" />
+          <span class="">Required</span>
+        </label>
       </div>
       <div v-if="selectedType === 'TEXT'">
         <label>
           <input type="checkbox" v-model="question.characterLimited" name="characterLimited" />
           <span>Character limit <input type="number" v-model="question.textLimit" placeholder="" min="1" max="2048" :disabled="!question.characterLimited"></span>
         </label>
-      </div>
-      <div v-if="selectedType === 'TIME'">
-        <div>
-          <label><input type="radio" v-model="question.timeFormat" value="12" v-on:click="timeFormatModified(question.timeFormat)"> 12 hrs</label>
-          <label><input type="radio" v-model="question.timeFormat" value="24" v-on:click="timeFormatModified(question.timeFormat)"> 24 hrs</label>
-        </div>
+        <label>
+          <input type="checkbox" v-model="question.required" value="Single" name="subType" />
+          <span class="">Required</span>
+        </label>
       </div>
       <div>
         <button type="button" @click="saveQuestion(question)">Save</button>
@@ -94,13 +86,10 @@ export default {
     return {
       questionTypes: [
         { value: 'DEFAULT', label: '- Select a question type -' },
-        { value: 'BOOLEAN', label: 'Yes or No' },
-        { value: 'DATE', label: 'Date' },
-        { value: 'MULTI_CHOICE', label: 'Multiple Choice' },
         { value: 'NUMBER', label: 'Number' },
+        { value: 'MULTI_CHOICE', label: 'Multiple Choice' },
         { value: 'SINGLE_CHOICE', label: 'Single Choice' },
         { value: 'TEXT', label: 'Text' },
-        { value: 'TIME', label: 'Time' },
       ],
       question: this.options,
       selectedType: null,
@@ -121,13 +110,6 @@ export default {
      */
     questionTypeChanged(type) {
       this.question.type = this.selectedType;
-      switch (type) {
-        case 'BOOLEAN':
-          this.question.options = [{ body: 'Yes', sequence: 1 }, { body: 'No', sequence: 2 }];
-          break;
-        default:
-          break;
-      }
     },
 
     /**
@@ -139,7 +121,6 @@ export default {
     },
 
     /**
-     * @param {null}
      * @return {null}
      */
     addAnotherAnswer() {
@@ -163,7 +144,6 @@ export default {
     },
 
     /**
-     * @param {null}
      * @return {String} guid
      */
     getGUID() {
@@ -183,15 +163,7 @@ export default {
       question.id = question.id ? question.id : this.getGUID(); // eslint-disable-line
       this.$root.$emit('add-update-question', question);
       this.question = { type: 'DEFAULT' };
-    },
-
-    /**
-     * @param {Number} intervals
-     * @return {null}
-     */
-    changeLabelsLength(intervals) {
-      this.question.labels.length = intervals;
-    },
+    }
   },
 };
 </script>

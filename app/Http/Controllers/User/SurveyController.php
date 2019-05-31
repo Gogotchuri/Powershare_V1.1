@@ -9,7 +9,7 @@ use App\Models\Survey;
 use Auth;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
-use Request;
+use Illuminate\Http\Request;
 
 class SurveyController extends Controller
 {

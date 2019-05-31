@@ -18,7 +18,7 @@ class Controller extends BaseController
      * @param int $statusCode
      * @return \Illuminate\Http\JsonResponse
      */
-    protected static function responseData($data, int $statusCode = 200){
+    protected static function responseData($data, $statusCode = 200){
         return response()->json(["data" => $data], $statusCode);
     }
 

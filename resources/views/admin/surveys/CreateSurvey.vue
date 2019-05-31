@@ -2,6 +2,10 @@
   <div class="test-survey-builder">
     <h2 class="text-center">Survey Builder</h2>
     <hr/>
+    <label>
+      Survey Name:
+      <input type="text" v-model="surveyName">
+    </label>
     <questions-view :questions="questionsList" :readOnly="true" :editable="true"/>
     <div v-if="addQuestion">
       <survey-builder :options="sampleQuestion" />
@@ -21,6 +25,7 @@ export default {
   name: 'TestSurveyBuilder',
   data() {
     return {
+      surveyName: "",
       questionsList: [],
       addQuestion: false,
     };
