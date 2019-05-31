@@ -1,6 +1,6 @@
 import PublicModule from "@js/Modules/Public/Store.module";
 import AuthModule from "@js/Modules/Auth/Store.module";
-import ManagementModule from "@js/Modules/Management/Store.module";
+import ManagementModule from "@js/Modules/User/Store.module";
 
 import Vue from "vue";
 import Vuex from "vuex";

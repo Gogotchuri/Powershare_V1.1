@@ -1,11 +1,23 @@
 <template>
   <div class="center-campaigns">
-    <div class="search">Search</div>
-    <div class="sort">
-      <div>Category</div>
-      <div>Sorted by</div>
+    <div class="exploreIllustration">
+    </div>
+    <div class="exploreIllUnder">
+      <h3 class="col-5 col-lg-3">User Experience by the Numbers: Hurting the Ones We Love</h3>
+    </div>
+    <div class="explore-input">
+      <input type="text" placeholder="Search.." class="search">
+      <div>
+        <select class="category">
+          <option value="1">Category</option>
+        </select>
+        <select type="text" placeholder="Collection" class="collection">
+          <option value="1">Collectioin</option>
+        </select>
+      </div>
     </div>
 
+    <h3 class="header-explore">More to explore</h3>
     <div class="campaigns">
       <campaign-thumbnail
               v-for="campaign in campaigns"

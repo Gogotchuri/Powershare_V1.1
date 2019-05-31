@@ -20,7 +20,6 @@ class Campaign extends Model
         "name",
         "details",
         "video_url",
-        "ethereum_address",
         "category_id",
         "required_funding",
         "location_id"
@@ -45,16 +44,17 @@ class Campaign extends Model
         return [
             "name" => ["required", "string", "max:30"],
             "category_id" => ["required", "integer", "min:1", "max:".CampaignCategory::getNumCategories()],
-            "details" => ["required", "string", "min:10", "max:3000"],
+            "description" => ["required", "string", "min:5", "max:200"],
         ];
     }
     public static function updateRules()
     {
         return array_merge(Campaign::baseRules(), [
             "required_funding" => ["required", "numeric"],
-            "ethereum_address" => ["nullable", "string", "max:255"],
             "video_url" => ["nullable", "url"],
-            "location_id" => ["integer", "min:1", "max:".Location::numCategories()]
+            "due_date" => ["nullable"],
+            "status_id" => ["nullable", "numeric", "max:".CampaignStatus::numCategories(), "min:1"],
+            "details" => ["required", "string", "min:10", "max:3000"]
         ]);
     }
 
@@ -137,7 +137,7 @@ class Campaign extends Model
     public function getFeaturedImageAttribute()
     {
         $images = $this->images;
-        //might need to add default campaign image
+        //TODO might need to add default campaign image
         if(isset($images)){
             return $images->firstWhere("category_id", ImageCategory::FEATURED);
         }

@@ -3,10 +3,11 @@
     <vue-progress-bar/>
     <main-nav v-if="!isAdminPanel && !isUserManagement"/>
     <!-- Content -->
-    <main>
-      <router-view/>
-    </main>
-
+    <div class="main-container">
+      <main>
+        <router-view/>
+      </main>
+    </div>
   </div>
 </template>
 
@@ -16,7 +17,7 @@
 
   import {checkAdmin} from "@/js/Helpers/auth";
   import AdminIndex from "@views/admin/Index";
-  import UserIndex from "@/views/management/Index";
+  import UserIndex from "@/views/user/Index";
 
   export default {
     components: {UserIndex, AdminIndex, AdminNav, MainNav},

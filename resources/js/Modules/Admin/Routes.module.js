@@ -4,6 +4,10 @@ import Campaigns from "@/views/admin/campaigns/Campaigns";
 import Users from "@/views/admin/Users";
 import Campaign from "@/views/admin/campaigns/Campaign";
 import FAQQuestions from "@/views/admin/FAQQuestions";
+import CreateSurvey from "@views/admin/surveys/CreateSurvey";
+import EditSurvey from "@views/admin/surveys/EditSurvey";
+import Surveys from "@views/admin/surveys/Surveys";
+import PageNotFound from "@views/public/errors/PageNotFound";
 
 export default [
     {
@@ -22,14 +26,12 @@ export default [
             {
                 path: "campaigns",
                 name: "Admin.Campaigns",
-                component: Campaigns,
-                children: [
-                    {
-                        path: ":id",
-                        name: "Admin.Campaign",
-                        component: Campaign
-                    }
-                ]
+                component: Campaigns
+            },
+            {
+                path: "campaigns/:id",
+                name: "Admin.Campaign",
+                component: Campaign
             },
             {
                 path: "users",
@@ -40,6 +42,21 @@ export default [
                 path: "FAQ",
                 name: "Admin.FAQ",
                 component: FAQQuestions
+            },
+            {
+              path: "surveys",
+              name: "Admin.Surveys",
+              component: Surveys
+            },
+            {
+                path: "surveys/create",
+                name: "Admin.CreateSurvey",
+                component: CreateSurvey
+            },
+            {
+                path: "surveys/:id",
+                name: "Admin.EditSurvey",
+                component: EditSurvey
             }
         ]
     }

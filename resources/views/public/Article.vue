@@ -9,6 +9,7 @@
 
 <script>
     import store from "@js/store";
+
     export default {
         name: "Article",
         data(){
@@ -22,11 +23,10 @@
                     next(vm => vm.setArticle(article));
                 }).catch(() => next());
         },
-
         methods:{
             setArticle(article){
                 this.article = article;
             }
         }
-    }
+    };
 </script>

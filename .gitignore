@@ -1,3 +1,6 @@
+/.vscode
+/.vscode/*
+.vscode/
 /node_modules
 public/js
 public/js/app.js

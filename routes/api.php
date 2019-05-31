@@ -61,6 +61,9 @@ Route::middleware("throttle:60,1")->middleware("auth:api")->namespace("User")->g
         });
     });
 
+    Route::get("/user/survey", "SurveyController@survey");
+    Route::post("/campaigns/{campaign_id}/survey", "SurveyController@store");
+
 });
 
 //Admin routes
@@ -68,4 +71,7 @@ Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->
     Route::apiResource("/faq", "FAQController");
     Route::apiResource("/campaigns", "CampaignController");
     Route::apiResource("/campaign-categories", "CampaignCategoryController");
+    Route::apiResource("/surveys", "SurveyController");
+    Route::apiResource("/advertisers", "AdvertiserController");
+    Route::get("/advertisers/{id}/get-filled-surveys", "AdvertiserController@filledSurveys");
 });

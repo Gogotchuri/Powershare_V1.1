@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Resources\Collection\CommentsResource;
 use App\Http\Resources\Entity\CommentResource;
 use App\Models\References\CampaignStatus;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -25,11 +26,12 @@ class CommentController extends Controller
         $comments = Comment::where("is_public", true)->get();
         return self::responseData(CommentsResource::collection($comments));
     }
+
     /**
      * Returns all comment for the campaign with given id
      * if not found return 404
      * @param int $campaign_id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index(int $campaign_id)
     {
@@ -43,7 +45,7 @@ class CommentController extends Controller
      * Displays a comment with given id
      * if not found return 404
      * @param int $comment_id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function show(int $comment_id)
     {
@@ -60,7 +62,7 @@ class CommentController extends Controller
      * if validation fails return 422
      * @param $campaign_id
      * @param Request $request Consisting of body, should be authorized
-     * @return \Illuminate\Http\JsonResponse Added Comment
+     * @return JsonResponse Added Comment
      */
     public function store($campaign_id, Request $request)
     {
@@ -90,7 +92,7 @@ class CommentController extends Controller
      * Updates comment if it exists and user is authorized
      * @param $comment_id
      * @param Request $request
-     * @return \Illuminate\Http\JsonResponse Updated Comment
+     * @return JsonResponse Updated Comment
      */
     public function update($comment_id, Request $request) {
         //Getting comment

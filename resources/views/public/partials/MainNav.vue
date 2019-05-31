@@ -13,8 +13,8 @@
                 <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
                 <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link">Create Campaign</router-link>
                 <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
-                <router-link :to="{ name: 'Login' }" class="nav-link" v-if="!isLoggedIn">Login</router-link>
-                <router-link :to="{ name: 'Register' }" class="nav-link" v-if="!isLoggedIn">Register</router-link>
+                <loginmodal v-if="!isLoggedIn"/>
+                <registermodal v-if="!isLoggedIn"/>
                 <router-link
                         :to="{ name: 'User.Profile' }"
                         class="nav-link"
@@ -27,12 +27,18 @@
 </template>
 
 <script>
+    import loginmodal from "@views/auth/LoginModal";
+    import registermodal from "@views/auth/RegisterModal";
     export default {
         name: "MainNav",
         data() {
             return {
                 smallMedia: false
             };
+        },
+        components: {
+            loginmodal,
+            registermodal
         },
         computed: {
             isLoggedIn() {

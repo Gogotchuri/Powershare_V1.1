@@ -8,6 +8,7 @@ use App\Http\Resources\Collection\CampaignsResource;
 use App\Http\Resources\Entity\CampaignResource;
 use App\Models\Campaign;
 use App\Models\References\CampaignStatus;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +25,7 @@ class CampaignController extends Controller
     /**
      * Display a listing of the resource.
      * Every campaign current logged in user owns
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function index()
     {
@@ -35,9 +36,9 @@ class CampaignController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param Request $request
      *  must contain fields: name, category_id, details
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function store(CampaignCreateRequest $request)
     {
@@ -45,7 +46,7 @@ class CampaignController extends Controller
         $campaign->status_id = CampaignStatus::DRAFT;
         $campaign->name = $request["name"];
         $campaign->category_id = $request["category_id"];
-        $campaign->details = $request["details"];
+        $campaign->description = $request["description"];
         $campaign->author_id = Auth::user()->id;
         $campaign->save();
 
@@ -56,7 +57,7 @@ class CampaignController extends Controller
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function show($id)
     {
@@ -72,7 +73,7 @@ class CampaignController extends Controller
      * HTTP Method: PUT (Need to attach property _method => PUT)
      * @param Request $request
      * @param  int $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function update(CampaignUpdateRequest $request, $id)
     {
@@ -86,10 +87,12 @@ class CampaignController extends Controller
         $campaign->required_funding = $request["required_funding"];
         $campaign->category_id = $request["category_id"];
         $campaign->details = $request["details"];
+        $campaign->description = $request["description"];
         $campaign->video_url = $request["video_url"];
-        $campaign->ethereum_address = $request["ethereum_address"];
+        $campaign->due_date = $request["due_date"];
         //Avoiding injections of status, campaign can only be published by admin
-        $campaign->status_id = $request["status_id"];
+        if($request["status_id"] != CampaignStatus::APPROVED)
+            $campaign->status_id = $request["status_id"];
         $campaign->save();
 
         return self::responseData(new CampaignResource($campaign));
@@ -99,7 +102,7 @@ class CampaignController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return JsonResponse
      */
     public function destroy($id)
     {
