@@ -2,7 +2,7 @@
     <div class="campaignThumbnail">                                                                    
 		<router-link class ="explore-card" :to="`/campaigns/${campaign.id}`">
             <!-- campaignis surati unda styleshi -->
-            <div class="campaignThBackground" style="background-image: url(https://aquariusnation.com/wp-content/uploads/2019/05/clem-onojeghuo-110452-unsplash-300x208.jpg)"></div>
+            <img class="campaignThBackground" :src="campaign.featured_image_thumbnail_url" alt="Campaign Image">
             <div class="campaignThText"></div>
             <!-- <img class="photo" :src="campaign.featured_image_thumbnail_url"> -->
                 <!-- <div class="row explore-card-text">

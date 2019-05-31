@@ -6,14 +6,20 @@
       <h3 class="col-5 col-lg-3">User Experience by the Numbers: Hurting the Ones We Love</h3>
     </div>
     <div class="explore-input">
-      <input type="text" placeholder="Search.." class="search">
+      <label>
+        <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadCampaigns(search=true)">
+      </label>
       <div>
-        <select class="category">
-          <option value="1">Category</option>
-        </select>
-        <select type="text" placeholder="Collection" class="collection">
-          <option value="1">Collectioin</option>
-        </select>
+        <label>
+          <select class="category">
+            <option value="1">Category</option>
+          </select>
+        </label>
+        <label>
+          <select type="text" placeholder="Collection" class="collection">
+            <option value="1">Collection</option>
+          </select>
+        </label>
       </div>
     </div>
 
@@ -25,23 +31,27 @@
               :campaign="campaign"
       />
     </div>
-
+    <intersection-observer v-if="curPage <= lastPage" v-on:intersected="loadCampaigns"/>
   </div>
 </template>
 
 <script>
-import campaignThumbnail from "@views/public/partials/CampaignThumbnail.vue";
+import CampaignThumbnail from "@views/public/partials/CampaignThumbnail";
+import IntersectionObserver from "@views/public/partials/IntersectionObserver"
 import HTTP from "@js/Common/Http.service";
 
 export default {
   name: "Campaigns",
   components: {
-    campaignThumbnail
+    CampaignThumbnail, IntersectionObserver
   },
   data(){
     return{
       categories: [],
-      campaigns: []
+      campaigns: [],
+      curPage: 1,
+      lastPage: 1,
+      searchKey: ""
     }
   },
   /*
@@ -57,9 +67,16 @@ export default {
     Promise.all([categoryFetch, campaignFetch]).then(value => {
       let categories = value[0].data.data;
       let campaigns = value[1].data.data;
+      let lastPage = value[1].data.meta.last_page;
+      //Setting fetched data to this component
       next(vm => {
-        vm.setCategories(categories);
-        vm.setCampaigns(campaigns);
+        vm.lastPage = lastPage;
+        vm.categories = categories;
+        vm.campaigns = campaigns;
+        console.log("categories: ");
+        console.log(categories);
+        console.log("campaigns: ");
+        console.log(campaigns);
       })
     }).catch(err => {
       console.error(err);
@@ -68,16 +85,40 @@ export default {
   },
 
   methods:{
-    setCategories(categories){
-      console.log("categories: ");
-      console.log(categories);
-      this.categories = categories;
-    },
+    /**
+     * Loads campaign on call, page is taken from local variable curr page
+     * If current page is more than last page, nothing happens
+     * If this function is called after search, it should get called with search parameter true
+     * */
+    loadCampaigns(search=false){
+      if(search)
+        this.curPage = 1;
+      else
+        this.curPage++;
 
-    setCampaigns(campaigns){
-      console.log("campaigns: ");
-      console.log(campaigns);
-      this.campaigns = campaigns;
+      let fetchUri = "/campaigns?name=" + this.searchKey + "&page="+this.curPage;
+
+      HTTP.GET(fetchUri)
+              .then(value => {
+                let fetchedCampaigns = value.data.data;
+                let lastPage = value.data.meta.last_page;
+                if(search){
+                  console.log("fetching for search! replacing campaigns.");
+                  this.campaigns = fetchedCampaigns;
+                  this.lastPage = lastPage;
+                  console.log(this.campaigns);
+                }else{
+                  console.log("fetching after search! concatenating campaigns.");
+                  console.log(fetchedCampaigns);
+                  this.campaigns = this.campaigns.concat(fetchedCampaigns);
+                  this.lastPage = lastPage;
+                  console.log((this.campaigns));
+                }
+              })
+              .catch(reason => {
+                console.error("Error while loading campaigns!");
+                console.error(reason);
+              });
     }
   }
 };

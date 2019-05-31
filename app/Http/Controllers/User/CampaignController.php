@@ -36,7 +36,7 @@ class CampaignController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param CampaignCreateRequest $request
      *  must contain fields: name, category_id, details
      * @return JsonResponse
      */
