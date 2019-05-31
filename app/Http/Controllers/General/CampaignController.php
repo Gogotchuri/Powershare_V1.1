@@ -23,7 +23,7 @@ class CampaignController extends Controller
         $name = $request["name"];
         $pagination = $request["pagination"];
 
-        if($category !== null)
+        if($category !== null && $category > 0)
             $query->where("category_id", $category);
 
         if($name !== null)

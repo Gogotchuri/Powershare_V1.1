@@ -11,13 +11,14 @@
       </label>
       <div>
         <label>
-          <select class="category">
-            <option value="1">Category</option>
+          <select class="collection">
+            <option value="1">Collections</option>
           </select>
         </label>
         <label>
-          <select type="text" placeholder="Collection" class="collection">
-            <option value="1">Collection</option>
+          <select type="text" class="category" v-on:change="loadCampaigns(search=true)" v-model="curCategory">
+            <option value="0">All Categories</option>
+            <option v-for="category in categories" :value="category.id">{{category.name}}</option>
           </select>
         </label>
       </div>
@@ -49,6 +50,7 @@ export default {
     return{
       categories: [],
       campaigns: [],
+      curCategory: 0,
       curPage: 1,
       lastPage: 1,
       searchKey: ""
@@ -73,8 +75,6 @@ export default {
         vm.lastPage = lastPage;
         vm.categories = categories;
         vm.campaigns = campaigns;
-        console.log("categories: ");
-        console.log(categories);
         console.log("campaigns: ");
         console.log(campaigns);
       })
@@ -96,23 +96,18 @@ export default {
       else
         this.curPage++;
 
-      let fetchUri = "/campaigns?name=" + this.searchKey + "&page="+this.curPage;
+      let fetchUri = "/campaigns?name=" + this.searchKey + "&page="+this.curPage + "&category_id="+this.curCategory;
 
       HTTP.GET(fetchUri)
               .then(value => {
                 let fetchedCampaigns = value.data.data;
                 let lastPage = value.data.meta.last_page;
                 if(search){
-                  console.log("fetching for search! replacing campaigns.");
                   this.campaigns = fetchedCampaigns;
                   this.lastPage = lastPage;
-                  console.log(this.campaigns);
                 }else{
-                  console.log("fetching after search! concatenating campaigns.");
-                  console.log(fetchedCampaigns);
                   this.campaigns = this.campaigns.concat(fetchedCampaigns);
                   this.lastPage = lastPage;
-                  console.log((this.campaigns));
                 }
               })
               .catch(reason => {
