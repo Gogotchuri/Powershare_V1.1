@@ -2,6 +2,10 @@
   <div class="test-survey-builder">
     <h2 class="text-center">Survey Builder</h2>
     <hr/>
+    <div>
+      <button type="button" v-on:click="storeSurvey">Store Survey</button>
+    </div>
+    <br>
     <label>
       Survey Name:
       <input type="text" v-model="surveyName">
@@ -20,6 +24,7 @@
 import SurveyBuilder from "@views/surveys/SurveyBuilder";
 import QuestionsView from "@views/surveys/Survey";
 import sampleQuestionObj from "@views/surveys/survey-structure.json"
+import HTTP from "@js/Common/Http.service";
 
 export default {
   name: 'TestSurveyBuilder',
@@ -34,8 +39,6 @@ export default {
     this.$root.$on('add-update-question', q => {
       this.updateQuestionsList(q);
       console.log(this.questionsList);
-      console.log(JSON.stringify(this.questionsList));
-
     });
   },
   components: { SurveyBuilder, QuestionsView },
@@ -56,6 +59,20 @@ export default {
       this.sampleQuestion = JSON.parse(JSON.stringify(sampleQuestionObj));
       this.addQuestion = true;
     },
+    storeSurvey(){
+      HTTP.POST("/admin/surveys", {
+        "name" : this.surveyName,
+        "json_body" : JSON.stringify(this.questionsList)
+      }).then(value => {
+        let returnedID = value.data.data.id;
+        this.$router.push("/admin/surveys/"+returnedID);
+        console.log(value.data);
+      }).catch(reason => {
+        console.log(this.surveyName);
+        console.log(this.questionsList);
+        console.log(reason.response.data);
+      })
+    }
   },
 };
 </script>

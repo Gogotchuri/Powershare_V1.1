@@ -22,15 +22,15 @@ class SurveyController extends Controller
     public function survey(){
         $user = Auth::user();
         if($user->exceedsSurveyLimit())
-            return self::responseData("Exceeds Daily survey limit. Sorry... Come back later");
+            return self::responseErrors("Exceeds Daily survey limit. Sorry... Come back later", 402);
         $filled_surveys = $user->filledSurveys;
         $IDs = array(0);
         foreach ($filled_surveys as $surv){
-            $IDs[] = $surv->id;
+            $IDs[] = $surv->survey_id;
         }
         $surveys_to_choose = Survey::all()->whereNotIn("id", $IDs);
         if($surveys_to_choose == null || $surveys_to_choose->isEmpty())
-            return self::responseData("No more surveys are available for the time being. Come back later");
+            return self::responseErrors("No more surveys are available for the time being. Come back later", 404);
         $survey = $surveys_to_choose->random();
 
         return self::responseData([

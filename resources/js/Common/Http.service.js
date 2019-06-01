@@ -19,13 +19,12 @@ class HttpService {
             baseURL: ApiUrl,
             headers: {
                 "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-TOKEN": csrfToken,
-                "Content-Type" : "application/json",
-                "Accept" : "application/json",
+                "Content-Type" : "application/json"
             },
 
         });
-
+        this._axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
+        this._axios.defaults.headers.common["accept"] = "application/json";
         this.setExistingJwtHeader();
     }
 
