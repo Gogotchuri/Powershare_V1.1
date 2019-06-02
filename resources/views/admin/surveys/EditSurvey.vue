@@ -85,6 +85,7 @@
             },
             updateSurvey(){
                 HTTP.PUT("/admin/surveys/" + this.surveyID, {
+                    "_method" : "PUT",
                     "name" : this.surveyName,
                     "json_body" : JSON.stringify(this.questionsList)
                 }).then(() => {

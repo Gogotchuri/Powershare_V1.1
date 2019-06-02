@@ -1,12 +1,13 @@
 import Dashboard from "@/views/admin/Dashboard";
 import Index from "@views/admin/Index";
-import Campaigns from "@/views/admin/campaigns/Campaigns";
 import Users from "@/views/admin/Users";
 import Campaign from "@/views/admin/campaigns/Campaign";
 import FAQQuestions from "@/views/admin/FAQQuestions";
 import CreateSurvey from "@views/admin/surveys/CreateSurvey";
 import EditSurvey from "@views/admin/surveys/EditSurvey";
 import Surveys from "@views/admin/surveys/Surveys";
+import CampaignEdit from "@views/shared/campaigns/CampaignEdit";
+import Campaigns from "@views/shared/campaigns/Campaigns";
 
 export default [
     {
@@ -29,8 +30,13 @@ export default [
             },
             {
                 path: "campaigns/:id",
-                name: "Admin.Campaign",
+                name: "Admin.Campaigns.Show",
                 component: Campaign
+            },
+            {
+                path: "campaigns/:id/edit",
+                name: "Admin.Campaign.Edit",
+                component: CampaignEdit
             },
             {
                 path: "users",

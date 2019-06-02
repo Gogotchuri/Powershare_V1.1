@@ -27,6 +27,7 @@ class CampaignsResource extends JsonResource
             "required_funding" => $this->required_funding,
             "realized_funding" => $this->realized_funding,
             "date" => $this->created_at,
+            "status_id" => $this->status_id,
             "video_url" => $this->video_url,
             "details" => $this->details,
         ];
