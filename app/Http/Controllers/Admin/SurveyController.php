@@ -20,7 +20,7 @@ class SurveyController extends Controller
     private const DEFAULT_PAGINATION = 10;
     public function index(Request $request)
     {
-        $query = Survey::where("id", ">", "-1")->sortBy("order", "asc");
+        $query = Survey::where("id", ">", "-1")->orderBy("order", "asc");
         $name = $request["name"];
         $pagination = $request["pagination"];
         $advertisers_id = $request["advertiser_id"];

@@ -1,22 +1,22 @@
 <template>
-  <div v-if="!!articles" id="blog-container">
+  <div v-if="false" id="blog-container">
     <div class="blog-first-row">
       <div class="blog">
         <!-- for loopi unda iyos mxolod 4 unda daweros -->
-        <BlogThumbnail
+        <blog-thumbnail
           v-for="blog in Articles"
           :key="blog.id"
           :blog="blog"
-        />
+        ></blog-thumbnail>
       </div>
     </div>
     <div class="blog-entire">
       <div class="blog">
-        <blogThumbnail
+        <blog-thumbnail
           v-for="blog in Articles"
           :key="blog.id"
           :blog="blog"
-        />
+        ></blog-thumbnail>
       </div>
     </div>
   </div>
@@ -25,13 +25,11 @@
 
 
 <script>
-  import BlogThumbnail from "@views/public/partials/BlogThumbnail.vue";
   import store from "@js/store";
+  import BlogThumbnail from "@views/public/partials/BlogThumbnail";
   export default {
     name: "Articles",
-    computed: {
-      BlogThumbnail
-    },
+    components: {BlogThumbnail},
     data(){
       return{
         articles: []

@@ -16,13 +16,6 @@ use Illuminate\Support\Facades\Auth;
 class CampaignController extends Controller
 {
     /**
-     * CampaignController constructor.
-     * Makes sure user is authenticated
-     */
-    public function __construct(){
-        $this->middleware("auth:api");
-    }
-    /**
      * Display a listing of the resource.
      * Every campaign current logged in user owns
      * @return JsonResponse

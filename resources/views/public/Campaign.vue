@@ -2,7 +2,7 @@
   <div v-if="campaign != null">
     <div class="gallery-mini">
       <div class="static-gallery">
-        <div class="gallerym-overlay">
+        <div class="gallery-overlay">
 
         </div>
       </div>
@@ -112,9 +112,9 @@
                 Save
           </a>
         </span>
-        <a href="#" class="donate-button">
+        <router-link :to="{name: 'User.Survey', query: {campaign_id : campaign.id}}" class="donate-button">
           Donate for free
-        </a>
+        </router-link>
       </div>
     </div>
     <div class="donate-underspace">

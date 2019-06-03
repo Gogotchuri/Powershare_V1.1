@@ -19,13 +19,11 @@ class HttpService {
             baseURL: ApiUrl,
             headers: {
                 "X-Requested-With": "XMLHttpRequest",
-                "X-CSRF-TOKEN": csrfToken,
-                "Content-Type" : "application/json",
-                "Accept" : "application/json",
             },
 
         });
-
+        this._axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
+        this._axios.defaults.headers.common["accept"] = "application/json";
         this.setExistingJwtHeader();
     }
 
@@ -143,6 +141,31 @@ class HttpService {
         });
     }
 
+    /**
+     * Wrapper for Axios, PATCH request
+     * @uri relative path to api route
+     * @baggage Data that should be sent with this request
+     * packs _method : put as a hidden input to let laravel know true intention
+     *
+     * @return Promise with either data or error
+     */
+    async PATCH(uri, baggage) {
+        if (!!baggage)
+            baggage["_method"] = "PATCH";
+        else
+            baggage = {"_method": "PATCH"};
+
+        return new Promise((resolve, reject) => {
+            this._axios.post(uri, baggage)
+                .then(value => {
+                    resolve(value);
+                })
+                .catch(reason => {
+                    reject(reason);
+                })
+        });
+    }
+
     initializeInterceptors(store, router, progressBar){
 
         progressBar.setTransition({
@@ -169,7 +192,7 @@ class HttpService {
         });
         //Response intercept
         this._axios.interceptors.response.use((value) => {
-            progressBar.finish()
+            progressBar.finish();
             return Promise.resolve(value);
         }, (err) => {
             progressBar.fail();

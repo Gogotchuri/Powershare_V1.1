@@ -1,5 +1,5 @@
 <template>
-    <div class="öbserver"></div>
+    <div class="observer"></div>
 </template>
 
 <script>
@@ -22,5 +22,8 @@
 </script>
 
 <style scoped>
-
+    .observer{
+        width: 1px;
+        height: 1px;
+    }
 </style>

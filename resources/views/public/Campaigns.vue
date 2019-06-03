@@ -7,7 +7,7 @@
     </div>
     <div class="explore-input">
       <label>
-        <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadCampaigns(search=true)">
+        <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadMore(search=true)">
       </label>
       <div>
         <label>
@@ -53,7 +53,8 @@ export default {
       curCategory: 0,
       curPage: 1,
       lastPage: 1,
-      searchKey: ""
+      searchKey: "",
+      debounceTimeout : null
     }
   },
   /*
@@ -85,6 +86,18 @@ export default {
   },
 
   methods:{
+    loadMore(search=true){
+      let debFunc = this.debounce(this.loadCampaigns, 500);
+      debFunc(search);
+    },
+
+    debounce(callback, wait) {
+      return (...args) => {
+        const context = this;
+        clearTimeout(this.debounceTimeout);
+        this.debounceTimeout = setTimeout(() => callback.apply(context, args), wait);
+      };
+    },
     /**
      * Loads campaign on call, page is taken from local variable curr page
      * If current page is more than last page, nothing happens
@@ -97,7 +110,7 @@ export default {
         this.curPage++;
 
       let fetchUri = "/campaigns?name=" + this.searchKey + "&page="+this.curPage + "&category_id="+this.curCategory;
-
+      console.log("loading more...");
       HTTP.GET(fetchUri)
               .then(value => {
                 let fetchedCampaigns = value.data.data;
