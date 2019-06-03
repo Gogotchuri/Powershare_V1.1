@@ -46,6 +46,7 @@
 
 <script>
     import HTTP from "@js/Common/Http.service";
+    import store from "@js/store";
     export default {
         name: "CampaignEdit",
         data(){
@@ -60,8 +61,10 @@
             }
         },
         beforeRouteEnter(to, from, next){
+            let isAdmin = store.getters.isAdmin;
             let categoryFetch = HTTP.GET("/campaign-categories");
-            let campaignFetch = HTTP.GET("/user/campaigns/"+to.params.id);
+            let campaignFetch = isAdmin ? HTTP.GET("/admin/campaigns/"+to.params.id)
+                                            : HTTP.GET("/user/campaigns/"+to.params.id);
             Promise.all([categoryFetch, campaignFetch]).then(value => {
                 let categories = value[0].data.data;
                 let campaign = value[1].data.data;
