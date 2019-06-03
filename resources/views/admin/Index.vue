@@ -1,8 +1,8 @@
 <template>
-    <div>
-        <admin-nav/>
+    <div class="row">
+        <admin-nav class="col-3"/>
         <!-- Content of admin pages-->
-        <div>
+        <div class="col-8">
             <router-view/>
         </div>
     </div>

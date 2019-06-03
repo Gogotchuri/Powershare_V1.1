@@ -275,10 +275,10 @@ main{
 	height: 100%;
 	width: 95%;
 	max-width: 374px;
+	min-height: 100vh;
 	margin: auto;
 	padding-top: 23px;
 	padding-bottom: 23px;
-	//background-color: lightblue;// change after test
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -1135,24 +1135,17 @@ h3.header-explore{
 		height: 166px;
 	}
 }
-// end of explore page 
-// @media (max-width: 868px) {
-// 	.campaigns {
-// 		grid-template-columns: 1fr 1fr;
-// 	}
-// 	.campaigns div {
-// 		height: 60vh;
-// 	}
-// }
-// @media (max-width: 768px) {
-// 	.campaigns {
-// 		margin: auto;
-// 		margin-top: 4vh;
-// 		grid-template-columns: 1fr;
-// 		grid-gap: 3vh;
-	
-// 	}
-// 	.campaigns div {
-// 		height: 75vh;
-// 	}
-// }
+
+//admin page
+.adminNav > .router-link-active{
+	color: #fff;
+	background-color: #3490dc;
+	padding: 15px
+}
+.adminNav > .nav-link{
+	padding: 15px;
+}
+.adminNav > .router-link-active > p{
+	margin-bottom: 0;
+}
+//end of admin page
