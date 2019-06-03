@@ -9,6 +9,7 @@ class WebPackConf {
     }
 };
 
+require('dotenv').config();
 const mix = require("laravel-mix");
 mix.extend("customConfig", new WebPackConf);
 mix.customConfig();
