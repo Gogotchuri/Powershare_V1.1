@@ -53,6 +53,7 @@
             return {
                 campaign: null,
                 categories: [],
+                isAdmin: false
             }
         },
         computed:{
@@ -72,6 +73,7 @@
                 next(vm => {
                     vm.categories = categories;
                     vm.campaign = campaign;
+                    vm.isAdmin = isAdmin;
                 })
             }).catch(reason => {
                 console.error("Error while fetching campaign");
@@ -84,15 +86,9 @@
         },
         methods: {
             updateCampaign(){
-                let campaignPutUri = "/user/campaigns/" + this.campaign.id;
-                HTTP.PUT(campaignPutUri, this.campaign)
-                    .then(res => {
-                        console.log(res);
-                    })
-                    .catch(reason => {
-                        console.log(campaignPutUri);
-                        console.error(reason.response);
-                    });
+                this.$store.dispatch("patchCampaign", { campaign :this.campaign, isAdmin: this.isAdmin})
+                    .then((res) => console.log(res))
+                    .catch(reason => console.error(reason.response.errors));
             }
         }
     }
