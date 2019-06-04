@@ -87,12 +87,13 @@
         },
 
         methods:{
-            approveCampaign(id){
-                // this.campaigns.find()
-                //TODO implement me
-                HTTP.PUT("/admin/campaigns/"+id, this.campaigns[id])
-                    .then(() => window.alert("CampaignApproved"))
-                    .catch(r => console.error(r.response));
+            async approveCampaign(id){
+                let campaignInArray = this.campaigns.find(value => value.id === id);
+                let campaign = (await HTTP.GET("/admin/campaigns/"+id)).data.data;
+                campaign.status_id = 1;
+                let res = await this.$store.dispatch("patchCampaign", {campaign: campaign, isAdmin: true});
+                console.log(res);
+                campaignInArray.status_id = 1;
             },
             adminDelete(id){
               HTTP.DELETE("/admin/campaigns/"+id)

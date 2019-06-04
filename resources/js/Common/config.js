@@ -1,6 +1,6 @@
-export const API_URL = "http://127.0.0.1:8000/api";
+export const APP_URL = process.env.MIX_APP_URL;
 
-export const APP_URL = "http://127.0.0.1:8000";
+export const API_URL = APP_URL+"/api";
 
 export const STORAGE_USER_INSTANCE = "user";
 

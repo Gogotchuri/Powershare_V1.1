@@ -39,6 +39,23 @@ const actions = {
                 })
                 .catch(error => reject(error))
         });
+    },
+
+    patchCampaign(context, payload){
+        let campaign = payload.campaign;
+        let isAdmin = payload.isAdmin;
+        let campaignPutUri = isAdmin ? "/admin/" :"/user/";
+        campaignPutUri += "campaigns/"+ campaign.id;
+        return new Promise((resolve, reject) => {
+            Http.PUT(campaignPutUri, campaign)
+                .then(res => {
+                    resolve(res);
+                })
+                .catch(reason => {
+                    console.error(reason.response);
+                    reject(reason);
+                });
+        });
     }
 };
 

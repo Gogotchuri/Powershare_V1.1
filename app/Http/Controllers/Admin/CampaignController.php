@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\CampaignCreateRequest;
 use App\Http\Requests\CampaignUpdateRequest;
-use App\Http\Resources\Collection\Admin\CampaignsResource;
-use App\Http\Resources\Entity\Admin\CampaignResource;
+use App\Http\Resources\Collection\CampaignsResource;
+use App\Http\Resources\Entity\CampaignResource;
 use App\Models\Campaign;
 use App\Http\Controllers\Controller;
 use App\Models\References\CampaignStatus;

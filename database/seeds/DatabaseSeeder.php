@@ -21,6 +21,5 @@ class DatabaseSeeder extends Seeder
         $this->call(ImageSeeder::class);
         $this->call(CommentSeeder::class);
         $this->call(FaqQuestionSeeder::class);
-        $this->call(SurveySeeder::class);
     }
 }

@@ -46,12 +46,14 @@
 
 <script>
     import HTTP from "@js/Common/Http.service";
+    import store from "@js/store";
     export default {
         name: "CampaignEdit",
         data(){
             return {
                 campaign: null,
                 categories: [],
+                isAdmin: false
             }
         },
         computed:{
@@ -60,8 +62,10 @@
             }
         },
         beforeRouteEnter(to, from, next){
+            let isAdmin = store.getters.isAdmin;
             let categoryFetch = HTTP.GET("/campaign-categories");
-            let campaignFetch = HTTP.GET("/user/campaigns/"+to.params.id);
+            let campaignFetch = isAdmin ? HTTP.GET("/admin/campaigns/"+to.params.id)
+                                            : HTTP.GET("/user/campaigns/"+to.params.id);
             Promise.all([categoryFetch, campaignFetch]).then(value => {
                 let categories = value[0].data.data;
                 let campaign = value[1].data.data;
@@ -69,6 +73,7 @@
                 next(vm => {
                     vm.categories = categories;
                     vm.campaign = campaign;
+                    vm.isAdmin = isAdmin;
                 })
             }).catch(reason => {
                 console.error("Error while fetching campaign");
@@ -81,15 +86,9 @@
         },
         methods: {
             updateCampaign(){
-                let campaignPutUri = "/user/campaigns/" + this.campaign.id;
-                HTTP.PUT(campaignPutUri, this.campaign)
-                    .then(res => {
-                        console.log(res);
-                    })
-                    .catch(reason => {
-                        console.log(campaignPutUri);
-                        console.error(reason.response);
-                    });
+                this.$store.dispatch("patchCampaign", { campaign :this.campaign, isAdmin: this.isAdmin})
+                    .then((res) => console.log(res))
+                    .catch(reason => console.error(reason.response.errors));
             }
         }
     }

@@ -30,6 +30,10 @@ const getters = {
 
     authErrors(state){
         return state.authErrors;
+    },
+
+    isAdmin(state){
+        return state.currentUser.role_id === "1" || state.currentUser.role_id === 1;
     }
 };
 
