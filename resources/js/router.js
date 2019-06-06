@@ -62,10 +62,15 @@ router.beforeEach(async (to, from, next) => {
     }
 
 
-     if (authRequired && !user) {
+    if(authRequired && !user) {
         //Using Get request query param to redirect after
         // Redirection to login cause of unauthorized request
-        router.push({name: "Login", query: {redirect: to.name}});
+        if(to.name === "User.EmailVerification"){
+            let {confirmURL} = to.query;
+            next({name: "Login", query: {redirect: to.name, confirmURL}});
+        }else
+            next({name: "Login", query: {redirect: to.name}});
+
     } else if ((to.path === "/login" || to.path === "/register") && !!user) {
         next("/");
     } else {

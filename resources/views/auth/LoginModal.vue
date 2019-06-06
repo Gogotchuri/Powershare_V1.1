@@ -3,7 +3,7 @@
     <mdb-btn @click.native="modal = true">Login</mdb-btn>
     <mdb-modal :show="modal" @close="modal = false">
       <mdb-modal-body>
-          <login/>
+          <login v-on:modaloff="modal = false"/>
       </mdb-modal-body>
     </mdb-modal>
   </div>

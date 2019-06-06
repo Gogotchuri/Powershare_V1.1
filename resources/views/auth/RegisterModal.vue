@@ -3,7 +3,7 @@
     <mdb-btn @click.native="modal = true">Register</mdb-btn>
     <mdb-modal :show="modal" @close="modal = false">
       <mdb-modal-body>
-        <register/>
+        <register v-on:modaloff="modal = false"/>
       </mdb-modal-body>
     </mdb-modal>
   </div>

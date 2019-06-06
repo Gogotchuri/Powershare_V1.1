@@ -72,6 +72,7 @@
                 this.$store.dispatch("register", this.form)
                 .then( () => {
                     window.alert("Registered successfully! Please Sign in and confirm email.")
+                    this.$emit("modaloff");
                     this.$router.push({name: "Login"})
                 });
             },
