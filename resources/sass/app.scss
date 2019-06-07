@@ -329,7 +329,7 @@ main > div > div.gallery-mini{
 }
 main > div > div.gallery-mini > div.static-gallery{
 	width: 387px;
-	max-width: 340px;
+	max-width: 100%;
 	height: 442px;
 	background-image: url(https://images.unsplash.com/photo-1553531384-411a247ccd73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=80);//change after test
 	background-position: center;
@@ -463,7 +463,7 @@ main > div > div> div.about-mini{
 	border-top-left-radius: 36px;
 	border-bottom-left-radius: 36px;
 	background-color: #faac18;
-	z-index: 2;
+	z-index: 1;
 }
 .about{
 	padding-bottom: 20px;
@@ -577,7 +577,11 @@ span.donate-share-save > a:nth-child(2){
 p.donate-header{
 	display: none;
 }
-@media(max-width:410px){//special breakpoint
+@media(max-width:410px){
+	//special breakpoint
+	main > div > div.gallery-mini {
+		max-width: 335px;
+	}
 	.gallery-content{
 		justify-content: space-around;
 	}
