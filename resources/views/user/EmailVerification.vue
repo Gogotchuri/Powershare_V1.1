@@ -21,6 +21,7 @@
         },
         async mounted(){
           let {confirmURL} = this.$route.query;
+          console.log(confirmURL);
           if(confirmURL != null) {
               confirmURL = confirmURL.slice(API_URL.length, confirmURL.length);
               await this.verifyEmail(confirmURL);

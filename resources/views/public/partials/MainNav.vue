@@ -33,7 +33,10 @@
         name: "MainNav",
         data() {
             return {
-                smallMedia: false
+                smallMedia: false,
+                //TODO should implement logic behind global opening and closing modals
+                registerModalState: false,
+                loginModalState: false
             };
         },
         components: {
