@@ -8,6 +8,7 @@ import About from "@views/public/About";
 import Faq from "@views/public/Faq";
 import PrivacyPolicy from "@views/public/PrivacyPolicy";
 import TermsConditions from "@views/public/TermsConditions";
+import PhotoUpload from "@views/PhotoUpload"
 
 export default [
     {
@@ -60,6 +61,11 @@ export default [
         path: "/terms-conditions",
         name: "TermsConditions",
         component: TermsConditions,
-    }  
+    },
+    {
+        path: "/photo-upload",
+        name: "PhotoUpload",
+        component: PhotoUpload,
+    }
 ];
 

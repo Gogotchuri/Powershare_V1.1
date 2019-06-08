@@ -14,18 +14,17 @@ class Image extends Model
     public $visible = ["id", "url", "thumbnail_url", "name"];
 
     /*Called when image is uploaded for Gallery
-        @param $file uploaded image
+        @param $file base64 encoded uploaded image
         @param $name general name
-        @param $dims dimension to which image should be cropped
     */
-    public static function forGallery(UploadedFile $file, Campaign $campaign, $dims = null)
-    {
+    public static function forGallery(string $file, Campaign $campaign)
+    {//TODO refactor
         $image = new static();
-        $image->name = $campaign->name;
-        $image->storeNormal($file, $dims);
-        $image->storeThumbnail($file, $dims);
+        $image->name = "powershare-".$campaign->id."-".self::getImageName($file);
+        $image->storeNormal($file, $image->name);
+        $image->storeThumbnail($file, $image->name);
         $image->campaign_id = $campaign->id;
-        $image->category = ImageCategory::GALLERY;
+        $image->category_id = ImageCategory::GALLERY;
         $image->save();
 
         return $image;
@@ -34,20 +33,22 @@ class Image extends Model
     /*Called when image is set for featured
         @param $file uploaded image
         @param $name general name
-        @param $dims dimension to which image should be cropped
     */
-    public static function forFeatured(UploadedFile $file, Campaign $campaign, $dims = null)
+    public static function forFeatured(string $base64_file, Campaign $campaign)
     {
+        $featured_images = $campaign->images->where("category_id", ImageCategory::FEATURED);
+        foreach($featured_images as $featured_image){
+            $featured_image->delete();
+        }
         $image = new static();
-        $image->name = $campaign->name;
+        $image->name = "powershare-".$campaign->id."-".self::getImageName($base64_file);
         //Assigns $image->url to upload url
-        $image->storeNormal($file, $dims);
+        $image->storeNormal($base64_file, $image->name);
         //Assigns $image->thumbnail_url to upload url
-        $image->storeThumbnail($file, $dims);
+        $image->storeThumbnail($base64_file, $image->name);
         $image->campaign_id = $campaign->id;
-        $image->category = ImageCategory::FEATURED;
+        $image->category_id = ImageCategory::FEATURED;
         $image->save();
-
         return $image;
     }
 
@@ -55,15 +56,14 @@ class Image extends Model
      * Used to upload photo as a profile picture for a given user
      * @param UploadedFile $file
      * @param User $user
-     * @param null $dims
      * @return Image
      */
-    public static function forProfile(UploadedFile $file, User $user, $dims = null)
+    public static function forProfile(UploadedFile $file, User $user)
     {
         $image = new static();
         $image->name = $user->name;
-        $image->storeNormal($file, $dims);
-        $image->storeThumbnail($file, $dims);
+//        $image->storeNormal($file, $dims);
+//        $image->storeThumbnail($file, $dims);
         $image->user_id = $user->id;
         $image->category = ImageCategory::PROFILE;
         $image->save();
@@ -90,6 +90,7 @@ class Image extends Model
         return $image;
     }
 
+
     public function campaign() {
         return $this->belongsTo(Campaign::class, "campaign_id");
     }
@@ -112,27 +113,19 @@ class Image extends Model
 
     /**
      * This method stores given image as a normal image
-     * if $dims array is passed with correct @width and @height keys method crops image
-     * if $dims array also contains @x1 and @y1
-     * image is cropped started from the point (x1,y1)
-     * @param UploadedFile $file
-     * @param $dims
+     * @param string $file base64 encoded image
+     * @param $name
      */
-    protected function storeNormal(UploadedFile $file, $dims)
+    protected function storeNormal(string $file, $name)
     {
-        $content = IntImage::make($file->path());
+        $content = IntImage::make($file);
 
-        if($dims != null && !($dims["width"] == null || $dims["height"] == null)){
-            $content = $content->crop($dims["width"], $dims["height"], (int)$dims["x1"], (int)$dims["y1"]);
-        }
-        
         $content = $content->resize(1920, null, function ($constraint) {
                 $constraint->aspectRatio();
                 $constraint->upsize();
         })
         ->stream()->detach();
-
-        $this->url = $this->upload("powershare-".$file->hashName(), $content);
+        $this->url = $this->upload($name, $content);
     }
 
     /**
@@ -140,33 +133,40 @@ class Image extends Model
      * if $dims array is passed with correct @width and @height keys method crops image
      * if $dims array also contains @x1 and @y1
      * image is cropped started from the point (x1,y1)
-     * @param UploadedFile $file
-     * @param $dims
+     * @param string $file base64 encoded image
+     * @param $name
      */
-    protected function storeThumbnail(UploadedFile $file, $dims)
+    protected function storeThumbnail(string $file, $name)
     {
-        $content = IntImage::make($file->path());
-        
-        if($dims !== null && !($dims["width"] == null || $dims["height"] == null)){
-            $content = $content->crop($dims["width"], $dims["height"], $dims["x1"], $dims["y1"]);
-        }
+        $content = IntImage::make($file);
 
         $content = $content->fit(320, 240)->stream()->detach();
 
-        $this->thumbnail_url = $this->upload("powershare-thumbnail-".$file->hashName(), $content);
+        $this->thumbnail_url = $this->upload("thumbnail-".$name, $content);
     }
 
     /**
      * Uploads IntImage object to the s3 service and returns url
      * Name on the server is specified through $name parameter
      * @param string $name
-     * @param IntImage $content
+     * @param $content
      * @return string
      */
-    protected function upload(string $name, IntImage $content) : string
+    protected function upload(string $name, $content) : string
     {
         Storage::disk("s3")->put($name, $content, "public");
 
         return Storage::disk("s3")->url($name);
+    }
+
+    private static function getImageName(string $file)
+    {
+        $file_length = strlen($file);
+        $randmax = getrandmax();
+        $hash_from = rand(10, ($file_length - 150 < $randmax) ? ($file_length - 150) : $randmax);
+        $ext_first_char = strpos($file, "/") + 1;
+        $ext_length = strpos($file, ";") - $ext_first_char;
+        $extension = substr($file, $ext_first_char, $ext_length);
+        return hash("md5", substr($file, $hash_from, 150)).".".$extension;
     }
 }
