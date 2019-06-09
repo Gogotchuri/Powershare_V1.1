@@ -20,6 +20,8 @@
 //navbar
 #mainNav {
 	height: 12vh;
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
+	background-color: white
 }
 
 .navbar {
@@ -1153,3 +1155,157 @@ h3.header-explore{
 	margin-bottom: 0;
 }
 //end of admin page
+
+//user page
+.user-header{
+	background-color: #ffffff;
+	margin-top: 7px;
+	height: 281px;
+}
+.user-header-content{
+	position: absolute;
+	width: 100vw;
+	height: 281px;
+	background-color: #ffffff;
+	left: 0;
+	text-align: center;
+	flex-wrap: wrap;
+}
+.user-header-under{
+	width: 100%;
+	height: 281px;
+}
+.profile-photo{
+	width: 96px;
+	height: 96px;
+	background-color: red;
+	border-radius: 50%;
+	background-position: center;
+	background-size: cover;
+	margin: auto;
+	margin-top: 30px;
+	margin-bottom: 10px;
+}
+.user-name{
+	font-size: 15px;
+	font-weight: bold;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 1;
+	letter-spacing: normal;
+	text-align: center;
+	color: #373737;
+	margin-bottom: 11px;
+}
+.user-header-profile{
+	font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	font-stretch: normal;
+	line-height: 0.91;
+	letter-spacing: normal;
+	text-align: center;
+	color: #373737;
+}
+.profile-photo-container,
+.profile-header-container{
+	width: 100%;
+}
+.profile-photo-container{
+	height: 130px;
+}
+.profile-tabs{
+	width: 100%;
+	position: absolute;
+	margin: auto;
+	bottom: 0;
+	height: 30px;
+}
+.profile-tabs > a{
+	color: #565656;
+	display: inline;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 8px 8px;
+}
+
+.profile-tabs > a:hover{
+	color: #662f92;
+}
+@media(min-width:768px){
+	.profile-tabs{
+		margin-left: 65px;
+		text-align: left;
+		margin-bottom: 8px;
+	}
+	.profile-photo-container{
+		margin-left: 57px;
+		width: 125px;
+	}
+	.profile-header-container{
+		width: 250px;
+		text-align: left;
+	}
+	.user-header{
+		height: 240px;		
+	}
+	.user-name{
+		margin-top: 30px;
+		margin-bottom: 12px;
+		text-align: left;
+	}
+	.user-header-profile{
+		text-align: left;
+	}
+	.user-header-content{
+		height: 240px;
+		display: flex;
+		padding-top: 20px;
+	}
+	.user-header-under{
+		height: 240px;
+	}
+}
+@media(min-width:1280px){
+	.user-header{
+		margin-top: 17px;
+		height: 373px;
+	}
+	.user-header-content{
+		height: 373px;
+		padding-top: 50px;
+	}
+	.user-header-under{
+		width: 100%;
+		height: 373px;
+	}
+	.profile-photo-container{
+		margin-left: 96px;
+		width: 160px;
+	}
+	.profile-photo{
+		width: 138px;
+		height: 138px;
+	}
+	.profile-header-container{
+		margin-left: 30px;
+	}
+	.user-header-profile{
+		margin-top: 12px;
+		font-size: 18px;
+		font-weight: normal;
+	}
+	.user-name{
+		font-size: 24px;
+		font-weight: bold;
+	}
+	.profile-tabs{
+		margin-bottom: 20px;
+		margin-left: 90px;
+	}
+	.profile-tabs > a{
+		font-size: 20px;
+		padding: 10px 24px;
+	}
+}
+//end of user page

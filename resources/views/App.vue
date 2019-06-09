@@ -1,7 +1,7 @@
 <template>
   <div>
     <vue-progress-bar/>
-    <main-nav v-if="!isAdminPanel && !isUserManagement"/>
+    <main-nav/>
     <!-- Content -->
     <div class="main-container">
       <main>
