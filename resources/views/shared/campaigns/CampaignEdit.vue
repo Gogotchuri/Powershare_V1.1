@@ -36,6 +36,7 @@
                 <p>Due Date:</p>
                 <input type="date" v-model="campaign.due_date">
             </div>
+            <photo-upload v-on:ImageCropped="featuredImage" :image-src="campaign.featured_image_url"/>
             <div>
                 <button type="submit" @click="campaign.status_id=3">Save as Draft</button>
                 <button type="submit" @click="campaign.status_id=2">Submit For review</button>
@@ -47,8 +48,10 @@
 <script>
     import HTTP from "@js/Common/Http.service";
     import store from "@js/store";
+    import PhotoUpload from "@views/PhotoUpload";
     export default {
         name: "CampaignEdit",
+        components: {PhotoUpload},
         data(){
             return {
                 campaign: null,
@@ -89,7 +92,12 @@
                 this.$store.dispatch("patchCampaign", { campaign :this.campaign, isAdmin: this.isAdmin})
                     .then((res) => console.log(res))
                     .catch(reason => console.error(reason.response.errors));
+            },
+
+            featuredImage(base64){
+                this.campaign.base64_featured_image = base64;
             }
+
         }
     }
 </script>

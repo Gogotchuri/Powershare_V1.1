@@ -43,7 +43,8 @@ $factory->define(Campaign::class, function (Faker $faker) {
 
     return [
         "name" => array_random($actions) . " " . array_random($subjects) . " " . array_random($locations),
-        "details" => implode("\n\n", $faker->paragraphs(rand(2,8))),
+        "details" => implode("\n\n", $faker->paragraphs(rand(1,2))),
+        "description" => implode("\n\n", $faker->paragraphs(rand(2,8))),
         "author_id" => User::inRandomOrder()->first()->id,
         "status_id" => array_random($campaignStatuses),
         "required_funding" => rand(50000, 500000),

@@ -8,6 +8,7 @@ use App\Http\Resources\Collection\CampaignsResource;
 use App\Http\Resources\Entity\CampaignResource;
 use App\Models\Campaign;
 use App\Http\Controllers\Controller;
+use App\Models\Image;
 use App\Models\References\CampaignStatus;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -103,6 +104,10 @@ class CampaignController extends Controller
         $campaign = Campaign::all()->firstWhere("id", $id);
         if($campaign == null)
             return self::responseErrors("Campaign with id ".$id." not found",404);
+        $base64_image = $request["base64_featured_image"];
+        if($base64_image != null){
+            Image::forFeatured($base64_image, $campaign);
+        }
         $campaign->name = $request["name"];
         $campaign->category_id = $request["category_id"];
         $campaign->description = $request["description"];
