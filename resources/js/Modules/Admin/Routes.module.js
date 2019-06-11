@@ -35,7 +35,7 @@ export default [
             },
             {
                 path: "campaigns/:id/edit",
-                name: "Admin.Campaign.Edit",
+                name: "Admin.Campaigns.Edit",
                 component: CampaignEdit
             },
             {

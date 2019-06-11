@@ -37,9 +37,13 @@
                 <input type="date" v-model="campaign.due_date">
             </div>
             <photo-upload v-on:ImageCropped="featuredImage" :image-src="campaign.featured_image_url"/>
+            <br>
+            <gallery-upload :isAdmin="isAdmin" :campaign="campaign"/>
+            <br>
             <div>
                 <button type="submit" @click="campaign.status_id=3">Save as Draft</button>
                 <button type="submit" @click="campaign.status_id=2">Submit For review</button>
+                <button v-if="isAdmin" type="submit" @click="campaign.status_id=1">Publish</button>
             </div>
         </form>
     </div>
@@ -48,10 +52,13 @@
 <script>
     import HTTP from "@js/Common/Http.service";
     import store from "@js/store";
-    import PhotoUpload from "@views/PhotoUpload";
+
+    import PhotoUpload from "@views/shared/campaigns/PhotoUpload";
+    import GalleryUpload from "@views/shared/campaigns/GalleryUpload";
+
     export default {
         name: "CampaignEdit",
-        components: {PhotoUpload},
+        components: {GalleryUpload, PhotoUpload},
         data(){
             return {
                 campaign: null,

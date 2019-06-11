@@ -8,7 +8,7 @@ import About from "@views/public/About";
 import Faq from "@views/public/Faq";
 import PrivacyPolicy from "@views/public/PrivacyPolicy";
 import TermsConditions from "@views/public/TermsConditions";
-import PhotoUpload from "@views/PhotoUpload"
+import PhotoUpload from "@views/shared/campaigns/PhotoUpload"
 
 export default [
     {

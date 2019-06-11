@@ -11,18 +11,19 @@ use Intervention\Image\Facades\Image as IntImage;
 
 class Image extends Model
 {
+    private const galleryLimit = 6;
     public $visible = ["id", "url", "thumbnail_url", "name"];
 
     /*Called when image is uploaded for Gallery
-        @param $file base64 encoded uploaded image
+        @param $file uploaded image
         @param $name general name
     */
-    public static function forGallery(string $file, Campaign $campaign)
-    {//TODO refactor
+    public static function forGallery(UploadedFile $file, Campaign $campaign)
+    {
         $image = new static();
-        $image->name = "powershare-".$campaign->id."-".self::getImageName($file);
-        $image->storeNormal($file, $image->name);
-        $image->storeThumbnail($file, $image->name);
+        $image->name = "powershare-gallery-".$campaign->name."-".$file->hashName();
+        $image->storeNormal($file);
+        $image->storeThumbnail($file);
         $image->campaign_id = $campaign->id;
         $image->category_id = ImageCategory::GALLERY;
         $image->save();
@@ -38,14 +39,14 @@ class Image extends Model
     {
         $featured_images = $campaign->images->where("category_id", ImageCategory::FEATURED);
         foreach($featured_images as $featured_image){
-            $featured_image->delete();
+            $featured_image->remove();
         }
         $image = new static();
-        $image->name = "powershare-".$campaign->id."-".self::getImageName($base64_file);
+        $image->name = "powershare-".$campaign->name.$campaign->id."-".self::getImageName($base64_file);
         //Assigns $image->url to upload url
-        $image->storeNormal($base64_file, $image->name);
+        $image->storeNormalBase64($base64_file, $image->name);
         //Assigns $image->thumbnail_url to upload url
-        $image->storeThumbnail($base64_file, $image->name);
+        $image->storeThumbnailBase64($base64_file, $image->name);
         $image->campaign_id = $campaign->id;
         $image->category_id = ImageCategory::FEATURED;
         $image->save();
@@ -83,7 +84,7 @@ class Image extends Model
     {
         $image = new static();
         $image->name = $member->name;
-        $image->storeNormal($file, $dims);
+        $image->storeNormalBase64($file, $dims);
         $image->category = ImageCategory::MEMBER;
         $image->save();
 
@@ -111,12 +112,31 @@ class Image extends Model
         return optional($this->campaign)->id;
     }
 
+    public static function galleryLimitExceeded(Campaign $campaign){
+        $gallery = $campaign->images->where("category_id", ImageCategory::GALLERY);
+        return $gallery->count() >= self::galleryLimit;
+    }
+
+    /**
+     * Removes image from s3 bucket and from the database,
+     * returns true if it was successfully deleted
+     * @return bool
+     * @throws \Exception
+     */
+    public function remove(){
+        $uriStarting = strpos($this->url, "/", 10);
+        $imageName = substr($this->url, $uriStarting+1);
+        $thumbName = substr($this->thumbnail_url, $uriStarting+1);
+        $this->delete();
+        return Storage::disk("s3")->delete($imageName) && Storage::disk("s3")->delete($thumbName);
+    }
+
     /**
      * This method stores given image as a normal image
      * @param string $file base64 encoded image
      * @param $name
      */
-    protected function storeNormal(string $file, $name)
+    protected function storeNormalBase64(string $file, $name)
     {
         $content = IntImage::make($file);
 
@@ -130,21 +150,33 @@ class Image extends Model
 
     /**
      * This method stores given image as a thumbnail image
-     * if $dims array is passed with correct @width and @height keys method crops image
-     * if $dims array also contains @x1 and @y1
-     * image is cropped started from the point (x1,y1)
      * @param string $file base64 encoded image
      * @param $name
      */
-    protected function storeThumbnail(string $file, $name)
+    protected function storeThumbnailBase64(string $file, $name)
     {
         $content = IntImage::make($file);
-
         $content = $content->fit(320, 240)->stream()->detach();
-
         $this->thumbnail_url = $this->upload("thumbnail-".$name, $content);
     }
 
+    protected function storeNormal(UploadedFile $file)
+    {
+        $content = IntImage::make($file->path());
+        $content = $content->resize(1920, null, function ($constraint) {
+            $constraint->aspectRatio();
+            $constraint->upsize();
+        })->stream()->detach();
+
+        $this->url = $this->upload("powershare-".$file->hashName(), $content);
+    }
+
+    protected function storeThumbnail(UploadedFile $file)
+    {
+        $content = IntImage::make($file->path());
+        $content = $content->fit(320, 240)->stream()->detach();
+        $this->thumbnail_url = $this->upload("powershare-thumbnail-".$file->hashName(), $content);
+    }
     /**
      * Uploads IntImage object to the s3 service and returns url
      * Name on the server is specified through $name parameter

@@ -174,4 +174,8 @@ class Campaign extends Model
         return optional($this->author)->name;
     }
 
+    public function filledSurveys(){
+        return $this->hasMany(FilledSurvey::class);
+    }
+
 }
