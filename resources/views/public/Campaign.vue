@@ -1,9 +1,8 @@
 <template>
   <div v-if="campaign != null">
     <div class="gallery-mini">
-      <div class="static-gallery">
+      <div class="static-gallery" :style="{'background-image': 'url(' + campaign.featured_image_url + ')'}">
         <div class="gallery-overlay">
-
         </div>
       </div>
     </div>
@@ -14,7 +13,7 @@
             <p class="header-text">{{campaign.name}}</p>
             <p class="header-date">{{campaign.date}}</p>
           </div>
-          <p class="header-dleft">30 days left</p>
+          <p class="header-left">Due to: {{campaign.due_date}}</p>
         </div>
         <div class="owner">
           <div class="owner-icon">
@@ -36,15 +35,14 @@
           </div>
         </div>
         <div class="story-mini">
-          Millions of animals need our help: shelters, food, proper health care. Get on board, let's help them
+          {{campaign.description}}
         </div>
       </div>
       <div class="completion">
-        <p class="completion-donators">23500 free donators</p>
+        <p class="completion-donators">{{campaign.num_surveys_filled}} free donators</p>
         <div class="fillable-bar">
           <div class="filled-bar"></div>
         </div>
-        <span>{{campaign.realized_funding}}$<br> Funded</span>
         <span>{{campaign.required_funding}}$<br> needed</span>
       </div>
       <div class="about hided-on-ms">
@@ -53,13 +51,8 @@
       </div>
       <div class="gallery hided-on-ms">
         <p class="gallery-header">Gallery</p>
-        <div class="gallery-content">
-          <div style="background-image: url(https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80);"></div>
-          <div style="background-image: url(https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);"></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div class="gallery-content" v-if="gallery">
+          <div v-for="image in gallery" :style="{'background-image': 'url(' + image.url + ')'}"></div>
         </div>
       </div>
       <div class="comments hided-on-ms">
@@ -78,13 +71,8 @@
         </div>
     <div class="gallery hided-on-l">
         <p class="gallery-header">Gallery</p>
-        <div class="gallery-content">
-          <div style="background-image: url(https://images.unsplash.com/photo-1444212477490-ca407925329e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1400&q=80)"></div>
-          <div style="background-image: url(https://images.unsplash.com/photo-1518717758536-85ae29035b6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60)"></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+        <div class="gallery-content" v-if="gallery">
+          <div v-for="image in gallery" :style="{'background-image': 'url(' + image.url + ')'}"></div>
         </div>
     </div>
     <div class="comments hided-on-l">
@@ -124,11 +112,13 @@
 
 <script>
   import store from "@js/store";
+  import HTTP from "@js/Common/Http.service"
 
   export default {
     data() {
       return {
-        campaign: null
+        campaign: null,
+        gallery: null
       };
     },
     beforeRouteEnter(to, from, next) {
@@ -138,6 +128,9 @@
                 next(vm => vm.setCampaign(campaign));
               }).catch(() => next());
     },
+    beforeMount(){
+      this.fetchGallery();
+    },
     computed: {
       id() {
         return this.$route.params.id;
@@ -146,7 +139,13 @@
     methods:{
       setCampaign(campaign){
         this.campaign = campaign;
-      }
+      },
+      fetchGallery(){
+        let galleryFetchUri = "/campaigns/" +this.$route.params.id+"/gallery";
+        HTTP.GET(galleryFetchUri)
+                .then(data => this.gallery = data.data.data)
+                .catch(reason => console.log(reason.response));
+      },
     }
   };
 </script>

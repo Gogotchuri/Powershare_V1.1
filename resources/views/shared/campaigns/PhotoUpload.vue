@@ -7,7 +7,7 @@
                 v-if="imgSrc"
                 ref="cropper"
                 :src="imgSrc"
-                :aspect-ratio="16/9"
+                :aspect-ratio="43/60"
                 alt="Source Image"
                 style="width: 500px; height:281px;"
             />

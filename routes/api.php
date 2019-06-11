@@ -9,6 +9,7 @@ Route::middleware("throttle:200,1")->namespace("General")->group(function (){
     Route::prefix("/campaigns")->group(function () {
         Route::get("", "CampaignController@index");
         Route::get("/{id}", "CampaignController@show");
+        Route::get("/{campaign_id}/gallery", "GalleryController@index");
     });
 
     Route::prefix("/articles")->group(function () {
@@ -59,6 +60,12 @@ Route::middleware("throttle:120,1")->middleware("auth:api")->namespace("User")->
             Route::put("/{comment_id}", "CommentController@update");
             Route::delete("/{comment_id}", "CommentController@destroy");
         });
+
+        Route::prefix("/campaigns/{campaign_id}/gallery")->group(function(){
+            Route::get("", "GalleryController@index");
+            Route::post("", "GalleryController@store");
+            Route::delete("/{image_id}", "GalleryController@destroy");
+        });
     });
 
     Route::get("/user/survey", "SurveyController@survey");
@@ -74,4 +81,9 @@ Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->
     Route::apiResource("/surveys", "SurveyController");
     Route::apiResource("/advertisers", "AdvertiserController");
     Route::get("/advertisers/{id}/get-filled-surveys", "AdvertiserController@filledSurveys");
+    Route::prefix("/campaigns/{campaign_id}/gallery")->group(function(){
+        Route::get("", "GalleryController@index");
+        Route::post("", "GalleryController@store");
+        Route::delete("/{image_id}", "GalleryController@destroy");
+    });
 });

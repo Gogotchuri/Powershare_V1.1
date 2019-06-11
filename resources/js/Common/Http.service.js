@@ -18,11 +18,11 @@ class HttpService {
         this._axios = Axios.create({
             baseURL: ApiUrl,
             headers: {
-                "X-Requested-With": "XMLHttpRequest",
-                "Access-Control-Allow-Origin": "*",
-            },
-
+                "Accept" : "application/json",
+            }
         });
+        this._axios.defaults.headers.common["Access-Control-Allow-Origin"] = "*";
+        this._axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
         this._axios.defaults.headers.common["X-CSRF-TOKEN"] = csrfToken;
         this._axios.defaults.headers.common["accept"] = "application/json";
         this.setExistingJwtHeader();
@@ -80,9 +80,10 @@ class HttpService {
      *
      * @return Promise with either data or error
      */
-    async POST(uri, baggage = null) {
+    async POST(uri, baggage = null, headers=null) {
+        let promise = (headers == null) ? this._axios.post(uri, baggage) : this._axios.post(uri, baggage, {headers: headers});
         return new Promise((resolve, reject) => {
-            this._axios.post(uri, baggage)
+            promise
                 .then(value => {
                     resolve(value);
                 })
@@ -167,8 +168,11 @@ class HttpService {
         });
     }
 
-    initializeInterceptors(store, router, progressBar){
+    getHeaders(){
+        return this._axios.defaults.headers.common;
+    }
 
+    initializeInterceptors(store, router, progressBar){
         progressBar.setTransition({
             call: "transition",
             modifier: "temp",

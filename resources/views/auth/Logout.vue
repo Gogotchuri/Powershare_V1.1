@@ -38,7 +38,7 @@
                     .then(() => window.alert("Logged out successfully!"))
                     .catch(err => {
                         this.errors = err;
-                        console.error(err);
+                        console.error(err.response);
                     });
             }
         }
