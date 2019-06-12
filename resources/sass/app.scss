@@ -1230,33 +1230,77 @@ h3.header-explore{
 //end of user page
 
 //navbar
-#mainNav {
-	height: 12vh;
-	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.1);
-	background-color: white
+#navigation-bar{
+	flex-flow: row nowrap;
+	justify-content: space-between;
+	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);	
+	height: 48px;
 }
-
-.navbar > .container {
-	position: relative;
+#navigation-bar > .nav-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
 }
-
-span.openNav,
-span.closeNav {
-	padding-left: inherit;
-	padding-right: inherit;
-	position: absolute;
-	cursor: pointer;
-	font-size: 25px;
-	right: 0;
-	display: none;
+#navigation-bar .navigation-menu{
+	flex-direction: column;
+	list-style: none;
 }
-
-@media (max-width: 768px) {
-	.navbar-expand-md .navbar-nav {
-		flex-direction: column;
+.navigation-brand{
+	margin-left:  15px;
+	margin-top: 6px;
+	margin-bottom: 15px;
+}
+.alpha{
+	width: 170px;
+	height: 27px;
+	object-fit: contain;
+}
+	@media(max-width:1280px){
+	div.burger{
+		width: 19px;
+		height: 2.5px;
+		border-radius: 5px;
+		background-color:#652f8d;
 	}
-	span.openNav {
+	div.burger:after,
+	div.burger:before{
+		content: '';
+		height: 2.5px;
+		border-radius: 5px;
+		width: 19px;
+		position: absolute;
+		background: inherit;
+		top: -7px;
+	}
+	div.burger:after{
+		top: 7px;
+		left: 0;
+	}
+	.openNav{
+		margin-right: 15px;
+		margin-top: 18px;
+		margin-bottom: 18px;
+		background-color: white;
+	}
+	span.openNav,
+	span.closeNav {
+		padding-left: inherit;
+		padding-right: inherit;
+		position: absolute;
+		cursor: pointer;
+		font-size: 25px;
+		right: 0;
 		display: block;
+	}
+	button.btn.btn-default.ripple-parent{
+		color: #818181;
+		padding: 8px 8px 8px 32px;
+		text-decoration: none;
+		font-size: 25px;
+	}
+	button.btn.btn-default.ripple-parent:hover{
+		color: white;
 	}
 	.sideNav {
 		height: 100%;
@@ -1278,19 +1322,16 @@ span.closeNav {
 		font-size: 36px;
 		margin-right: 50px;
 		color: #818181;
-		transition: 0.3s;
 	}
 	.sideNav .closeNav:hover {
 		color: #f1f1f1;
 	}
-
 	.sideNav .nav-link {
 		padding: 8px 8px 8px 32px;
 		text-decoration: none;
 		font-size: 25px;
 		color: #818181;
 		display: block;
-		transition: 0.3s;
 	}
 	.sideNav .nav-link:hover {
 		color: #f1f1f1;
@@ -1298,67 +1339,6 @@ span.closeNav {
 	.visible {
 		width: 250px;
 	}
-}
-@media screen and (max-height: 450px) {
-	.sidenav {
-		padding-top: 15px;
-	}
-	.sidenav .nav-link {
-		font-size: 18px;
-	}
-}
-//
-#navigation-bar{
-	flex-flow: row nowrap;
-	justify-content: space-between;
-	box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.2);	
-	height: 48px;
-}
-#navigation-bar > .nav-container {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: space-between;
-}
-#navigation-bar .navigation-menu{
-	flex-direction: row;
-	list-style: none;
-}
-.navigation-brand{
-	margin-left:  15px;
-	margin-top: 6px;
-	margin-bottom: 15px;
-}
-.alpha{
-	width: 170px;
-	height: 27px;
-	object-fit: contain;
-}
-div.burger{
-	width: 19px;
-	height: 2.5px;
-	border-radius: 5px;
-	background-color:#652f8d;
-}
-div.burger:after,
-div.burger:before{
-	content: '';
-	height: 2.5px;
-	border-radius: 5px;
-	width: 19px;
-	position: absolute;
-	background: inherit;
-	top: -7px;
-}
-div.burger:after{
-	top: 7px;
-	left: 0;
-}
-.openNav{
-	margin-right: 15px;
-	margin-top: 18px;
-	margin-bottom: 18px;
-	background-color: white;
 }
 @media(min-width: 420px){
 	.navigation-brand{
@@ -1397,6 +1377,17 @@ div.burger:after{
 	}
 	#navigation-bar{
 		height: 80px;
+	}
+	span.openNav,
+	span.closeNav {
+		display: none;
+	}
+	#navigation-bar .navigation-menu{
+		flex-direction: row;
+		list-style: none;
+	}
+	.sideNav{
+		
 	}
 }
 @media(min-width: 1366px){
