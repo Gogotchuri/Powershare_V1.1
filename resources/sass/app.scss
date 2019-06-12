@@ -1433,3 +1433,139 @@ h3.header-explore{
 	}
 }
 // end of navbar
+
+// footer
+#footer-main{
+	width: 100%;
+	height: 115px;
+	flex-wrap: wrap;
+	display: flex;
+	justify-content: space-between;
+}
+.footer-socials > .socials,
+.footer-menu > .footer-nav{
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+.footer-nav > a,
+.footer-nav > p{
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: normal;
+	color: #373737;
+	width: 100%;
+}
+.footer-nav{
+	text-align: center;
+	flex-direction: row;
+}
+.footer-nav{
+	font-size: 14px;
+	font-weight: normal;
+	color: #373737;
+	flex-wrap: wrap;
+	display: flex;
+}
+.footer-menu{
+	width: 100%;
+}
+.footer-socials{
+	text-align: center;
+	margin: auto;
+	margin-top: 11px;
+	margin-bottom: 7px;	
+}
+.twitter-1 {
+	width: 17px;
+	height: 14px;
+	object-fit: contain;
+}
+.facebook-1{
+	width: 9px;
+	height: 16px;
+	object-fit: contain;
+	margin: 0 32px;
+}
+.medium-1{
+	width: 19px;
+	height: 15px;
+	object-fit: contain;
+}
+@media(min-width:768px){
+	#footer-main{
+		height: 68px;
+	}
+	.footer-socials{
+		width: 170px;
+		text-align: left;
+		margin-left: 20px;
+	}
+	.footer-menu{
+		width: auto;
+		float: right;
+		margin-top: 25px;
+		margin-right: 20px;
+	}
+	.footer-nav{
+		text-align: right;
+	}
+	.footer-socials{
+		margin-top: 22px;
+	}
+	.footer-nav a,
+	.footer-nav p{
+		text-align: right;
+		width: auto;
+    	min-width: 0;
+	}
+	.twitter-1{
+		width: 19.8px;
+		height: 16.2px;
+	}
+	.facebook-1{
+		width: 10.1px;
+		height: 18.3px;
+	}
+	.medium-1{
+		width: 22.2px;
+		height: 17.6px;
+	}
+	.footer-nav > a,
+	.footer-nav > p{
+		font-size: 14px;
+		margin-left: 30px;
+	}
+}
+@media(min-width:1280px){
+	#footer-main{
+		height: 80px;
+	}
+	.twitter-1{
+		width: 25.7px;
+		height: 20.9px;
+	}
+	.facebook-1{
+		width: 13.1px;
+		height: 23.7px;
+	}
+	.medium-1{
+		width: 28.7px;
+		height: 22.7px;
+	}
+	.footer-nav > a,
+	.footer-nav > p{
+		font-size: 18px;
+		margin-left: 80px;
+	}
+}
+@media(min-width:1920px){
+	#footer-main{
+		height: 80px;
+	}
+	.footer-nav > a,
+	.footer-nav > p{
+		margin-left: 100px;
+	}
+}
+// start of footer
