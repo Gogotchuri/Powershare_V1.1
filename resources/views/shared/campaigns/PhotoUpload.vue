@@ -13,7 +13,7 @@
             />
             <input type="button" value="crop" @click="cropImage" style="margin-right: 40px;">
             <br>
-            <img v-if="cropImg" :src="cropImg" alt="" style="width: 500px; height: 281px;">
+            <img v-if="cropImg" :src="cropImg" alt="" style="width: 250px; height: 350px;">
         </div>
     </div>
 </template>

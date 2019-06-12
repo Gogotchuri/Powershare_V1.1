@@ -97,7 +97,17 @@
         methods: {
             updateCampaign(){
                 this.$store.dispatch("patchCampaign", { campaign :this.campaign, isAdmin: this.isAdmin})
-                    .then((res) => console.log(res))
+                    .then((res) => {
+                        console.log(res);
+                        switch (this.campaign.status_id) {
+                            case 1: window.alert("Campaign Has been published successfully!");
+                                break;
+                            case 2: window.alert("Campaign Has been Submitted for review!");
+                                break;
+                            case 3: window.alert("Campaign Has been saved as draft successfully!");
+                                break;
+                        }
+                    })
                     .catch(reason => console.error(reason.response.errors));
             },
 
