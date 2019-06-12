@@ -1256,7 +1256,7 @@ h3.header-explore{
 	height: 27px;
 	object-fit: contain;
 }
-	@media(max-width:1280px){
+@media(max-width:1280px){
 	div.burger{
 		width: 19px;
 		height: 2.5px;
@@ -1278,6 +1278,7 @@ h3.header-explore{
 		left: 0;
 	}
 	.openNav{
+		top: 0;
 		margin-right: 15px;
 		margin-top: 18px;
 		margin-bottom: 18px;
