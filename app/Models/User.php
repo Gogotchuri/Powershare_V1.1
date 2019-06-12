@@ -18,7 +18,7 @@ use App\Models\References\Role;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, Notifiable;
+    use HasApiTokens, Notifiable, SoftDeletes;
     private const MAX_NUMBER_OF_SURVEYS = 6;
     /**
      * The attributes that are mass assignable.

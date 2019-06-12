@@ -51,34 +51,43 @@
                     </td>
                 </tr>
             </table>
+            <intersection-observer v-if="curPage <= lastPage" v-on:intersected="loadCampaigns"/>
         </div>
     </div>
 </template>
 
 <script>
     import HTTP from "@js/Common/Http.service";
+    import IntersectionObserver from "@views/public/partials/IntersectionObserver"
+
     export default {
         name: "Campaigns",
         data(){
             return{
                 categories: [],
                 campaigns: [],
-                atAdmin: false
+                atAdmin: false,
+                curPage: 1,
+                lastPage: 1
             }
         },
-
+        components: {IntersectionObserver},
         beforeRouteEnter(to, from, next) {
             let admin = to.name === "Admin.Campaigns";
             //Fetching promises
-            let campaignFetch = admin ? HTTP.GET("/admin/campaigns") : HTTP.GET("/user/campaigns");
+            let campFetchUri = admin ? "/admin/" : "/user/";
+            campFetchUri += "campaigns?pagination=5";
+            let campaignFetch = HTTP.GET(campFetchUri);
             let categoryFetch = HTTP.GET("/campaign-categories");
             Promise.all([categoryFetch, campaignFetch]).then(value => {
                 let categories = value[0].data.data;
                 let campaigns = value[1].data.data;
+                let lastPage = value[1].data.meta.last_page;
                 next(vm => {
                     vm.categories = categories;
                     vm.campaigns = campaigns;
                     vm.atAdmin = admin;
+                    vm.lastPage = lastPage;
                 })
             }).catch(err => {
                 console.error(err.response);
@@ -95,6 +104,29 @@
                 console.log(res);
                 campaignInArray.status_id = 1;
             },
+            /**
+             * Loads campaign on call, page is taken from local variable curr page
+             * If current page is more than last page, nothing happens
+             * If this function is called after search, it should get called with search parameter true
+             * */
+            loadCampaigns(){
+                this.curPage++;
+                let campFetchUri = this.atAdmin ? "/admin/" : "/user/";
+                campFetchUri += "campaigns?pagination=5&page="+this.curPage;
+                console.log("loading more...");
+                HTTP.GET(campFetchUri)
+                    .then(value => {
+                        let fetchedCampaigns = value.data.data;
+                        let lastPage = value.data.meta.last_page;
+                        this.campaigns = this.campaigns.concat(fetchedCampaigns);
+                        this.lastPage = lastPage;
+                    })
+                    .catch(reason => {
+                        console.error("Error while loading campaigns!");
+                        console.error(reason);
+                    });
+            },
+
             adminDelete(id){
               HTTP.DELETE("/admin/campaigns/"+id)
                   .then(() => {

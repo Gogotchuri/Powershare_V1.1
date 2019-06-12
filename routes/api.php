@@ -86,4 +86,8 @@ Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->
         Route::post("", "GalleryController@store");
         Route::delete("/{image_id}", "GalleryController@destroy");
     });
+    Route::prefix("/users")->group(function (){
+       Route::get("", "UserController@index");
+       Route::delete("/{user_id}", "UserController@destroy");
+    });
 });
