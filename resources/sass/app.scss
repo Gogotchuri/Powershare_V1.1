@@ -1386,8 +1386,29 @@ h3.header-explore{
 		flex-direction: row;
 		list-style: none;
 	}
-	.sideNav{
-		
+	#Sidenav{
+		margin-right: 20px;
+	}
+	a.nav-link,
+	button.btn.btn-default.ripple-parent{
+		font-size: 18px;
+		font-weight: bold;
+		color: #1d1d1d;
+		margin-right: 15px;
+	}
+	a.nav-link{
+		margin-right: 30px;
+	}
+	#create-link{
+		color: #652f8d;
+		border-radius: 8px;
+		border: solid 2px #652f8d;
+		padding: 8px 13px 8px 13px;
+		transition: 0.3s;
+	}
+	#create-link:hover{
+		color: white;
+		background: #652f8d;
 	}
 }
 @media(min-width: 1366px){
