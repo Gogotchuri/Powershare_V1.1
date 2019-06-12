@@ -1,17 +1,18 @@
 <template>
-    <nav class="navbar navbar-expand-md">
-        <div class="container">
+    <nav id="navigation-bar">
+        <div class="nav-container">
             <!-- logo/brand -->
-            <router-link :to="{name: 'Home'}" class="navbar-brand">Powershare</router-link>
+            <router-link :to="{name: 'Home'}" class="navigation-brand">
+                <img src="img/alpha.png" class="alpha">
+            </router-link>
             <!-- side navbar toggler -->
-            <span class="openNav" @click="changeWidth">&#10094;</span>
+            <span class="openNav" @click="changeWidth"><div class="burger"></div></span>
 
             <!-- right side of navbar -->
-            <ul id="Sidenav" class="navbar-nav ml-auto sideNav" v-bind:class="{ visible : smallMedia }">
+            <ul id="Sidenav" class="navbar-nav ml-auto sideNav navigation-menu" v-bind:class="{ visible : smallMedia }">
                 <!-- Authentication Links -->
                 <span class="closeNav" @click="changeWidth">&#10095;</span>
                 <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
-                <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link">Create Campaign</router-link>
                 <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
                 <login-modal v-if="!isLoggedIn"/>
                 <register-modal v-if="!isLoggedIn"/>
@@ -21,6 +22,7 @@
                         v-if="currentUser"
                 >Profile of {{currentUser.name}}</router-link>
                 <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">LogOut</a>
+                <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link" id="create-link">Create Campaign</router-link>
             </ul>
         </div>
     </nav>
