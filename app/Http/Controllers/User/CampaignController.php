@@ -15,15 +15,32 @@ use Illuminate\Support\Facades\Auth;
 
 class CampaignController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * Every campaign current logged in user owns
-     * @return JsonResponse
-     */
-    public function index()
+    private const DEFAULT_PAGINATION = 10;
+    public function index(Request $request)
     {
-        $user_campaigns = Auth::user()->campaigns;
-        return self::responseData(CampaignsResource::collection($user_campaigns));
+        $query = Campaign::where("author_id", auth()->user()->id)->orderBy("order", "asc");
+
+        $category = $request["category_id"];
+        $name = $request["name"];
+        $pagination = $request["pagination"];
+
+        if($category !== null && $category > 0)
+            $query->where("category_id", $category);
+
+        if($name !== null)
+            $query->where("name", "like", "%" . $name . "%");
+
+        //Default pagination if not provided
+        if($pagination === null)
+            $campaigns = $query->paginate(self::DEFAULT_PAGINATION);
+        else if(is_numeric($pagination) && $pagination <= 0) {
+            $campaigns = $query->get();
+            return self::responseData(CampaignsResource::collection($campaigns));
+        }
+        else
+            $campaigns = $query->paginate($pagination);
+
+        return CampaignsResource::collection($campaigns);
     }
 
     /**

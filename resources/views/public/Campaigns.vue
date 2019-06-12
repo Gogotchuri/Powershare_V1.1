@@ -71,6 +71,7 @@ export default {
       let categories = value[0].data.data;
       let campaigns = value[1].data.data;
       let lastPage = value[1].data.meta.last_page;
+      console.log(value[1]);
       //Setting fetched data to this component
       next(vm => {
         vm.lastPage = lastPage;

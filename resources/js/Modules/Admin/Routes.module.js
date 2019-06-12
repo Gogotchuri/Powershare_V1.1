@@ -41,7 +41,7 @@ export default [
             {
                 path: "users",
                 name: "Admin.Users",
-                Component: Users
+                component: Users
             },
             {
                 path: "FAQ",
