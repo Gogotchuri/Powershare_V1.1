@@ -1,13 +1,15 @@
 <template>
-    <nav class="navbar navbar-expand-md">
-        <div class="container">
+    <nav id="navigation-bar">
+        <div class="nav-container">
             <!-- logo/brand -->
-            <router-link :to="{name: 'Home'}" class="navbar-brand">Powershare</router-link>
+            <router-link :to="{name: 'Home'}" class="navigation-brand">
+                <img src="img/alpha.png" class="alpha">
+            </router-link>
             <!-- side navbar toggler -->
-            <span class="openNav" @click="changeWidth">&#10094;</span>
+            <span class="openNav" @click="changeWidth"><div class="burger"></div></span>
 
             <!-- right side of navbar -->
-            <ul id="Sidenav" class="navbar-nav ml-auto sideNav" v-bind:class="{ visible : smallMedia }">
+            <ul id="Sidenav" class="navbar-nav ml-auto sideNav navigation-menu" v-bind:class="{ visible : smallMedia }">
                 <!-- Authentication Links -->
                 <span class="closeNav" @click="changeWidth">&#10095;</span>
                 <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
