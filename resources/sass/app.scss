@@ -1152,6 +1152,9 @@ h3.header-explore{
 	color: #662f92;
 }
 @media(min-width:768px){
+	.profile-main-class{
+		display: block;
+	}
 	.profile-tabs{
 		margin-left: 65px;
 		text-align: left;
@@ -1183,19 +1186,30 @@ h3.header-explore{
 	}
 }
 @media(min-width:1280px){
+	.user-header-content-container{
+		width: 1080px;
+		max-width: 1080px;
+		display: flex;
+	}
+	.profile-main-class{
+		width: 1080px;
+		margin: auto;
+	}
 	.user-header{
-		margin-top: 17px;
+		margin-top: -108px;
 		height: 373px;
 	}
 	.user-header-content{
 		height: 373px;
 		padding-top: 50px;
+		top: 40px;
+		justify-content: space-around;
 	}
 	.user-header-under{
 		width: 100%;
 	}
 	.profile-photo-container{
-		margin-left: 96px;
+		margin-left: 0px;
 		width: 160px;
 	}
 	.profile-photo{
@@ -1216,7 +1230,7 @@ h3.header-explore{
 	}
 	.profile-tabs{
 		margin-bottom: 20px;
-		margin-left: 90px;
+		margin-left: 0px;
 	}
 	.profile-tabs > a{
 		font-size: 20px;
@@ -1237,6 +1251,7 @@ h3.header-explore{
 	background-color: #f6f6f6;
 	justify-content: space-between;
 	display: flex;
+	flex-wrap: wrap;
 }
 .profile-campaign:first-of-type{
 	margin-top: 30.2px;
@@ -1253,6 +1268,56 @@ h3.header-explore{
 	width: 60%;
 	height: inherit;
 	background-color: white;
+}
+@media(min-width:768px){
+	.profile-campaigns{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.profile-campaign{
+		margin: 0;
+		max-width: 315px;
+		height: 87px;
+		margin-bottom: 24px;  
+		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+		background-color: #f6f6f6;
+		justify-content: space-between;
+	}
+	.profile-campaign:first-of-type,
+	.profile-campaign:nth-child(2){
+		margin-top: 40px;
+	}
+	.profile-campaign-photo{
+		width: 98px;
+	}
+	.profile-campaign-details{
+		width: 202px;
+	}
+}
+@media(min-width:1280px){
+	.profile-campaign{
+		margin: 0;
+		max-width: 525px;
+		height: 148px;
+		margin-bottom: 40px;  
+		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+		background-color: #f6f6f6;
+		justify-content: space-between;
+	}
+	.profile-campaigns{
+		justify-content: space-between;
+	}
+	.profile-campaign:first-of-type,
+	.profile-campaign:nth-child(2){
+		margin-top: 87px;
+	}
+	.profile-campaign-photo{
+		max-width: 165px;
+		width: 165px;
+	}
+	.profile-campaign-details{
+		width: 340px;
+	}
 }
 //end of created campaign
 

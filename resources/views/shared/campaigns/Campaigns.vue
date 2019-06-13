@@ -2,7 +2,9 @@
     <div class="profile-campaigns">
         <div v-for="campaign in campaigns" class="profile-campaign">
             <div class="profile-campaign-photo" :style="{'background-image': 'url('+ campaign.featured_image_url +')'}"></div>
-            <div class="profile-campaign-details"></div>
+            <div class="profile-campaign-details">
+                <p>{{campaign.name}}</p>
+            </div>
         </div>
         <!-- <div>
             <table style="width:100%">
