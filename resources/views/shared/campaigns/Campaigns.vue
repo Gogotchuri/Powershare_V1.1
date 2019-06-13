@@ -1,6 +1,10 @@
 <template>
-    <div>
-        <div>
+    <div class="profile-campaigns">
+        <div v-for="campaign in campaigns" class="profile-campaign">
+            <div class="profile-campaign-photo" :style="{'background-image': 'url('+ campaign.featured_image_url +')'}"></div>
+            <div class="profile-campaign-details"></div>
+        </div>
+        <!-- <div>
             <table style="width:100%">
                 <tr>
                     <th>ID</th>
@@ -23,7 +27,6 @@
                                 @click="adminEdit(campaign.id)">
                             EDIT
                         </button>
-<!--                        TODO-->
                         <button style="color: red"
                                 @click="adminDelete(campaign.id)">DELETE</button>
                         <button v-if="campaign.status_id != 1" style="color: green"
@@ -52,7 +55,7 @@
                 </tr>
             </table>
             <intersection-observer v-if="curPage <= lastPage" v-on:intersected="loadCampaigns"/>
-        </div>
+        </div> -->
     </div>
 </template>
 
