@@ -61,10 +61,19 @@ Route::middleware("throttle:120,1")->middleware("auth:api")->namespace("User")->
             Route::delete("/{comment_id}", "CommentController@destroy");
         });
 
+        //Gallery CRUD
         Route::prefix("/campaigns/{campaign_id}/gallery")->group(function(){
             Route::get("", "GalleryController@index");
             Route::post("", "GalleryController@store");
             Route::delete("/{image_id}", "GalleryController@destroy");
+        });
+
+        //Favorite campaigns crud
+        Route::prefix("/favourite-campaigns")->group(function(){
+           Route::get("", "SavedCampaignController@index");
+           Route::post("", "SavedCampaignController@store");
+           Route::get("/{campaign_id}", "SavedCampaignController@show");
+           Route::delete("/{campaign_id}", "SavedCampaignController@destroy");
         });
     });
 

@@ -36,7 +36,14 @@ let routes = []
 //Creating and exporting Vue router instance
 export const router = new VueRouter({
     mode:"history",
-    routes
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { x: 0, y: 0 }
+        }
+    }
 });
 
 /**

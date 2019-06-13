@@ -16,8 +16,10 @@ class Campaign extends Model
 {
     use SoftDeletes;
 
+    protected $visible = ["id", "name", "description"];
     protected $fillable = [
         "name",
+        "description",
         "details",
         "video_url",
         "category_id",

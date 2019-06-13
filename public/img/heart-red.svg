@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="18.549" height="16.307" viewBox="0 0 18.549 16.307">
+    <defs>
+        <style>
+            .cls-1{fill:red;stroke:#3e3e3e;stroke-linecap:round;stroke-linejoin:round}
+        </style>
+    </defs>
+    <path id="heart" d="M17.745 4.351a4.618 4.618 0 0 0-6.532 0l-.89.89-.89-.89A4.619 4.619 0 0 0 2.9 10.883l.89.89 6.533 6.527 6.532-6.532.89-.89a4.618 4.618 0 0 0 0-6.532z" class="cls-1" transform="translate(-1.049 -2.498)"/>
+</svg>

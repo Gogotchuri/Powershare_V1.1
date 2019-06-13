@@ -89,14 +89,15 @@
           <p class="donate-header">
             {{campaign.name}}
           </p>
-          <a href="#">
+          <a v-if="false" href="#">
           <!-- change with svg -->
             <img src="/img/share-2.svg" alt="">
                   Share
           </a>
-          <a href="#">
+          <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
           <!-- change with svg -->
-            <img src="/img/heart.svg" alt="">
+            <img v-if="favourite" src="/img/heart-red.svg" alt="">
+            <img v-else src="/img/heart.svg" alt="">
                 Save
           </a>
         </span>
@@ -118,7 +119,8 @@
     data() {
       return {
         campaign: null,
-        gallery: null
+        gallery: null,
+        favourite: false
       };
     },
     beforeRouteEnter(to, from, next) {
@@ -130,22 +132,51 @@
     },
     beforeMount(){
       this.fetchGallery();
+      if(this.isLoggedIn){
+        HTTP.GET("/user/favourite-campaigns/"+this.$route.params.id)
+                .then(res => {
+                  console.log(res);
+                  this.favourite = res.data.data;
+                });
+      }
     },
     computed: {
       id() {
         return this.$route.params.id;
-      }
+      },
+      isLoggedIn() {
+        return this.$store.getters.isAuthenticated;
+      },
     },
     methods:{
       setCampaign(campaign){
         this.campaign = campaign;
       },
+
       fetchGallery(){
         let galleryFetchUri = "/campaigns/" +this.$route.params.id+"/gallery";
         HTTP.GET(galleryFetchUri)
                 .then(data => this.gallery = data.data.data)
                 .catch(reason => console.log(reason.response));
       },
+
+      changeFavouriteStatus(){
+        if(!this.isLoggedIn) return;
+        if(this.favourite)
+          HTTP.DELETE("/user/favourite-campaigns/"+this.campaign.id)
+                .then(() => this.favourite = false)
+                  .catch(err => {
+                    console.error(err.response);
+                    window.alert("Couldn't be removed from favourites!");
+                  });
+        else
+          HTTP.POST("/user/favourite-campaigns", {campaign_id: this.campaign.id})
+                  .then(() => this.favourite = true)
+                  .catch(err => {
+                    console.error(err.response);
+                    window.alert("Couldn't be added to favourites!");
+                  })
+      }
     }
   };
 </script>
