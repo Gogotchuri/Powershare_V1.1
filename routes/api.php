@@ -75,6 +75,11 @@ Route::middleware("throttle:120,1")->middleware("auth:api")->namespace("User")->
            Route::get("/{campaign_id}", "SavedCampaignController@show");
            Route::delete("/{campaign_id}", "SavedCampaignController@destroy");
         });
+
+        //Donated Campaigns
+        Route::get("/donated-campaigns", "DonatedCampaignController@index");
+
+
     });
 
     Route::get("/user/survey", "SurveyController@survey");

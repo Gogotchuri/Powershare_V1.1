@@ -16,9 +16,15 @@ class SavedCampaignsResource extends JsonResource
     public function toArray($request)
     {
         $campaign = Campaign::where("id", $this->campaign_id)->first();
+
         return [
             "id" => $this->id,
-            "campaign" => $campaign
+            "campaign" => [
+                "id" => $campaign->id,
+                "name" => $campaign->name,
+                "description" => $campaign->description,
+                "author_name" => $campaign->author_name
+            ],
         ];
     }
 }

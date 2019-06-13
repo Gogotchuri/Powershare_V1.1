@@ -29,6 +29,7 @@ class CampaignsResource extends JsonResource
             "date" => $this->created_at,
             "video_url" => $this->video_url,
             "details" => $this->details,
+            "description" => $this->description
         ];
     }
 }

@@ -5,12 +5,14 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
+                <th>Author name</th>
                 <th>Actions</th>
             </tr>
             <tr v-for="saved in savedCampaigns">
                 <td>{{saved.campaign.id}}</td>
                 <td>{{saved.campaign.name}}</td>
                 <td>{{saved.campaign.description.substr(0,50)}}</td>
+                <td>{{saved.campaign.author_name}}</td>
                 <td>
                     <input type="button" value="VIEW" @click="viewCampaign(saved.campaign.id)">
                     <input type="button" value="DELETE" style="color: red" @click="deleteCampaign(saved.campaign.id)">
