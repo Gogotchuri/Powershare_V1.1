@@ -36,7 +36,19 @@ let routes = []
 //Creating and exporting Vue router instance
 export const router = new VueRouter({
     mode:"history",
-    routes
+    routes,
+    scrollBehavior (to, from, savedPosition) {
+        const adminToAdmin = to.matched.some(record => record.meta.adminRequired)
+            && from.matched.some(record => record.meta.adminRequired);
+        const userToUser = to.matched.some(record => record.meta.userManagement)
+            && from.matched.some(record => record.meta.userManagement);
+
+        if (savedPosition || adminToAdmin || userToUser) {
+            return savedPosition;
+        } else {
+            return { x: 0, y: 0 };
+        }
+    }
 });
 
 /**

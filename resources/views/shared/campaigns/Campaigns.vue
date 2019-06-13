@@ -13,7 +13,7 @@
                 <tr v-for="campaign in campaigns">
                     <td>{{campaign.id}}</td>
                     <td>{{campaign.name}}</td>
-                    <td>{{campaign.description}}</td>
+                    <td>{{campaign.description.substr(0,50)}}</td>
                     <td>{{campaign.author_name}}</td>
                     <td v-if="campaign.status_id == 1">APPROVED</td>
                     <td v-else-if="campaign.status_id == 2">PROPOSED</td>
@@ -149,7 +149,7 @@
                 this.$router.push('/admin/campaigns/'+id+'/edit')
             },
             viewCampaign(id){
-                this.$router.push('/campaigns/'+id);
+                window.open('/campaigns/'+id, "_blank");
             },
             userEdit(id){
                 this.$router.push('/user/campaigns/'+id+'/edit');

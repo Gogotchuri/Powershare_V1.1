@@ -1,8 +1,23 @@
 <template>
     <div>
-        
-        <!--Content-->
-        <div>
+        <div class="user-header">
+            <div class="user-header-content">
+                <div class="profile-photo-container">
+                    <div class="profile-photo"></div>
+                </div>
+                <div class="profile-header-container">
+                    <h3 class="user-name">{{user.name}}</h3>
+                    <h3 class="user-header-profile">Description, short summary</h3>
+                </div>
+                <div class="profile-tabs">
+                    <router-link :to="{name: 'User.Campaigns'}" class="nav-link">Created</router-link>
+                    <router-link :to="{name: 'User.SavedCampaigns'}" class="nav-link">Saved</router-link>
+                    <router-link :to="{name: 'User.DonatedCampaigns'}" class="nav-link">Donated</router-link>
+                    <router-link v-if="false" :to="{name: 'User.'}" class="nav-link">Statistics</router-link>
+                </div>
+            </div>
+        </div>
+        <div class="user-header-under">
             <router-view/>
         </div>
     </div>
@@ -11,6 +26,11 @@
 <script>
     export default {
         name: "UserIndex",
+        computed: {
+            user(){
+                return this.$store.getters.currentUser;
+            }
+        }
     }
 </script>
 

@@ -9,6 +9,7 @@ import Faq from "@views/public/Faq";
 import PrivacyPolicy from "@views/public/PrivacyPolicy";
 import TermsConditions from "@views/public/TermsConditions";
 import PhotoUpload from "@views/shared/campaigns/PhotoUpload"
+import VideoAd from "@views/admin/surveys/VideoAd";
 
 export default [
     {
@@ -63,9 +64,9 @@ export default [
         component: TermsConditions,
     },
     {
-        path: "/photo-upload",
-        name: "PhotoUpload",
-        component: PhotoUpload,
+        path: "/video-ad",
+        name: "VideoAd",
+        component: VideoAd,
     }
 ];
 

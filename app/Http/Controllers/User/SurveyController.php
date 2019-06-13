@@ -21,8 +21,9 @@ class SurveyController extends Controller
      */
     public function survey(){
         $user = Auth::user();
-        if($user->exceedsSurveyLimit())
-            return self::responseErrors("Exceeds Daily survey limit. Sorry... Come back later", 402);
+        //no limit on surveys! YAY
+//        if($user->exceedsSurveyLimit())
+//            return self::responseErrors("Exceeds Daily survey limit. Sorry... Come back later", 402);
         $filled_surveys = $user->filledSurveys;
         $IDs = array(0);
         foreach ($filled_surveys as $surv){

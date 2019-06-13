@@ -40,7 +40,7 @@
                                         <button type="submit" class="btn btn-primary btn-auth">
                                             Sign in
                                         </button>
-                                        <router-link :to="{name: 'ForgotPassword'}" class="forgot"> Forgot password?</router-link>
+                                        <a href="#" class="forgot" @click="passwordForgotten"> Forgot password?</a>
                                     </div>
                                 </div>
                                 <div class="form-group row" v-if="authErrors">
@@ -76,6 +76,10 @@
                     })
                     .catch(error => console.error(error));
             },
+            passwordForgotten(){
+                this.$emit("modaloff");
+                this.$router.push({name: 'ForgotPassword'});
+            }
 
         },
 

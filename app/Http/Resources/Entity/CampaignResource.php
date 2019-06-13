@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Entity;
 
+use App\Models\SavedCampaign;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class CampaignResource extends JsonResource
@@ -37,7 +38,7 @@ class CampaignResource extends JsonResource
             "comments" => $comments,
             "date" => $date,
             "due_date" => $due_date,
-            "status_id" => $this->status_id
+            "status_id" => $this->status_id,
         ];
     }
 }

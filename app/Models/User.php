@@ -79,10 +79,6 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $this->notify(new PasswordResetEmail($token));
     }
-    /**Need To implements other relations with comments, team members
-     * transactions and donations, as platform grows etc.
-     */
-
 
     /**
      * Returns filled surveys by user
@@ -91,6 +87,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(FilledSurvey::class);
     }
 
+    public function savedCampaigns(){
+        return $this->hasMany(SavedCampaign::class);
+    }
     /**
      * Returns filled surveys by user, which has been filled today
      */
