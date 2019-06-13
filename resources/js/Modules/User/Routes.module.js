@@ -5,7 +5,8 @@ import CampaignEdit from "@views/shared/campaigns/CampaignEdit";
 import EmailVerification from "@views/user/EmailVerification";
 import Index from "@/views/user/Index";
 import ShowSurvey from "@views/user/surveys/ShowSurvey";
-import PageNotFound from "@views/public/errors/PageNotFound";
+import SavedCampaigns from "@views/user/campaigns/SavedCampaigns";
+import DonatedCampaigns from "@views/user/campaigns/DonatedCampaigns";
 
 
 export default [
@@ -26,6 +27,16 @@ export default [
                 path: "campaigns",
                 name: "User.Campaigns",
                 component: Campaigns
+            },
+            {
+                path: "saved-campaigns",
+                name: "User.SavedCampaigns",
+                component: SavedCampaigns
+            },
+            {
+                path: "donated-campaigns",
+                name: "User.DonatedCampaigns",
+                component: DonatedCampaigns
             },
             {
                 path: "verify-email",

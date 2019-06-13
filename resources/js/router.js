@@ -38,10 +38,15 @@ export const router = new VueRouter({
     mode:"history",
     routes,
     scrollBehavior (to, from, savedPosition) {
-        if (savedPosition) {
-            return savedPosition
+        const adminToAdmin = to.matched.some(record => record.meta.adminRequired)
+            && from.matched.some(record => record.meta.adminRequired);
+        const userToUser = to.matched.some(record => record.meta.userManagement)
+            && from.matched.some(record => record.meta.userManagement);
+
+        if (savedPosition || adminToAdmin || userToUser) {
+            return savedPosition;
         } else {
-            return { x: 0, y: 0 }
+            return { x: 0, y: 0 };
         }
     }
 });

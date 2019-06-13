@@ -16,7 +16,7 @@ class Campaign extends Model
 {
     use SoftDeletes;
 
-    protected $visible = ["id", "name", "description"];
+    protected $visible = ["id", "name", "description", "author_name"];
     protected $fillable = [
         "name",
         "description",
@@ -28,7 +28,7 @@ class Campaign extends Model
     ];
 
     protected $with = [
-        "status"
+        "status",
     ];
 
     protected static function boot()

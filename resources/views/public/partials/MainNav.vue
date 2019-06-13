@@ -3,7 +3,7 @@
         <div class="nav-container">
             <!-- logo/brand -->
             <router-link :to="{name: 'Home'}" class="navigation-brand">
-                <img src="img/alpha.png" class="alpha">
+                <img src="/img/alpha.png" class="alpha" alt="">
             </router-link>
             <!-- side navbar toggler -->
             <span class="openNav" @click="changeWidth"><div class="burger"></div></span>

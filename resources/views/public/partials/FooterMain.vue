@@ -3,13 +3,13 @@
         <div class="footer-socials">
             <ul class="socials">
                 <a href="#">
-                    <img src="img/footer-assets/twitter.png" class="twitter-1">
+                    <img src="/img/footer-assets/twitter.png" class="twitter-1">
                 </a>
                 <a href="#">
-                    <img src="img/footer-assets/facebook.png" class="facebook-1">
+                    <img src="/img/footer-assets/facebook.png" class="facebook-1">
                 </a>
                 <a href="#">
-                    <img src="img/footer-assets/medium.png" class="medium-1">
+                    <img src="/img/footer-assets/medium.png" class="medium-1">
                 </a>
             </ul>
         </div>
