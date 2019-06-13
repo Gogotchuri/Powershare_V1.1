@@ -11,6 +11,7 @@ class DonatedCampaignController extends Controller
 {
     public function index()
     {
+        //TODO Paginate me please!
         $filled_surveys = auth()->user()->filledSurveys;
         $campaigns = $this->getDonatedCampaigns($filled_surveys);
         $campaigns_with_num = [];

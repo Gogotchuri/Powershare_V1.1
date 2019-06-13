@@ -22,6 +22,7 @@ class SavedCampaignController extends Controller
      */
     public function index()
     {
+        //TODO Paginate me please!
         $savedCampaigns = SavedCampaign::where("user_id", auth()->user()->id)->get();
         return self::responseData(SavedCampaignsResource::collection($savedCampaigns));
     }
