@@ -14,4 +14,8 @@ class Survey extends Model
     public function filledSurveys(){
         return $this->hasMany(FilledSurvey::class);
     }
+
+    public function numFilled(){
+        return $this->filledSurveys->count();
+    }
 }

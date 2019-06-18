@@ -24,8 +24,8 @@
         beforeRouteEnter(to, from, next) {
             HTTP.GET("/user/survey")
                 .then(value => {
-                    let questions = value.data.data.survey.json_body;
-                    let survey_id = value.data.data.survey.id;
+                    let questions = value.data.data.json_body;
+                    let survey_id = value.data.data.id;
                     console.log("survey:");
                     console.log(value.data);
                     next(vm => {
@@ -39,8 +39,6 @@
                     next(vm => {
                         if (reason.response.status === 404)
                             vm.noMoreSurveys = true;
-                        else if (reason.response.status === 402)
-                            vm.surveyLimit = true;
                     });
                 });
         },

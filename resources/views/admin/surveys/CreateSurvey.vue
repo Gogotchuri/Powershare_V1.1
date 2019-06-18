@@ -38,7 +38,6 @@ export default {
   mounted() {
     this.$root.$on('add-update-question', q => {
       this.updateQuestionsList(q);
-      console.log(this.questionsList);
     });
   },
   components: { SurveyBuilder, QuestionsView },
@@ -62,7 +61,8 @@ export default {
     storeSurvey(){
       HTTP.POST("/admin/surveys", {
         "name" : this.surveyName,
-        "json_body" : JSON.stringify(this.questionsList)
+        "json_body" : JSON.stringify(this.questionsList),
+        "advertiser_id" : 1
       }).then(value => {
         let returnedID = value.data.data.id;
         this.$router.push("/admin/surveys/"+returnedID);

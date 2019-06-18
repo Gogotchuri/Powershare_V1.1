@@ -18,8 +18,9 @@ class CreateSurveysTable extends Migration
             $table->string("name");
             $table->text("json_body");
             $table->integer("order")->default(100);
-            $table->unsignedInteger("advertisers_id")->nullable();
-            $table->foreign("advertisers_id")->references("id")->on("advertisers")->onDelete("set null");
+            $table->boolean("is_active")->default(true);
+            $table->unsignedInteger("advertiser_id")->nullable();
+            $table->foreign("advertiser_id")->references("id")->on("advertisers")->onDelete("set null");
             $table->timestamps();
         });
     }

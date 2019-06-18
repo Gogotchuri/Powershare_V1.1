@@ -113,14 +113,6 @@ export default {
     },
 
     /**
-     * @param {String} format
-     * @return {null}
-     */
-    timeFormatModified(format) {
-      window.console.log(format);
-    },
-
-    /**
      * @return {null}
      */
     addAnotherAnswer() {

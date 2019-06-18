@@ -17,11 +17,11 @@
         <router-link :to="{name: 'Admin.Surveys'}" class="nav-link">
             <p>Surveys</p>
         </router-link>
+        <router-link :to="{name: 'Admin.VideoAds'}" class="nav-link">
+            <p>Video Ads</p>
+        </router-link>
         <router-link :to="{name: 'Admin.Users'}" class="nav-link">
             <p>Users</p>
-        </router-link>
-        <router-link :to="{name: 'Admin.CreateSurvey'}" class="nav-link">
-            <p>Create Survey</p>
         </router-link>
     </div>
 </template>
