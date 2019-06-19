@@ -8,6 +8,16 @@
             <button type="button" v-on:click="deleteSurvey">Delete Survey</button>
         </div>
         <br>
+        <label v-if="!addNewAdvertiser">
+            Choose Advertiser
+            <select type="text" class="category" v-model="advertiser_id">
+                <option v-for="advertiser in advertisers" :value="advertiser.id">{{advertiser.name}}</option>
+            </select>
+            or
+        </label>
+        <input v-if="!addNewAdvertiser" type="button" value="Add new Advertiser" @click="addNewAdvertiser = true">
+        <create-advertiser v-if="addNewAdvertiser" v-on:AdvertiserAdded="addAdvertiser"></create-advertiser>
+        <br>
         <label>
             Survey Name:
             <input type="text" v-model="surveyName">
@@ -34,9 +44,12 @@
           return {
               notFound: true,
               surveyID: 0,
+              advertiser_id: 0,
               surveyName: "",
               questionsList: [],
               addQuestion: false,
+              addNewAdvertiser: false,
+              advertisers: []
           };
         },
         components: {SurveyBuilder, QuestionsView},
@@ -46,6 +59,7 @@
             }
         },
         mounted(){
+            this.fetchAdvertisers();
             this.$root.$on('add-update-question', q => {
                 this.updateQuestionsList(q);
             });
@@ -53,6 +67,7 @@
         beforeRouteEnter(to, from, next){
             HTTP.GET("/admin/surveys/"+to.params.id)
                 .then(value => {
+                    let adv_id = value.data.data.advertiser.id;
                     let id = value.data.data.id;
                     let name = value.data.data.name;
                     let list = JSON.parse(value.data.data.json_body);
@@ -61,6 +76,7 @@
                         vm.surveyID = id;
                         vm.surveyName = name;
                         vm.notFound = false;
+                        vm.advertiser_id = adv_id;
                     });
                 }).catch((e) => {
                     console.error(e.response);
@@ -85,9 +101,9 @@
             },
             updateSurvey(){
                 HTTP.PUT("/admin/surveys/" + this.surveyID, {
-                    "_method" : "PUT",
                     "name" : this.surveyName,
-                    "json_body" : JSON.stringify(this.questionsList)
+                    "json_body" : JSON.stringify(this.questionsList),
+                    "advertiser_id": this.advertiser_id
                 }).then(() => {
                     window.alert("Successfully updated!");
                 }).catch(reason => {
@@ -104,7 +120,17 @@
                         window.alert("Couldn't delete. We are sorry :(");
                         console.log(reason);
                     })
-            }
+            },
+            fetchAdvertisers(){
+                HTTP.GET("/admin/advertisers")
+                    .then(res => this.advertisers = res.data.data)
+                    .catch(err => console.error(err));
+            },
+            addAdvertiser(advertiser){
+                this.advertisers.push(advertiser);
+                this.advertiser_id = advertiser.id;
+                this.addNewAdvertiser = false;
+            },
         }
     }
 </script>

@@ -72,7 +72,7 @@ export default [
     },
     {
         path: "/user/video-ad",
-        name: "User.VideoAd",
+        name: "User.videoAd",
         component: VideoAd,
         meta: {
             authRequired: true

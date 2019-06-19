@@ -6,6 +6,16 @@
       <button type="button" v-on:click="storeSurvey">Store Survey</button>
     </div>
     <br>
+    <label v-if="!addNewAdvertiser">
+      Choose Advertiser
+      <select type="text" class="category" v-model="advertiser_id">
+        <option v-for="advertiser in advertisers" :value="advertiser.id">{{advertiser.name}}</option>
+      </select>
+        or
+    </label>
+      <input v-if="!addNewAdvertiser" type="button" value="Add new Advertiser" @click="addNewAdvertiser = true">
+      <create-advertiser v-if="addNewAdvertiser" v-on:AdvertiserAdded="addAdvertiser"></create-advertiser>
+      <br>
     <label>
       Survey Name:
       <input type="text" v-model="surveyName">
@@ -22,6 +32,7 @@
 
 <script>
 import SurveyBuilder from "@views/surveys/SurveyBuilder";
+import CreateAdvertiser from "@views/admin/partials/CreateAdvertiser";
 import QuestionsView from "@views/surveys/Survey";
 import sampleQuestionObj from "@views/surveys/survey-structure.json"
 import HTTP from "@js/Common/Http.service";
@@ -33,14 +44,20 @@ export default {
       surveyName: "",
       questionsList: [],
       addQuestion: false,
+      addNewAdvertiser: false,
+      advertiser_id : 1,
+      advertisers: []
     };
   },
+
+  components: {CreateAdvertiser, SurveyBuilder, QuestionsView },
+
   mounted() {
+    this.fetchAdvertisers();
     this.$root.$on('add-update-question', q => {
       this.updateQuestionsList(q);
     });
   },
-  components: { SurveyBuilder, QuestionsView },
 
   methods: {
     updateQuestionsList(question) {
@@ -62,17 +79,24 @@ export default {
       HTTP.POST("/admin/surveys", {
         "name" : this.surveyName,
         "json_body" : JSON.stringify(this.questionsList),
-        "advertiser_id" : 1
+        "advertiser_id" : this.advertiser_id
       }).then(value => {
         let returnedID = value.data.data.id;
         this.$router.push("/admin/surveys/"+returnedID);
-        console.log(value.data);
       }).catch(reason => {
-        console.log(this.surveyName);
-        console.log(this.questionsList);
-        console.log(reason.response.data);
+        console.error(reason.response.data);
       })
-    }
+    },
+    fetchAdvertisers(){
+      HTTP.GET("/admin/advertisers")
+              .then(res => this.advertisers = res.data.data)
+              .catch(err => console.error(err));
+    },
+    addAdvertiser(advertiser){
+      this.advertisers.push(advertiser);
+      this.advertiser_id = advertiser.id;
+      this.addNewAdvertiser = false;
+    },
   },
 };
 </script>
