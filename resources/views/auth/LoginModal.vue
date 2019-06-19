@@ -14,18 +14,18 @@
     import { mdbModal, mdbModalHeader, mdbModalTitle, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
     export default {
         components: {
-        mdbModal,
-        mdbModalHeader,
-        mdbModalTitle,
-        mdbModalBody,
-        mdbModalFooter,
-        mdbBtn,
-        login
+          mdbModal,
+          mdbModalHeader,
+          mdbModalTitle,
+          mdbModalBody,
+          mdbModalFooter,
+          mdbBtn,
+          login
         },
         data() {
-        return {
-            modal: false
-        };
+          return {
+              modal: false
+          };
         }
     };
 </script>

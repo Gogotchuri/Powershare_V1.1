@@ -8,6 +8,8 @@ import EditSurvey from "@views/admin/surveys/EditSurvey";
 import Surveys from "@views/admin/surveys/Surveys";
 import CampaignEdit from "@views/shared/campaigns/CampaignEdit";
 import Campaigns from "@views/shared/campaigns/Campaigns";
+import VideoAds from "@views/admin/videos/VideoAds";
+import CreateVideoAd from "@views/admin/videos/CreateVideoAd";
 
 export default [
     {
@@ -55,13 +57,28 @@ export default [
             },
             {
                 path: "surveys/create",
-                name: "Admin.CreateSurvey",
+                name: "Admin.Surveys.Create",
                 component: CreateSurvey
             },
             {
                 path: "surveys/:id",
-                name: "Admin.EditSurvey",
+                name: "Admin.Surveys.Edit",
                 component: EditSurvey
+            },
+            {
+                path: "video-ads",
+                name: "Admin.VideoAds",
+                component: VideoAds
+            },
+            {
+                path: "video-ads/create",
+                name: "Admin.VideoAds.Create",
+                component: CreateVideoAd
+            },
+            {
+                path: "video-ads/:id",
+                name: "Admin.VideoAds.Edit",
+                component: CreateVideoAd
             }
         ]
     }

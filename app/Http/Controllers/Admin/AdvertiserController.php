@@ -28,6 +28,7 @@ class AdvertiserController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
+    //TODO validator
     public function store(Request $request)
     {
         $advertiser = new Advertiser();

@@ -21,26 +21,20 @@ class SurveyController extends Controller
      */
     public function survey(){
         $user = Auth::user();
-        //no limit on surveys! YAY
-//        if($user->exceedsSurveyLimit())
-//            return self::responseErrors("Exceeds Daily survey limit. Sorry... Come back later", 402);
         $filled_surveys = $user->filledSurveys;
         $IDs = array(0);
         foreach ($filled_surveys as $surv){
             $IDs[] = $surv->survey_id;
         }
-        $surveys_to_choose = Survey::all()->whereNotIn("id", $IDs);
+        $surveys_to_choose = Survey::all()->whereNotIn("id", $IDs)->where("is_active", true);
         if($surveys_to_choose == null || $surveys_to_choose->isEmpty())
             return self::responseErrors("No more surveys are available for the time being. Come back later", 404);
         $survey = $surveys_to_choose->random();
 
-        return self::responseData([
-            "survey" => new SurveysResource($survey),
-            "num_before_limit" => $user->numBeforeSurveyLimit()
-        ]);
+        return self::responseData(new SurveysResource($survey));
     }
 
-    //TODO need to make request middleware for this request with specific rules and json check
+    //TODO Validator!
     //TODO resource formatter for filled survey
     public function store(int $campaign_id, Request $request){
         if(Campaign::all()->where("id", $campaign_id)->first() == null)

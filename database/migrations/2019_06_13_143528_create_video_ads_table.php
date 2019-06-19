@@ -16,10 +16,13 @@ class CreateVideoAdsTable extends Migration
         Schema::create('video_ads', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name")->nullable(true);
-            $table->string("url");
+            $table->string("video_url");
+            $table->string("forward_url");
+            $table->unsignedInteger("required_duration")->nullable();
             //TODO not nullable?
-            $table->unsignedInteger("advertisers_id")->nullable();
-            $table->foreign("advertisers_id")->references("id")->on("advertisers")->onDelete("set null");
+            $table->unsignedInteger("advertiser_id")->nullable();
+            $table->boolean("is_active")->default(true);
+            $table->foreign("advertiser_id")->references("id")->on("advertisers")->onDelete("set null");
             $table->timestamps();
         });
     }

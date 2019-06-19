@@ -83,7 +83,7 @@
           <p class="comment-content">{{comment.body}}</p>
         </div>
     </div>
-    <div class="donate-section">
+    <div v-if="isLoggedIn" class="donate-section">
       <div>
         <span class="donate-share-save">
           <p class="donate-header">
@@ -94,16 +94,14 @@
             <img src="/img/share-2.svg" alt="">
                   Share
           </a>
-          <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
+          <a style="cursor:pointer;" @click="changeFavouriteStatus">
           <!-- change with svg -->
             <img v-if="favourite" src="/img/heart-red.svg" alt="">
             <img v-else src="/img/heart.svg" alt="">
                 Save
           </a>
         </span>
-        <router-link :to="{name: 'User.Survey', query: {campaign_id : campaign.id}}" class="donate-button">
-          Donate for free
-        </router-link>
+        <donation-modal :campaign_id="campaign.id"/>
       </div>
     </div>
     <div class="donate-underspace">
@@ -114,8 +112,10 @@
 <script>
   import store from "@js/store";
   import HTTP from "@js/Common/Http.service"
+  import DonationModal from "@views/user/partials/DonationModal";
 
   export default {
+    components: {DonationModal},
     data() {
       return {
         campaign: null,

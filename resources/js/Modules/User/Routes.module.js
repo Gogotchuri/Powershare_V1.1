@@ -7,6 +7,7 @@ import Index from "@/views/user/Index";
 import ShowSurvey from "@views/user/surveys/ShowSurvey";
 import SavedCampaigns from "@views/user/campaigns/SavedCampaigns";
 import DonatedCampaigns from "@views/user/campaigns/DonatedCampaigns";
+import VideoAd from "@views/user/videos/VideoAd";
 
 
 export default [
@@ -65,6 +66,14 @@ export default [
         path: "/user/survey",
         name: "User.Survey",
         component: ShowSurvey,
+        meta: {
+            authRequired: true
+        }
+    },
+    {
+        path: "/user/video-ad",
+        name: "User.VideoAd",
+        component: VideoAd,
         meta: {
             authRequired: true
         }

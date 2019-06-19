@@ -81,9 +81,13 @@ Route::middleware("throttle:120,1")->middleware("auth:api")->namespace("User")->
 
 
     });
-
+    //Surveys
     Route::get("/user/survey", "SurveyController@survey");
     Route::post("/campaigns/{campaign_id}/survey", "SurveyController@store");
+
+    //Video Ads
+    Route::get("/user/video-ad", "VideoAdController@video");
+    Route::post("/campaigns/{campaign_id}/video-ad", "VideoAdController@store");
 
 });
 
@@ -93,8 +97,11 @@ Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->
     Route::apiResource("/campaigns", "CampaignController");
     Route::apiResource("/campaign-categories", "CampaignCategoryController");
     Route::apiResource("/surveys", "SurveyController");
+    Route::post("/surveys/{id}/change-status", "SurveyController@changeStatus");
     Route::apiResource("/advertisers", "AdvertiserController");
     Route::get("/advertisers/{id}/get-filled-surveys", "AdvertiserController@filledSurveys");
+    Route::apiResource("/video-ads", "VideoAdController");
+    Route::post("/video-ads/{id}/change-status", "VideoAdController@changeStatus");
     Route::prefix("/campaigns/{campaign_id}/gallery")->group(function(){
         Route::get("", "GalleryController@index");
         Route::post("", "GalleryController@store");

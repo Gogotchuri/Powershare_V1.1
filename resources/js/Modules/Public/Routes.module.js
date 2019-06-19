@@ -8,8 +8,6 @@ import About from "@views/public/About";
 import Faq from "@views/public/Faq";
 import PrivacyPolicy from "@views/public/PrivacyPolicy";
 import TermsConditions from "@views/public/TermsConditions";
-import PhotoUpload from "@views/shared/campaigns/PhotoUpload"
-import VideoAd from "@views/admin/surveys/VideoAd";
 
 export default [
     {
@@ -62,11 +60,6 @@ export default [
         path: "/terms-conditions",
         name: "TermsConditions",
         component: TermsConditions,
-    },
-    {
-        path: "/video-ad",
-        name: "VideoAd",
-        component: VideoAd,
     }
 ];
 

@@ -14,12 +14,15 @@ class SurveysResource extends JsonResource
      */
     public function toArray($request)
     {
+        $date = date_format(date_create($this->created_at), "Y-m-d");
         return [
             "id" => $this->id,
             "name" => $this->name,
             "json_body" => $this->json_body,
             "advertiser" => $this->advertiser,
-            "creation_date" => $this->created_at
+            "num_filled" => $this->numFilled(),
+            "is_active" => ($this->is_active === "1") ? true : false,
+            "creation_date" => $date
         ];
     }
 }

@@ -7,6 +7,7 @@
             </div>
             <br>
             <div>
+                <p>Category:</p>
                 <select type="text" class="category" v-model="campaign.category_id">
                     <option v-for="category in categories" :value="category.id">{{category.name}}</option>
                 </select>

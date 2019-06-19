@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Resources\Collection\Admin\SurveysResource;
+use App\Models\Advertiser;
 use App\Models\Survey;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -23,9 +24,9 @@ class SurveyController extends Controller
         $query = Survey::where("id", ">", "-1")->orderBy("order", "asc");
         $name = $request["name"];
         $pagination = $request["pagination"];
-        $advertisers_id = $request["advertiser_id"];
-        if($advertisers_id !== null)
-            $query->where("advertisers_id", $advertisers_id);
+        $advertiser_id = $request["advertiser_id"];
+        if($advertiser_id !== null)
+            $query->where("advertiser_id", $advertiser_id);
 
         if($name !== null)
             $query->where("name", "like", "%" . $name . "%");
@@ -49,13 +50,16 @@ class SurveyController extends Controller
      * @param Request $request
      * @return JsonResponse
      */
+    //TODO Validator
     public function store(Request $request)
     {
+        if($request["advertiser_id"] != null
+            && Advertiser::where("id", $request["advertiser_id"])->first() == null)
+            return self::responseErrors("Advertiser with id wasn't found!", 404);
         $survey = new Survey();
         $survey->name = $request["name"];
         $survey->json_body = $request["json_body"];
-        if($request["advertisers_id"] != null)
-            $survey->advertisers_id = $request["advertisers_id"];
+        $survey->advertiser_id = $request["advertiser_id"];
         if($request["order"] !== null)
             $survey->order = $request["order"];
         $survey->save();
@@ -88,16 +92,19 @@ class SurveyController extends Controller
         $survey = Survey::all()->firstWhere("id", $id);
         if($survey == null)
             return self::responseErrors("Survey not found!", 404);
+        if($request["advertiser_id"] != null
+            && Advertiser::where("id", $request["advertiser_id"])->first() == null)
+            return self::responseErrors("Advertiser with id wasn't found!", 404);
         $name = $request["name"];
         $json_body = $request["json_body"];
-        $advertisers_id = $request["advertisers_id"];
+        $advertiser_id = $request["advertiser_id"];
         $order = $request["order"];
         if($name != null)
             $survey->name = $name;
         if($json_body != null)
             $survey->json_body = $json_body;
-        if($advertisers_id != null)
-            $survey->advertisers_id = $advertisers_id;
+        if($advertiser_id != null)
+            $survey->advertiser_id = $advertiser_id;
         if($order != null)
             $survey->order = $order;
         $survey->save();
@@ -117,5 +124,13 @@ class SurveyController extends Controller
             return self::responseErrors("Survey not found!", 404);
         $survey->delete();
         return self::responseData("Deleted successfully", 200);
+    }
+
+    public function changeStatus($id){
+        $survey = Survey::where("id", $id)->first();
+        if($survey == null) return self::responseErrors("Survey not found!", 404);
+        $survey->is_active = !$survey->is_active;
+        $survey->save();
+        return self::responseData("Survey Status changed!");
     }
 }

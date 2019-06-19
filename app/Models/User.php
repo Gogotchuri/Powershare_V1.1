@@ -19,7 +19,7 @@ use App\Models\References\Role;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasApiTokens, Notifiable, SoftDeletes;
-    private const MAX_NUMBER_OF_SURVEYS = 6;
+    private const MAX_NUMBER_OF_VIDEOS = 6;
     /**
      * The attributes that are mass assignable.
      *  !!!might need to add provide info
@@ -90,46 +90,50 @@ class User extends Authenticatable implements MustVerifyEmail
     public function savedCampaigns(){
         return $this->hasMany(SavedCampaign::class);
     }
+
+    public function watchedVideos(){
+        return $this->hasMany(WatchedVideo::class, "user_id", "id");
+    }
     /**
-     * Returns filled surveys by user, which has been filled today
+     * Returns watched videos by user, which has been watched today
      */
-    public function getFilledSurveysToday(){
-        $filled_surveys = $this->filledSurveys;
-        $filled_surveys = $filled_surveys->filter(function($s){
-            return $this->filledSurveysFilter($s);
+    public function getWatchedVideosToday(){
+        $watched_videos = $this->watchedVideos;
+        $watched_videos_today = $watched_videos->filter(function ($v){
+            return self::watchedVideoFilter($v);
         });
 
-        return $filled_surveys;
+        return $watched_videos_today;
     }
 
     /**
-     * Takes $s survey as an @parameter and return if it has been filled
+     * Takes Watched Video object as an @parameter and returns true if it has been watched
      * less than a day ago
-     * @param $s
+     * @param $v watchedVideo
      * @return bool
      * @throws Exception
      */
-    private function filledSurveysFilter($s){
-        $oneDayInterval = new DateInterval("P1D");
+    private static function watchedVideoFilter($v){
         $today = new DateTime(date("d-m-Y H:i:s"));
-        $submission_date = new DateTime(date_format(date_create($s->created_at), "d-m-Y H:i:s"));
+        $submission_date = new DateTime(date_format(date_create($v->created_at), "d-m-Y H:i:s"));
         $dateDiff = date_diff($submission_date, $today);
-        return $dateDiff < $oneDayInterval;
+        $day_diff = $dateDiff->format("%d");
+        return $day_diff < "1";
     }
 
     /**
      * Returns true if user has filled more than allowed surveys today
      */
-    public function exceedsSurveyLimit(){
-        return $this->getFilledSurveysToday()->count() >= self::MAX_NUMBER_OF_SURVEYS;
+    public function exceedsWatchLimit(){
+        return $this->getWatchedVideosToday()->count() >= self::MAX_NUMBER_OF_VIDEOS;
     }
 
     /**
-     * Returns number of surveys left before limit for today
+     * Returns number of videos left before limit for today
      * For the user
      */
-    public function numBeforeSurveyLimit(){
-        return self::MAX_NUMBER_OF_SURVEYS - $this->getFilledSurveysToday()->count();
+    public function numBeforeWatchLimit(){
+        return self::MAX_NUMBER_OF_VIDEOS - $this->getWatchedVideosToday()->count();
     }
 
 }
