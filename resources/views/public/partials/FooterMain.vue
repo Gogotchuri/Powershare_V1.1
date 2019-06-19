@@ -15,7 +15,7 @@
         </div>
         <div class="footer-menu">
             <ul class="footer-nav">
-                <router-link :to="{ path: '/#'}">Contact us</router-link>
+                <router-link :to="{ name: 'Contact'}">Contact us</router-link>
                 <router-link :to="{ path: '/#'}">Terms and conditions</router-link>
                 <router-link :to="{ path: '/#'}">Privacy policy</router-link>
                 <p>© 2019 | Powershare</p>
