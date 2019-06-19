@@ -6,7 +6,7 @@
                 <p>{{campaign.name}}</p>
             </div>
         </div>
-        <!-- <div>
+        <div>
             <table style="width:100%">
                 <tr>
                     <th>ID</th>
@@ -57,7 +57,7 @@
                 </tr>
             </table>
             <intersection-observer v-if="curPage <= lastPage" v-on:intersected="loadCampaigns"/>
-        </div> -->
+        </div>
     </div>
 </template>
 
