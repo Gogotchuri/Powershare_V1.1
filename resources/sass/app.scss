@@ -1350,12 +1350,42 @@ h3.header-explore{
 	height: 27px;
 	object-fit: contain;
 }
-@media(max-width:1280px){
+a.nav-link{
+	font-weight: normal;
+}
+.log-out-icon{
+	width: 23px;
+	height: 23px;
+	object-fit: contain;
+	display: block;
+	transform: translateY(20%);
+}
+.logout-on-phone{
+	color: #818181;
+	display: none;
+}
+.logout-on-phone:hover{
+	color: white;
+}
+a#create-link{
+	font-weight: bold;
+}
+@media(max-width:767px){
 	div.burger{
 		width: 19px;
 		height: 2.5px;
 		border-radius: 5px;
 		background-color:#652f8d;
+	}
+	.logout-on-phone{
+		color: #818181;
+		display: block;
+	}
+	.logout-on-phone:hover{
+		color: white;
+	}
+	.log-out-icon{
+		display: none;
 	}
 	div.burger:after,
 	div.burger:before{
@@ -1456,10 +1486,51 @@ h3.header-explore{
 }
 @media(min-width: 768px){
 	.navigation-brand{
-		margin-bottom: 24px;
+		margin-bottom: 27px;
+		margin-top: 18px
 	}
 	#navigation-bar{
 		height: 68px;
+	}
+	.alpha{
+		width: 185px;
+		height: 34px;
+	}
+	#navigation-bar{
+		height: 80px;
+	}
+	span.openNav,
+	span.closeNav {
+		display: none;
+	}
+	#navigation-bar .navigation-menu{
+		flex-direction: row;
+		list-style: none;
+	}
+	#Sidenav{
+		margin-right: 20px;
+	}
+	a.nav-link,
+	button.btn.btn-default.ripple-parent{
+		font-size: 14px;
+		font-weight: normal;
+		color: #1d1d1d;
+		margin-right: 15px;
+	}
+	a.nav-link{
+		margin-right: 30px;
+		font-size: 14px;
+	}
+	#create-link{
+		color: #652f8d;
+		border-radius: 8px;
+		border: solid 2px #652f8d;
+		padding: 8px 13px 8px 13px;
+		transition: 0.3s;
+	}
+	#create-link:hover{
+		color: white;
+		background: #652f8d;
 	}
 }
 @media(min-width: 1280px){
@@ -1487,7 +1558,7 @@ h3.header-explore{
 	a.nav-link,
 	button.btn.btn-default.ripple-parent{
 		font-size: 18px;
-		font-weight: bold;
+		font-weight: normal;
 		color: #1d1d1d;
 		margin-right: 15px;
 	}

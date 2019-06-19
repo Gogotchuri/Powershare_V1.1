@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 25 25">
+    <defs>
+        <style>
+            .cls-1{fill:none;stroke:#000;stroke-linecap:round;stroke-linejoin:round;stroke-width:2px}
+        </style>
+    </defs>
+    <g id="log-in_1_" data-name="log-in (1)" transform="translate(-2 -2)">
+        <path id="Path_10150" d="M15 3h5.111a2.556 2.556 0 0 1 2.556 2.556v17.888A2.556 2.556 0 0 1 20.111 26H15" class="cls-1" data-name="Path 10150" transform="translate(3.333)"/>
+        <path id="Path_10151" d="M10 19.778l6.389-6.389L10 7" class="cls-1" data-name="Path 10151" transform="translate(1.944 1.111)"/>
+        <path id="Line_13" d="M15.333 0H0" class="cls-1" data-name="Line 13" transform="translate(3 14.5)"/>
+    </g>
+</svg>
