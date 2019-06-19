@@ -1,5 +1,11 @@
 <template>
-    <div>
+    <div class="profile-campaigns">
+        <div v-for="campaign in campaigns" class="profile-campaign">
+            <div class="profile-campaign-photo" :style="{'background-image': 'url('+ campaign.featured_image_url +')'}"></div>
+            <div class="profile-campaign-details">
+                <p>{{campaign.name}}</p>
+            </div>
+        </div>
         <div>
             <table style="width:100%">
                 <tr>
@@ -23,7 +29,6 @@
                                 @click="adminEdit(campaign.id)">
                             EDIT
                         </button>
-<!--                        TODO-->
                         <button style="color: red"
                                 @click="adminDelete(campaign.id)">DELETE</button>
                         <button v-if="campaign.status_id != 1" style="color: green"

@@ -909,7 +909,7 @@ input#remember{
 // start of explore page
 .exploreIllustration{
 	position: absolute;
-	width: 100vw;
+	width: 99vw;
 	height: 264px;
 	top: 0;
 	left: 0;
@@ -1092,7 +1092,6 @@ h3.header-explore{
 }
 .user-header-under{
 	width: 100%;
-	height: 281px;
 }
 .profile-photo{
 	width: 96px;
@@ -1134,11 +1133,12 @@ h3.header-explore{
 	height: 130px;
 }
 .profile-tabs{
-	width: 100%;
 	position: absolute;
 	margin: auto;
 	bottom: 0;
 	height: 30px;
+	width: 100%;
+	text-align: center;
 }
 .profile-tabs > a{
 	color: #565656;
@@ -1152,6 +1152,9 @@ h3.header-explore{
 	color: #662f92;
 }
 @media(min-width:768px){
+	.profile-main-class{
+		display: block;
+	}
 	.profile-tabs{
 		margin-left: 65px;
 		text-align: left;
@@ -1181,25 +1184,32 @@ h3.header-explore{
 		display: flex;
 		padding-top: 20px;
 	}
-	.user-header-under{
-		height: 240px;
-	}
 }
 @media(min-width:1280px){
+	.user-header-content-container{
+		width: 1080px;
+		max-width: 1080px;
+		display: flex;
+	}
+	.profile-main-class{
+		width: 1080px;
+		margin: auto;
+	}
 	.user-header{
-		margin-top: 17px;
+		margin-top: -2px;
 		height: 373px;
 	}
 	.user-header-content{
 		height: 373px;
 		padding-top: 50px;
+		top: 40px;
+		justify-content: space-around;
 	}
 	.user-header-under{
 		width: 100%;
-		height: 373px;
 	}
 	.profile-photo-container{
-		margin-left: 96px;
+		margin-left: 0px;
 		width: 160px;
 	}
 	.profile-photo{
@@ -1220,13 +1230,97 @@ h3.header-explore{
 	}
 	.profile-tabs{
 		margin-bottom: 20px;
-		margin-left: 90px;
+		margin-left: 0px;
 	}
 	.profile-tabs > a{
 		font-size: 20px;
 		padding: 10px 24px;
 	}
 }
+//user created campaign
+.profile-campaigns{
+	justify-content: space-around;
+}
+.profile-campaign{
+	width: 90%;
+	max-width: 385px;
+	height: 101px;
+	margin: auto;
+	margin-bottom: 28px;  
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+	background-color: #f6f6f6;
+	justify-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
+}
+.profile-campaign:first-of-type{
+	margin-top: 30.2px;
+}
+.profile-campaign-photo{
+	width: 35%;
+	max-width: 115px;
+	height: inherit;
+	background-position: center;
+	background-size: cover;
+}
+.profile-campaign-details{
+	float: right;
+	width: 60%;
+	height: inherit;
+	background-color: white;
+}
+@media(min-width:768px){
+	.profile-campaigns{
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.profile-campaign{
+		margin: 0;
+		max-width: 315px;
+		height: 87px;
+		margin-bottom: 24px;  
+		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+		background-color: #f6f6f6;
+		justify-content: space-between;
+	}
+	.profile-campaign:first-of-type,
+	.profile-campaign:nth-child(2){
+		margin-top: 40px;
+	}
+	.profile-campaign-photo{
+		width: 98px;
+	}
+	.profile-campaign-details{
+		width: 202px;
+	}
+}
+@media(min-width:1280px){
+	.profile-campaign{
+		margin: 0;
+		max-width: 525px;
+		height: 148px;
+		margin-bottom: 40px;  
+		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+		background-color: #f6f6f6;
+		justify-content: space-between;
+	}
+	.profile-campaigns{
+		justify-content: space-between;
+	}
+	.profile-campaign:first-of-type,
+	.profile-campaign:nth-child(2){
+		margin-top: 87px;
+	}
+	.profile-campaign-photo{
+		max-width: 165px;
+		width: 165px;
+	}
+	.profile-campaign-details{
+		width: 340px;
+	}
+}
+//end of created campaign
+
 //end of user page
 
 //navbar
@@ -1256,7 +1350,7 @@ h3.header-explore{
 	height: 27px;
 	object-fit: contain;
 }
-	@media(max-width:1280px){
+@media(max-width:1280px){
 	div.burger{
 		width: 19px;
 		height: 2.5px;
@@ -1278,6 +1372,7 @@ h3.header-explore{
 		left: 0;
 	}
 	.openNav{
+		top: 0;
 		margin-right: 15px;
 		margin-top: 18px;
 		margin-bottom: 18px;
@@ -1568,4 +1663,94 @@ h3.header-explore{
 		margin-left: 100px;
 	}
 }
-// start of footer
+// end of footer
+
+// start of contact us
+.contact-container{
+	margin-top: 27px;
+}
+.contact-header > h3 {
+	font-size: 26px;
+	font-weight: bold;
+	text-align: left;
+	color: #662f92;
+	line-height: 1.04;
+}
+.contact-header > p{
+	font-size: 22px;
+	font-weight: 100;
+	line-height: 1;
+	text-align: left;
+	color: #1d1d1d;
+	margin-top: 20px;
+	margin-bottom: 50px;
+}
+.contact-us-label{
+	margin-bottom: 0;
+	font-size: 20px;
+	color: #1d1d1d;
+}
+input.form-control{
+	border-radius: 8px;
+	height: 60px;
+	border: solid 1px #662f92;
+	background-color: #ffffff;
+	padding: 20px 0;
+	padding-left: 10px;
+	font-size: 18px;
+	font-weight: 100;
+}
+textarea#contact-us-text{
+	height: 230px;
+	border-radius: 8px;
+	padding-left: 10px;
+	padding-top: 12px;
+	font-size: 18px;
+	font-weight: 100;
+	margin-bottom: 20px;
+}
+.btn.contact-submit{
+	color: #652f8d;
+	background-color: white;
+	border-radius: 8px;
+	border: solid 2px #652f8d;
+	padding: 8px 13px 8px 13px;
+	transition: 0.3s;
+	font-weight: bold;
+	align-self: center;
+	padding: 10px 50px;
+	font-size: 18px;
+}
+.btn.contact-submit:hover{
+	background-color: #652f8d;
+	color: white;
+}
+.contact-btn-container{
+	width: 100%;
+	text-align: left;
+}
+@media(min-width: 768px){
+	div.contact-header,
+	div.contact-form{
+		width: 500px;
+		margin-left: 30px;
+	}
+	.contact-header > h3 {
+		font-size: 34px;
+	}
+	.contact-header > p{
+		font-size: 28px;	
+	}
+	input.form-control{
+		margin-bottom: 0;
+	}
+	.btn.contact-submit{
+		padding: 10px 65px;
+	}
+}
+@media(min-width: 1280px){
+	.contact-us-container{
+		width: 600px;
+	}
+}
+// end of contact us
