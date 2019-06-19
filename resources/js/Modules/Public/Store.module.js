@@ -91,7 +91,7 @@ const actions = {
 
     postLetter(context, data){
         return new Promise((resolve, reject) => {
-            Http.POST('contact', data)
+            Http.POST("contact", data)
                 .then(value => {
                     resolve(value)
                 })

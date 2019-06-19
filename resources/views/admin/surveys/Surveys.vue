@@ -1,6 +1,6 @@
 <template>
     <div v-if="surveys">
-        <input type="button" value="Create Survey" @click="$router.push({name: 'Admin.CreateSurvey'})">
+        <input type="button" value="Create Survey" @click="$router.push({name: 'Admin.Surveys.Create'})">
         <table>
             <tr>
                 <th>ID</th>

@@ -32,7 +32,7 @@
             },
             goToVideo(){
                 this.isActive = false;
-                this.$router.push({name: 'User.VideoAd', query: {campaign_id : this.campaign_id}});
+                this.$router.push({name: 'User.videoAd', query: {campaign_id : this.campaign_id}});
             }
         }
     }
