@@ -676,10 +676,11 @@ p.donate-header{
 
 //	start of Pop-up register/login
 .modal-dialog{
-	width: 352px;
+	width: 100%;
+	max-width: 420px;
 	height: 400px;
 	margin: auto;
-	margin-top: 132px;
+	margin-top: 100px;
 	text-align: center;
 }
 .modal-body{
@@ -696,9 +697,11 @@ p.donate-header{
 	padding-top: 0;
 	padding-bottom: 0;
 	margin-bottom: 25px;
+	padding: 0;
 }
 .card-header > h3{
-	font-size: 18px;
+	font-size: 30px;
+	font-weight: bold;
 	font-family: OpenSans;
 	line-height: 1.33;
 	color: #662f92;
@@ -706,10 +709,10 @@ p.donate-header{
 }
 .card-header > p{
 	font-family: OpenSans;
-  	font-size: 14px;
+  	font-size: 24px;
   	font-weight: normal;
 	color: #373737;
-	margin-bottom: 0;
+	margin-bottom: 30px;
 }
 div.card-body{
 	padding-top:0;
@@ -718,15 +721,15 @@ div.card-body{
 	text-align: left;
     padding-bottom: 0;
     padding-top: 0;
-    font-size: 8px;
+    font-size: 16px;
     color: #373737;
 }
 div.card-body > form{
-	width: 150px;
+	width: 275px;
 	margin: auto
 }
 .form-group{
-	margin-bottom: 6px;
+	margin-bottom: 25px;
 }
 .form-control{
 	height: 21px;
@@ -742,13 +745,14 @@ div.card-body > form{
 }
 .btn-auth{
 	width: 100%;
-	height: 21px;
-	padding: 0.1rem;
-	border-radius: 4px;
-	border: solid 1px #652f8d;
+	height: 47px;
+	padding: 10px 90px;
+	border-radius: 8px;
+	border: solid 2px #652f8d;
 	background-color: #ffffff;
 	color: #652f8d;
-	font-size: 8px;
+	font-size: 16px;
+	font-weight: bold;
 	margin-bottom: 5px;
 }
 .btn-auth:hover{
@@ -760,7 +764,7 @@ div.card-body > form{
 }
 .forgot{
 	float:left;
-	font-size: 6px;
+	font-size: 14px;
 	font-weight: normal;
 	font-style: normal;
 	font-stretch: normal;
@@ -768,6 +772,11 @@ div.card-body > form{
 	letter-spacing: normal;
 	text-align: left;
 	color: #373737;
+	text-decoration: none;
+}
+.forgot:hover{
+	cursor: pointer;
+	text-decoration: none;
 }
 input#remember{
 	width: 6.6px;
@@ -787,7 +796,7 @@ input#remember{
 }
 .remember-check > div > input{
 	top:40%;
-	transform: translateY(60%);
+	transform: translateY(10%);
 }
 @media(min-width:768px){
 	.modal-dialog{
@@ -802,22 +811,25 @@ input#remember{
 	.card-header{
 		margin-bottom: 31px;
 	}
+	.card-body{
+		padding: 0;
+	}
+	div.card-body > form{
+		width: 300px;
+	}
 	.card-header > h3{
-		font-size: 32px;
+		font-size: 40px;
 		margin-bottom:5px;
 	}
 	.card-header > p{
-		font-size: 24px;
-	}
-	div.card-body > form{
-		width: 263px;
+		font-size: 32px;
 	}
 	.form-control{
 		height:40px;
 		margin-bottom:16px;
 	}
 	.auth-label{
-		font-size: 14px;
+		font-size: 16px;
 	}
 	input#remember{
 		width: 11.5px;
@@ -829,16 +841,17 @@ input#remember{
 	}
 	.remember-check > div > input{
 		top:40%;
-		transform: translateY(50%);
+		transform: translateY(0);
 	}
 	.btn-auth{
-		width: 263px;
-		height: 38.4px;
-		border-radius: 4px;
-		font-size: 14px;
+		width: 300px;
+		height: 50px;
+		border-radius: 8px;
+		font-size: 24px;
+		padding: 5px 70px;
 	}
 	.forgot{
-		font-size: 12px;
+		font-size: 16px;
 	}
 }
 @media(min-width:1280px){
@@ -1687,6 +1700,9 @@ a#create-link{
 	}
 	.log-out-icon{
 		transform: translateY(-10%);
+	}
+	button.btn.btn-default.ripple-parent{
+		margin-right: 0;
 	}
 }
 @media(min-width: 1280px){
