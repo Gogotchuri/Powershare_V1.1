@@ -1014,7 +1014,7 @@ select.collection{
 	bottom: 0;
 	position: absolute;
 	border-bottom-left-radius: 2px;
-	border-bottom-right-radius: 2px; 
+	border-bottom-right-radius: 2px;
 }
 div.explore-input{
 	margin-top: 27px;
@@ -1028,7 +1028,19 @@ div.explore-input > select{
 	padding-bottom: 14px;
 	font-size: 16px;
 }
+.campaign-desc{
+	font-weight: 100;
+	display: none;
+	font-size: 14px;
+}
 @media(min-width:768px){
+	.campaign-desc{
+		display: block;
+		font-size: 18px;
+	}
+	.campaign-holder-left{
+		font-size: 22px;
+	}
 	.exploreIllustration,
 	.exploreIllUnder{
 		height: 418px;
@@ -1121,6 +1133,10 @@ div.explore-input > select{
 	}
 }
 @media(min-width:1280px){
+	.campaign-desc{
+		display: block;
+		font-size: 16px;
+	}
 	.exploreIllustration,
 	.exploreIllUnder{
 		height: 520px;
@@ -1647,7 +1663,7 @@ a#create-link{
 		margin-right: 15px;
 	}
 	a.nav-link{
-		margin-right: 30px;
+		margin-right: 40px;
 		font-size: 14px;
 	}
 	#create-link{
@@ -1660,6 +1676,17 @@ a#create-link{
 	#create-link:hover{
 		color: white;
 		background: #652f8d;
+	}
+	.log-out-icon{
+		transform: translateY(-15%);
+	}
+}
+@media(max-width: 850px){
+	a.nav-link{
+		margin-right: 20px;
+	}
+	.log-out-icon{
+		transform: translateY(-10%);
 	}
 }
 @media(min-width: 1280px){
@@ -1692,7 +1719,7 @@ a#create-link{
 		margin-right: 15px;
 	}
 	a.nav-link{
-		margin-right: 30px;
+		margin-right: 40px;
 	}
 	#create-link{
 		color: #652f8d;
@@ -1704,6 +1731,9 @@ a#create-link{
 	#create-link:hover{
 		color: white;
 		background: #652f8d;
+	}
+	.log-out-icon{
+		transform: translateY(10%);
 	}
 }
 @media(min-width: 1366px){
@@ -1786,13 +1816,19 @@ a#create-link{
 	width: 19px;
 	height: 15px;
 	object-fit: contain;
+	margin-right: 32px;
+}
+.telegram-1{
+	width: 20px;
+	height: 18px;
+	object-fit: contain;
 }
 @media(min-width:768px){
 	#footer-main{
 		height: 68px;
 	}
 	.footer-socials{
-		width: 170px;
+		width: 200px;
 		text-align: left;
 		margin-left: 20px;
 	}
@@ -1821,18 +1857,31 @@ a#create-link{
 	.facebook-1{
 		width: 10.1px;
 		height: 18.3px;
+		margin: 0 20px;
 	}
 	.medium-1{
 		width: 22.2px;
 		height: 17.6px;
+		margin-right: 20px;
+	}
+	.telegram-1{
+		width: 22px;
+		height: 19px;
+		object-fit: contain;
 	}
 	.footer-nav > a,
 	.footer-nav > p{
 		font-size: 14px;
-		margin-left: 30px;
+		margin-left: 15px;
+	}
+	.footer-nav > a:first-of-type{
+		margin-left: 0;
 	}
 }
 @media(min-width:1280px){
+	.footer-socials{
+		width: auto;
+	}
 	#footer-main{
 		height: 80px;
 	}
@@ -1843,15 +1892,27 @@ a#create-link{
 	.facebook-1{
 		width: 13.1px;
 		height: 23.7px;
+		margin: 0 35px;
 	}
 	.medium-1{
 		width: 28.7px;
 		height: 22.7px;
+		margin-right: 35px;
+	}
+	.telegram-1{
+		width: 26px;
+		height: 23px;
+		object-fit: contain;
 	}
 	.footer-nav > a,
 	.footer-nav > p{
 		font-size: 18px;
 		margin-left: 80px;
+	}
+	.footer-nav > a,
+	.footer-nav > p{
+		font-size: 18px;
+		margin-left: 60px;
 	}
 }
 @media(min-width:1920px){

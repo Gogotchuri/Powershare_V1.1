@@ -7,7 +7,6 @@
                             <h3>Welcome Back!</h3>
                             <p>Sign in to continue</p>
                         </div>
-
                         <div class="card-body">
                             <form @submit.prevent="authenticate">
                                 <div class="form-group row">
@@ -57,6 +56,7 @@
     </template>
 
 <script>
+    import RegisterModal from "@views/auth/RegisterModal";
     export default {
         name: "Login",
         data(){
@@ -87,6 +87,9 @@
             authErrors(){
                 return this.$store.getters.authErrors;
             }
+        },
+        components: {
+            RegisterModal
         }
     }
 

@@ -12,6 +12,9 @@
                         <div class="campaigns-important">
                             <h6>Category:<span style="font-weight:200"> {{campaign.category_name}}</span></h6>
                         </div>
+                        <div class="campaign-desc">
+                            {{campaign.description | subStr}}
+                        </div>
                 </div>
             </div>
 		</router-link>
@@ -21,5 +24,11 @@
 export default {
     name: "CampaignThumbnail",
     props: ["campaign"],
+    filters: {
+  	subStr: function(string) {
+    	return string.substring(0,70) + '...';
+        }
+  
+  }
 }
 </script>

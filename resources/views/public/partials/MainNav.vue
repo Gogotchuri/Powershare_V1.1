@@ -12,17 +12,17 @@
             <ul id="Sidenav" class="navbar-nav ml-auto sideNav navigation-menu" v-bind:class="{ visible : smallMedia }">
                 <!-- Authentication Links -->
                 <span class="closeNav" @click="changeWidth">&#10095;</span>
-                <router-link :to="{name: 'Home'}" class="nav-link">Home</router-link>
+                <router-link :to="{ name: 'Home'}" class="nav-link">Home</router-link>
                 <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
-                <router-link :to="{ name: 'Articles' }" class="nav-link">Articles</router-link>
-                <login-modal v-if="!isLoggedIn"/>
-                <register-modal v-if="!isLoggedIn"/>
+                <router-link :to="{ name: ''}" class="nav-link">About us</router-link>
                 <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link" id="create-link">Create Campaign</router-link>
                 <router-link
                         :to="{ name: 'User.Profile' }"
                         class="nav-link"
                         v-if="currentUser"
                 >Profile</router-link>
+                <login-modal v-if="!isLoggedIn"/>
+                <register-modal v-if="!isLoggedIn"/>
                 <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">
                     <img src="img/log-out.svg" class="log-out-icon">
                     <div class="logout-on-phone">Logout</div>
