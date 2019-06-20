@@ -2,7 +2,8 @@
     <div class="campaignThumbnail">                                                                    
 		<router-link class ="explore-card" :to="`/campaigns/${campaign.id}`">
             <!-- campaignis surati unda styleshi -->
-            <img class="campaignThBackground" :src="campaign.featured_image_thumbnail_url" alt="Campaign Image">
+            <div class="campaignThBackground" :style="{'background-image': 'url(' + campaign.featured_image_url + ')'}">
+            </div>
             <div class="campaignThText">
                 <div class="explore-card-text">
                         <div class="campaign-holder-left">
