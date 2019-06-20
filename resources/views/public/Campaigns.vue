@@ -1,30 +1,13 @@
 <template>
   <div class="center-campaigns">
-    <div class="exploreIllustration">
-    </div>
-    <div class="exploreIllUnder">
-      <h3 class="col-5 col-lg-3">User Experience by the Numbers: Hurting the Ones We Love</h3>
-    </div>
     <div class="explore-input">
-      <label>
-        <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadMore(search=true)">
-      </label>
-      <div>
-        <label>
-          <select class="collection">
-            <option value="1">Collections</option>
-          </select>
-        </label>
-        <label>
-          <select type="text" class="category" v-on:change="loadCampaigns(search=true)" v-model="curCategory">
-            <option value="0">All Categories</option>
-            <option v-for="category in categories" :value="category.id">{{category.name}}</option>
-          </select>
-        </label>
-      </div>
+      <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadMore(search=true)">
+      <select type="text" class="category" v-on:change="loadCampaigns(search=true)" v-model="curCategory">
+        <option value="0">All Categories</option>
+        <option v-for="category in categories" :value="category.id">{{category.name}}</option>
+      </select>
     </div>
-
-    <h3 class="header-explore">More to explore</h3>
+    
     <div class="campaigns">
       <campaign-thumbnail
               v-for="campaign in campaigns"
