@@ -1,23 +1,14 @@
 <template>
   <div v-if="false" id="blog-container">
-    <div class="blog-first-row">
-      <div class="blog">
-        <!-- for loopi unda iyos mxolod 4 unda daweros -->
-        <blog-thumbnail
-          v-for="blog in Articles"
-          :key="blog.id"
-          :blog="blog"
-        ></blog-thumbnail>
-      </div>
+    <div class="blog-input">
+      <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadMore(search=true)">
     </div>
-    <div class="blog-entire">
-      <div class="blog">
-        <blog-thumbnail
-          v-for="blog in Articles"
-          :key="blog.id"
-          :blog="blog"
-        ></blog-thumbnail>
-      </div>
+    <div class="blogs">
+      <article-thumbnail
+        v-for="blog in Articles"
+        :key="blog.id"
+        :blog="blog"
+      ></article-thumbnail>
     </div>
   </div>
   <div v-else> No Article to display</div>
@@ -26,10 +17,10 @@
 
 <script>
   import store from "@js/store";
-  import BlogThumbnail from "@views/public/partials/BlogThumbnail";
+  import ArticleThumbnail from "@views/public/partials/ArticleThumbnail";
   export default {
     name: "Articles",
-    components: {BlogThumbnail},
+    components: {ArticleThumbnail},
     data(){
       return{
         articles: []
