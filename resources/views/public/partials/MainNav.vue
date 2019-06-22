@@ -24,7 +24,7 @@
                 <login-modal v-if="!isLoggedIn"/>
                 <register-modal v-if="!isLoggedIn"/>
                 <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">
-                    <img src="img/log-out.svg" class="log-out-icon">
+                    <img src="/img/log-out.svg" class="log-out-icon">
                     <div class="logout-on-phone">Logout</div>
                 </a>
             </ul>

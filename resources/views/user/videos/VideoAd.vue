@@ -24,7 +24,8 @@
                 interval: null,
                 videoAd: null,
                 counter: 0,
-                videoElement: null
+                videoElement: null,
+                ended: false
             }
         },
         beforeRouteEnter(to, from, next){
@@ -46,6 +47,7 @@
         },
         methods: {
             timerOn(){
+                if(this.ended) return;
                 if(this.videoElement == null) this.videoElement = document.getElementById("player");
                 this.interval = setInterval(() => this.counter++, 1000);
                 if(this.videoElement != null)
@@ -58,6 +60,7 @@
             },
 
             timerOff(){
+                if(this.ended) return;
                 clearInterval(this.interval);
                 if(this.videoElement != null)
                     this.videoElement.pause();
@@ -86,7 +89,10 @@
                         this.$router.push("/campaigns/"+campaign_id);
                         console.error(err);
                         console.error(err.response);
-                    }).finally(() => this.videoElement.pause());
+                    }).finally(() => {
+                        this.videoElement.pause();
+                        this.ended = true;
+                });
             }
         }
     }
