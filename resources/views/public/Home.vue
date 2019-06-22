@@ -20,7 +20,7 @@
             <h2>Campaigns</h2>
             <div>
                 <campaign-thumbnail
-              v-for="campaign in campaigns.slice(0, 4)"
+              v-for="campaign in campaigns.slice(0, 5)"
               :key="campaign.id"
               :campaign="campaign"
             />  
@@ -31,7 +31,7 @@
         </div>
 
         <div class="how-to">
-          <h2>How to fundraise</h2>
+          <!-- <h2>How to fundraise</h2> -->
           <div>
             <div>
               Keep it all

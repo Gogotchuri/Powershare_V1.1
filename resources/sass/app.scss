@@ -2039,91 +2039,94 @@ textarea#contact-us-text{
 	color: #1d1d1d;
 }
 .landing-illustration-under{
-	height: 458px;
-	margin-bottom: 70px;
+	height: 260px;
+	margin-bottom: 50px;
 }
 .landing-illustration{
 	width: 100vw;
-	height: 500px;
+	height: 300px;
 	background-color: #662f92;
 	position: absolute;
 	left: 0;
 	top: 0;
 }
 .landing-illustration > img{
-	width: 700px;
-	height: 394px;
-	margin: 53px 0;
+	width: 345px;
+	height: 204px;
+	margin: 48px 0;
 	float: right;
+	display: none;
 }
 .landing-header{
-	margin-top: 116px;
-	margin-bottom: 135px;
-	margin-left: 100px;
+	margin-top: 59px;
+	margin-bottom: 70px;
+	margin-left: 45px;
 	float: left;
 }
 .landing-header > h2{
-	font-size: 34px;
+	font-size: 24px;
 	font-weight: bold;
 	line-height: 1.25;
 	color: white;
+	margin-bottom: 30px;
 }
 .landing-header-btn{
-	font-size: 20px;
+	font-size: 12px;
 	font-weight: bold;
-	width: 232px;
-	height: 60px;
+	width: 160px;
+	height: 40px;
 	border-radius: 30px;
 	background-color: #faac18;
 	text-decoration: none;
 	color: white;
-	padding: 18px 37px;
+	padding: 10px 20px; 
 }
 .landing-header-btn:first-of-type{
-	margin-right: 16px;
+	margin-right: 11px;
 }
 .landing-header-btn:hover{
-	width: 232px;
-	height: 60px;
+	width: 160px;
+	height: 40px;
 	border-radius: 30px;
 	background-color: #F05523;
 	text-decoration: none;
 	color: white;
 }
 .header-links{
-	margin-top: 68px;
-	width: 480px;
+	justify-content: space-around;
 }
 .landing-campaigns{
 	position: absolute;
-	height: 600px;
-	top: 570px;
+	height: 2000px;
+	top: 350px;
 	left: 0;
 	width: 100vw;
-	padding: 0 100px;
+	padding: 0 60px;
 }
 .landing-campaigns-under{
-	height: 600px;
+	height: 2000px;
 }
 .landing-campaigns > h2{
 	width: 100%;
-	font-size: 34px;
+	font-size: 30px;
 	color: #662f92;
 	line-height: 1.03;
 	font-weight: bold;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 .landing-campaigns > div {
 	width: 100%;
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	margin-bottom: 50px;
+	margin-bottom: 20px;
 }
 .landing-campaigns >  div >.campaignThumbnail{
-	width: 235px;
+	width: 290px;
 	height: 380px;
 	max-height: 380px;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+	margin-bottom: 50px;
 }
 .landing-campaigns >  div >.campaignThumbnail > a > .campaignThBackground{
 	height: 233px;
@@ -2132,22 +2135,28 @@ textarea#contact-us-text{
 	border-bottom-right-radius: 0;
 	width: 100%;
 	margin: 0;
+	margin-bottom: 15px;
+	max-width: 290px;
 }
 .landing-campaigns >  div >.campaignThumbnail > a {
 	height: 380px;
 	display: block;
 	position: relative;
+	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+	margin-bottom: 50px;
 }
 .landing-campaigns > div > .campaignThumbnail > a > .campaignThText{
-	width: 235px;
+	width: 290px;
+	max-width: 290px;
 	font-size: 16px;
 	padding: 10px;
 	height: 133px;
 	max-height: 133px;
 	overflow: hidden;
+	left: 0;
 }
 .landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-holder-left{
-	width: 235px;
+	width: 290px;
 	font-size: 16px;
 }
 .landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-desc{
@@ -2155,22 +2164,22 @@ textarea#contact-us-text{
 }
 .how-to{
 	position: absolute;
-	top: 1200px;
+	top: 2250px;
 	left: 0;
-	height: 400px;
+	height: 500px;
 	width: 100vw;
-	padding: 0 100px;
+	padding: 0 60px;
 }
 .how-to > h2{
 	width: 100%;
-	font-size: 34px;
+	font-size: 30px;
 	color: #662f92;
 	line-height: 1.03;
 	font-weight: bold;
-	margin-bottom: 50px;
+	margin-bottom: 30px;
 }
 .how-to-under{
-	height: 400px;
+	height: 700px;
 }
 .how-to > div {
 	width: 100%;
@@ -2179,15 +2188,16 @@ textarea#contact-us-text{
 	flex-wrap: wrap;
 }
 .how-to > div > div {
-	width: 500px;
+	width: 100%;
 	text-align: center;
 	font-size: 24px;
 	font-weight: bold;
 	color: #662f92;
+	margin: auto;
 }
 .how-to > div > div > div{
-	width: 500px;
-	height: 157px;
+	width: 100%;
+	height: 257px;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	background-color: #ffffff;
 	padding: 20px;
@@ -2196,5 +2206,417 @@ textarea#contact-us-text{
 	color: #1d1d1d;
 	text-align: left;
 	margin-top: 10px;
+	margin-bottom: 30px;
+}
+.landing-header-btn.cp{
+	font-size: 18px;
+}
+.campaignThumbnail:last-of-type{
+	display: none;
+}
+@media (min-width: 768px){
+	.landing-illustration-under{
+		height: 260px;
+		margin-bottom: 50px;
+	}
+	.landing-illustration{
+		width: 100vw;
+		height: 300px;
+		background-color: #662f92;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.landing-illustration > img{
+		width: 345px;
+		height: 204px;
+		margin: 48px 0;
+		float: right;
+		display: block;
+	}
+	.landing-header{
+		margin-top: 59px;
+		margin-bottom: 79px;
+		margin-left: 60px;
+		float: left;
+	}
+	.landing-header > h2{
+		font-size: 24px;
+		font-weight: bold;
+		line-height: 1.25;
+		color: white;
+		margin-bottom: 30px;
+	}
+	.landing-header-btn{
+		font-size: 14px;
+		font-weight: bold;
+		width: 160px;
+		height: 40px;
+		border-radius: 30px;
+		background-color: #faac18;
+		text-decoration: none;
+		color: white;
+		padding: 10px 20px;
+	}
+	.landing-header-btn:first-of-type{
+		margin-right: 11px;
+	}
+	.landing-header-btn:hover{
+		width: 160px;
+		height: 40px;
+		border-radius: 30px;
+		background-color: #F05523;
+		text-decoration: none;
+		color: white;
+	}
+	.header-links{
+		margin-top: 38px;
+	}
+	.landing-campaigns{
+		position: absolute;
+		height: 1150px;
+		top: 350px;
+		left: 0;
+		width: 100vw;
+		padding: 0 60px;
+	}
+	.landing-campaigns-under{
+		height: 1150px;
+	}
+	.landing-campaigns > h2{
+		width: 100%;
+		font-size: 30px;
+		color: #662f92;
+		line-height: 1.03;
+		font-weight: bold;
+		margin-bottom: 30px;
+	}
+	//
+	.landing-campaigns > div {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-bottom: 30px;
+	}
+	.landing-campaigns >  div >.campaignThumbnail{
+		width: 290px;
+		height: 380px;
+		max-height: 380px;
+		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+		margin-bottom: 70px;
+	}
+	.landing-campaigns >  div >.campaignThumbnail > a > .campaignThBackground{
+		height: 233px;
+		max-height: 233px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		width: 100%;
+		margin: 0;
+		margin-bottom: 15px;
+		max-width: 290px;
+	}
+	.landing-campaigns >  div >.campaignThumbnail > a {
+		height: 380px;
+		display: block;
+		position: relative;
+		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+		margin-bottom: 70px;
+	}
+	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText{
+		width: 290px;
+		font-size: 16px;
+		padding: 10px;
+		height: 133px;
+		max-height: 133px;
+		overflow: hidden;
+	}
+	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-holder-left{
+		width: 290px;
+		font-size: 16px;
+	}
+	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-desc{
+		font-size: 14px;
+	}
+	.how-to{
+		position: absolute;
+		top: 1450px;
+		left: 0;
+		height: 500px;
+		width: 100vw;
+		padding: 0 60px;
+	}
+	.how-to > h2{
+		width: 100%;
+		font-size: 34px;
+		color: #662f92;
+		line-height: 1.03;
+		font-weight: bold;
+		margin-bottom: 50px;
+	}
+	.how-to-under{
+		height: 500px;
+	}
+	.how-to > div {
+		width: 100%;
+		justify-content: space-between;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.how-to > div > div {
+		width: 500px;
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+		color: #662f92;
+		margin: auto;
+	}
+	.how-to > div > div > div{
+		width: 500px;
+		height: 157px;
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		background-color: #ffffff;
+		padding: 20px;
+		font-size: 20px;
+		font-weight: 100;
+		color: #1d1d1d;
+		text-align: left;
+		margin-top: 10px;
+		margin-bottom: 30px;
+	}
+}
+@media (min-width: 990px){	
+	.landing-campaigns >  div >.campaignThumbnail:nth-child(4){
+		display: none;
+	}
+	.landing-campaigns{
+		position: absolute;
+		height: 750px;
+		top: 350px;
+		left: 0;
+		width: 100vw;
+		padding: 0 60px;
+	}
+	.landing-campaigns-under{
+		height: 750px;
+	}
+	.how-to{
+		position: absolute;
+		top: 950px;
+		left: 0;
+		height: 500px;
+		width: 100vw;
+		padding: 0 60px;
+	}
+	.how-to-under{
+		height: 500px;
+	}
+}
+@media (min-width: 1280px){
+	.landing-campaigns >  div >.campaignThumbnail:nth-child(4){
+		display: block;
+	}
+	.landing-illustration-under{
+		height: 458px;
+		margin-bottom: 70px;
+	}
+	.landing-illustration{
+		width: 100vw;
+		height: 500px;
+		background-color: #662f92;
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+	.landing-illustration > img{
+		width: 700px;
+		height: 394px;
+		margin: 53px 0;
+		float: right;
+	}
+	.landing-header{
+		margin-top: 116px;
+		margin-bottom: 135px;
+		margin-left: 100px;
+		float: left;
+	}
+	.landing-header > h2{
+		font-size: 34px;
+		font-weight: bold;
+		line-height: 1.25;
+		color: white;
+	}
+	.landing-header-btn{
+		font-size: 20px;
+		font-weight: bold;
+		width: 232px;
+		height: 60px;
+		border-radius: 30px;
+		background-color: #faac18;
+		text-decoration: none;
+		color: white;
+		padding: 18px 37px;
+	}
+	.landing-header-btn:first-of-type{
+		margin-right: 16px;
+	}
+	.landing-header-btn:hover{
+		width: 232px;
+		height: 60px;
+		border-radius: 30px;
+		background-color: #F05523;
+		text-decoration: none;
+		color: white;
+	}
+	.header-links{
+		margin-top: 68px;
+		width: 480px;
+	}
+	.landing-campaigns{
+		position: absolute;
+		height: 600px;
+		top: 570px;
+		left: 0;
+		width: 100vw;
+		padding: 0 100px;
+	}
+	.landing-campaigns-under{
+		height: 600px;
+	}
+	.landing-campaigns > h2{
+		width: 100%;
+		font-size: 34px;
+		color: #662f92;
+		line-height: 1.03;
+		font-weight: bold;
+		margin-bottom: 50px;
+	}
+	.landing-campaigns > div {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		margin-bottom: 50px;
+	}
+	.landing-campaigns >  div >.campaignThumbnail{
+		width: 235px;
+		height: 380px;
+		max-height: 380px;
+	}
+	.landing-campaigns >  div >.campaignThumbnail > a > .campaignThBackground{
+		height: 233px;
+		max-height: 233px;
+		border-bottom-left-radius: 0;
+		border-bottom-right-radius: 0;
+		width: 100%;
+		margin: 0;
+	}
+	.landing-campaigns >  div >.campaignThumbnail > a {
+		height: 380px;
+		display: block;
+		position: relative;
+	}
+	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText{
+		width: 235px;
+		font-size: 16px;
+		padding: 10px;
+		height: 133px;
+		max-height: 133px;
+		overflow: hidden;
+	}
+	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-holder-left{
+		width: 235px;
+		font-size: 16px;
+	}
+	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-desc{
+		font-size: 14px;
+	}
+	.how-to{
+		position: absolute;
+		top: 1250px;
+		left: 0;
+		height: 400px;
+		width: 100vw;
+		padding: 0 100px;
+	}
+	.how-to > h2{
+		width: 100%;
+		font-size: 34px;
+		color: #662f92;
+		line-height: 1.03;
+		font-weight: bold;
+		margin-bottom: 50px;
+	}
+	.how-to-under{
+		height: 400px;
+	}
+	.how-to > div {
+		width: 100%;
+		justify-content: space-between;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.how-to > div > div {
+		width: 500px;
+		text-align: center;
+		font-size: 24px;
+		font-weight: bold;
+		color: #662f92;
+	}
+	.how-to > div > div > div{
+		width: 500px;
+		height: 157px;
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
+		background-color: #ffffff;
+		padding: 20px;
+		font-size: 20px;
+		font-weight: 100;
+		color: #1d1d1d;
+		text-align: left;
+		margin-top: 10px;
+	}
+}
+@media(min-width:1366px){
+	.landing-header{
+		margin-left: 150px;
+	}
+	div.landing-campaigns,
+	div.how-to{
+		padding: 0  150px;
+	}
+}
+
+@media(min-width:1600px){
+	.landing-header{
+		margin-left: 185px;
+	}
+	div.landing-campaigns,
+	div.how-to{
+		padding: 0 185px;
+	}
+	.campaignThumbnail:last-of-type{
+		display: block;
+	}
+}
+
+@media(min-width:1700px){
+	.how-to > div > div > div{
+		width: 650px;
+		text-align: center;
+	}
+	.how-to > div > div{
+		margin:0;
+		width: 650px;
+	}
+}
+
+@media(min-width:1920px){
+	.landing-header{
+		margin-left: 250px;
+	}
+	div.landing-campaigns,
+	div.how-to{
+		padding: 0 250px;
+	}
 }
 // end of landging
