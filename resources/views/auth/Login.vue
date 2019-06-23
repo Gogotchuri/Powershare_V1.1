@@ -26,25 +26,22 @@
                                 </div>
 
                                 <div class="form-group row remember-check">
-                                    
-
                                     <div>
                                         <input id="remember" type="checkbox" class="form-control">
                                     </div>
                                     <label for="remember" class="col-form-label  auth-label">Remember me</label>
                                 </div>
-
+                                <div class="form-group row" v-if="error">
+                                    <div class="error">
+                                        Wrong Credentials.
+                                    </div>
+                                </div>
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary btn-auth">
                                             Sign in
                                         </button>
                                         <a href="#" class="forgot" @click="passwordForgotten"> Forgot password?</a>
-                                    </div>
-                                </div>
-                                <div class="form-group row" v-if="authErrors">
-                                    <div class="error">
-                                        {{authErrors}}
                                     </div>
                                 </div>
                             </form>
@@ -64,7 +61,8 @@
                 credentials: {
                     email : "",
                     password : ""
-                }
+                },
+                error: false
             }
         },
         methods: {
@@ -74,19 +72,13 @@
                         this.$router.push({name : this.$route.query.redirect || "Home", query: this.$route.query})
                         this.$emit("modaloff");
                     })
-                    .catch(error => console.error(error));
+                    .catch(() => this.error = true);
             },
             passwordForgotten(){
                 this.$emit("modaloff");
                 this.$router.push({name: 'ForgotPassword'});
             }
 
-        },
-
-        computed: {
-            authErrors(){
-                return this.$store.getters.authErrors;
-            }
         },
         components: {
             RegisterModal

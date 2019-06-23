@@ -173,15 +173,6 @@ class HttpService {
     }
 
     initializeInterceptors(store, router, progressBar){
-        progressBar.setTransition({
-            call: "transition",
-            modifier: "temp",
-            argument: {
-                speed: "0.6s",
-                opacity: "0.6s",
-                termination: 400
-            }
-        });
         /**
          * Is called before every call to api
          * If user doesn't have right to access resource or

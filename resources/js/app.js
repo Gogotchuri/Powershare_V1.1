@@ -11,7 +11,15 @@ import router from '@js/router';
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
-Vue.use(VueProgressBar);
+Vue.use(VueProgressBar,
+	{
+		thickness: "4px",
+		transition: {
+			speed: '0.8s',
+			opacity: '1s',
+			termination: 300
+		}
+	});
 
 export const app = new Vue({
 	el: '#app',

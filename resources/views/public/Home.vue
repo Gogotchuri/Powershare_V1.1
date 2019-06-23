@@ -8,8 +8,8 @@
                     without paying a penny
                 </h2> 
                 <div class="header-links">
-                    <router-link :to="{ name: 'User.Campaigns.Create' }" class="landing-header-btn">Donate for free</router-link>
-                    <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn">Start fundrising</router-link>
+                    <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn">Donate for free</router-link>
+                    <router-link :to="{ name: 'User.Campaigns.Create' }" class="landing-header-btn">Start fundrising</router-link>
                 </div>
             </div>
             <img src="img/landing.png">

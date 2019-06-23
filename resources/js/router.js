@@ -83,7 +83,11 @@ router.beforeEach(async (to, from, next) => {
         }else
             next({name: "Login", query: {redirect: to.name}});
 
-    } else if ((to.path === "/login" || to.path === "/register") && !!user) {
+    }else if(authRequired && !user.is_verified
+                && to.name !== "Logout" && to.name !== "User.EmailVerification"){
+        window.alert("You can't use this feature without email verification!")
+        next(from.path);
+    }else if ((to.path === "/login" || to.path === "/register") && !!user) {
         next("/");
     } else {
         next();
