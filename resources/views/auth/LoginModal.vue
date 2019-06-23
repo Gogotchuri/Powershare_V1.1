@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mdb-btn @click.native="modal = true"> Login</mdb-btn>
+    <mdb-btn @click.native="modal = true"> შესვლა</mdb-btn>
     <mdb-modal :show="modal" @close="modal = false">
       <mdb-modal-body>
           <login v-on:modaloff="modal = false"/>

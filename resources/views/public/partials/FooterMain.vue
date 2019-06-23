@@ -18,8 +18,8 @@
         </div>
         <div class="footer-menu">
             <ul class="footer-nav">
-                <router-link :to="{ name: 'Articles'}">Blog</router-link>
-                <router-link :to="{ name: 'Contact'}">Contact us</router-link>
+                <router-link :to="{ name: 'Articles'}">ბლოგი</router-link>
+                <router-link :to="{ name: 'Contact'}">კონტაქტი</router-link>
                 <router-link :to="{ path: 'terms-conditions'}">Terms and conditions</router-link>
                 <router-link :to="{ path: 'privacy-policy'}">Privacy policy</router-link>
                 <p>© 2019 | Powershare</p>

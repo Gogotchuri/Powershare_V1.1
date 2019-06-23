@@ -17,7 +17,7 @@
         <div class="landing-illustration-under"></div>
 
         <div class="landing-campaigns">
-            <h2>Campaigns</h2>
+            <h2>პროექტები</h2>
             <div>
                 <campaign-thumbnail
               v-for="campaign in campaigns.slice(0, 5)"
@@ -25,24 +25,24 @@
               :campaign="campaign"
             />  
             </div>
-            <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn cp">See all</router-link>
+            <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn cp">სრულად ნახვა</router-link>
         </div>
         <div class="landing-campaigns-under">
         </div>
 
         <div class="how-to">
-          <!-- <h2>How to fundraise</h2> -->
+          <!-- <h2>როგორ მოვიზიდოთ ფული ჩვენი მიზნის დასაფინანსებლად:</h2> -->
           <div>
             <div>
-              Keep it all
+              დაიტოვე ყველაფერი
               <div>
-                At the testing stage, we offer keep it all policy to all fundraisers, meaning that you will receive every single donation even if you do not reach amount requested  
+                მაშინაც კი, თუ ვერ მიაღწევთ სასურველ მიზანს, თქვენ მთლიანად მიიღებთ იმ თანხას, რასაც თქვენი პროექტით მოაგორვებთ.  
               </div>
             </div>
             <div>
-              0% Platform fees
+              არანაირი საკომისიო
               <div>
-                All of what you donate goes to the chosen cause
+              პლატფორმა არ იტოვებს სერვისის საკომისიოს, პროექტებს სრულად ერიცხებათ ის თანხა, რომელიც მათთვისაა განკუთვნილი.
               </div>
             </div>
           </div>

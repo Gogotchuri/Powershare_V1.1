@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mdb-btn @click.native="modal = true">Register</mdb-btn>
+    <mdb-btn @click.native="modal = true">რეგისტრაცია</mdb-btn>
     <mdb-modal :show="modal" @close="modal = false">
       <mdb-modal-body>
         <register v-on:modaloff="modal = false"/>
