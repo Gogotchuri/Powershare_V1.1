@@ -52,7 +52,7 @@
       <div class="gallery hided-on-ms">
         <p class="gallery-header">Gallery</p>
         <div class="gallery-content" v-if="gallery">
-          <gallery-modal v-for="image in gallery" :campaign_photo_url="image.url" ></gallery-modal>
+          <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url" ></gallery-modal>
         </div>
       </div>
       <div class="comments hided-on-ms">

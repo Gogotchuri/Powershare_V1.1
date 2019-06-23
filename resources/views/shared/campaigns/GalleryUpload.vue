@@ -8,7 +8,7 @@
                 <th>Name</th>
                 <th>Actions</th>
             </tr>
-            <tr v-for="image in gallery">
+            <tr v-for="image in gallery" v-bind:key="image.id">
                 <td>{{image.id}}</td>
                 <td><img :src="image.thumbnail_url" alt=""></td>
                 <td><a target="_blank" :href="image.url">{{image.name.substr(0,50)}}</a></td>

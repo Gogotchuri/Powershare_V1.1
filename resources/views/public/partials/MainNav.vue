@@ -14,10 +14,10 @@
                 <span class="closeNav" @click="changeWidth">&#10095;</span>
                 <router-link :to="{ name: 'Home'}" class="nav-link">Home</router-link>
                 <router-link :to="{ name: 'Campaigns' }" class="nav-link">Campaigns</router-link>
-                <router-link :to="{ name: ''}" class="nav-link">About us</router-link>
+                <router-link :to="{ name: 'About'}" class="nav-link">About us</router-link>
                 <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link" id="create-link">Create Campaign</router-link>
                 <router-link
-                        :to="{ name: 'User.Profile' }"
+                        :to="{ name: 'User.Campaigns' }"
                         class="nav-link"
                         v-if="currentUser"
                 >Profile</router-link>

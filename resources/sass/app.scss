@@ -354,7 +354,6 @@ main > div > div> div.about-mini{
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
-	align-self: right;
 	margin-bottom: 26px;	
 }
 .completion > p.completion-donators{
@@ -2898,7 +2897,7 @@ select.category{
 	padding: 18px 10px;
 }
 .create-campaign > form > button,
-.edit-campaign > form > button,
+.edit-campaign > form > button
 {
 	color: #652f8d;
 	background-color: white;
@@ -2971,6 +2970,9 @@ select.category{
 // terms/conditions and privacy
 .docs{
 	display: block;
+	width: 76%;
+	text-align: left;
+	margin-left: 12%
 }
 // TODO
 // end of terms/conditions and privacy
