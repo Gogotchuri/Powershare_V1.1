@@ -104,11 +104,7 @@ const actions = {
         return new Promise((resolve, reject) => {
             Http.POST("register", data)
                 .then(() => resolve())
-                .catch(reason => {
-                    //just displays errors
-                    context.commit("login", null, reason);
-                    reject();
-                })
+                .catch(reason => reject(reason))
         });
     },
 };

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>Gallery</p>
+        <p>გალერია</p>
         <table>
             <tr>
                 <th>ID</th>

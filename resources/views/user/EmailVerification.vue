@@ -31,7 +31,11 @@
         methods:{
             verifyEmail(verification_url){
                 this.$store.dispatch("verifyEmail", verification_url)
-                    .then(() => this.verified = true)
+                    .then(() => {
+                        this.verified = true;
+                        window.alert("Confirmation was a success, please, sign in again with verified account.");
+                        this.$router.push({name: "Logout"});
+                    })
                     .catch(reason => {
                         this.verified = false;
                         console.error(reason);

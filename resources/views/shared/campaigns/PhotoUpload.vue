@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="file" name="image" accept="image/*" @change="setImage" style="font-size: 1.1em; padding: 0;"/>
+        <input type="file" data-buttonText="აირჩიე ფაილი" name="image" accept="image/*" @change="setImage" style="font-size: 1.1em; padding: 0;"/>
         <br>
         <div v-if="imgSrc">
             <vue-cropper
@@ -11,7 +11,7 @@
                 alt="Source Image"
                 style="width: 500px; height:281px;"
             />
-            <input type="button" value="crop" @click="cropImage" style="margin-right: 40px;">
+            <input type="button" value="მოჭერი" @click="cropImage" style="margin-right: 40px;">
             <br>
             <img v-if="cropImg" :src="cropImg" alt="" style="width: 250px; height: 350px;">
         </div>
