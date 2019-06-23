@@ -1,6 +1,6 @@
 <template>
-    <div id="container">
-        This is a Terms page!
+    <div class="docs" id="container">
+        <h2></h2>
     </div>
 </template>
 <script>
