@@ -1,6 +1,6 @@
 <template>
     <div>
-        <input type="file" name="image" accept="image/*" @change="setImage" style="font-size: 1.2em; padding: 10px 0;"/>
+        <input type="file" name="image" accept="image/*" @change="setImage" style="font-size: 1.1em; padding: 0;"/>
         <br>
         <div v-if="imgSrc">
             <vue-cropper

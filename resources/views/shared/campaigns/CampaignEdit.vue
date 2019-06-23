@@ -1,51 +1,50 @@
 <template>
-    <div v-if="campaign">
+    <div v-if="campaign" class="edit-campaign">
+        <h2>კამპანიის შეცვლა</h2>
         <form @submit.prevent="updateCampaign">
             <div>
-                <p>Name:</p>
-                <input type="text" v-model="campaign.name" required>
+                <label for="edit-name">სახელი:</label>
+                <input id="edit-name" type="text" v-model="campaign.name" required>
             </div>
             <br>
             <div>
-                <p>Category:</p>
-                <select type="text" class="category" v-model="campaign.category_id">
+                <label for="edit-category">კატეგორია:</label>
+                <select id="edit-category" type="text" class="category" v-model="campaign.category_id">
                     <option v-for="category in categories" :value="category.id">{{category.name}}</option>
                 </select>
             </div>
             <br>
             <div>
-                <p>Short Description (Maximum of 200 characters)</p>
-                <textarea type="text" v-model="campaign.description" maxlength="200" required></textarea>
+                <label for="edit-desc">მოკლე აღწერა (მაქსიმუმ 200 სიმბოლო)</label>
+                <textarea id="edit-desc" type="text" v-model="campaign.description" maxlength="200" required></textarea>
             </div>
             <br>
             <div>
-                <p>Details (Maximum of 3000 characters):</p>
-                <textarea type="text" v-model="campaign.details" maxlength="3000" required></textarea>
+                <label for="edit-ldesc">აღწერა (მაქსიმუმ 3000 სიმბოლო):</label>
+                <textarea id="edit-ldesc" type="text" v-model="campaign.details" maxlength="3000" required></textarea>
             </div>
             <br>
             <div>
-                <p>Required funding:</p>
-                <input type="number" v-model="campaign.required_funding" required>
+                <label for="req-fund">საჭირო დაფინანსება:</label>
+                <input type="number" id="req-fund" v-model="campaign.required_funding" required>
             </div>
             <br>
             <div>
-                <p>Video url:</p>
-                <input type="url" v-model="campaign.video_url">
+                <label for="vid-url">ვიდეოს მისამართი:</label>
+                <input type="url" id="vid-url" v-model="campaign.video_url">
             </div>
             <br>
             <div>
-                <p>Due Date:</p>
-                <input type="date" v-model="campaign.due_date">
+                <label for="due-date">ვადა:</label>
+                <input id="due-date" type="date" v-model="campaign.due_date">
             </div>
             <photo-upload v-on:ImageCropped="featuredImage" :image-src="campaign.featured_image_url"/>
             <br>
             <gallery-upload :isAdmin="isAdmin" :campaign="campaign"/>
             <br>
-            <div>
-                <button type="submit" @click="campaign.status_id=3">Save as Draft</button>
-                <button type="submit" @click="campaign.status_id=2">Submit For review</button>
-                <button v-if="isAdmin" type="submit" @click="campaign.status_id=1">Publish</button>
-            </div>
+            <button type="submit" @click="campaign.status_id=3">შენახვა</button>
+            <button type="submit" @click="campaign.status_id=2">დადასტურება განსახილველად</button>
+            <button v-if="isAdmin" type="submit" @click="campaign.status_id=1">გამოქვეყნება</button>
         </form>
     </div>
 </template>

@@ -1,35 +1,38 @@
 <template>
-    <div>
-        <h2>Create Campaign</h2>
+    <div class="create-campaign">
+        <h2>პროექტის შექმნა</h2>
         <form @submit.prevent="storeCampaign">
             <div>
-                <label for = "campaign-name">Name</label>
+                <label for = "campaign-name">პროექტის სახელი <br> (მაქსიმუმ 30 სიმბოლო)</label>
                 <input id = "campaign-name"
                        type = "text" 
                        v-model="campaignName"
-                       placeholder = "Campaign Name(max.30 characters)"
+                       placeholder = "შეავსე ველი"
                        maxlength = "30"
                        required
                 />
             </div>
             <div>
-                <select type="text" class="category" v-model="curCategory">
+                <label for="category-select">ვისთვის არის პროექტი მნიშვნელოვანი</label>
+                <select id="category-select" type="text" class="category" v-model="curCategory">
                     <option value="0" disabled>All Categories</option>
                     <option v-for="category in categories" :value="category.id">{{category.name}}</option>
                 </select>
             </div>
             <div>
-                <label for="short-description">Short description (max. 200 characters)</label>
+                <label for="short-description">მოკლე აღწერა
+(მაქსიმუმ 3000 სიმბოლო)</label>
                 <br>
                 <textarea id="short-description"
+                          placeholder="კამპანიის შესახებ"
                           v-model="campaignDesc"
                           maxlength="200"
                           rows="5"
                           required>
                 </textarea>
             </div>
-            <button type="submit" @click="continueEdit=true">Continue</button>
-            <button type="submit">Save as draft</button>
+            <button type="submit" @click="continueEdit=true">გაგრძელება</button>
+            <button type="submit">შენახვა</button>
         </form>
     </div>
 </template>

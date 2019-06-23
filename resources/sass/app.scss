@@ -185,7 +185,7 @@ main{
 	height: 100%;
 	width: 95%;
 	max-width: 374px;
-	min-height: 100vh;
+	min-height: 90vh;
 	margin: auto;
 	padding-top: 23px;
 	padding-bottom: 23px;
@@ -2850,3 +2850,114 @@ div.explore-input > select{
 	}
 }
 // end of blog explore
+
+// create/edit campaign
+.create-campaign > h2,
+.edit-campaign > h2
+{
+	font-size: 30px;
+	color: #662f92;
+	line-height: 1.37;
+	font-weight: bold;
+	margin-bottom: 60px;
+}
+.create-campaign > form > div > label,
+.edit-campaign > form > div > label{
+	font-size: 18px;
+	margin-bottom: 5px;
+}
+.create-campaign > form > div > input,
+.edit-campaign > form > div > input,
+select.category{
+	width: 100%;
+	max-width: 380px;
+	height: 60px;
+	border-radius: 8px;
+	border: solid 1px #662f92;
+	background-color: #ffffff;
+	font-size: 16px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	padding-left: 13px;
+	margin-bottom: 30px;
+}
+.create-campaign > form > div > textarea,
+.edit-campaign > form > div > textarea{
+	width: 100%;
+	max-width: 380px;
+	height: 227px;
+	border-radius: 8px;
+	border: solid 1px #662f92;
+	background-color: #ffffff;
+	padding: 18px 10px;
+}
+.create-campaign > form > button,
+.edit-campaign > form > button,
+{
+	color: #652f8d;
+	background-color: white;
+	border-radius: 8px;
+	border: solid 2px #652f8d;
+	transition: 0.3s;
+	font-weight: bold;
+	align-self: center;
+	padding: 15px 37px;
+	font-size: 16px;
+	margin-top: 15px;
+}
+.create-campaign > form > button:hover,
+.edit-campaign > form > button:hover{
+	background-color: #652f8d;
+	color: white;
+}
+@media(min-width:768px){
+	.create-campaign > form,
+	.edit-campaign > form{
+		max-width: 600px;
+	}
+	.create-campaign,
+	.edit-campaign{
+		display: block;
+	}
+	.create-campaign > h2,
+	.edit-campaign > h2{
+		margin-top: 60px;
+		margin-bottom: 40px;
+		font-size: 32px;
+		max-height: 100px;
+	}
+	.create-campaign > form > div > label > br{
+		display: none;
+	}
+	.create-campaign > form > div > label,
+	.edit-campaign > form > div > label{
+		font-size: 20px;
+		margin-bottom: 15px;
+	}
+	.create-campaign > form > div > input,
+	.edit-campaign > form > div > input,
+	select.category{
+		width: 100%;
+		max-width: 500px;
+		height: 60px;
+		border-radius: 8px;
+		border: solid 1px #662f92;
+		background-color: #ffffff;
+		font-size: 16px;
+		padding-top: 20px;
+		padding-bottom: 20px;
+		padding-left: 13px;
+		margin-bottom: 40px;
+	}
+	.create-campaign > form > div > textarea,
+	.edit-campaign > form > div > textarea{
+		width: 100%;
+		max-width: 500px;
+		height: 227px;
+		border-radius: 8px;
+		border: solid 1px #662f92;
+		background-color: #ffffff;
+		padding: 18px 10px;
+	}
+}
+// end of create/edit campaign
