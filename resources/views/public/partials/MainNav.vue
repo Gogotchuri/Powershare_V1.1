@@ -49,6 +49,11 @@
             LoginModal,
             RegisterModal
         },
+        watch:{
+            $route(){
+                this.smallMedia = false;
+            }
+        },
         computed: {
             isLoggedIn() {
                 return this.$store.getters.isAuthenticated;
