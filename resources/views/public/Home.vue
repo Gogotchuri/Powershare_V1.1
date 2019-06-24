@@ -3,13 +3,13 @@
         <div class="landing-illustration">
             <div class="landing-header">
                <h2> 
-                    Support  <br>
-                    important causes <br> 
-                    without paying a penny
+                    დაუჭირე მხარი <br>
+                    მნიშვნელოვან პროექტებს <br> 
+                    თანხის გადახდის გარეშე
                 </h2> 
                 <div class="header-links">
-                    <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn">Donate for free</router-link>
-                    <router-link :to="{ name: 'User.Campaigns.Create' }" class="landing-header-btn">Start fundrising</router-link>
+                    <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn">დაეხმარე უფასოდ</router-link>
+                    <router-link :to="{ name: 'User.Campaigns.Create' }" class="landing-header-btn">დაამატე პროექტი</router-link>
                 </div>
             </div>
             <img src="img/landing.png">
@@ -31,7 +31,36 @@
         </div>
 
         <div class="how-to">
-          <!-- <h2>როგორ მოვიზიდოთ ფული ჩვენი მიზნის დასაფინანსებლად:</h2> -->
+          <h2 class="howtohead">როგორ მოვიპოვოთ დაფინანსება</h2>
+
+          <div class="how-to-cards">
+            <div>
+              <img src="img/loop.png" alt="" class="loopl">
+              <h3>იპოვე</h3>
+              <p>მიზანი, რომელიც მნიშვნელოვანია შენთვის, სხვებისთვის, ან მსოფლიოსთვის.</p>
+            </div>
+            <div>
+              <img src="img/create.png" alt="" class="createl">
+              <h3>შექმენი</h3>
+              <p>პროექტის ხარისხიანი გვერდი ემოციური ტექსტით</p>
+            </div>
+            <div>
+              <img src="img/promote.png" alt="" class="promotel">
+              <h3>გააზიარე</h3>
+              <p>მეგობრებსა და ოჯახის წევრებში; სოციალურ ქსელში და ქსელს გარეთ</p>
+            </div>
+            <div>
+              <img src="img/collect.png" alt="" class="collectl">
+              <h3>შეაგროვე</h3>
+              <p>ყოველი თეთრი, რომელსაც შენი პროექტი ააგროვებს</p>
+            </div>
+            <div>
+              <img src="img/act.png" alt="" class="actl">
+              <h3>იმოქმედე</h3>
+              <p>განახორციელე შენი პროექტი და მიეცი მოტივაცია სხვებს</p>
+            </div>
+          </div>
+
           <div>
             <div>
               დაიტოვე ყველაფერი

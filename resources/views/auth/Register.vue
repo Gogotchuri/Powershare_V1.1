@@ -4,43 +4,43 @@
             <div class="col-md-9">
                 <div class="card card-default">
                     <div class="card-header">
-                        <h3>Welcome!</h3>
-                        <p>Sign up to continue</p>
+                        <h3>კეთილი იყოს თქვენი მობრძანება!</h3>
+                        <p>დარეგისტრირდით რათA გააგრძელოთ</p>
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="register">
                             <div class="form-group row">
-                                <label for="name" class="col-md-12 col-form-label auth-label">Name</label>
+                                <label for="name" class="col-md-12 col-form-label auth-label">სახელი</label>
                                 <div class="col-md-12">
                                     <input id="name" type="text" class="form-control" v-model="form.name" required autofocus>
                                 </div>
                                 <p v-if="authErrors && authErrors['name']" style="color: red;">{{authErrors['name'][0]}}</p>
                             </div>
                             <div class="form-group row">
-                                <label for="email" class="col-md-12 col-form-label auth-label">E-Mail Address</label>
+                                <label for="email" class="col-md-12 col-form-label auth-label">ელ. ფოსტა</label>
                                 <div class="col-md-12">
                                     <input id="email" type="email" class="form-control" v-model="form.email" required>
                                 </div>
                                 <p v-if="authErrors && authErrors['email']" style="color: red;">{{authErrors['email'][0]}}</p>
                             </div>
                             <div class="form-group row">
-                                <label for="password" class="col-md-12 col-form-label auth-label">Password</label>
+                                <label for="password" class="col-md-12 col-form-label auth-label">პაროლი</label>
                                 <div class="col-md-12">
                                     <input id="password" type="password" class="form-control" v-model="form.password" required>
                                 </div>
                                 <p v-if="authErrors && authErrors['password']" style="color: red;">{{authErrors['password'][0]}}</p>
                             </div>
                             <div class="form-group row">
-                                <label for="password-confirm" class="col-md-12 col-form-label auth-label">Confirm Password</label>
+                                <label for="password-confirm" class="col-md-12 col-form-label auth-label">პაროლის დადასტურება</label>
                                 <div class="col-md-12">
                                     <input id="password-confirm" type="password" class="form-control" v-model="password_confirmation" required>
                                 </div>
-                                <label v-if="noMatch" style="color: red">Passwords doesn't match</label>
+                                <label v-if="noMatch" style="color: red">პაროლი არ ემთხვევა</label>
                             </div>
                             <div class="form-group row mb-0">
                                 <div class="col-md-12">
                                     <button type="submit" class="btn btn-primary btn-auth">
-                                        sign up
+                                        რეგისტრაცია
                                     </button>
                                 </div>
                             </div>

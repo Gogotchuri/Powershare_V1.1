@@ -20,8 +20,8 @@
             <ul class="footer-nav">
                 <router-link :to="{ name: 'Articles'}">ბლოგი</router-link>
                 <router-link :to="{ name: 'Contact'}">კონტაქტი</router-link>
-                <router-link :to="{ path: 'terms-conditions'}">Terms and conditions</router-link>
-                <router-link :to="{ path: 'privacy-policy'}">Privacy policy</router-link>
+                <router-link :to="{ path: 'terms-conditions'}">წესები და პირობები</router-link>
+                <router-link :to="{ path: 'privacy-policy'}">უსაფრთხოების პოლიტიკა</router-link>
                 <p>© 2019 | Powershare</p>
             </ul>
         </div>

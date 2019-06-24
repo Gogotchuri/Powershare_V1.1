@@ -3,7 +3,7 @@
         <div class="nav-container">
             <!-- logo/brand -->
             <router-link :to="{name: 'Home'}" class="navigation-brand">
-                <img src="/img/alpha.png" class="alpha" alt="">
+                <img src="/img/powershare_logo.svg" class="alpha" alt="">
             </router-link>
             <!-- side navbar toggler -->
             <span class="openNav" @click="changeWidth"><div class="burger"></div></span>
@@ -25,7 +25,7 @@
                 <register-modal v-if="!isLoggedIn"/>
                 <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">
                     <img src="/img/log-out.svg" class="log-out-icon">
-                    <div class="logout-on-phone">Logout</div>
+                    <div class="logout-on-phone">გასვლა</div>
                 </a>
             </ul>
         </div>

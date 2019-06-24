@@ -2146,7 +2146,21 @@ textarea#contact-us-text{
 	margin-bottom: 30px;
 }
 .how-to-under{
-	height: 700px;
+	height: 380px;
+}
+@media(min-width: 700px){
+	.landing-campaigns-under{
+		height: 1000px;
+	}
+	.how-to{
+		top: 1400px;
+	}
+	.how-to-under{
+		height: 500px;
+	}
+	.landing-campaigns{
+		height: 1200px;
+	}
 }
 .how-to > div {
 	width: 100%;
@@ -2179,6 +2193,12 @@ textarea#contact-us-text{
 	font-size: 18px;
 }
 .campaignThumbnail:last-of-type{
+	display: none;
+}
+.how-to-cards{
+	display: none!important;
+}
+.howtohead{
 	display: none;
 }
 @media (min-width: 768px){
@@ -2215,7 +2235,7 @@ textarea#contact-us-text{
 		margin-bottom: 30px;
 	}
 	.landing-header-btn{
-		font-size: 14px;
+		font-size: 12px;
 		font-weight: bold;
 		width: 160px;
 		height: 40px;
@@ -2322,7 +2342,7 @@ textarea#contact-us-text{
 		margin-bottom: 50px;
 	}
 	.how-to-under{
-		height: 500px;
+		height: 1300px;
 	}
 	.how-to > div {
 		width: 100%;
@@ -2351,6 +2371,68 @@ textarea#contact-us-text{
 		margin-top: 10px;
 		margin-bottom: 30px;
 	}
+	.how-to-cards{
+		display: flex!important;
+	}
+	.how-to > .how-to-cards > div{
+		width: 300px;
+		height: 250px;
+		position: relative;
+		text-align: center;
+	}
+	.how-to > .how-to-cards > div > h3{
+		vertical-align: middle;
+		display: inline-block;
+		width: 100%;
+		height: 40px;
+		padding-top: 10px;
+		border-radius: 100px;
+		background-color: #662f92;
+		font-size: 16px;
+		font-weight: bold;
+		color: white;
+	}
+	.how-to > .how-to-cards > div > p{
+		font-size: 16px;
+		font-weight: 400;  
+		text-align: center;
+		color: #1d1d1d;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.loopl{
+		width: 117px;
+		height: 108.7px;
+		object-fit: contain;
+		margin-top: 27px;
+	}
+	.createl{
+		width: 117px;
+		height: 112.8px;
+		object-fit: contain;
+		margin-top: 23px;
+	}
+	.promotel{
+		width: 117.1px;
+		height: 118.1px;
+		object-fit: contain;
+		margin-top: 20px;
+	}
+	.collectl{
+		width: 140px;
+		height: 98.2px;
+		object-fit: contain;
+		margin-top: 40px;
+	}
+	.actl{
+		width: 80px;
+		height: 129.6px;
+		object-fit: contain;
+		margin-bottom: 10px;
+	}
+	.howtohead{
+		display: block
+	}
 }
 @media (min-width: 990px){	
 	.landing-campaigns >  div >.campaignThumbnail:nth-child(4){
@@ -2376,7 +2458,66 @@ textarea#contact-us-text{
 		padding: 0 60px;
 	}
 	.how-to-under{
-		height: 500px;
+		height: 1100px;
+	}
+	.how-to-cards{
+		margin-bottom: 80px;
+	}
+	.how-to > .how-to-cards > div{
+		width: 300px;
+		height: 250px;
+		position: relative;
+		text-align: center;
+	}
+	.how-to > .how-to-cards > div > h3{
+		vertical-align: middle;
+		display: inline-block;
+		width: 100%;
+		height: 40px;
+		padding-top: 10px;
+		border-radius: 100px;
+		background-color: #662f92;
+		font-size: 16px;
+		font-weight: bold;
+		color: white;
+	}
+	.how-to > .how-to-cards > div > p{
+		font-size: 16px;
+		font-weight: 400;  
+		text-align: center;
+		color: #1d1d1d;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.loopl{
+		width: 117px;
+		height: 108.7px;
+		object-fit: contain;
+		margin-top: 27px;
+	}
+	.createl{
+		width: 117px;
+		height: 112.8px;
+		object-fit: contain;
+		margin-top: 23px;
+	}
+	.promotel{
+		width: 117.1px;
+		height: 118.1px;
+		object-fit: contain;
+		margin-top: 20px;
+	}
+	.collectl{
+		width: 140px;
+		height: 98.2px;
+		object-fit: contain;
+		margin-top: 40px;
+	}
+	.actl{
+		width: 80px;
+		height: 129.6px;
+		object-fit: contain;
+		margin-bottom: 10px;
 	}
 }
 @media (min-width: 1280px){
@@ -2410,11 +2551,12 @@ textarea#contact-us-text{
 	.landing-header > h2{
 		font-size: 34px;
 		font-weight: bold;
-		line-height: 1.25;
+		line-height: 1.35;
 		color: white;
+
 	}
 	.landing-header-btn{
-		font-size: 20px;
+		font-size: 16px;
 		font-weight: bold;
 		width: 232px;
 		height: 60px;
@@ -2540,6 +2682,69 @@ textarea#contact-us-text{
 		color: #1d1d1d;
 		text-align: left;
 		margin-top: 10px;
+	}
+	.how-to-under{
+		height: 750px;
+	}
+	.how-to > .how-to-cards {
+		justify-content: space-between;
+		margin-bottom: 70px;
+	}
+	.how-to > .how-to-cards > div{
+		width: 200px;
+		height: 250px;
+		position: relative;
+		text-align: center;
+	}
+	.how-to > .how-to-cards > div > h3{
+		vertical-align: middle;
+		display: inline-block;
+		width: 100%;
+		height: 40px;
+		padding-top: 10px;
+		border-radius: 100px;
+		background-color: #662f92;
+		font-size: 16px;
+		font-weight: bold;
+		color: white;
+	}
+	.how-to > .how-to-cards > div > p{
+		font-size: 16px;
+		font-weight: 400;  
+		text-align: center;
+		color: #1d1d1d;
+		vertical-align: middle;
+		display: inline-block;
+	}
+	.loopl{
+		width: 117px;
+		height: 108.7px;
+		object-fit: contain;
+		margin-top: 27px;
+	}
+	.createl{
+		width: 117px;
+		height: 112.8px;
+		object-fit: contain;
+		margin-top: 23px;
+	}
+	.promotel{
+		width: 117.1px;
+		height: 118.1px;
+		object-fit: contain;
+		margin-top: 20px;
+	}
+	.collectl{
+		width: 140px;
+		height: 98.2px;
+		object-fit: contain;
+		margin-top: 40px;
+	}
+	.actl{
+		width: 80px;
+		height: 129.6px;
+		object-fit: contain;
+		margin-bottom: 10px;
 	}
 }
 @media(min-width:1366px){

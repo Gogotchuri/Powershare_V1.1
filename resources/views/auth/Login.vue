@@ -4,13 +4,13 @@
                 <div class="col-md-9">
                     <div class="card card-default">
                         <div class="card-header">
-                            <h3>Welcome Back!</h3>
-                            <p>Sign in to continue</p>
+                            <h3>კეთილი იყოს უკან დაბრუნება!</h3>
+                            <p>შედით პროფილზე გასაგრძელებლად</p>
                         </div>
                         <div class="card-body">
                             <form @submit.prevent="authenticate">
                                 <div class="form-group row">
-                                    <label for="email" class="col-sm-12 col-form-label auth-label">E-Mail Address</label>
+                                    <label for="email" class="col-sm-12 col-form-label auth-label">ელ. ფოსტა</label>
 
                                     <div class="col-md-12">
                                         <input id="email" type="email" class="form-control" v-model="credentials.email" required autofocus>
@@ -18,7 +18,7 @@
                                 </div>
 
                                 <div class="form-group row">
-                                    <label for="password" class="col-md-12 col-form-label auth-label">Password</label>
+                                    <label for="password" class="col-md-12 col-form-label auth-label">პაროლი</label>
 
                                     <div class="col-md-12">
                                         <input id="password" type="password" class="form-control" v-model="credentials.password" required>
@@ -29,7 +29,7 @@
                                     <div>
                                         <input id="remember" type="checkbox" class="form-control">
                                     </div>
-                                    <label for="remember" class="col-form-label  auth-label">Remember me</label>
+                                    <label for="remember" class="col-form-label  auth-label">დამიმახსოვრე</label>
                                 </div>
                                 <div class="form-group row" v-if="error">
                                     <div class="error">
@@ -39,9 +39,9 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary btn-auth">
-                                            Sign in
+                                            შესვლა
                                         </button>
-                                        <a href="#" class="forgot" @click="passwordForgotten"> Forgot password?</a>
+                                        <a href="#" class="forgot" @click="passwordForgotten"> დაგავიწყდა პაროლი?</a>
                                     </div>
                                 </div>
                             </form>
