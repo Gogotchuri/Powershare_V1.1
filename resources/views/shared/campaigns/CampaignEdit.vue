@@ -100,11 +100,12 @@
                     .then((res) => {
                         console.log(res);
                         switch (this.campaign.status_id) {
-                            case 1: window.alert("Campaign Has been published successfully!");
+                            case 1: window.alert("პროექტი წარმატებით გამოქვეყნდა!");
                                 break;
-                            case 2: window.alert("Campaign Has been Submitted for review!");
+                            case 2: window.alert("გმადლობთ, თქვენი პროექტი გაგზავნილია განსახილველად!");
                                 break;
-                            case 3: window.alert("Campaign Has been saved as draft successfully!");
+                            case 3: window.alert("თქვენი პროექტი შენახულია შემდგომი შესწორებებისთვის," +
+                                " იხილეთ საკუთარ კამპანიებში!");
                                 break;
                         }
                     })

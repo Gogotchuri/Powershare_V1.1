@@ -81,11 +81,11 @@ router.beforeEach(async (to, from, next) => {
             let {confirmURL} = to.query;
             next({name: "Login", query: {redirect: to.name, confirmURL}});
         }else
-            next({name: "Login", query: {redirect: to.name}});
+            next({name: "Login", query: {redirect: to.path}});
 
     }else if(authRequired && !user.is_verified
                 && to.name !== "Logout" && to.name !== "User.EmailVerification"){
-        window.alert("You can't use this feature without email verification!")
+        window.alert("თქვენ არ შეგიძლიათ ამ ფუნქციით სარგებლობა იმეილის დაუდასტურებლად, გთხოვთ დაადასტუროთ!");
         next(from.path);
     }else if ((to.path === "/login" || to.path === "/register") && !!user) {
         next("/");

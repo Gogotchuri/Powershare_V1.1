@@ -5,7 +5,7 @@
                 <div class="card card-default">
                     <div class="card-header">
                         <h3>კეთილი იყოს თქვენი მობრძანება!</h3>
-                        <p>დარეგისტრირდით რათA გააგრძელოთ</p>
+                        <p>დარეგისტრირდით რათა გააგრძელოთ</p>
                     </div>
                     <div class="card-body">
                         <form @submit.prevent="register">

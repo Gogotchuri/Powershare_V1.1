@@ -26,9 +26,10 @@
                 <img src="/img/share-2.svg" alt="">
                 Share
               </a>
-              <a style="cursor: pointer" @click="changeFavouriteStatus">
+              <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
                 <!-- change with svg -->
-                <img src="/img/heart.svg" alt="">
+                <img v-if="favourite" src="/img/heart-red.svg" alt="">
+                <img v-else src="/img/heart.svg" alt="">
                 Save
               </a>
             </span>
@@ -84,25 +85,25 @@
           <p class="comment-content">{{comment.body}}</p>
         </div>
     </div>
-    <div v-if="isLoggedIn" class="donate-section">
+    <div class="donate-section">
       <div>
         <span class="donate-share-save">
           <p class="donate-header">
             {{campaign.name}}
           </p>
-          <a v-if="false" href="#">
+          <a href="#">
           <!-- change with svg -->
             <img src="/img/share-2.svg" alt="">
                   Share
           </a>
-          <a style="cursor:pointer;" @click="changeFavouriteStatus">
+          <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
           <!-- change with svg -->
             <img v-if="favourite" src="/img/heart-red.svg" alt="">
             <img v-else src="/img/heart.svg" alt="">
                 Save
           </a>
         </span>
-        <donation-modal :campaign_id="campaign.id"/>
+        <donation-modal :campaign_id="campaign.id" :is_logged_in="isLoggedIn"/>
       </div>
     </div>
     <div class="donate-underspace">

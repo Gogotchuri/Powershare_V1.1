@@ -69,7 +69,8 @@
             authenticate(){
                 this.$store.dispatch("login", this.credentials)
                     .then(() => {
-                        this.$router.push({name : this.$route.query.redirect || "Home", query: this.$route.query})
+                        let redirectionUrl = this.$route.query.redirect;
+                        this.$router.push({path : redirectionUrl || "Home", query: this.$route.query});
                         this.$emit("modaloff");
                     })
                     .catch(() => this.error = true);

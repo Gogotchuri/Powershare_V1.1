@@ -20,7 +20,7 @@
                         :to="{ name: 'User.Campaigns' }"
                         class="nav-link"
                         v-if="currentUser"
-                >პროფილი</router-link>
+                >{{currentUser.name.substr(0,20)}}</router-link>
                 <login-modal v-if="!isLoggedIn"/>
                 <register-modal v-if="!isLoggedIn"/>
                 <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">
