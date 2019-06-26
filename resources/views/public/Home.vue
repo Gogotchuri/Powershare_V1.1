@@ -39,21 +39,25 @@
               <h3>იპოვე</h3>
               <p>მიზანი, რომელიც მნიშვნელოვანია შენთვის, სხვებისთვის, ან მსოფლიოსთვის.</p>
             </div>
+            <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/create.png" alt="" class="createl">
               <h3>შექმენი</h3>
               <p>პროექტის ხარისხიანი გვერდი ემოციური ტექსტით</p>
             </div>
+            <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/promote.png" alt="" class="promotel">
               <h3>გააზიარე</h3>
               <p>მეგობრებსა და ოჯახის წევრებში; სოციალურ ქსელში და ქსელს გარეთ</p>
             </div>
+            <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/collect.png" alt="" class="collectl">
               <h3>შეაგროვე</h3>
               <p>ყოველი თეთრი, რომელსაც შენი პროექტი ააგროვებს</p>
             </div>
+            <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/act.png" alt="" class="actl">
               <h3>იმოქმედე</h3>
