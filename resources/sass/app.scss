@@ -458,7 +458,7 @@ div.donate-underspace{
 	height: 72px;
 }
 div.donate-section > div{
-	padding: 23px 23px;
+	padding: 18px 23px;
 	justify-content: space-between;
 	max-width: 1244px;
 }
@@ -480,12 +480,30 @@ div.donate-section > div > .donate-button{
 span.donate-share-save a{
 	text-decoration: none;
 	color: #3e3e3e;
+	line-height: 2rem;
 }
 span.donate-share-save > a:nth-child(2){
-	margin-right: 26px;
+	margin-right: 16px;
 }
 p.donate-header{
 	display: none;
+}
+.donate-span{
+	float: right;
+	margin-top: -3px;
+}
+.btn-donate{
+	color: #652f8d!important;
+	background-color: white!important;
+	border-radius: 8px;
+	border: solid 2px #652f8d!important;
+	transition: 0.3s;
+	font-weight: bold!important;
+	align-self: center;
+}
+.btn-donate:hover{
+	background-color: #652f8d!important;
+	color: white!important;
 }
 @media(max-width:410px){
 	//special breakpoint
@@ -497,6 +515,17 @@ p.donate-header{
 	}
 	span.donate-share-save > a:nth-child(2){
 		margin-right: 0;
+	}
+	.btn-donate{
+		font-size: 14px;
+		padding: 3px;
+		font-weight: 400!important;
+	}
+	span.donate-share-save{
+		font-size: 14px;
+	}
+	.donate-span{
+		margin-top:0;
 	}
 }
 @media(min-width:768px){
@@ -578,7 +607,7 @@ p.donate-header{
 		height: 226px;
 	}
 	div.donate-section > div{
-		padding: 23px 27px;
+		padding: 20px 27px;
 	}
 	div.donate-section > div > .donate-button{
 		right: 27px;
@@ -594,6 +623,19 @@ p.donate-header{
 		text-align: left;
 		color: #3e3e3e;
 		margin-right: 32px;
+	}
+	.btn-donate{
+		color: #652f8d!important;
+		background-color: white!important;
+		border-radius: 8px;
+		border: solid 2px #652f8d!important;
+		transition: 0.3s;
+		font-weight: bold!important;
+		align-self: center;
+	}
+	.btn-donate:hover{
+		background-color: #652f8d;
+		color: white;
 	}
 }
 @media(min-width:1280px){
@@ -669,6 +711,19 @@ p.donate-header{
 	}
 	div.donate-section > div > .donate-button{
 		right: 12px;
+	}
+	.btn-donate{
+		color: #652f8d!important;
+		background-color: white!important;
+		border-radius: 8px;
+		border: solid 2px #652f8d!important;
+		transition: 0.3s;
+		font-weight: bold!important;
+		align-self: center;
+	}
+	.btn-donate:hover{
+		background-color: #652f8d!important;
+		color: white!important;
 	}
 }
 //	end of campaign page
@@ -1543,9 +1598,8 @@ a#create-link{
 	}
 	button.btn.btn-default.ripple-parent{
 		color: #818181;
-		padding: 8px 8px 8px 32px;
 		text-decoration: none;
-		font-size: 25px;
+		font-size: 16px;
 	}
 	button.btn.btn-default.ripple-parent:hover{
 		color: white;
