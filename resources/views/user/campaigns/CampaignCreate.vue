@@ -21,7 +21,7 @@
             </div>
             <div>
                 <label for="short-description">მოკლე აღწერა
-(მაქსიმუმ 3000 სიმბოლო)</label>
+(მაქსიმუმ 200 სიმბოლო)</label>
                 <br>
                 <textarea id="short-description"
                           placeholder="კამპანიის შესახებ"
