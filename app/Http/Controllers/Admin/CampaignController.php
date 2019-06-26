@@ -132,6 +132,7 @@ class CampaignController extends Controller
         $campaign = Campaign::all()->firstWhere("id", $id);
         if($campaign == null)
             return self::responseErrors("Campaign with id ".$id." not found",404);
+        $campaign->delete();
         return self::responseData("Campaign has been deleted successfully");
     }
 }
