@@ -21,7 +21,7 @@ class Image extends Model
     public static function forGallery(UploadedFile $file, Campaign $campaign)
     {
         $image = new static();
-        $image->name = "powershare-gallery-".$campaign->name."-".$file->hashName();
+        $image->name = "powershare-gallery-".$file->hashName();
         $image->storeNormal($file);
         $image->storeThumbnail($file);
         $image->campaign_id = $campaign->id;
@@ -42,7 +42,7 @@ class Image extends Model
             $featured_image->remove();
         }
         $image = new static();
-        $image->name = "powershare-".$campaign->name.$campaign->id."-".self::getImageName($base64_file);
+        $image->name = "powershare-".$campaign->id."-".self::getImageName($base64_file);
         //Assigns $image->url to upload url
         $image->storeNormalBase64($base64_file, $image->name);
         //Assigns $image->thumbnail_url to upload url
