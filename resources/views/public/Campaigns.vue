@@ -1,9 +1,9 @@
 <template>
   <div class="center-campaigns">
     <div class="explore-input">
-      <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadMore(search=true)">
+      <input type="text" placeholder="ძებნა.." class="search" v-model="searchKey" @keyup="loadMore(search=true)">
       <select type="text" class="category" v-on:change="loadCampaigns(search=true)" v-model="curCategory">
-        <option value="0">All Categories</option>
+        <option value="0">ყველა კატეგორია</option>
         <option v-for="category in categories" :value="category.id">{{category.name}}</option>
       </select>
     </div>

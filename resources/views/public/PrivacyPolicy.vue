@@ -10,7 +10,7 @@
         >.</span></p>
         <p><span>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from powershare.fund</span>
         </p>
-        <h3>Information Collection And Use</h3>
+        <h2>Information Collection And Use</h2>
         <p><span>We collect several different types of information for various purposes to provide and improve our Service to you.</span>
         </p>
         <h4>Types of Data Collected</h4>

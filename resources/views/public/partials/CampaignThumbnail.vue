@@ -10,7 +10,7 @@
                             {{campaign.name}}
                         </div>
                         <div class="campaigns-important">
-                            <h6>Category:<span style="font-weight:200"> {{campaign.category_name}}</span></h6>
+                            <h6>კატეგორია:<span style="font-weight:200"> {{campaign.category_name}}</span></h6>
                         </div>
                         <div class="campaign-desc">
                             {{campaign.description | subStr}}

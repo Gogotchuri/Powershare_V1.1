@@ -1548,7 +1548,7 @@ a.nav-link{
 a#create-link{
 	font-weight: bold;
 }
-@media(max-width:767px){
+@media(max-width:1030px){
 	div.burger{
 		width: 19px;
 		height: 2.5px;
@@ -1661,7 +1661,7 @@ a#create-link{
 		margin-bottom: 23px;
 	}
 }
-@media(min-width: 768px){
+@media(min-width: 1030px){
 	.navigation-brand{
 		margin-bottom: 27px;
 		margin-top: 18px
@@ -1712,6 +1712,10 @@ a#create-link{
 	.log-out-icon{
 		transform: translateY(-15%);
 	}
+	span.openNav,
+	div.burger{
+		display: block;
+	}
 }
 @media(max-width: 850px){
 	a.nav-link{
@@ -1723,6 +1727,7 @@ a#create-link{
 	button.btn.btn-default.ripple-parent{
 		margin-right: 0;
 	}
+	
 }
 @media(min-width: 1280px){
 	.navigation-brand{
@@ -2246,7 +2251,7 @@ textarea#contact-us-text{
 .landing-header-btn.cp{
 	font-size: 18px;
 }
-.campaignThumbnail:last-of-type{
+div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 	display: none;
 }
 .how-to-cards{
@@ -2819,7 +2824,7 @@ textarea#contact-us-text{
 	div.how-to{
 		padding: 0 185px;
 	}
-	.campaignThumbnail:last-of-type{
+	div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		display: block;
 	}
 }
@@ -3229,11 +3234,56 @@ select.category{
 // terms/conditions and privacy
 .docs{
 	display: block;
-	width: 76%;
 	text-align: left;
-	margin-left: 12%
 }
-// TODO
+.docs>h1{
+	font-size: 22px;
+	color: #662f92;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+.docs>h2{
+	font-size: 20px;
+	color: #1d1d1d;
+	font-weight: bold;
+	margin: 10px 0;
+}
+.docs>p{
+	color: #1d1d1d;
+	font-size: 16px;
+}
+@media(min-width: 768px){
+	.docs > h1{
+		font-size: 28px;
+		margin-bottom: 40px;
+		margin-top: 40px;
+	}	
+	.docs>h2{
+		font-size: 24px;
+		color: #1d1d1d;
+		font-weight: bold;
+		margin: 20px 0;
+	}
+	.docs>p{
+		color: #1d1d1d;
+		font-size: 18px;
+	}
+}
+@media(min-width: 1280px){
+	.docs > h1{
+		font-size: 34px;
+	}	
+	.docs>h2{
+		font-size: 28px;
+		color: #1d1d1d;
+		font-weight: bold;
+		margin: 40px 0;
+	}
+	.docs>p{
+		color: #1d1d1d;
+		font-size: 24px;
+	}
+}
 // end of terms/conditions and privacy
 
 // start of blog page
