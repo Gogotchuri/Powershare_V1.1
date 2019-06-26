@@ -176,8 +176,20 @@ class Campaign extends Model
         return optional($this->author)->name;
     }
 
-    public function filledSurveys(){
+    public function filled_surveys(){
         return $this->hasMany(FilledSurvey::class);
+    }
+
+    public function num_filled_surveys(){
+        return $this->filled_surveys->count();
+    }
+
+    public function watched_videos(){
+        return $this->hasMany(WatchedVideo::class);
+    }
+
+    public function num_watched_videos(){
+        return $this->watched_videos->count();
     }
 
 }

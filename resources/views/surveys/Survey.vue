@@ -39,7 +39,7 @@
               <div v-if="question.type === 'MULTI_CHOICE'">
                 <div v-for='(option, index) in question.options' :key="index">
                   <label>
-                    <input type="checkbox" v-model="option.answer" :disabled="readOnly" :required="question.required">&nbsp;
+                    <input type="checkbox" v-model="option.answer" :disabled="readOnly">&nbsp;
                       {{option.body}}
                   </label>
                 </div>
