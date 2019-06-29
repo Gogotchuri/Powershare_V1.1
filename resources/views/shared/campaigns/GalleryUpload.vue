@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p>გალერია</p>
+        <label>გალერიის სურათები:</label>
         <table>
             <tr>
                 <th>ID</th>

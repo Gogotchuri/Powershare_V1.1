@@ -1,8 +1,10 @@
 <template>
     <div>
+        <label>მთავარი სურათი:</label>
         <input type="file" data-buttonText="აირჩიე ფაილი" name="image" accept="image/*" @change="setImage" style="font-size: 1.1em; padding: 0;"/>
         <br>
         <div v-if="imgSrc">
+            <label>*სურათის მოჭრა სავალდებულოა!</label>
             <vue-cropper
                 v-if="imgSrc"
                 ref="cropper"

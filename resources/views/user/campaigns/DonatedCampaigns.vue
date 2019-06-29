@@ -1,5 +1,8 @@
 <template>
-    <div v-if="campaigns">
+    <div v-if="!campaigns || campaigns.length == 0">
+            <p>No Campaigns To display!</p>
+    </div>
+    <div v-else> 
         <table>
             <tr>
                 <th>ID</th>
@@ -20,9 +23,6 @@
                 </td>
             </tr>
         </table>
-    </div>
-    <div v-else>
-        <p>No donations so far...</p>
     </div>
 </template>
 

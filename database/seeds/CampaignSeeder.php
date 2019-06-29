@@ -14,12 +14,12 @@ class CampaignSeeder extends Seeder
         $campaigns = [
             [
                 'id' => 1,
-                'name' => 'Help Clean the Hill',
+                'name' => 'ბლოკჩეინ წიგნის დაბეჭდვა',
                 'category_id' => 1,
-                "description" => "Help the the village Please!",
-                'details' => 'A small village in South Georgia didn\'t have recycled bins for years, therefore the villagers would gather the garbage and throw it away at the end of the village. This took place for years and the results are as shown in the picture. Most of the garbage already rotted, but a lot of it still remains. Thankfully, now the villagers have put out recycled bins and they no longer have to keep on throwing the garbage out like this, but the place still needs to be cleaned.',
-                'required_funding' => 53000,
-                'realized_funding' => 38000,
+                "description" => "ქართულად ნათარგმნი საგანმანათლებლო წიგნი ბლოკჩეინის შესახებ",
+                'details' => 'ჯონათან ჰობსის, ფინანსური ანალიტიკოსის წიგნი "კრიპტო პორტფოლიო" დასაბეჭდად მზადაა, მაგრამ ამისათვის თქვენი დახმარება გვჭირდება! დამატებითი ინფორმაცია წიგნის შესახებ: სამ ნაწილად დაყოფილი წიგნი ყველა საჭირო ინფორმაციას მოიცავს არა მხოლოდ ინვესტირების სხვადასხვა მეთოდებისა და გრაფიკების სწორად წაკითხვის შესახებ, არამედ ზოგადად კრიპტო და ბლოკჩეინ ინდუსტრიის შესახებაც. მკითხველს შესაძლებლობა ეძლევა ყოველგვარი საბაზისო ცოდნის გარეშე გაიგოს, რა არის ბლოკჩეინი და როგორ ფუნქციონირებს ბიტკოინი, სხვა პოპულარული კრიპტოვალუტები, გონიერი კონტრაქტები და მანქანების ეკონომიკა. მეორე და მესამე ნაწილებში ინვესტირების მეთოდები, რისკების გადანაწილება, დივერსიფიკაცია და გრაფიკების ტექნიკური ანალიზი ისეა ახსნილი, რომ როგორც კრიპტოსამყაროს შესახებ, ასევე ზოგადად ინვესტირების შესახებ არანაირ საწყის ცოდნას არ მოითხოვს, საბოლოოდ კი მკითხველი წიგნის დასრულების შემდეგ უფრო თამამად და უკეთესი ანალიზის თუ დაკვირვების უნარით შეძლებს გააგრძელოს კრიპტოინდუსტრიის გამოკვლევა, ისევე როგორც უკეთესი საინვესტიციო გადაწყვეტილებების მიღება. ვინაიდან კრიპტოვალუტები მხოლოდ ერთ, მაღალ-რისკიან საინვესტიციო შესაძლებლობას წარმოადგნენ და მათი მართვა და ანალიზი ხშირ შემთხვევაში ისევე უნდა მოხდეს როგორც ნებისმიერი სხვა აქტივისა. მოთხოვნილი თანხა საკმარისი იქნება 500 ეგზემპლიარის დასაბეჭდად.',
+                'required_funding' => 700,
+                'realized_funding' => 0,
                 'author_id' => 1,
                 'status_id' => 1,
                 'video_url' => null,
@@ -27,12 +27,12 @@ class CampaignSeeder extends Seeder
 
             [
                 'id' => 2,
-                'name' => 'Help Study Arab Language',
+                'name' => 'Neat knit მაღაზიის გასახსნელად',
                 'category_id' => 1,
-                 "description" => "Help me study please!",
-                'details' => "I am 4th year student at the Free University of Tbilisi, Georgia(Country). I always wanted to speak Arabic, that's why I chose the faculty of International Relations with Arabic Language concentration. But learning language at the University isn't enough, not to mention Arabic language, which is considered to be one of the most difficult-to-learn languages. I thought maybe one day I will be able to study and practice this language in country I always liked and wanted to visit - Lebanon. I was surfing on the web to find some courses suitable to my budget, the only thing I realized was that Lebanon is 5x(times) expensive, than Georgia.",
-                'required_funding' => 30000,
-                'realized_funding' => 10000,
+                 "description" => "Neat knit - ჯანმრთელობისთვის უსაფრთხო სათამაშოები ბავშვებისთვის!",
+                'details' => "მაღაზიის გახსნის იდეა მაშინ მოგვივიდა, როდესაც გავიგეთ, რომ 10 სათამაშოდან 9 ბავშვის ჯანმრთელობისთვის საშიში იყო. ჩვენ 2017 წლის აპრილიდან სუფთა კოტონისგან ვქსოვთ თოჯინებს, რომლებიც თქვენი პატარების ჯანმრთელობაზე ზრუნავენ. პროდუქცია მოიცავს სხვადასხვა ზომისა და მაქსიმალურად ფერად და საყვარელ სათამაშოებს. ამ ეტაპზე ვიღებთ შეკვეთებს ელექტრონულად, მაგრამ გაფართოებისა და უკეთესი სერვისისთვის გვჭირდება მაღაზიის გახსნა. ეს თანხა ძალიან დაგვეხმარება უფრო დიდი არჩევანის შემოთავაზებაშიც.",
+                'required_funding' => 5000,
+                'realized_funding' => 0,
                 'author_id' => 1,
                 'status_id' => 1,
                 'video_url' => null,
@@ -40,12 +40,38 @@ class CampaignSeeder extends Seeder
 
             [
                 'id' => 3,
-                'name' => 'CryptoZ',
+                'name' => 'საიტი კრიპტო ენთუზიასტებისთვის',
                 'category_id' => 2,
-                "description" => "Help us make georgian crypto society great again!",
-                'details' => 'It all started over a phone call, from Tbilisi to London. Two old friends and blockchain enthusiasts Beka and David were talking over the phone and complaining about the lack of knowledge of the blockchain technology in the society and how the lack of information and educational materials could lead to disastrous financial losses among common folks. The temptation to invest in cryptocurrencies was great, however both of them realized how damaging could such an investment be, without the proper understanding of the industry and technology behind it.',
-                'required_funding' => 200000,
-                'realized_funding' => 150000,
+                "description" => "CryptoZ ქართული საგანმანათლებლო-საინფორმაციო ვებ-გვერდი, კრიპტო და ბლოკჩეინ ენთუზიასტებისთვის!",
+                'details' => 'კრიპტოზი 2018 წლიდან ფუნქციონირებს და უკვე ჰყავს ერთგული მომხმარებლები, რომლებიც ყოველდღიურად სტუმრობენ ჩვენს პლატფორმას. ვებ-გვერდი wix-ის, საიტების ამწყობი პლატფორმის გამოყენებით არის გაკეთებული და საკმაოდ შეზღუდულია ფუნქციონალით. იმისათვის, რომ ჩვენს მომხმარებლებს უკეთესი სერვისი შევთავაზოთ, აუცილებლად გვესაჭიროება დეველოპერების მიერ აწყობილი პლატფორმა. ეს თანხა სრულად დაფარვას ამისათვის საჭირო ხარჯებს, რის მოძიებასაც თავად ვერ ვახერხებთ.',
+                'required_funding' => 5000,
+                'realized_funding' => 0,
+                'author_id' => 1,
+                'status_id' => 1,
+                'video_url' => null,
+            ],
+
+            [
+                'id' => 4,
+                'name' => 'ერთად დავასუფთაოთ შავსაყდარი',
+                'category_id' => 2,
+                "description" => " დროა ერთობლივი ძალებით ვიზრუნოთ ბუნებაზე!",
+                'details' => 'შავსაყდრის ეს მდელო ნაგვით არის სავსე. დროა ერთობლივი ძალებით მივხედოთ ბუნებას! შავსაყდარში ნაგვის ურნების არ არსებობის გამო იქ მაცხოვრებლები აგროვებდნენ და პირდაპირ აქ ყრიდნენ ნაგავს. მიუხედავად იმისა, რომ ახლა მათ ეს პრობლემა მოაგვარეს, ამ ადგილის მიხედვას მაინც ვერ ახერხებენ. შევაგროვოთ ფული და ერთად დავასუფთაოთ ეს ადგილი!',
+                'required_funding' => 150,
+                'realized_funding' => 0,
+                'author_id' => 1,
+                'status_id' => 1,
+                'video_url' => null,
+            ],
+
+            [
+                'id' => 5,
+                'name' => 'უკეთესი გარემო ბავშვებისთვის',
+                'category_id' => 2,
+                "description" => '„პირველი ნაბიჯი“ - დღის ცენტრი უნარშეზღუდული ბავშვებისთვის',
+                'details' => 'ორგანიზაცია 20 წელზე მეტია მუშაობს განსაკუთრებული საჭიროების მქონე ბავშვებთან და თვეში 650-ზე მეტ ბავშვს უწევს მომსახურებას, რომელთა შორის არიან მძიმე, ღრმა შეზღუდული შესაძლებლობის და ქცევითი აშლილობის მქონე მოზარდები და მათი ოჯახის წევრები. დაწესებულების მშენებლობა 2002 წელს დასრულდა და, სამწუხაროდ, სიძველისა და უხარისხო სამუშაოების გამო აუცილებლად საჭიროებს რემონტსა და ინვენტარის განახლებას. იმ პირობებში, რომლებშიც ჩვენ ვიმყოფებით, ძალიან რთულია ჩვენს ბავშვებთან ურთიერთობა. გათბობასა და მშვიდ და კომფორტულ გარემოს რომ თავი დავანებოთ, ჯგუფური და ინდივიდუალური აქტივობებისთვის აუცილებელი ავეჯიც კი არ გაგვაჩნია. ლაპარაკიც ზედმეტია დამატებით ინვენტარზე, რომლებიც აუცილებელია ბავშვების მდგომარეობის რაც შეიძლება სწრაფად და ეფექტურად გამოსწორებისთვის. „პირველი ნაბიჯი“ ის ადგილია, სადაც პრობლემები შესაძლებლობად, მცირე პროგრესი კი დიდ გამარჯვებად მიიჩნევა. სწორედ ამიტომ ყველაფრისდა მიუხედდავად ჩვენი ორგანიზაცია განაგრძობს ფუნქციონირებას და ყოველ ღონეს მივმართავთ, რომ ასეთ მძიმე ვითარებაში მყოფი ბავშვები და მათი ოჯახის წევრები უყურადღებოდ არ დარჩნენ. მიუხედავად ჩვენი საქმის მიმართ ერთგულებისა და დაუღალავი შრომისა, რემონტისა და ინვენტარისთვის საჭირო თანხების მოძიება ვერ ხერხდება. ამიტომ გთხოვთ დახმარებას თქვენ - ნუ დაგვტოვებთ უყურადღებოდ, ერთად დავეხმაროთ მათ, ვინც ამას უპირობოდ იმსახურებს. ჩვენს შესახებ აქამდე შეიძლება არც კი გსმენიათ, მაგრამ მაინც გვჯერა, რომ ის პრობლემები, რომლებიც ყოველდღიურ კეთილ საქმეში ხელს გვიშლიან თქვენთვისაც მნიშვნელოვანია. ერთად გადავდგათ პირველი ნაბიჯი უნარშეზღუდულ ბავშვთა დახმარებისთვის! ორგანიზაციის კოტეჯების სრული აღჭურვისთვის საჭირო თანხა 32 000 ლარია. თანხა მოხმარდება გათბობისა და კონდიცირების გაყვანას, სამუშაო ინვენტარს (სკამები, მაგიდები, კარადები) და ბავშვებისთვის მინიმალური რაოდენობით გასართობ საშუალებებს, რომლებიც მათი მდგომარეობის გაუმჯობესებისთვისაც აუცილებელია.',
+                'required_funding' => 35000,
+                'realized_funding' => 0,
                 'author_id' => 1,
                 'status_id' => 1,
                 'video_url' => null,
@@ -65,11 +91,8 @@ class CampaignSeeder extends Seeder
             $n_camp->author_id = $campaign['author_id'];
             $n_camp->status_id = $campaign['status_id'];
             $n_camp->video_url = $campaign['video_url'];
-            $n_camp->description = "A campaign Description.";
 
             $n_camp->save();
         }
-
-        factory("App\Models\Campaign", 30)->create();
     }
 }

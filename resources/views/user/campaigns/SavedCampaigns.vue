@@ -1,5 +1,8 @@
 <template>
-    <div v-if="savedCampaigns != null">
+    <div v-if="!savedCampaigns || savedCampaigns.length == 0">
+        <p>No Campaigns To display!</p>
+    </div>
+    <div v-else>
         <table>
             <tr>
                 <th>ID</th>
@@ -19,9 +22,6 @@
                 </td>
             </tr>
         </table>
-    </div>
-    <div v-else>
-        <p>No Campaign is saved yet!</p>
     </div>
 </template>
 

@@ -70,7 +70,7 @@
                 this.$store.dispatch("login", this.credentials)
                     .then(() => {
                         let redirectionUrl = this.$route.query.redirect;
-                        this.$router.push({path : redirectionUrl || "Home", query: this.$route.query});
+                        this.$router.push({path : redirectionUrl || "/", query: this.$route.query});
                         this.$emit("modaloff");
                     })
                     .catch(() => this.error = true);

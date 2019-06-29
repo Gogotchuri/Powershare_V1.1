@@ -1,12 +1,9 @@
 <template>
     <div class="profile-campaigns">
-        <!-- <div v-for="campaign in campaigns" class="profile-campaign">
-            <div class="profile-campaign-photo" :style="{'background-image': 'url('+ campaign.featured_image_url +')'}"></div>
-            <div class="profile-campaign-details">
-                <p>{{campaign.name}}</p>
-            </div>
-        </div> -->
-        <div> 
+        <div v-if="!campaigns || campaigns.length == 0">
+            <p>No Campaigns To display!</p>
+        </div>
+        <div v-else> 
             <table style="width:100%">
                 <tr>
                     <th>ID</th>

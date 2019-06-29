@@ -15,18 +15,40 @@ class UserSeeder extends Seeder
     {
         $users = [
             [
-                'name' => 'Example Admin',
+                'name' => 'ბექა დალაქიშვილი',
                 'email_verified_at' => Carbon::now(),
-                'email' => 'admin@contractzero.com',
-                'password' => 'qwert123',
-                'role_id' => 1,
+                'email' => 'beka@powershare.fund',
+                'password' => 'QeciGaiqca!',
+                'role_id' => 1
             ],
             [
-                'name' => 'Example user',
+                'name' => 'დავით სვიმონიშვილი',
                 'email_verified_at' => Carbon::now(),
-                'email' => 'user@contractzero.com',
-                'password' => 'qwert123',
+                'email' => 'david@powershare.fund',
+                'password' => 'QeciGaiqca!',
+                'role_id' => 1
             ],
+            [
+                'name' => 'ილია გოგოჭური',
+                'email_verified_at' => Carbon::now(),
+                'email' => 'igogo17@freeuni.edu.ge',
+                'password' => 'QeciGaiqca!',
+                'role_id' => 1
+            ],
+            [
+                'name' => 'ანა მიქათაძე',
+                'email_verified_at' => Carbon::now(),
+                'email' => 'ana@powershare.fund',
+                'password' => 'QeciGaiqca!',
+                'role_id' => 1
+            ],
+            [
+                'name' => 'ნორმალური ადამიანი!',
+                'email_verified_at' => Carbon::now(),
+                'email' => 'user@powershare.fund',
+                'password' => 'QeciGaiqca!',
+                'role_id' => 2
+            ]
         ];
 
         foreach ($users as $userData) {
@@ -40,7 +62,5 @@ class UserSeeder extends Seeder
 
             $user->save();
         }
-
-        factory("App\Models\User", 10)->create();
     }
 }

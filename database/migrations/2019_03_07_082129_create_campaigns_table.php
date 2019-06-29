@@ -30,6 +30,7 @@ class CreateCampaignsTable extends Migration
             $table->unsignedDecimal("realized_funding")->default(0);
             $table->integer("order")->nullable();
             $table->boolean("is_hidden")->default(false);
+            $table->boolean("completed")->default(false);
 
             $table->date("due_date")->nullable();
 

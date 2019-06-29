@@ -109,7 +109,11 @@
                                 break;
                         }
                     })
-                    .catch(reason => console.error(reason.response.errors));
+                    .catch(reason => {
+                        console.error(reason.response.errors);
+                        if(reason.status == 413 || reason.response.status == 413)
+                            window.alert("მოთხოვნა ვერ შესრულდა. გთხოვთ ატვირთოთ ან მოჭრათ უფრო მცირე ზომის სურათი.");
+                    });
             },
 
             featuredImage(base64){
