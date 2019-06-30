@@ -21,10 +21,10 @@
           <div class="owner-name">
             <p>{{campaign.author_name}}</p>
             <span class="sharesaveHidden">
-              <a href="#">
-                <!-- change with svg -->
+              <a :href="shareLink" target="_blank">
+              <!-- change with svg -->
                 <img src="/img/share-2.svg" alt="">
-                გააზიარე
+                  გაზიარება
               </a>
               <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
                 <!-- change with svg -->
@@ -91,10 +91,10 @@
           <p class="donate-header">
             {{campaign.name}}
           </p>
-          <a href="#">
+          <a :href="shareLink" target="_blank">
           <!-- change with svg -->
             <img src="/img/share-2.svg" alt="">
-                  გააზიარე
+              გაზიარება
           </a>
           <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
           <!-- change with svg -->
@@ -116,6 +116,7 @@
   import HTTP from "@js/Common/Http.service";
   import DonationModal from "@views/user/partials/DonationModal";
   import GalleryModal from "@views/public/partials/GalleryModal";
+  import {APP_URL} from "@js/Common/config";
 
   export default {
     components: {
@@ -153,6 +154,9 @@
       isLoggedIn() {
         return this.$store.getters.isAuthenticated;
       },
+      shareLink(){
+        return "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpowershare.fund%2Fcampaigns%2F"+this.campaign.id;
+      }
     },
     methods:{
       setCampaign(campaign){
@@ -182,6 +186,18 @@
                     console.error(err.response);
                     window.alert("Couldn't be added to favourites!");
                   })
+      }
+    },
+    metaInfo(){
+      let title = this.campaign ? (this.campaign.name + " | ") : "Campaign | ";
+      return {
+        title: title,
+        meta: [
+          {property: "og:title", content: title + "Powershare"},
+          {property: "og:description", content: this.campaign.description},
+          {property: "og:image", content: this.campaign.featured_image_url},
+          {property: "og:url", content: APP_URL + this.$route.fullPath}
+        ]
       }
     }
   };

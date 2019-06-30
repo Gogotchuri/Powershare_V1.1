@@ -26,26 +26,20 @@
 
         <!-- SEO & Sharing -->
         <meta name="google-site-verification" content="8nCz107fSRx1WTGVeWqFVOq8-vBG5bs_1cvdE9CMS2Q" />
-        <meta name="description" content="{{$description ?? 'Browser-Based Mining for Charity Crowdfunding'}}">
-        <meta property="og:description" content="{{$description ?? 'Browser-Based Mining for Charity Crowdfunding'}}">
+        <meta name="description" content="{{$description ?? 'Free Crowdfunding platform'}}">
+        <meta property="og:description" content="{{$description ?? 'Free Crowdfunding platform!'}}">
         <meta property="og:url" content="{{Request::url()}}"/>
         <meta property="og:title" content="{{$title ?? env("APP_NAME")}}"/>
         <meta property="og:type" content="website"/>
         <meta property="fb:app_id" content="615755662100569">
         <meta name="google-site-verification" content="13JatL80lz_cF0r0EIcpiDXJM2MeywM0gfjQN7tnerA" />
-        @if(isset($mainImage))
-            <meta property="og:image" content="{{$mainImage ?? ''}}">
-            <meta property="og:image:type" content="image/png">
-            <meta property="og:image:width" content="1024">
-            <meta property="og:image:height" content="1024">
-        @else
-            <!-- <meta property="og:image" content="https://powershare.fund/img/pwrshr_alpha_logo.png"> -->
-        @endif
+        <meta property="og:image" content="https://powershare.fund/img/pwrshr_alpha_logo.png">
         
     </head>
 
     @yield('body')
 
     <script src="{{mix('js/app.js')}}"></script>
-    
+
+
 </html>

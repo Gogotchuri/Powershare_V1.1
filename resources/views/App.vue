@@ -31,6 +31,14 @@
         return this.$route.matched.some(r => r.meta.userManagement);
       }
     },
+    metaInfo:{
+      title: "",
+      titleTemplate: "%sPowershare",
+      meta: [
+        {property: "og:title", content: "Powershare"},
+        {property: "og:description", content: "Free Crowd-funding platform!"}
+      ]
+    },
     mounted() {
       if(this.isAdminPanel){
         checkAdmin().catch(() => this.$router.push({name:"Logout"}));
