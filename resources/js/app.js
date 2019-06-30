@@ -8,9 +8,12 @@ import HTTP from "@js/Common/Http.service";
 import store from '@js/store';
 import App from '@views/App';
 import router from '@js/router';
+import VueMeta from 'vue-meta';
+
 
 Vue.use(VueRouter);
 Vue.use(Vuex);
+Vue.use(VueMeta);
 Vue.use(VueProgressBar,
 	{
 		thickness: "4px",

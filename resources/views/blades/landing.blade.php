@@ -1,7 +1,9 @@
 @extends('blades.layouts.app')
 
 @section('body')
-    <div id="app">
-        <app/>
-    </div>
+    <body>
+        <div id="app">
+            <app></app>
+        </div>
+    </body>
 @endsection
