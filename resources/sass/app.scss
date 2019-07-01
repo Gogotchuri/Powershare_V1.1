@@ -1634,12 +1634,17 @@ a#create-link{
 		font-size: 25px;
 		color: #818181;
 		display: block;
+		line-height: 1.3;
+		margin: 8px 0;
 	}
 	.sideNav .nav-link:hover {
 		color: #f1f1f1;
 	}
 	.visible {
 		width: 250px;
+	}
+	a#create-link{
+		font-weight: normal!important;
 	}
 }
 @media(min-width: 420px){
@@ -2210,6 +2215,63 @@ textarea#contact-us-text{
 .arrow{
 	margin-top: 63px;	
 }
+.header-links br{
+	display: none;
+}
+.how-to-under {
+	height: 500px;
+}
+@media(max-width: 388px){
+	.how-to-under{
+		height: 650px;
+	}
+}
+@media(max-width: 360px){
+	.landing-header-btn:first-of-type{
+		margin-right: auto;
+		margin-bottom: 20px;
+	}
+	.landing-header-btn{
+		margin: auto;
+		width: 180px;
+	}
+	.header-links{
+		text-align: center;
+		display: flex;
+		flex-wrap: wrap;
+	}
+	.landing-header{
+		width: 90%;
+		margin-left: 5%;
+		margin-right: 5%;
+	}
+	.header-links br{
+		display: block;
+		height: 20px;
+	}
+	.landing-header-btn:hover{
+		width: 160px;
+		height: 40px;
+		border-radius: 30px;
+		background-color: #F05523;
+		text-decoration: none;
+		color: white;
+	}
+	.header-links{
+		justify-content: space-around;
+	}
+	div.landing-illustration,
+	div.landing-illustration-under{
+		height: 350px;
+		text-align: center;
+	}
+	div.landing-campaigns{
+		top: 380px;
+	}
+	.how-to-under {
+		height: 700px;
+	}
+}
 @media(min-width: 700px){
 	.landing-campaigns-under{
 		height: 1000px;
@@ -2520,7 +2582,7 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		padding: 0 60px;
 	}
 	.how-to-under{
-		height: 1100px;
+		height: 1200px;
 	}
 	.how-to-cards{
 		margin-bottom: 80px;
@@ -2580,6 +2642,11 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		height: 129.6px;
 		object-fit: contain;
 		margin-bottom: 10px;
+	}
+}
+@media (min-width: 1070px){
+	.how-to-under{
+		height: 1000px;
 	}
 }
 @media (min-width: 1280px){
@@ -2818,6 +2885,21 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		padding: 0  150px;
 	}
 }
+@media only screen and (max-width: 1389px) and (min-width: 1366px)  {
+	.how-to-under{
+		height: 950px;
+	}
+}
+@media only screen and (max-width: 1280px) and (min-width: 1120px) {
+	.how-to-under{
+		height: 750px;
+	}
+} 
+@media only screen and (max-width: 1289px) and (min-width: 1280px) {
+	.how-to-under{
+		height: 950px;
+	}
+} 
 
 @media(min-width:1600px){
 	.landing-header{
