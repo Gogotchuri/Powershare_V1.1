@@ -108,7 +108,7 @@
                     window.alert("Successfully updated!");
                 }).catch(reason => {
                     window.alert("Couldn't update. We are sorry :(");
-                    console.log(reason);
+                    console.error(reason);
                 })
             },
             deleteSurvey(){
@@ -118,7 +118,7 @@
                         this.$router.push({name: "Admin.Surveys"});
                     }).catch(reason => {
                         window.alert("Couldn't delete. We are sorry :(");
-                        console.log(reason);
+                        console.error(reason);
                     })
             },
             fetchAdvertisers(){

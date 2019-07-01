@@ -103,7 +103,6 @@
                 let campaign = (await HTTP.GET("/admin/campaigns/"+id)).data.data;
                 campaign.status_id = 1;
                 let res = await this.$store.dispatch("patchCampaign", {campaign: campaign, isAdmin: true});
-                console.log(res);
                 campaignInArray.status_id = 1;
             },
             /**
@@ -115,7 +114,6 @@
                 this.curPage++;
                 let campFetchUri = this.atAdmin ? "/admin/" : "/user/";
                 campFetchUri += "campaigns?pagination=5&page="+this.curPage;
-                console.log("loading more...");
                 HTTP.GET(campFetchUri)
                     .then(value => {
                         let fetchedCampaigns = value.data.data;

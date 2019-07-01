@@ -54,7 +54,7 @@
             HTTP.GET("/campaign-categories")
                 .then(value => next(vm => vm.categories = value.data.data))
                 .catch(err => {
-                    console.log(err.response);
+                    console.error(err.response);
                     next();
                 })
         },
