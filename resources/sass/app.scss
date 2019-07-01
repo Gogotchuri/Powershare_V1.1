@@ -3474,3 +3474,11 @@ select.category{
 	border: none;
 }
 // end of galleryModal
+
+// classes that are more important than others
+.landing-campaigns > div > div > a >.campaignThBackground {
+    background-size: contain !important;
+    background-repeat: no-repeat;
+    background-color: white;
+}
+// end of important classes

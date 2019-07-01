@@ -17,6 +17,7 @@
         </div>
         <div class="owner">
           <div class="owner-icon">
+              <img src="/img/default-profile.png" alt="">
           </div>
           <div class="owner-name">
             <p>{{campaign.author_name}}</p>
