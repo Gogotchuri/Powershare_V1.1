@@ -1270,13 +1270,18 @@ div.explore-input > select{
 .profile-photo{
 	width: 96px;
 	height: 96px;
-	background-color: red;
+	background-color: gray;
 	border-radius: 50%;
 	background-position: center;
 	background-size: cover;
 	margin: auto;
 	margin-top: 30px;
 	margin-bottom: 10px;
+}
+.profile-photo img{
+	width: inherit;
+	height: inherit;
+	border-radius: 50%;
 }
 .user-name{
 	font-size: 15px;
@@ -2072,7 +2077,7 @@ textarea#contact-us-text{
 	margin-bottom: 50px;
 }
 .landing-illustration{
-	width: 100vw;
+	width: 100%;
 	height: 300px;
 	background-color: #662f92;
 	position: absolute;
@@ -2129,7 +2134,7 @@ textarea#contact-us-text{
 	height: 2000px;
 	top: 350px;
 	left: 0;
-	width: 100vw;
+	width: 100%;
 	padding: 0 60px;
 }
 .landing-campaigns-under{
@@ -2198,7 +2203,7 @@ textarea#contact-us-text{
 	top: 2250px;
 	left: 0;
 	height: 500px;
-	width: 100vw;
+	width: 100%;
 	padding: 0 60px;
 }
 .how-to > h2{
@@ -2331,12 +2336,13 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		margin-bottom: 50px;
 	}
 	.landing-illustration{
-		width: 100vw;
+		width: 100%;
 		height: 300px;
 		background-color: #662f92;
 		position: absolute;
 		left: 0;
 		top: 0;
+		right: 0;
 	}
 	.landing-illustration > img{
 		width: 345px;
@@ -2454,7 +2460,7 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		top: 1450px;
 		left: 0;
 		height: 500px;
-		width: 100vw;
+		width: 100%;
 		padding: 0 60px;
 	}
 	.how-to > h2{
@@ -2567,7 +2573,7 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		height: 750px;
 		top: 350px;
 		left: 0;
-		width: 100vw;
+		width: 100%;
 		padding: 0 60px;
 	}
 	.landing-campaigns-under{
@@ -2578,7 +2584,7 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		top: 950px;
 		left: 0;
 		height: 500px;
-		width: 100vw;
+		width: 100%;
 		padding: 0 60px;
 	}
 	.how-to-under{
@@ -2658,12 +2664,13 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		margin-bottom: 70px;
 	}
 	.landing-illustration{
-		width: 100vw;
+		width: 100%;
 		height: 500px;
 		background-color: #662f92;
 		position: absolute;
 		left: 0;
 		top: 0;
+		right: 0;
 	}
 	.landing-illustration > img{
 		width: 700px;
@@ -2715,7 +2722,7 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		height: 600px;
 		top: 570px;
 		left: 0;
-		width: 100vw;
+		width: 100%;
 		padding: 0 100px;
 	}
 	.landing-campaigns-under{
@@ -2773,7 +2780,7 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		top: 1250px;
 		left: 0;
 		height: 400px;
-		width: 100vw;
+		width: 100%;
 		padding: 0 100px;
 	}
 	.how-to > h2{
@@ -3385,7 +3392,7 @@ select.category{
 .blog-details-photo{
 	position: absolute;
 	top: 100px;
-	width: 100vw;
+	width: 100%;
 	left: 0;
 	background-position: center;
 	background-size: cover;

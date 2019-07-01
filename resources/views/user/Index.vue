@@ -4,7 +4,9 @@
             <div class="user-header-content">
                 <div class="user-header-content-container">    
                     <div class="profile-photo-container">
-                        <div class="profile-photo"></div>
+                        <div class="profile-photo">
+                            <img src="/img/default-profile.png" alt="">
+                        </div>
                     </div>
                     <div class="profile-header-container">
                         <h3 class="user-name">{{user.name}}</h3>
