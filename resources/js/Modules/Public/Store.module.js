@@ -39,7 +39,6 @@ const actions = {
         return new Promise((resolve, reject) => {
             Http.GET(uri)
                 .then(res => {
-                    console.log(res);
                     resolve(res.data.data);
                 }).catch(reason => {
                     console.error("Error during article fetch".concat(reason));
@@ -53,7 +52,6 @@ const actions = {
         return new Promise((resolve, reject) => {
             Http.GET(uri)
                 .then(res => {
-                    console.log(res);
                     resolve(res.data.data);
                 }).catch(reason => {
                     console.error("Error during articles fetch".concat(reason));

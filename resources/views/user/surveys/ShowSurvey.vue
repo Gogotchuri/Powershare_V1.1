@@ -26,8 +26,6 @@
                 .then(value => {
                     let questions = value.data.data.json_body;
                     let survey_id = value.data.data.id;
-                    console.log("survey:");
-                    console.log(value.data);
                     next(vm => {
                         vm.surveyID = survey_id;
                         vm.questionsList = JSON.parse(questions);

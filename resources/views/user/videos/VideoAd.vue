@@ -32,7 +32,6 @@
             HTTP.GET("/user/video-ad")
                 .then(res => {
                     let video = res.data.data.video;
-                    console.log(video);
                     next(vm => vm.videoAd = video);
                 }).catch(err => {
                     console.error(err);

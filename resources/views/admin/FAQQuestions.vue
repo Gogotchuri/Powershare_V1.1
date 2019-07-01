@@ -26,7 +26,6 @@
 
         methods: {
             setQNA(QNA){
-                console.log(QNA);
                 this.QNA = QNA;
             }
         }

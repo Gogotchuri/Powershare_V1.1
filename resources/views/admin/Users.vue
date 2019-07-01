@@ -38,10 +38,9 @@
             HTTP.GET("/admin/users")
                 .then(res => {
                     let users = res.data.data;
-                    console.log(users);
-                    next(vm => vm.users = res.data.data);
+                    next(vm => vm.users = users);
                 }).catch(err => {
-                    console.log(err);
+                    console.error(err);
                 })
         },
 

@@ -133,7 +133,6 @@
     beforeRouteEnter(to, from, next) {
       store.dispatch("fetchCampaign", to.params.id)
               .then((campaign) => {
-                console.log(campaign);
                 next(vm => vm.setCampaign(campaign));
               }).catch(() => next());
     },
@@ -142,7 +141,6 @@
       if(this.isLoggedIn){
         HTTP.GET("/user/favourite-campaigns/"+this.$route.params.id)
                 .then(res => {
-                  console.log(res);
                   this.favourite = res.data.data;
                 });
       }
@@ -167,7 +165,7 @@
         let galleryFetchUri = "/campaigns/" +this.$route.params.id+"/gallery";
         HTTP.GET(galleryFetchUri)
                 .then(data => this.gallery = data.data.data)
-                .catch(reason => console.log(reason.response));
+                .catch(reason => console.error(reason.response));
       },
 
       changeFavouriteStatus(){
@@ -190,12 +188,15 @@
     },
     metaInfo(){
       let title = this.campaign ? (this.campaign.name + " | ") : "Campaign | ";
+      let description = this.campaign ? (this.campaign.description) : "Campaign Description.";
+      let image_url = this.campaign ? (this.campaign.featured_image_url)
+              : "https://powershare.fund/img/powershare_logo.svg";
       return {
         title: title,
         meta: [
           {property: "og:title", content: title + "Powershare"},
-          {property: "og:description", content: this.campaign.description},
-          {property: "og:image", content: this.campaign.featured_image_url},
+          {property: "og:description", content: description},
+          {property: "og:image", content: image_url},
           {property: "og:url", content: APP_URL + this.$route.fullPath}
         ]
       }

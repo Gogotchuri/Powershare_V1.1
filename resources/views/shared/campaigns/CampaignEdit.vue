@@ -97,8 +97,7 @@
         methods: {
             updateCampaign(){
                 this.$store.dispatch("patchCampaign", { campaign :this.campaign, isAdmin: this.isAdmin})
-                    .then((res) => {
-                        console.log(res);
+                    .then(() => {
                         switch (this.campaign.status_id) {
                             case 1: window.alert("პროექტი წარმატებით გამოქვეყნდა!");
                                 break;

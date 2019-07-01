@@ -45,7 +45,7 @@
                 let galleryFetchUri = "/campaigns/" +this.campaign.id+"/gallery";
                 HTTP.GET(galleryFetchUri)
                     .then(data => this.gallery = data.data.data)
-                    .catch(reason => console.log(reason.response));
+                    .catch(reason => console.error(reason.response));
             },
             viewImage(url){
                 window.open(url, "_blank");
@@ -55,7 +55,7 @@
                 imageDeleteUri += "/campaigns/" + this.campaign.id + "/gallery/" + imageId;
                 HTTP.DELETE(imageDeleteUri)
                     .then(() => this.fetchGallery())
-                    .catch((err) => console.log(err.response));
+                    .catch(err => console.err(err.response));
             },
             setImage(inp){
                 const file = inp.target.files[0];
@@ -64,7 +64,6 @@
                     alert('Please select an image file');
                     return;
                 }
-                console.log(file);
                 this.curImage = file;
             },
             uploadImage(){
