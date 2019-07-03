@@ -38,8 +38,9 @@
       meta: [
         {property: "og:title", content: "Powershare"},
         {property: "og:description", content: "Free Crowd-funding platform!"},
-        {property: "og:image", content: "https://powershare.fund/img/powershare_logo.svg"},
-        {property: "og:url", content: APP_URL}
+        {property: "og:image", content: "https://powershare.fund/img/landing.png"},
+        {property: "og:url", content: APP_URL},
+        {property: "og:type", content: "website"}
       ]
     },
     mounted() {
