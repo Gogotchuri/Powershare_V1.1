@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8547a1fec353d9e54ae444d30c141572",
+    "content-hash": "a193925522fe56e777636528879cce4d",
     "packages": [
         {
             "name": "aws/aws-sdk-php",
@@ -1737,6 +1737,49 @@
                 "php"
             ],
             "time": "2019-02-16T20:54:15+00:00"
+        },
+        {
+            "name": "nutsweb/laravel-prerender",
+            "version": "v2.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jeroennoten/Laravel-Prerender.git",
+                "reference": "cb51eae23d41c8e48e98b5cadbf975bbf18fc4af"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-Prerender/zipball/cb51eae23d41c8e48e98b5cadbf975bbf18fc4af",
+                "reference": "cb51eae23d41c8e48e98b5cadbf975bbf18fc4af",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": "^6.0",
+                "illuminate/support": "~5.0.14|~5.1",
+                "php": ">=5.5.9",
+                "symfony/psr-http-message-bridge": "^1.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Nutsweb\\LaravelPrerender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jeroen Noten",
+                    "email": "jeroennoten@me.com"
+                }
+            ],
+            "description": "Laravel middleware for prerendering javascript-rendered pages on the fly for SEO",
+            "keywords": [
+                "laravel",
+                "prerender"
+            ],
+            "time": "2018-04-10T05:15:04+00:00"
         },
         {
             "name": "opis/closure",
