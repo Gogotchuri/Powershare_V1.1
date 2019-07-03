@@ -318,6 +318,7 @@ main > div > div> div.about-mini{
 	grid-auto-rows: minmax(20px, 50px);
 	text-align: center;
 	font-size: 16px;
+
 }
 .about-mini > .owner > .owner-name{
 	padding: 0;
@@ -580,10 +581,17 @@ p.donate-header{
 		grid-column: 1/3;
 		grid-row: 2/3;
 	}
+
 	.about-mini > .owner > .owner-icon{
 		width: 40px;
 		height: 40px;
 	}
+
+	.about-mini > .owner > .owner-icon > img{
+		width: 40px;
+		height: 40px;
+	}
+
 	.about-mini > .header > .header-dleft{
 		width: 100px;
 		font-size: 16px;
@@ -665,6 +673,11 @@ p.donate-header{
 		width: 810px;
 	}
 	.about-mini > .owner > .owner-icon{
+		width: 66px;
+		height: 66px;
+	}
+
+	.about-mini > .owner > .owner-icon > img{
 		width: 66px;
 		height: 66px;
 	}

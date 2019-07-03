@@ -32,16 +32,18 @@
         return this.$route.matched.some(r => r.meta.userManagement);
       }
     },
-    metaInfo:{
-      title: "",
-      titleTemplate: "%sPowershare",
-      meta: [
-        {property: "og:title", content: "Powershare"},
-        {property: "og:description", content: "Free Crowd-funding platform!"},
-        {property: "og:image", content: "https://powershare.fund/img/landing.png"},
-        {property: "og:url", content: APP_URL},
-        {property: "og:type", content: "website"}
-      ]
+    metaInfo(){
+      return {
+        title: "",
+        titleTemplate: "%sPowershare",
+        meta: [
+          {vmid: "og:title", property: "og:title", content: "Powershare"},
+          {vmid: "og:description", property: "og:description", content: "Free Crowd-funding platform!"},
+          {vmid: "og:image", property: "og:image", content: "https://powershare.fund/img/landing.png"},
+          {vmid: "og:url", property: "og:url", content: APP_URL},
+          {vmid: "og:type", property: "og:type", content: "website"}
+        ]
+      };
     },
     mounted() {
       if(this.isAdminPanel){

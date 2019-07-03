@@ -17,7 +17,7 @@
         </div>
         <div class="owner">
           <div class="owner-icon">
-              <img src="/img/default-profile.png" alt="">
+<!--              <img src="/img/default-profile.png" alt="">-->
           </div>
           <div class="owner-name">
             <p>{{campaign.author_name}}</p>
@@ -195,10 +195,10 @@
       return {
         title: title,
         meta: [
-          {property: "og:title", content: title + "Powershare"},
-          {property: "og:description", content: description},
-          {property: "og:image", content: image_url},
-          {property: "og:url", content: APP_URL + this.$route.fullPath}
+          {vmid: "og:title", property: "og:title", content: title + "Powershare"},
+          {vmid: "og:description", property: "og:description", content: description},
+          {vmid: "og:image", property: "og:image", content: image_url},
+          {vmid: "og:url", property: "og:url", content: APP_URL + this.$route.fullPath}
         ]
       }
     }
