@@ -28,13 +28,8 @@
         <!-- SEO & Sharing -->
         <meta name="google-site-verification" content="8nCz107fSRx1WTGVeWqFVOq8-vBG5bs_1cvdE9CMS2Q" />
         <meta name="description" content="{{$description ?? 'Free Crowdfunding platform'}}">
-        <meta property="og:description" content="{{$description ?? 'Free Crowdfunding platform!'}}">
-        <meta property="og:url" content="{{Request::url()}}"/>
-        <meta property="og:title" content="{{$title ?? env("APP_NAME")}}"/>
-        <meta property="og:type" content="website"/>
         <meta property="fb:app_id" content="615755662100569">
         <meta name="google-site-verification" content="13JatL80lz_cF0r0EIcpiDXJM2MeywM0gfjQN7tnerA" />
-        <meta property="og:image" content="https://powershare.fund/img/pwrshr_alpha_logo.png">
         
     </head>
 

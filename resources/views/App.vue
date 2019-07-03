@@ -17,6 +17,7 @@
   import AdminNav from "@/views/admin/partials/AdminNav";
   import FooterMain from "@/views/public/partials/FooterMain";
 
+  import {APP_URL} from "@js/Common/config";
   import {checkAdmin} from "@/js/Helpers/auth";
   import AdminIndex from "@views/admin/Index";
   import UserIndex from "@/views/user/Index";
@@ -36,7 +37,9 @@
       titleTemplate: "%sPowershare",
       meta: [
         {property: "og:title", content: "Powershare"},
-        {property: "og:description", content: "Free Crowd-funding platform!"}
+        {property: "og:description", content: "Free Crowd-funding platform!"},
+        {property: "og:image", content: "https://powershare.fund/img/powershare_logo.svg"},
+        {property: "og:url", content: APP_URL}
       ]
     },
     mounted() {
