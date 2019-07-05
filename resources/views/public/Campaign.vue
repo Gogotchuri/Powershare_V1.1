@@ -48,22 +48,29 @@
         <span>{{campaign.required_funding}}$<br> საჭიროა</span>
       </div>
       <div class="about hided-on-ms">
-        <p class="about-header">კამპანის შესახებ</p>
+        <p class="about-header">კამპანიის შესახებ</p>
         <p class="about-content"> {{campaign.details}}</p>
       </div>
-      <div class="gallery hided-on-ms">
+      <div v-if="hasGallery" class="gallery hided-on-ms">
         <p class="gallery-header">გალერეა</p>
         <div class="gallery-content" v-if="gallery">
           <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url" ></gallery-modal>
         </div>
       </div>
-      <div class="comments hided-on-ms">
+      <div v-if="hasComments" class="comments hided-on-ms">
         <p class="comments-header">კომენტარები</p>
         <div class="comment" v-for="comment in campaign.comments" v-bind:key="comment.id">
           <div class="icon"></div>
           <p class="comment-name">{{comment.author_name}}</p>
           <p class="comment-content">{{comment.body}}</p>
         </div>
+          <form v-if="isLoggedIn" @submit.prevent="addComment">
+              <label>
+                  დაამატე კომენტარი
+                  <textarea v-model="newComment" required></textarea>
+                  <button type="submit">დამატება</button>
+              </label>
+          </form>
       </div>
     </div>
     <div class="about hided-on-l">
@@ -71,7 +78,7 @@
         <p class="about-content"> {{campaign.details}}
         </p>
         </div>
-    <div class="gallery hided-on-l">
+    <div v-if="hasGallery" class="gallery hided-on-l">
         <p class="gallery-header">გალერეა</p>
         <div class="gallery-content" v-if="gallery">
           <gallery-modal></gallery-modal>
@@ -85,6 +92,13 @@
           <p class="comment-name">{{comment.author_name}}</p>
           <p class="comment-content">{{comment.body}}</p>
         </div>
+        <form v-if="isLoggedIn" @submit.prevent="addComment">
+            <label>
+                დაამატე კომენტარი
+                <textarea v-model="newComment" required></textarea>
+                <button type="submit">დამატება</button>
+            </label>
+        </form>
     </div>
     <div class="donate-section">
       <div>
@@ -128,7 +142,8 @@
       return {
         campaign: null,
         gallery: null,
-        favourite: false
+        favourite: false,
+        newComment: ""
       };
     },
     beforeRouteEnter(to, from, next) {
@@ -158,6 +173,12 @@
       },
       realizedPercentage(){
         return (this.campaign.realized_funding/this.campaign.required_funding )*100;
+      },
+      hasComments(){
+        return this.campaign.comments !== null && this.campaign.comments.length !== 0 && this.isLoggedIn;
+      },
+      hasGallery(){
+          return this.gallery !== null && this.gallery.length !== 0;
       }
     },
     methods:{
@@ -188,6 +209,18 @@
                     console.error(err.response);
                     window.alert("Couldn't be added to favourites!");
                   })
+      },
+      addComment(){
+          if(!this.isLoggedIn) return;
+          HTTP.POST("/campaigns/"+this.campaign.id+"/comments", {"body" :this.newComment})
+              .then(data => {
+                 console.log(data);
+                 this.campaign.comments.push(data.data.data);
+              }).catch(err => {
+                  console.error(err);
+                  console.error(err.response);
+                  window.alert("Comment couldn't be added sorry... :(")
+          });
       }
     },
     metaInfo(){
