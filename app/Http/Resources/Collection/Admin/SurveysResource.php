@@ -22,7 +22,7 @@ class SurveysResource extends JsonResource
             "advertiser" => $this->advertiser,
             "num_filled" => $this->numFilled(),
             "unit_price" => $this->unit_price,
-            "is_active" => ($this->is_active === "1") ? true : false,
+            "is_active" => $this->is_active,
             "creation_date" => $date
         ];
     }
