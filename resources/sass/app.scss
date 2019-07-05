@@ -79,6 +79,10 @@ div.details-main-right > div:nth-child(odd) {
 // 	background-color: lightgray;
 // 	margin: auto;
 // }
+.owner-icon > img{
+	width: inherit;
+	height: inherit;
+}
 .hidden-subject {
 	text-align: center;
 	display: none;
