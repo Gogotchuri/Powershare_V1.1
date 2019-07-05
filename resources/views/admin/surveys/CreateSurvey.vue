@@ -20,6 +20,11 @@
       Survey Name:
       <input type="text" v-model="surveyName">
     </label>
+    <br>
+    <label>
+      Unit price:
+      <input type="number" v-model="unitPrice">
+    </label>
     <questions-view :questions="questionsList" :readOnly="true" :editable="true"/>
     <div v-if="addQuestion">
       <survey-builder :options="sampleQuestion" />
@@ -38,10 +43,11 @@ import sampleQuestionObj from "@views/surveys/survey-structure.json"
 import HTTP from "@js/Common/Http.service";
 
 export default {
-  name: 'TestSurveyBuilder',
+  name: 'CreateSurvey',
   data() {
     return {
       surveyName: "",
+      unitPrice: 0,
       questionsList: [],
       addQuestion: false,
       addNewAdvertiser: false,
@@ -78,6 +84,7 @@ export default {
     storeSurvey(){
       HTTP.POST("/admin/surveys", {
         "name" : this.surveyName,
+        "unit_price": this.unitPrice,
         "json_body" : JSON.stringify(this.questionsList),
         "advertiser_id" : this.advertiser_id
       }).then(value => {

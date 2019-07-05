@@ -4,13 +4,10 @@ namespace App\Models;
 
 use App\Models\References\CampaignCategory;
 use App\Models\References\CampaignStatus;
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Arr;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 use App\Models\References\ImageCategory;
-use App\Models\References\Location;
 
 class Campaign extends Model
 {
@@ -23,8 +20,7 @@ class Campaign extends Model
         "details",
         "video_url",
         "category_id",
-        "required_funding",
-        "location_id"
+        "required_funding"
     ];
 
     protected $with = [
@@ -103,11 +99,6 @@ class Campaign extends Model
     public function members()
     {
         return $this->hasMany(TeamMember::class);
-    }
-
-    public function location(){
-        
-        return $this->hasOne(Location::class);
     }
 
     public function getIsApprovedAttribute()
@@ -190,6 +181,20 @@ class Campaign extends Model
 
     public function num_watched_videos(){
         return $this->watched_videos->count();
+    }
+
+    public function get_realized_funding(){
+        $realized_from_surveys =
+            DB::table("surveys")
+                ->join("filled_surveys", "filled_surveys.survey_id", "=", "surveys.id")
+                ->where("filled_surveys.campaign_id", "=", $this->id)
+                ->sum("surveys.unit_price");
+        $realized_from_video =
+            DB::table("video_ads")
+                ->join("watched_videos", "watched_videos.video_id", "=", "video_ads.id")
+                ->where("watched_videos.campaign_id", "=", $this->id)
+                ->sum("video_ads.unit_price");
+        return $realized_from_surveys + $realized_from_video;
     }
 
 }

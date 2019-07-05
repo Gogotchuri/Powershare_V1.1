@@ -20,6 +20,7 @@ class CampaignResource extends JsonResource
         $date = date_format(date_create($this->updated_at), "Y-m-d");
         $due_date = date_format(date_create($this->due_date), "Y-m-d");
         $num_surveys_filled = $this->num_filled_surveys() + $this->num_watched_videos();
+        $realized_funding = $this->get_realized_funding();
         return [
             "id" => $this->id,
             "name" => $this->name,
@@ -30,7 +31,7 @@ class CampaignResource extends JsonResource
             "category_name" => $this->category_name,
             "category_id" => $this->category_id,
             "required_funding" => $this->required_funding,
-            "realized_funding" => $this->realized_funding,
+            "realized_funding" => $realized_funding,
             "video_url" => $this->video_url,
             "details" => $this->details,
             "num_surveys_filled" => $num_surveys_filled,

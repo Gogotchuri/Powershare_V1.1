@@ -60,6 +60,7 @@ class SurveyController extends Controller
         $survey->name = $request["name"];
         $survey->json_body = $request["json_body"];
         $survey->advertiser_id = $request["advertiser_id"];
+        $survey->unit_price = $request["unit_price"];
         if($request["order"] !== null)
             $survey->order = $request["order"];
         $survey->save();
@@ -98,6 +99,7 @@ class SurveyController extends Controller
         $name = $request["name"];
         $json_body = $request["json_body"];
         $advertiser_id = $request["advertiser_id"];
+        $unit_price = $survey->unit_price = $request["unit_price"];
         $order = $request["order"];
         if($name != null)
             $survey->name = $name;
@@ -107,6 +109,8 @@ class SurveyController extends Controller
             $survey->advertiser_id = $advertiser_id;
         if($order != null)
             $survey->order = $order;
+        if($unit_price != null)
+            $survey->unit_price = $unit_price;
         $survey->save();
         return self::responseData(new SurveysResource($survey), 201);
     }

@@ -22,6 +22,11 @@
             Survey Name:
             <input type="text" v-model="surveyName">
         </label>
+        <br>
+        <label>
+            Unit price:
+            <input type="number" v-model="unitPrice">
+        </label>
         <questions-view :questions="questionsList" :readOnly="true" :editable="true"/>
         <div v-if="addQuestion">
             <survey-builder :options="sampleQuestion" />
@@ -37,6 +42,7 @@
     import QuestionsView from "@views/surveys/Survey";
     import sampleQuestionObj from "@views/surveys/survey-structure.json"
     import HTTP from "@js/Common/Http.service";
+    import CreateAdvertiser from "@views/admin/partials/CreateAdvertiser";
 
     export default {
         name: "EditSurvey",
@@ -46,13 +52,14 @@
               surveyID: 0,
               advertiser_id: 0,
               surveyName: "",
+              unitPrice: 0,
               questionsList: [],
               addQuestion: false,
               addNewAdvertiser: false,
               advertisers: []
           };
         },
-        components: {SurveyBuilder, QuestionsView},
+        components: {CreateAdvertiser, SurveyBuilder, QuestionsView},
         computed: {
             id(){
                 return this.$route.params.id;
@@ -70,6 +77,7 @@
                     let adv_id = value.data.data.advertiser.id;
                     let id = value.data.data.id;
                     let name = value.data.data.name;
+                    let unit_price = value.data.data.unit_price;
                     let list = JSON.parse(value.data.data.json_body);
                     next(vm => {
                         vm.questionsList = list;
@@ -77,6 +85,7 @@
                         vm.surveyName = name;
                         vm.notFound = false;
                         vm.advertiser_id = adv_id;
+                        vm.unitPrice = unit_price;
                     });
                 }).catch((e) => {
                     console.error(e.response);
@@ -102,6 +111,7 @@
             updateSurvey(){
                 HTTP.PUT("/admin/surveys/" + this.surveyID, {
                     "name" : this.surveyName,
+                    "unit_price": this.unitPrice,
                     "json_body" : JSON.stringify(this.questionsList),
                     "advertiser_id": this.advertiser_id
                 }).then(() => {

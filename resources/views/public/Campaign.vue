@@ -43,7 +43,7 @@
       <div class="completion">
         <p class="completion-donators">{{campaign.num_surveys_filled}} მოხალისე მხარდამჭერი</p>
         <div class="fillable-bar">
-          <div class="filled-bar"></div>
+          <div class="filled-bar" v-bind:style="{ width : realizedPercentage+'%'}"></div>
         </div>
         <span>{{campaign.required_funding}}$<br> საჭიროა</span>
       </div>
@@ -155,6 +155,9 @@
       },
       shareLink(){
         return "https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fpowershare.fund%2Fcampaigns%2F"+this.campaign.id;
+      },
+      realizedPercentage(){
+        return (this.campaign.realized_funding/this.campaign.required_funding )*100;
       }
     },
     methods:{

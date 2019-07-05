@@ -11,6 +11,7 @@
                     <th>Description</th>
                     <th>Author</th>
                     <th>Status</th>
+                    <th v-if="atAdmin">Realized funding</th>
                     <th>Actions</th>
                 </tr>
                 <tr v-for="campaign in campaigns">
@@ -21,6 +22,7 @@
                     <td v-if="campaign.status_id == 1">APPROVED</td>
                     <td v-else-if="campaign.status_id == 2">PROPOSED</td>
                     <td v-else>DRAFT</td>
+                    <td v-if="atAdmin">{{campaign.realized_funding}}₾</td>
                     <td v-if="atAdmin">
                         <button style="color: yellow"
                                 @click="adminEdit(campaign.id)">

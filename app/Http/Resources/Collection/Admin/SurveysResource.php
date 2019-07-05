@@ -21,6 +21,7 @@ class SurveysResource extends JsonResource
             "json_body" => $this->json_body,
             "advertiser" => $this->advertiser,
             "num_filled" => $this->numFilled(),
+            "unit_price" => $this->unit_price,
             "is_active" => ($this->is_active === "1") ? true : false,
             "creation_date" => $date
         ];

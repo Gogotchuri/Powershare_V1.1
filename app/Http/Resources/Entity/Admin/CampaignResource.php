@@ -16,6 +16,7 @@ class CampaignResource extends JsonResource
     {
         $comments = $this->public_comments;
         $comments = ($comments->count() == 0) ? null : $comments;
+        $realized_funding = $this->get_realized_funding();
         return [
             "id" => $this->id,
             "name" => $this->name,
@@ -27,7 +28,7 @@ class CampaignResource extends JsonResource
             "category_id" => $this->category_id,
             "status_id" => $this->status_id,
             "required_funding" => $this->required_funding,
-            "realized_funding" => $this->realized_funding,
+            "realized_funding" => $realized_funding,
             "date" => $this->created_at,
             "description" => $this->description,
             "video_url" => $this->video_url,
