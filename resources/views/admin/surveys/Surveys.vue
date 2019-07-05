@@ -18,14 +18,14 @@
                 <td>{{survey.creation_date}}</td>
                 <td>{{survey.num_filled}}</td>
                 <td>
-                    <p v-if="survey.is_active" style="color: green">Active</p>
+                    <p v-if="(survey.is_active == 1)" style="color: green">Active</p>
                     <p v-else style="color: red">Completed</p>
                 </td>
                 <td>
                     <input @click="deleteSurvey(survey.id)" type="button" value="DELETE" style="color: red">
                     <input @click="goToEdit(survey.id)" type="button" value="EDIT" style="color: yellow">
                     <input @click="changeSurveyStatus(survey)" type="button"
-                           :value="survey.is_active ? 'Complete' : 'Activate'" style="color: deeppink">
+                           :value="(survey.is_active == 1)? 'Complete' : 'Activate'" style="color: deeppink">
                 </td>
             </tr>
         </table>
@@ -75,7 +75,7 @@
                 HTTP.POST("/admin/surveys/"+survey.id+"/change-status")
                     .then(() => {
                         window.alert("Survey status changes");
-                        survey.is_active = !survey.is_active;
+                        survey.is_active = (survey.is_active == 1) ? 0 : 1;
                     }).catch(err => {
                         console.error(err);
                         console.error(err.response);
