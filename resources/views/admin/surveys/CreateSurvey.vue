@@ -22,8 +22,8 @@
     </label>
     <br>
     <label>
-      Unit price:
-      <input type="number" v-model="unitPrice">
+      Unit price(₾):
+      <input type="number" min="0" step="0.0001" v-model="unitPrice">
     </label>
     <questions-view :questions="questionsList" :readOnly="true" :editable="true"/>
     <div v-if="addQuestion">

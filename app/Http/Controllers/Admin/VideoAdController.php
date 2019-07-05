@@ -36,6 +36,8 @@ class VideoAdController extends Controller
             "name" => ["required"],
             "video_url" => ["required"],
             "forward_url" => ["required", "url"],
+            "unit_price" => ["required", "numeric"],
+            //TODO create one validator
             "required_duration" => ["required", "numeric", "min:0", "max:120"],
             "advertiser_id" => ["numeric", "min:1"]
         ]);
@@ -49,6 +51,7 @@ class VideoAdController extends Controller
         $ad = new VideoAd();
         $ad->name = $request["name"];
         $ad->video_url = $request["video_url"];
+        $ad->unit_price = $request["unit_price"];
         $ad->forward_url = $request["forward_url"];
         $ad->required_duration = $request["required_duration"];
         $ad->advertiser_id = $request["advertiser_id"];
@@ -87,6 +90,7 @@ class VideoAdController extends Controller
         $validator = Validator::make($request->all(), [
             "video_url" => ["required"],
             "forward_url" => ["required", "url"],
+            "unit_price" => ["required", "numeric"],
             "required_duration" => ["required", "numeric", "min:0", "max:120"],
             "advertiser_id" => ["numeric", "min:1"]
         ]);
@@ -101,6 +105,7 @@ class VideoAdController extends Controller
         $ad->name = $request["name"];
         $ad->video_url = $request["video_url"];
         $ad->forward_url = $request["forward_url"];
+        $ad->unit_price = $request["unit_price"];
         $ad->required_duration = $request["required_duration"];
         $ad->advertiser_id = $request["advertiser_id"];
         $ad->save();

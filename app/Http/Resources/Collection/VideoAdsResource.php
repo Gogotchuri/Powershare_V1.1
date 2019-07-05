@@ -21,6 +21,7 @@ class VideoAdsResource extends JsonResource
             "video_url" => $this->video_url,
             "forward_url" => $this->forward_url,
             "required_duration" => $this->required_duration,
+            "unit_price" => $this->unit_price,
             "is_active" => ($this->is_active == "1") ? true : false,
             "advertiser" => Advertiser::where("id", $this->advertiser_id)->first()
         ];

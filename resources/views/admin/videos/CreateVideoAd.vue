@@ -20,6 +20,11 @@
             </label>
             <br>
             <label>
+                Unit price(₾):
+                <input type="number" min="0" step="0.0001" v-model="videoAd.unit_price">
+            </label>
+            <br>
+            <label>
                 Video URL:
                 <input type="text" v-model="videoAd.video_url" required>
             </label>
