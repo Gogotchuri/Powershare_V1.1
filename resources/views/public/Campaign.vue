@@ -57,7 +57,7 @@
           <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url" ></gallery-modal>
         </div>
       </div>
-      <div v-if="hasComments" class="comments hided-on-ms">
+      <div class="comments hided-on-ms">
         <p class="comments-header">კომენტარები</p>
         <div class="comment" v-for="comment in campaign.comments" v-bind:key="comment.id">
           <div class="icon"></div>

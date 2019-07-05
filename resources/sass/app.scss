@@ -1618,9 +1618,13 @@ a#create-link{
 		display: block;
 	}
 	button.btn.btn-default.ripple-parent{
-		color: #818181;
+		padding: 8px 8px 8px 32px;
 		text-decoration: none;
-		font-size: 16px;
+		font-size: 25px;
+		color: #818181;
+		display: block;
+		line-height: 1.3;
+		margin: 8px 0;
 	}
 	button.btn.btn-default.ripple-parent:hover{
 		color: white;
@@ -3498,3 +3502,52 @@ select.category{
     background-color: white;
 }
 // end of important classes
+
+// start of about us
+h3.about-header{
+	font-size: 26px;
+	font-weight: bold;
+	text-align: left;
+	color: #662f92;
+	line-height: 1.04;
+	width: 100%;
+}
+.about-video{
+	height: 200px;
+	width: 340px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+.about-video > iframe{
+	width: 100%;
+	height: 100%;
+}
+.about-text{
+	font-size: 18px;
+	margin: 0 10px;
+	margin-bottom: 30px;
+}
+@media(min-width:768px){
+	h3.about-header{
+		font-size: 32px;
+	}
+	.about-video{
+		margin: 40px 0;
+		width: 515px;
+		height: 360px;
+	}
+	.about-text{
+		font-size: 18px;
+		margin: 20px 0;
+	}
+}
+@media(min-width: 1280px){
+	h3.about-header{
+		font-size: 42px;
+	}
+	.about-text{
+		font-size: 24px;
+		line-height: 1.6;
+	}
+}
+// end of about us
