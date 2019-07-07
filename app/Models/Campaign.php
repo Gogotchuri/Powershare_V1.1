@@ -130,7 +130,6 @@ class Campaign extends Model
     public function getFeaturedImageAttribute()
     {
         $images = $this->images;
-        //TODO might need to add default campaign image
         if(isset($images)){
             return $images->firstWhere("category_id", ImageCategory::FEATURED);
         }

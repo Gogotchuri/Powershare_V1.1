@@ -14,6 +14,13 @@ class ArticlesResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        $date = date_format(date_create($this->created_at), "d-m-Y");
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "image_url" => $this->featured_image_url,
+            "date" => $date,
+            "body" => $this->body,
+        ];
     }
 }
