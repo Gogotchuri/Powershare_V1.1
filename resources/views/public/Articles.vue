@@ -1,13 +1,13 @@
 <template>
-  <div v-if="false" id="blog-container">
-    <div class="blog-input">
-      <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadMore(search=true)">
-    </div>
+  <div v-if="!!articles && articles.length > 0" id="blog-container">
+<!--    <div class="blog-input">-->
+<!--      <input type="text" placeholder="Search.." class="search" v-model="searchKey" @keyup="loadMore(search=true)">-->
+<!--    </div>-->
     <div class="blogs">
       <article-thumbnail
-        v-for="blog in Articles"
-        :key="blog.id"
-        :blog="blog"
+        v-for="article in articles"
+        :key="article.id"
+        :article="article"
       ></article-thumbnail>
     </div>
   </div>

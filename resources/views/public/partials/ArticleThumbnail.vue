@@ -2,7 +2,7 @@
     <div class="blogThumbnail">
         <router-link class ="explore-card" :to="`/articles/${article.id}`">
             <!-- campaignis surati unda styleshi -->
-            <div class="blogThBackground" :style="{'background-image': 'url(' + article.featured_image_url + ')'}">
+            <div class="blogThBackground" :style="{'background-image': 'url(' + article.image_url + ')'}">
             </div>
             <div class="blogThText">
                 <div class="explore-card-text">
@@ -10,10 +10,9 @@
                             {{article.name}}
                         </div>
                         <div class="blog-important">
-                            <h6>Category:<span style="font-weight:200"> {{article.category_name}}</span></h6>
+                            <h6>თარითი:<span style="font-weight:200"> {{article.date}}</span></h6>
                         </div>
-                        <div class="campaign-desc">
-                            {{article.description | subStr}}
+                        <div class="campaign-desc" v-html="article.body.substring(0,100)+'...'">
                         </div>
                 </div>
             </div>
@@ -25,10 +24,15 @@
 export default {
     name: "ArticleThumbnail",
     props: ["article"],
-    filters: {
-  	subStr: function(string) {
-    	return string.substring(0,70) + '...';
-    }
+    // filters: {
+    //     subStr: function(string) {
+    //         return string.substring(0,70) + '...';
+    //     }
+    // },
+    metaInfo(){
+        return {
+            title: "Blog | "
+        }
     }
 }
 </script>

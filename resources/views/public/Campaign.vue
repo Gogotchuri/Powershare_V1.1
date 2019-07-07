@@ -215,6 +215,7 @@
           HTTP.POST("/campaigns/"+this.campaign.id+"/comments", {"body" :this.newComment})
               .then(data => {
                  console.log(data);
+                 if(this.campaign.comments == null) this.campaign.comments = [];
                  this.campaign.comments.push(data.data.data);
               }).catch(err => {
                   console.error(err);
