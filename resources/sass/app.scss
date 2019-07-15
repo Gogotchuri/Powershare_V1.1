@@ -766,6 +766,22 @@ p.donate-header{
 	margin-top: 100px;
 	text-align: center;
 }
+main > div > div > div > .card-default{
+	text-align: left;
+}
+main > div > div > div > .card-default > .card-header{
+	text-align: left;
+}
+main > div > div > div > .card-default > .card-body{
+	text-align: left;
+}
+main > div > div > div > .card-default > .card-body > form{
+	width: 80%;
+	margin-left: 0;
+}
+.modal-content{
+	background-color: #f4f4f4;
+}
 .modal-body{
 	padding-top:70px;
 
@@ -773,14 +789,16 @@ p.donate-header{
 }
 .card{
 	border:none;
+	background-color: #f4f4f4;
 }
 .card-header{
-	background-color: white;
+	background-color: #f4f4f4;
 	border: none;
 	padding-top: 0;
 	padding-bottom: 0;
 	margin-bottom: 25px;
 	padding: 0;
+	text-align: center;
 }
 .card-header > h3{
 	font-size: 30px;
