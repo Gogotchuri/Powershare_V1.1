@@ -2907,6 +2907,11 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		margin-bottom: 10px;
 	}
 }
+@media only screen and (max-width: 1288px) and (min-width: 1280px){
+	.how-to > .how-to-cards > div{
+		width: 150px;
+	}
+}
 @media(min-width:1366px){
 	.landing-header{
 		margin-left: 150px;
@@ -2914,6 +2919,9 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 	div.landing-campaigns,
 	div.how-to{
 		padding: 0  150px;
+	}
+	.how-to > .how-to-cards > div{
+		width: 180px;
 	}
 }
 @media only screen and (max-width: 1389px) and (min-width: 1366px)  {
