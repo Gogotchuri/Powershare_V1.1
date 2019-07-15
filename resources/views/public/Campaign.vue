@@ -45,7 +45,7 @@
         <div class="fillable-bar">
           <div class="filled-bar" v-bind:style="{ width : realizedPercentage+'%'}"></div>
         </div>
-        <span>{{campaign.required_funding}}$<br> საჭიროა</span>
+        <span>{{campaign.required_funding}}GEL<br> საჭიროა</span>
       </div>
       <div class="about hided-on-ms">
         <p class="about-header">კამპანიის შესახებ</p>
@@ -118,7 +118,7 @@
                 შეინახე
           </a>
         </span>
-        <donation-modal :campaign_id="campaign.id" :is_logged_in="isLoggedIn"/>
+        <donation-modal class="btn-donate" :campaign_id="campaign.id" :is_logged_in="isLoggedIn"/>
       </div>
     </div>
     <div class="donate-underspace">

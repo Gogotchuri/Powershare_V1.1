@@ -648,6 +648,19 @@ p.donate-header{
 		background-color: #652f8d;
 		color: white;
 	}
+	.btn-donate > button.btn.btn-default.ripple-parent{
+		color: #652f8d!important;
+		background-color: white!important;
+		border-radius: 8px;
+		border: solid 2px #652f8d!important;
+		transition: 0.3s;
+		font-weight: bold!important;
+		align-self: center;
+	}
+	.btn-donate > button.btn.btn-default.ripple-parent:hover{
+		background-color: #652f8d;
+		color: white;
+	}
 }
 @media(min-width:1280px){
 	main > div > div.gallery-mini{
