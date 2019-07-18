@@ -4,7 +4,7 @@
     <body>
     </body>
     <script>
-        @if($error)
+        @if(!empty($error))
             window.opener.postMessage({ error: "{{ $error }}" }, "{{ url('/') }}");
             window.close();
         @else

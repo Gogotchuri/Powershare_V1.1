@@ -37,6 +37,7 @@
             },
 
             onMessage(message) {
+                if(!message) return;
                 if (message.origin !== window.origin || !message.data.token) {
                     if(message.data.error)
                         window.alert(message.data.error);
