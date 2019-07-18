@@ -79,7 +79,7 @@ class SocialAuthController extends Controller
         $socialAuth->user_id = $user->id;
         $socialAuth->provider = $provider;
         $socialAuth->provider_user_id = $sUser->getId();
-        $socialAuth->token = $sUser->token;
+        $socialAuth->access_token = $sUser->token;
         $socialAuth->save();
 
         return $user;
