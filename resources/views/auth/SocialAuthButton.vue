@@ -11,6 +11,11 @@
     export default {
         name: "SocialAuthButton",
         props: ["provider"],
+        data(){
+            return{
+                errorDisplayed:false
+            }
+        },
         mounted(){
             //Add websocket message listener to wait for message from social auth window
             window.addEventListener("message", this.onMessage, false);
@@ -28,7 +33,6 @@
                     const authWindow = openWindow("","Login with "+provider);
                     let providerUrl = await HTTP.POST("/oauth/"+provider);
                     providerUrl = providerUrl.data.data.url;
-                    console.log(providerUrl);
                     //Push provider redirect url into opened window
                     authWindow.location.href = providerUrl;
                 }catch (reason) {
@@ -39,14 +43,15 @@
             onMessage(message) {
                 if(!message) return;
                 if (message.origin !== window.origin || !message.data.token) {
-                    if(message.data.error)
+                    if(message.data.error && !this.errorDisplayed) {
                         window.alert(message.data.error);
-                    else
-                        console.error("Origin doesn't match or token isn't present");
+                        this.errorDisplayed = true;
+                    }
                     return;
                 }
+                let router = this.$router;
                 this.$store.dispatch("loginWithToken", message.data.token)
-                    .then(() => this.$router.push({name: "HOME"}))
+                    .then(() => router.push({name: "Home"}))
                     .catch(reason => console.error(reason));
             }
         }
