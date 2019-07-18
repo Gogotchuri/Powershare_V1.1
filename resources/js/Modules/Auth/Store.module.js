@@ -59,6 +59,11 @@ const mutations = {
         Http.removeJwtHeader();
         state.currentUser = null;
         destroyUser();
+    },
+
+    loginWithToken(state, token){
+        this.logout(state);
+        console.log("login with token: " + token);
     }
 };
 
