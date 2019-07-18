@@ -16,8 +16,8 @@
           <p class="header-left">ძალაშია: {{campaign.due_date}}</p>
         </div>
         <div class="owner">
-          <div class="owner-icon">
-<!--              <img src="/img/default-profile.png" alt="">-->
+          <div class="owner-icon ">
+             <img src="/img/default-profile.png" alt="">
           </div>
           <div class="owner-name">
             <p>{{campaign.author_name}}</p>
@@ -45,7 +45,7 @@
         <div class="fillable-bar">
           <div class="filled-bar" v-bind:style="{ width : realizedPercentage+'%'}"></div>
         </div>
-        <span>{{campaign.required_funding}}$<br> საჭიროა</span>
+        <span>{{campaign.required_funding}}GEL<br> საჭიროა</span>
       </div>
       <div class="about hided-on-ms">
         <p class="about-header">კამპანიის შესახებ</p>
@@ -57,7 +57,7 @@
           <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url" ></gallery-modal>
         </div>
       </div>
-      <div v-if="hasComments" class="comments hided-on-ms">
+      <div class="comments hided-on-ms">
         <p class="comments-header">კომენტარები</p>
         <div class="comment" v-for="comment in campaign.comments" v-bind:key="comment.id">
           <div class="icon"></div>
@@ -118,7 +118,7 @@
                 შეინახე
           </a>
         </span>
-        <donation-modal :campaign_id="campaign.id" :is_logged_in="isLoggedIn"/>
+        <donation-modal class="btn-donate" :campaign_id="campaign.id" :is_logged_in="isLoggedIn"/>
       </div>
     </div>
     <div class="donate-underspace">
