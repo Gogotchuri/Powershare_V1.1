@@ -41,6 +41,7 @@
                                         <button type="submit" class="btn btn-primary btn-auth">
                                             შესვლა
                                         </button>
+                                        <social-auth-button provider="facebook"></social-auth-button>
                                         <a href="#" class="forgot" @click="passwordForgotten"> დაგავიწყდა პაროლი?</a>
                                     </div>
                                 </div>
@@ -54,6 +55,7 @@
 
 <script>
     import RegisterModal from "@views/auth/RegisterModal";
+    import SocialAuthButton from "@views/auth/SocialAuthButton";
     export default {
         name: "Login",
         data(){
@@ -82,6 +84,7 @@
 
         },
         components: {
+            SocialAuthButton,
             RegisterModal
         }
     }

@@ -1,6 +1,9 @@
 <template>
-    <button v-if="provider.toLowerCase() === 'facebook'" @click="login('facebook')">Login with Facebook</button>
-    <button v-if="provider.toLowerCase() === 'google'" @click="login('google')">Login With Google</button>
+    <div>
+        <button v-if="provider.toLowerCase() === 'facebook'" @click="login('facebook')">Login with Facebook</button>
+        <button v-if="provider.toLowerCase() === 'google'" @click="login('google')">Login With Google</button>
+    </div>
+
 </template>
 
 <script>
@@ -24,7 +27,7 @@
                     //Open empty window for starters
                     const authWindow = openWindow("","Login with "+provider);
                     let providerUrl = await HTTP.POST("/oauth/"+provider);
-                    providerUrl = providerUrl.data.url;
+                    providerUrl = providerUrl.data.data.url;
                     console.log(providerUrl);
                     //Push provider redirect url into opened window
                     authWindow.location.href = providerUrl;

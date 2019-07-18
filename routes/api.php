@@ -33,8 +33,8 @@ Route::middleware("throttle:40,1")->namespace("Auth")->group(function (){
 	Route::post("/register", "AuthController@register");
     Route::post("/send-password-reset", "ForgotPasswordController@sendResetEmail");
     Route::post("/reset-password", "ResetPasswordController@callReset");
-    Route::post("/oauth/{driver}", "Auth\SocialAuthController@redirectToProvider");
-    Route::get("/oauth/{driver}/callback", "Auth\SocialAuthController@redirectToProvider")->name("oauth.callback");
+    Route::post("/oauth/{driver}", "SocialAuthController@redirectToProvider");
+    Route::get("/oauth/{driver}/callback", "SocialAuthController@redirectToProvider")->name("oauth.callback");
     //TODO give prefix to this group "/user" and correct those in vue store
 	Route::middleware("auth:api")->group(function (){
 	    Route::post("/user/is_admin", "AuthController@checkAdmin")->middleware("admin");
