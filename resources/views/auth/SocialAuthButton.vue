@@ -38,12 +38,15 @@
 
             onMessage(message) {
                 if (message.origin !== window.origin || !message.data.token) {
-                    console.log("Origin doesn't match or token isn't present");
+                    if(message.data.error)
+                        window.alert(message.data.error);
+                    else
+                        console.error("Origin doesn't match or token isn't present");
                     return;
                 }
-                console.log(message.data.token);
-                this.$store.dispatch("loginWithToken", message.data.token).catch(reason => console.error(reason));
-                this.$store.push({name: "HOME"});
+                this.$store.dispatch("loginWithToken", message.data.token)
+                    .then(() => this.$router.push({name: "HOME"}))
+                    .catch(reason => console.error(reason));
             }
         }
     }

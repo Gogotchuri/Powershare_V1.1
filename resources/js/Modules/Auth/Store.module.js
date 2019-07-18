@@ -113,12 +113,10 @@ const actions = {
             await context.dispatch("logout");
         }catch (ignored) {}
 
-        console.log("login with token: " + token);
         Http.setJwtHeader(token);
         return new Promise((resolve, reject) => {
             Http.GET("user")
                 .then(res => {
-                    console.log(res);
                     let user = res.data.data;
                     user.token = token;
                     context.commit("login", user, null);

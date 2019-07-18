@@ -42,6 +42,9 @@ class SocialAuthController extends Controller
     {
         $user = Socialite::driver($provider)->stateless()->user();
         $user = $this->findOrCreateUser($provider, $user);
+        if($user == null){
+            return view('auth.OauthCallback', ["error" => "Email already taken!"]);
+        }
         $resp = $this->tokenAndUser($user);
         return view('auth.OauthCallback', $resp);
     }
@@ -58,6 +61,9 @@ class SocialAuthController extends Controller
             ]);
             return $socialAuth->user;
         }
+
+        if(User::where("email", $user->getEmail())->first() != null)
+            return null;
 
         return $this->createUser($provider, $user);
     }
