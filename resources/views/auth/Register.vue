@@ -8,6 +8,10 @@
                         <p>დარეგისტრირდით რათა გააგრძელოთ</p>
                     </div>
                     <div class="card-body">
+                        <social-auth-button provider="facebook"></social-auth-button>
+                        <social-auth-button provider="google"></social-auth-button>
+                        <p>ან</p>
+                        შეავსეთ ფორმა
                         <form @submit.prevent="register">
                             <div class="form-group row">
                                 <label for="name" class="col-md-12 col-form-label auth-label">სახელი</label>
@@ -42,6 +46,7 @@
                                     <button type="submit" class="btn btn-primary btn-auth">
                                         რეგისტრაცია
                                     </button>
+
                                 </div>
                             </div>
                         </form>
@@ -53,8 +58,10 @@
 </template>
 
 <script>
+    import SocialAuthButton from "@views/auth/SocialAuthButton";
     export default {
         name: "Register",
+        components: {SocialAuthButton},
         data(){
             return {
                 form :{

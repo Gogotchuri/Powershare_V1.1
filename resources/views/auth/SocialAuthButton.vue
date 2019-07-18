@@ -1,9 +1,6 @@
 <template>
-    <div>
-        <button v-if="provider.toLowerCase() === 'facebook'" @click="login('facebook')">Login with Facebook</button>
-        <button v-if="provider.toLowerCase() === 'google'" @click="login('google')">Login With Google</button>
-    </div>
-
+        <input type="button" value="Facebook" v-if="provider.toLowerCase() === 'facebook'" @click="login('facebook')">
+        <input type="button" value="Google" v-else-if="provider.toLowerCase() === 'google'" @click="login('google')">
 </template>
 
 <script>
@@ -46,6 +43,8 @@
                     if(message.data.error && !this.errorDisplayed) {
                         window.alert(message.data.error);
                         this.errorDisplayed = true;
+                    }else{
+                        this.errorDisplayed = false;
                     }
                     return;
                 }
