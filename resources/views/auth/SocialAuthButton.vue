@@ -8,11 +8,6 @@
     export default {
         name: "SocialAuthButton",
         props: ["provider"],
-        data(){
-            return{
-                errorDisplayed:false
-            }
-        },
         mounted(){
             //Add websocket message listener to wait for message from social auth window
             window.addEventListener("message", this.onMessage, false);
@@ -40,12 +35,8 @@
             onMessage(message) {
                 if(!message) return;
                 if (message.origin !== window.origin || !message.data.token) {
-                    if(message.data.error && !this.errorDisplayed) {
+                    if(message.data.error)
                         window.alert(message.data.error);
-                        this.errorDisplayed = true;
-                    }else{
-                        this.errorDisplayed = false;
-                    }
                     return;
                 }
                 let router = this.$router;
