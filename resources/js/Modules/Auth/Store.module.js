@@ -59,11 +59,6 @@ const mutations = {
         Http.removeJwtHeader();
         state.currentUser = null;
         destroyUser();
-    },
-
-    loginWithToken(state, token){
-        this.logout(state);
-        console.log("login with token: " + token);
     }
 };
 
@@ -74,7 +69,7 @@ const mutations = {
 const actions = {
     login(context, credentials) {
         return new Promise((resolve, reject) => {
-            Http.POST("login", credentials)
+            Http.POST("/login", credentials)
             .then(value => {
                 let user = value.data.data;
                 context.commit("login", user, null);
@@ -89,7 +84,7 @@ const actions = {
 
     logout(context){
         return new Promise((resolve, reject) => {
-            Http.POST("logout")
+            Http.POST("/logout")
                 .then(() => {
                     context.commit("logout");
                     resolve("Logged out!");
@@ -107,11 +102,35 @@ const actions = {
      */
     register(context, data) {
         return new Promise((resolve, reject) => {
-            Http.POST("register", data)
+            Http.POST("/register", data)
                 .then(() => resolve())
                 .catch(reason => reject(reason))
         });
     },
+
+    async loginWithToken(context, token){
+        try {
+            await context.dispatch("logout");
+        }catch (ignored) {}
+
+        console.log("login with token: " + token);
+        Http.setJwtHeader(token);
+        return new Promise((resolve, reject) => {
+            Http.GET("user")
+                .then(res => {
+                    console.log(res);
+                    let user = res.data.data;
+                    user.token = token;
+                    context.commit("login", user, null);
+                    resolve();
+                })
+                .catch(reason => {
+                    Http.setExistingJwtHeader();
+                    reject(reason);
+                })
+        })
+
+    }
 };
 
 
