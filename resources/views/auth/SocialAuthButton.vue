@@ -41,7 +41,8 @@
                     console.log("Origin doesn't match or token isn't present");
                     return;
                 }
-                this.$store.dispatch("loginWithToken", message.token).catch(reason => console.error(reason));
+                console.log(message.data.token);
+                this.$store.dispatch("loginWithToken", message.data.token).catch(reason => console.error(reason));
                 this.$store.push({name: "HOME"});
             }
         }
