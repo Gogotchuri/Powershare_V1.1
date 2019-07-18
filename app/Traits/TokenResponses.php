@@ -20,7 +20,7 @@ trait TokenResponses
             event(new Login('api', $user, false)); // false - its remember
         }
 
-        $token =  auth()->user()->createToken('powershare_token')->accessToken;
+        $token = auth()->user()->createToken('powershare_token')->accessToken;
         return array_merge(["token" => $token], $this->userData());
     }
 

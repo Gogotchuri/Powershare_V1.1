@@ -17,6 +17,7 @@ class AddArticleIdToImagesTable extends Migration
             $table->unsignedInteger("article_id")->nullable();
             $table->foreign("article_id")->references("id")->on("articles")->onDelete("cascade");
         });
+      
         Schema::table("articles",  function (Blueprint $table) {
             $table->dropColumn("date");
         });

@@ -94,7 +94,10 @@ class AuthController extends Controller
 
     public function details()
     {
-        return self::responseData(new UserResource(auth()->user()));
+        if(auth()->user())
+            return self::responseData((new UserResource(auth()->user()))->toArray(null));
+        else
+            return self::responseErrors("Couldn't get details, Access Token missing", 401);
     }
 
     public function checkAdmin(){
