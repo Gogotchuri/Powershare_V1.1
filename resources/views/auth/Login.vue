@@ -42,6 +42,7 @@
                                             შესვლა
                                         </button>
                                         <social-auth-button provider="facebook"></social-auth-button>
+                                        <social-auth-button provider="google"></social-auth-button>
                                         <a href="#" class="forgot" @click="passwordForgotten"> დაგავიწყდა პაროლი?</a>
                                     </div>
                                 </div>
