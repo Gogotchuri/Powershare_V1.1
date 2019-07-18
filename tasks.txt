@@ -1,6 +1,4 @@
-1) Create constant function name file with extension *.type.js
 2) make another component for displaying errors and display errors on registration page
-3) handle errors in components
 feature:
 1) after many request to login display password reset
 2) need to parse throttle report "message": "Too Many Attempts."
