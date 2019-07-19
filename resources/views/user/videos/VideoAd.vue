@@ -6,7 +6,7 @@
         <p v-else>
             <input type="button" value="submit!" @click="submitWatched">
         </p>
-        <video id="player" @click="goToPage" style="cursor: pointer" width="600" height="400" autoplay>
+        <video id="player" @click="goToPage" style="cursor: pointer" width="600" height="400">
             <source :src="videoAd.video_url" type="video/mp4">
             Video player isn't supported
         </video>
@@ -41,9 +41,19 @@
         },
         mounted(){
             this.initPlay();
-            window.addEventListener("focus", this.timerOn);
-            window.addEventListener("blur", this.timerOff);
+            this.timerOff();
+            setTimeout(() => {
+                window.addEventListener("focus", this.timerOn);
+                window.addEventListener("blur", this.timerOff);
+                this.timerOn();
+            }, 1000);
         },
+
+        beforeDestroy(){
+          this.timerOff();
+          this.ended = true;
+        },
+
         methods: {
             timerOn(){
                 if(this.ended) return;
@@ -54,8 +64,6 @@
                         .catch(() => {
                             this.timerOff()
                         });
-                else
-                    console.error("Player couldn't be initialized!");
             },
 
             timerOff(){
@@ -63,8 +71,6 @@
                 clearInterval(this.interval);
                 if(this.videoElement != null)
                     this.videoElement.pause();
-                else
-                    console.error("Player couldn't be initialized!");
             },
 
             goToPage(){
@@ -91,7 +97,7 @@
                     }).finally(() => {
                         this.videoElement.pause();
                         this.ended = true;
-                });
+                    });
             }
         }
     }
