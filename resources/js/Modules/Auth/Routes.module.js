@@ -3,6 +3,8 @@ import Register from "@views/auth/Register";
 import Logout from "@views/auth/Logout"
 import ForgotPassword from "@/views/auth/ForgotPassword";
 import PasswordReset from "@/views/auth/PasswordReset";
+import LoginModalOn from "@views/auth/LoginModalOn";
+import RegisterModalOn from "@views/auth/RegisterModalOn";
 export default [
     {
       path: "/logout",
@@ -15,7 +17,7 @@ export default [
     {
         path: "/login",
         name: "Login",
-        component: Login,
+        component: LoginModalOn,
         meta: {
             authRequired: false
         }
@@ -23,7 +25,7 @@ export default [
     {
         path: "/register",
         name: "Register",
-        component: Register,
+        component: RegisterModalOn,
         meta: {
             authRequired: false
         }

@@ -76,12 +76,12 @@
                     .then(() => {
                         let redirectionUrl = this.$route.query.redirect;
                         this.$router.push({path : redirectionUrl || "/", query: this.$route.query});
-                        this.$emit("modaloff");
+                        this.$emit("modalOff");
                     })
                     .catch(() => this.error = true);
             },
             passwordForgotten(){
-                this.$emit("modaloff");
+                this.$emit("modalOff");
                 this.$router.push({name: 'ForgotPassword'});
             }
 
