@@ -112,6 +112,7 @@ export default {
       next(vm => {
         vm.lastPage = lastPage;
         vm.categories = categories;
+        console.log(campaigns);
         vm.campaigns = campaigns;
       })
     }).catch(err => {
