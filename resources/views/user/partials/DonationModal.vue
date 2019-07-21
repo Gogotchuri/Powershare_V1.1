@@ -1,7 +1,7 @@
 <template>
     <span class="donate-span">
         <mdb-btn v-if="!is_logged_in" @click="redirect">დაეხმარე უფასოდ</mdb-btn>
-        <mdb-btn v-else @click.native="isActive = true" class="btn-donate">დაეხმარე უფასოდ</mdb-btn>
+        <mdb-btn v-else @click.native="isActive = true" style="margin-right:0">დაეხმარე უფასოდ</mdb-btn>
         <mdb-modal :show="isActive" @close="isActive = false">
             <mdb-modal-body>
                 <input type="button" value="Survey" @click="goToSurvey">
