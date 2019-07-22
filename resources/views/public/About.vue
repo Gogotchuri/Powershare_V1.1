@@ -46,7 +46,7 @@
             <div class="team-card">
                 <img src="img/TEAM_photos/Ilia.png">
                 <p class="name">ILIA GOGOTCHURI</p>
-                <p class="position">Back-End Developer</p>
+                <p class="position">Tech Lead, Developer</p>
             </div>
             <div class="team-card">
                 <img src="img/TEAM_photos/lasha">
