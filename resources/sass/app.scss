@@ -125,10 +125,6 @@ div.details-main-right > div:nth-child(odd) {
 }
 //end of details
 
-//explore page
-
-//end of explore page
-
 //article page
 .blog-first-row {
 	display: grid;
@@ -652,14 +648,14 @@ p.donate-header{
 		color: #652f8d!important;
 		background-color: white!important;
 		border-radius: 8px;
-		border: solid 2px #652f8d!important;
 		transition: 0.3s;
 		font-weight: bold!important;
 		align-self: center;
+		margin-right: 0;
 	}
 	.btn-donate > button.btn.btn-default.ripple-parent:hover{
-		background-color: #652f8d;
-		color: white;
+		background-color: #652f8d!important;
+		color: white!important;
 	}
 }
 @media(min-width:1280px){
@@ -1235,45 +1231,54 @@ div.explore-input > select{
 		justify-content: space-between;
 	}
 	.campaigns > .campaignThumbnail{
-		width: 600px!important;
-		height: 530px!important;
+		width: 251px!important;
+		height: 450px!important;
 		margin-bottom: 40px;
 		margin-top: 20px;
 		border-radius: 3px;
 	}
 	.campaignThumbnail > a{
-		height: 403px;
+		height: 450px;
 	}
 	.campaignThumbnail > a >.campaignThBackground{
-		height: 354px!important;
+		height: 334px!important;
 		margin-bottom: 20px;
-		max-width: 600px;
-		width: 600px;
+		max-width: 251px;
+		width: 251px;
 		border-radius: 3px;
 		width: 100%;
 		max-width: 720px;
-		height: 430px;
 		background-position: center;
 		background-size: cover;
 		margin-bottom: 25px;
 		border-top-left-radius: 3px;
 		border-top-right-radius: 3px;
+		background-color: black;
 	}
 	.campaignThumbnail > a >.campaignThText{
-		height: 166px!important;
+		padding: 6px;
+		height: 130px!important;
 		width: 100%;
 		max-width: 600px;
 		width: 100%;
-		max-width: 717px;
 		height: 200px;
-		background-color: #ffffff;
+		color: #000000;
+		background-color: white;
 		bottom: 0;
 		position: absolute;
 		border-bottom-left-radius: 3px;
 		border-bottom-right-radius: 3px;
+		overflow: hidden;	
+	}
+	.campaignThumbnail > a >.campaignThText > .explore-card-text > .campaign-holder-left{
+		font-size: 16px;
+		margin-bottom: 5px;	
+	}
+	.campaignThumbnail > a >.campaignThText > .explore-card-text > .campaign-desc{
+		font-size: 14px;
 	}
 	div.explore-input{
-		justify-content: start;
+		justify-content: space-between;
 	}
 	div.explore-input > input,
 	div.explore-input > select{
@@ -2210,15 +2215,15 @@ textarea#contact-us-text{
 }
 .landing-campaigns >  div >.campaignThumbnail{
 	width: 100%;
-	max-width: 290px;
-	height: 380px;
-	max-height: 380px;
+	max-width: 188px;
+	height: 333px;
+	max-height: 333px;
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
 	margin-bottom: 50px;
 }
 .landing-campaigns >  div >.campaignThumbnail > a > .campaignThBackground{
-	height: 233px;
-	max-height: 233px;
+	height: 250px;
+	max-height: 250px;
 	border-bottom-left-radius: 0;
 	border-bottom-right-radius: 0;
 	width: 100%;
@@ -2227,20 +2232,20 @@ textarea#contact-us-text{
 	max-width: 290px;
 }
 .landing-campaigns >  div >.campaignThumbnail > a {
-	height: 380px;
+	height: 333px;
 	display: block;
 	position: relative;
 	box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
 	margin-bottom: 50px;
 }
 .landing-campaigns > div > .campaignThumbnail > a > .campaignThText{
-	width: 290px;
+	width: 188px;
 	width: 100%;
-	max-width: 290px;
+	max-width: 188px;
 	font-size: 16px;
 	padding: 10px;
-	height: 133px;
-	max-height: 133px;
+	height: 120px;
+	max-height: 120px;
 	overflow: hidden;
 	left: 0;
 }
@@ -2471,9 +2476,9 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		margin-bottom: 15px;
 	}
 	.landing-campaigns >  div >.campaignThumbnail{
-		width: 290px;
-		height: 380px;
-		max-height: 380px;
+		width: 250px;
+		height: 333px;
+		max-height: 333px;
 		box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
 		margin-bottom: 70px;
 	}
@@ -2495,7 +2500,7 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		margin-bottom: 70px;
 	}
 	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText{
-		width: 290px;
+		width: 250px;
 		font-size: 16px;
 		padding: 10px;
 		height: 133px;
@@ -2619,9 +2624,7 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 	}
 }
 @media (min-width: 990px){	
-	.landing-campaigns >  div >.campaignThumbnail:nth-child(4){
-		display: none;
-	}
+
 	.landing-campaigns{
 		position: absolute;
 		height: 750px;
@@ -2709,10 +2712,13 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		height: 1000px;
 	}
 }
-@media (min-width: 1280px){
+@media (min-width: 1295px){
 	.landing-campaigns >  div >.campaignThumbnail:nth-child(4){
 		display: block;
 	}
+	div.landing-campaigns > div > .campaignThumbnail:last-of-type{
+		display: block;
+	}	
 	.landing-illustration-under{
 		height: 458px;
 		margin-bottom: 70px;
@@ -2798,37 +2804,40 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 		justify-content: space-between;
 	}
 	.landing-campaigns >  div >.campaignThumbnail{
-		width: 235px;
-		height: 380px;
+		width: 250px;
+		height: 363px;
 		max-height: 380px;
 	}
 	.landing-campaigns >  div >.campaignThumbnail > a > .campaignThBackground{
-		height: 233px;
-		max-height: 233px;
+		height: 250px;
+		max-height: 250px;
 		border-bottom-left-radius: 0;
 		border-bottom-right-radius: 0;
 		width: 100%;
 		margin: 0;
 	}
 	.landing-campaigns >  div >.campaignThumbnail > a {
-		height: 380px;
+		height: 363px;
 		display: block;
 		position: relative;
 	}
 	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText{
-		width: 235px;
+		width: 250px;
 		font-size: 16px;
 		padding: 10px;
-		height: 133px;
-		max-height: 133px;
+		height: 113px;
+		max-height: 113px;
 		overflow: hidden;
+		background-color: white!important;	
+		padding: 6px;
 	}
 	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-holder-left{
-		width: 235px;
-		font-size: 16px;
+		width: 100%;
+		font-size: 14px;
+		margin-bottom: 0;
 	}
 	.landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-desc{
-		font-size: 14px;
+		font-size: 12px;
 	}
 	.how-to{
 		position: absolute;
@@ -2978,9 +2987,6 @@ div.landing-campaigns > div > .campaignThumbnail:last-of-type{
 	div.landing-campaigns,
 	div.how-to{
 		padding: 0 185px;
-	}
-	div.landing-campaigns > div > .campaignThumbnail:last-of-type{
-		display: block;
 	}
 }
 
@@ -3554,25 +3560,58 @@ h3.about-header{
 	color: #662f92;
 	line-height: 1.04;
 	width: 100%;
+	margin-bottom: 35px;
 }
 .about-video{
 	height: 200px;
 	width: 340px;
 	margin: auto;
 	margin-bottom: 20px;
-}
+}	
 .about-video > iframe{
 	width: 100%;
 	height: 100%;
 }
 .about-text{
-	font-size: 18px;
-	margin: 0 10px;
+	font-size: 16px;
 	margin-bottom: 30px;
 }
+.about-team{
+	justify-content: space-between;
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+}
+.about-team > .team-card{
+	width: 144px;
+	text-align: center;
+	color: #662f92;
+	font-weight: bold;
+	margin-bottom: 65px;	
+}
+.team-card > img{
+	width: 144px;
+	height: 144px;
+	margin-bottom: 20px;
+}
+.team-card > .name{
+	font-size: 16px;
+}
+.team-card > .position{
+	font-size: 14px;
+}
 @media(min-width:768px){
+	.about-team > .team-card{
+		width: 200px;
+		margin-bottom: 85px;
+	}
+	.team-card > img{
+		width: 200px;
+		height: 200px;
+		margin-bottom: 25px;
+	}
 	h3.about-header{
-		font-size: 34px;
+		font-size: 24px;
 	}
 	.about-video{
 		margin: 40px 0;
@@ -3580,17 +3619,29 @@ h3.about-header{
 		height: 360px;
 	}
 	.about-text{
-		font-size: 18px;
-		margin: 20px 0;
+		font-size: 16px;
 	}
 }
 @media(min-width: 1280px){
+	.about-team{
+		padding: 0 50px;
+	}
 	h3.about-header{
-		font-size: 34px;
+		font-size: 24px;
+		margin-bottom: 50px;
 	}
 	.about-text{
-		font-size: 22px;
+		font-size: 16px;
 		line-height: 1.6;
+	}
+	.about-team > .team-card{
+		width: 250px;
+		margin-bottom: 85px;
+	}
+	.team-card > img{
+		width: 250px;
+		height: 250px;
+		margin-bottom: 50px;
 	}
 }
 // end of about us

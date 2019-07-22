@@ -40,7 +40,6 @@
         data() {
             return {
                 smallMedia: false,
-                //TODO should implement logic behind global opening and closing modals
                 registerModalState: false,
                 loginModalState: false
             };

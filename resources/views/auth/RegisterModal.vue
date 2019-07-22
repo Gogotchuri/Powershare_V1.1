@@ -1,7 +1,7 @@
 <template>
   <div>
     <mdb-btn @click.native="modal = true">რეგისტრაცია</mdb-btn>
-    <mdb-modal :show="modal" @close="modal = false">
+    <mdb-modal :show="modal" @close="modalOff">
       <mdb-modal-body>
         <register v-on:modaloff="modal = false"/>
       </mdb-modal-body>
@@ -26,6 +26,16 @@
       return {
         modal: false
       };
+    },
+    beforeMount() {
+      this.$root.$on("register-modal-on", () => this.modal = true);
+    },
+    methods: {
+      modalOff(){
+        if(this.$route.name === "Register")
+          this.$router.push({name: 'Home'});
+        this.modal = false;
+      }
     }
   };
 </script>
