@@ -22,3 +22,4 @@ db.sqlite
 .rnd
 dbt.sqlite
 webpack.config.js
+package-lock.json
