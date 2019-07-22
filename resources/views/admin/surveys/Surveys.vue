@@ -26,6 +26,7 @@
                     <input @click="goToEdit(survey.id)" type="button" value="EDIT" style="color: yellow">
                     <input @click="changeSurveyStatus(survey)" type="button"
                            :value="(survey.is_active == 1)? 'Complete' : 'Activate'" style="color: deeppink">
+                    <input @click="downloadData(survey.id)" type="button" value="get data">
                 </td>
             </tr>
         </table>
@@ -80,6 +81,15 @@
                         console.error(err);
                         console.error(err.response);
                         window.alert("Survey status couldn't be changed!");
+                    })
+            },
+
+            downloadData(id){
+                HTTP.POST("/admin/surveys/"+id+"/send-data")
+                .then(() => window.alert("File send!"))
+                    .catch(reason => {
+                        window.alert("File couldn't be sent!");
+                        console.error(reason);
                     })
             }
         }

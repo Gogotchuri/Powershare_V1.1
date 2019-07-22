@@ -24,8 +24,6 @@ Route::middleware("throttle:200,1")->namespace("General")->group(function (){
 
     //Posts contact message to the server
     Route::post("/contact", "ContactController@store");
-
-    Route::get("/fff", "ArticleController@exportSurveys");
 });
 
 //Authentication Routes
@@ -100,6 +98,7 @@ Route::middleware(["auth:api", "admin"])->prefix("/admin")->namespace("Admin")->
     Route::apiResource("/campaign-categories", "CampaignCategoryController");
     Route::apiResource("/surveys", "SurveyController");
     Route::post("/surveys/{id}/change-status", "SurveyController@changeStatus");
+    Route::post("/surveys/{id}/send-data", "SurveyController@filledData");
     Route::apiResource("/advertisers", "AdvertiserController");
     Route::get("/advertisers/{id}/get-filled-surveys", "AdvertiserController@filledSurveys");
     Route::apiResource("/video-ads", "VideoAdController");

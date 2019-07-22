@@ -27,7 +27,7 @@
               <div v-if="question.type === 'SINGLE_CHOICE'">
                 <div v-for='(option, index) in question.options' :key="index">
                   <label>
-                    <input type="radio" v-bind:value="index" v-model="question.answer"
+                    <input type="radio" v-bind:value="option.body" v-model="question.answer"
                            v-on:change="" v-bind:name="question.id" :disabled="readOnly" :required="question.required">
                     &nbsp;{{option.body}}
                   </label>

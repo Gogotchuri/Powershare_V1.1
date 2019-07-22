@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers\General;
 
-use App\Exports\FilledSurvey;
 use App\Models\Article;
 use Illuminate\Http\Request;
 use App\Http\Resources\Collection\ArticlesResource;
 use App\Http\Resources\Entity\ArticleResource;
 use App\Http\Controllers\Controller;
-use Maatwebsite\Excel\Facades\Excel;
 
 class ArticleController extends Controller
 {
@@ -43,10 +41,5 @@ class ArticleController extends Controller
         if($article == null)
             return self::responseErrors("Article with id ".$id." not found", 404);
         return self::responseData(new ArticlesResource($article));
-    }
-
-    public function exportSurveys(){
-        $id = 1;
-        return Excel::download(new FilledSurvey($id), "filled.xlsx");
     }
 }

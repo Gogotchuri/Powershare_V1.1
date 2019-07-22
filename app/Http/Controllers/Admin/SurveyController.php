@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Exports\FilledSurveyExport;
 use App\Http\Resources\Collection\Admin\SurveysResource;
+use App\Mail\SurveyExportMail;
 use App\Models\Advertiser;
 use App\Models\Survey;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
+use Maatwebsite\Excel\Facades\Excel;
+use Mail;
 
 class SurveyController extends Controller
 {
@@ -136,5 +140,13 @@ class SurveyController extends Controller
         $survey->is_active = !$survey->is_active;
         $survey->save();
         return self::responseData("Survey Status changed!");
+    }
+
+    public function filledData($id){
+        $survey = Survey::query()->where("id", $id)->first();
+        if($survey == null) return self::responseErrors("Survey not found!", 404);
+        $file = Excel::download(new FilledSurveyExport($id), "survey-".$id."data.xlsx")->getFile();
+        Mail::to("hacker.coopera@gmail.com")->queue(new SurveyExportMail($file));
+        return self::responseData(["message" => "mail sent!"]);
     }
 }
