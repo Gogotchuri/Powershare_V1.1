@@ -145,8 +145,13 @@ class SurveyController extends Controller
     public function filledData($id){
         $survey = Survey::query()->where("id", $id)->first();
         if($survey == null) return self::responseErrors("Survey not found!", 404);
-        $file = Excel::download(new FilledSurveyExport($id), "survey-".$id."data.xlsx")->getFile();
-        Mail::to("hacker.coopera@gmail.com")->queue(new SurveyExportMail($file));
+
+        $filename = "survey-".$id."-data.xlsx";
+        $file = Excel::download(new FilledSurveyExport($id), $filename)->getFile();
+
+        $preparedMail = new SurveyExportMail($file, $filename, $survey->name, $survey->numFilled());
+        Mail::to($survey->advertiser->email)->bcc(config("mail.to_email"))->sendNow($preparedMail);
+
         return self::responseData(["message" => "mail sent!"]);
     }
 }

@@ -26,7 +26,7 @@
                     <input @click="goToEdit(survey.id)" type="button" value="EDIT" style="color: yellow">
                     <input @click="changeSurveyStatus(survey)" type="button"
                            :value="(survey.is_active == 1)? 'Complete' : 'Activate'" style="color: deeppink">
-                    <input @click="downloadData(survey.id)" type="button" value="get data">
+                    <input @click="downloadData(survey.id)" type="button" value="Send Results">
                 </td>
             </tr>
         </table>
@@ -86,7 +86,7 @@
 
             downloadData(id){
                 HTTP.POST("/admin/surveys/"+id+"/send-data")
-                .then(() => window.alert("File send!"))
+                .then(() => window.alert("File sent!"))
                     .catch(reason => {
                         window.alert("File couldn't be sent!");
                         console.error(reason);
