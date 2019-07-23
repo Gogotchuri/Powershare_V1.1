@@ -172,6 +172,10 @@ class HttpService {
         return this._axios.defaults.headers.common;
     }
 
+    getBase(){
+        return this._axios;
+    }
+
     initializeInterceptors(store, router, progressBar){
         /**
          * Is called before every call to api

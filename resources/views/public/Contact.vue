@@ -57,7 +57,7 @@
             send(){
                 this.$store.dispatch("postLetter", this.form)
                     .then(() => this.success = true)
-                    .catch((errors) => {this.errors = errors});
+                    .catch(errors => this.errors = errors);
             }
         }
     }
