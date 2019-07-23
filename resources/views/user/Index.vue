@@ -11,6 +11,7 @@
                     <div class="profile-header-container">
                         <h3 class="user-name">{{user.name}}</h3>
                         <h3 class="user-header-profile">Description, short summary</h3>
+                        <router-link v-if="user.role_id == 1" :to="{name: 'Admin.Dash'}">Admin Panel</router-link>
                     </div>
                     <div class="profile-tabs">
                         <router-link :to="{name: 'User.Campaigns'}" class="nav-link">Created</router-link>
@@ -37,7 +38,3 @@
         }
     }
 </script>
-
-<style scoped>
-
-</style>
