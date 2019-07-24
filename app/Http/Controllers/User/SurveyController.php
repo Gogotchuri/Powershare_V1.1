@@ -6,6 +6,7 @@ use App\Http\Resources\Collection\Admin\SurveysResource;
 use App\Models\Campaign;
 use App\Models\FilledSurvey;
 use App\Models\Survey;
+use App\Traits\UsesRecaptcha;
 use Auth;
 use Illuminate\Http\JsonResponse;
 use App\Http\Controllers\Controller;
@@ -13,13 +14,23 @@ use Illuminate\Http\Request;
 
 class SurveyController extends Controller
 {
+    use UsesRecaptcha;
+
     /**
      * Returns randomly picked survey for the user
      * out of the surveys that hasn't filled by him
      * If limit has been exceeded returns appropriate message
+     * @param Request $request
      * @return JsonResponse
      */
-    public function survey(){
+    public function survey(Request $request){
+        //Captcha validation
+        $token = $request["token"];
+        if($token == null || $token == "")
+            return self::responseErrors("Captcha token not found!", 400);
+        if(!$this->validateRecaptchaToken($token))
+            return self::responseErrors("Captcha validation failed!", 400);
+
         $user = Auth::user();
         $filled_surveys = $user->filledSurveys;
         $IDs = array(0);
@@ -39,6 +50,7 @@ class SurveyController extends Controller
     public function store(int $campaign_id, Request $request){
         if(Campaign::all()->where("id", $campaign_id)->first() == null)
             return self::responseErrors("Campaign with given id wasn't found!", 404);
+
         $filledSurvey = new FilledSurvey();
         $filledSurvey->survey_data = $request["survey_data"];
         $filledSurvey->campaign_id = $campaign_id;

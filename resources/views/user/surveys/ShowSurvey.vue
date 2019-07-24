@@ -22,7 +22,8 @@
         },
         components: {QuestionsView},
         beforeRouteEnter(to, from, next) {
-            HTTP.GET("/user/survey")
+            let token = to.query.recaptcha_token;
+            HTTP.GET("/user/survey", {token})
                 .then(value => {
                     let questions = value.data.data.json_body;
                     let survey_id = value.data.data.id;
@@ -32,12 +33,23 @@
                     });
                 })
                 .catch(reason => {
-                    console.error("something went wrong during survey fetch!");
-                    console.error(reason.response.data.errors);
-                    next(vm => {
-                        if (reason.response.status === 404)
-                            vm.noMoreSurveys = true;
-                    });
+                    const status = reason.response.status;
+                    let msg = "";
+                    switch (status) {
+                        case 400:
+                            msg = "Captcha validation has failed, refresh and try again...";
+                            break;
+                        case 404:
+                            msg = "No surveys are available for now";
+                            break;
+                    }
+
+                    window.alert(msg);
+                    //if user wasn't navigating using router links
+                    if(from.name == null)
+                        next({name: "Home"});
+                    else
+                        next(false);
                 });
         },
         methods:{

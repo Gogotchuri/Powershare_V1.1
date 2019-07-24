@@ -29,14 +29,33 @@
             }
         },
         beforeRouteEnter(to, from, next){
-            HTTP.GET("/user/video-ad")
+            let token = to.query.recaptcha_token;
+            HTTP.GET("/user/video-ad", {token})
                 .then(res => {
                     let video = res.data.data.video;
                     next(vm => vm.videoAd = video);
-                }).catch(err => {
-                    console.error(err);
-                    console.error(err.response);
-                    next();
+                }).catch(reason => {
+                    console.error(reason.response.data.errors);
+                    const status = reason.response.status;
+                    let msg = "";
+                    switch (status) {
+                        case 400:
+                            msg = "Captcha validation has failed, refresh and try again...";
+                            break;
+                        case 403:
+                            msg = "You have exceeded daily watch limit, come back later...";
+                            break;
+                        case 404:
+                            msg = "No available videos ads for now...";
+                            break;
+                    }
+
+                    window.alert(msg);
+                    //if user wasn't navigating using router links
+                    if(from.name == null)
+                        next({name: "Home"});
+                    else
+                        next(false);
                 })
         },
         mounted(){

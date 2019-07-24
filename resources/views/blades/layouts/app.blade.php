@@ -30,7 +30,6 @@
         <meta name="description" content="{{$description ?? 'Free Crowdfunding platform'}}">
         <meta property="fb:app_id" content="615755662100569">
         <meta name="google-site-verification" content="13JatL80lz_cF0r0EIcpiDXJM2MeywM0gfjQN7tnerA" />
-        
     </head>
 
     @yield('body')

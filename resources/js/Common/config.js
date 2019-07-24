@@ -1,5 +1,6 @@
 export const APP_URL = process.env.MIX_APP_URL;
 
+export const RECAPTCHA_KEY = process.env.MIX_RECAPTCHA_KEY;
 export const API_URL = APP_URL+"/api";
 
 export const STORAGE_USER_INSTANCE = "user";

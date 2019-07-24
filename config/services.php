@@ -52,6 +52,11 @@ return [
     "google" => [
         "client_id" => env("GOOGLE_CLIENT_ID"),
         "client_secret" => env("GOOGLE_CLIENT_SECRET")
+    ],
+
+    "recaptcha" => [
+        "client_id" => env("RECAPTCHA_KEY"),
+        "client_secret" => env("RECAPTCHA_SECRET"),
     ]
 
 ];
