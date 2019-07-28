@@ -1,6 +1,6 @@
 <template>
-        <input type="button" value="Facebook" v-if="provider.toLowerCase() === 'facebook'" @click="login('facebook')">
-        <input type="button" value="Google" v-else-if="provider.toLowerCase() === 'google'" @click="login('google')">
+        <input type="button" value="Sign in with Facebook" v-if="provider.toLowerCase() === 'facebook'" @click="login('facebook')">
+        <input type="button" value="Sign in with Google" v-else-if="provider.toLowerCase() === 'google'" @click="login('google')">
 </template>
 
 <script>

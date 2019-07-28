@@ -8,8 +8,8 @@
                         <p>დარეგისტრირდით რათა გააგრძელოთ</p>
                     </div>
                     <div class="card-body">
-                        <social-auth-button provider="facebook"></social-auth-button>
-                        <social-auth-button provider="google"></social-auth-button>
+                        <social-auth-button provider="facebook" class="social-login fb-login"></social-auth-button>
+                        <social-auth-button provider="google" class="social-login g-login"></social-auth-button>
                         <p>ან</p>
                         შეავსეთ ფორმა
                         <form @submit.prevent="register">

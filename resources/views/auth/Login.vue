@@ -43,8 +43,8 @@
                                         </button>
                                         <a style="cursor: pointer" class="forgot" @click="passwordForgotten"> დაგავიწყდა პაროლი?</a>
                                         <div>
-                                            <social-auth-button provider="facebook"></social-auth-button>
-                                            <social-auth-button provider="google"></social-auth-button>
+                                            <social-auth-button provider="facebook" class="social-login fb-login"></social-auth-button>
+                                            <social-auth-button provider="google" class="social-login g-login"></social-auth-button>
                                         </div>
                                     </div>
                                 </div>

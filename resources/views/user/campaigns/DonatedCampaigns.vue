@@ -1,28 +1,30 @@
 <template>
-    <div v-if="!campaigns || campaigns.length == 0">
-            <p>No Campaigns To display!</p>
-    </div>
-    <div v-else> 
-        <table>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Author name</th>
-                <th>Donation count</th>
-                <th>Actions</th>
-            </tr>
-            <tr v-for="campaign in campaigns">
-                <td>{{campaign.id}}</td>
-                <td>{{campaign.name}}</td>
-                <td>{{campaign.description.substr(0,50)}}</td>
-                <td>{{campaign.author_name}}</td>
-                <td>{{campaign.num_donated}}</td>
-                <td>
-                    <input type="button" value="VIEW" @click="viewCampaign(campaign.id)">
-                </td>
-            </tr>
-        </table>
+    <div class="profile-donated">
+        <div v-if="!campaigns || campaigns.length == 0">
+                <p>No Campaigns To display!</p>
+        </div>
+        <div v-else> 
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Author name</th>
+                    <th>Donation count</th>
+                    <th>Actions</th>
+                </tr>
+                <tr v-for="campaign in campaigns">
+                    <td>{{campaign.id}}</td>
+                    <td>{{campaign.name}}</td>
+                    <td>{{campaign.description.substr(0,50)}}</td>
+                    <td>{{campaign.author_name}}</td>
+                    <td>{{campaign.num_donated}}</td>
+                    <td>
+                        <input type="button" value="VIEW" @click="viewCampaign(campaign.id)">
+                    </td>
+                </tr>
+            </table>
+        </div>
     </div>
 </template>
 
