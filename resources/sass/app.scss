@@ -500,8 +500,6 @@ p.donate-header{
 	transition: 0.3s;
 	font-weight: bold!important;
 	align-self: center;
-	padding-left: 1rem;
-	padding-right: 1rem;
 }
 .btn-donate:hover{
 	background-color: #652f8d!important;
@@ -1852,7 +1850,7 @@ a#create-link{
 		font-weight: normal;
 		color: #1d1d1d;
 		margin-right: 15px;
-		padding: 0.6rem 0rem;
+		padding: 0.6rem 1rem;
 	}
 	a.nav-link{
 		margin-right: 40px;
