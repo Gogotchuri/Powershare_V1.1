@@ -505,6 +505,28 @@ p.donate-header{
 	background-color: #652f8d!important;
 	color: white!important;
 }
+.donate-captcha>div>div>div{
+	margin: auto;
+}
+.comment-label{
+	width: 100%;
+}
+.comment-textarea{
+	width: 70%;
+	height: 100px;
+}
+.comment-submit{
+	height: 100px;
+	background-color: white;
+	color: #652f8d;
+	border: 2px solid #652f8d;
+	border-radius: 8px;
+	font-weight: bold;
+}
+.comment-submit:hover{
+	background-color: #652f8d;
+	color: white;
+}
 @media(max-width:410px){
 	//special breakpoint
 	main > div > div.gallery-mini {

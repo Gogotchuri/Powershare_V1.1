@@ -64,12 +64,13 @@
           <p class="comment-name">{{comment.author_name}}</p>
           <p class="comment-content">{{comment.body}}</p>
         </div>
-          <form v-if="isLoggedIn" @submit.prevent="addComment">
-              <label>
+          <form v-if="isLoggedIn" @submit.prevent="addComment" style="display:flex;flex-wrap:wrap">
+              <label class="comment-label">
                   დაამატე კომენტარი
-                  <textarea v-model="newComment" required></textarea>
-                  <button type="submit">დამატება</button>
               </label>
+              <textarea v-model="newComment" required class="comment-textarea"></textarea>
+              <button type="submit" class="comment-submit">დამატება</button>
+
           </form>
       </div>
     </div>
@@ -92,13 +93,14 @@
           <p class="comment-name">{{comment.author_name}}</p>
           <p class="comment-content">{{comment.body}}</p>
         </div>
-        <form v-if="isLoggedIn" @submit.prevent="addComment">
-            <label>
-                დაამატე კომენტარი
-                <textarea v-model="newComment" required></textarea>
-                <button type="submit">დამატება</button>
-            </label>
-        </form>
+        <form v-if="isLoggedIn" @submit.prevent="addComment" style="display:flex;flex-wrap:wrap">
+              <label class="comment-label">
+                  დაამატე კომენტარი
+              </label>
+              <textarea v-model="newComment" required class="comment-textarea"></textarea>
+              <button type="submit" class="comment-submit">დამატება</button>
+
+          </form>
     </div>
     <div class="donate-section">
       <div>

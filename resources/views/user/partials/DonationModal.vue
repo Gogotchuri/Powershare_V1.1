@@ -3,7 +3,7 @@
         <mdb-btn v-if="!is_logged_in" @click="redirect">დაეხმარე უფასოდ</mdb-btn>
         <mdb-btn v-else @click.native="isActive = true" style="margin-right:0">დაეხმარე უფასოდ</mdb-btn>
         <mdb-modal :show="isActive" @close="isActive = false">
-            <mdb-modal-body>
+            <mdb-modal-body class="donate-captcha">
                 <div v-if="!verified">
                     <vue-recaptcha :sitekey="CAPTCHA_KEY" :loadRecaptchaScript="true" @verify="verifyToken"/>
                 </div>
