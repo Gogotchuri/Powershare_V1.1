@@ -14,7 +14,7 @@
                 <span class="closeNav" @click="changeWidth">&#10095;</span>
                 <router-link :to="{ name: 'Home'}" class="nav-link">მთავარი</router-link>
                 <router-link :to="{ name: 'Campaigns' }" class="nav-link">ყველა პროექტი</router-link>
-                <router-link :to="{ name: 'About'}" class="nav-link">ჩვენს შესახებ</router-link>
+                <router-link :to="{ name: 'About'}" class="nav-link">ჩვენ შესახებ</router-link>
                 <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link" id="create-link">პროექტის დამატება</router-link>
                 <router-link
                         :to="{ name: 'User.Campaigns' }"
