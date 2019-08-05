@@ -82,8 +82,7 @@
     <div v-if="hasGallery" class="gallery hided-on-l">
         <p class="gallery-header">გალერეა</p>
         <div class="gallery-content" v-if="gallery">
-          <gallery-modal></gallery-modal>
-          <div v-for="image in gallery" :style="{'background-image': 'url(' + image.url + ')'}"></div>
+          <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url" ></gallery-modal>
         </div>
     </div>
     <div class="comments hided-on-l">
@@ -180,7 +179,7 @@
         return this.campaign.comments !== null && this.campaign.comments.length !== 0 && this.isLoggedIn;
       },
       hasGallery(){
-          return this.gallery !== null && this.gallery.length !== 0;
+        return this.gallery !== null && this.gallery.length !== 0;
       }
     },
     methods:{
