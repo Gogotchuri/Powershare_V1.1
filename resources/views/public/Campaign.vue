@@ -53,8 +53,15 @@
       </div>
       <div v-if="hasGallery" class="gallery hided-on-ms">
         <p class="gallery-header">გალერეა</p>
-        <div class="gallery-content" v-if="gallery">
+        <div class="gallery-content" v-if="gallery && !hasVideo">
+          <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url"></gallery-modal>
+        </div>
+        <div class="gallery-content" v-else-if="gallery && hasVideo">
           <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url" ></gallery-modal>
+          <video-modal :campaign_video_url="campaign.video_url"></video-modal>
+        </div>
+        <div class="gallery-content" v-if="!gallery && hasVideo">
+          <video-modal :campaign_video_url="campaign.video_url"></video-modal>
         </div>
       </div>
       <div class="comments hided-on-ms">
@@ -81,8 +88,15 @@
         </div>
     <div v-if="hasGallery" class="gallery hided-on-l">
         <p class="gallery-header">გალერეა</p>
-        <div class="gallery-content" v-if="gallery">
+        <div class="gallery-content" v-if="gallery && !hasVideo">
+          <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url"></gallery-modal>
+        </div>
+        <div class="gallery-content" v-else-if="gallery && hasVideo">
           <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url" ></gallery-modal>
+          <video-modal :campaign_video_url="campaign.video_url"></video-modal>
+        </div>
+        <div class="gallery-content" v-if="!gallery && hasVideo">
+          <video-modal :campaign_video_url="campaign.video_url"></video-modal>
         </div>
     </div>
     <div class="comments hided-on-l">
@@ -132,6 +146,7 @@
   import HTTP from "@js/Common/Http.service";
   import DonationModal from "@views/user/partials/DonationModal";
   import GalleryModal from "@views/public/partials/GalleryModal";
+  import VideoModal from  "@views/public/partials/VideoModal";
   import {APP_URL} from "@js/Common/config";
 
   export default {
@@ -179,7 +194,10 @@
         return this.campaign.comments !== null && this.campaign.comments.length !== 0 && this.isLoggedIn;
       },
       hasGallery(){
-        return this.gallery !== null && this.gallery.length !== 0;
+        return (this.gallery !== null && this.gallery.length !== 0) || campaign.video_url !== null;
+      },
+      hasVideo(){
+        return campaign.video_url !== null;
       }
     },
     methods:{
