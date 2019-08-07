@@ -151,6 +151,7 @@
 
   export default {
     components: {
+      VideoModal,
       DonationModal,
       GalleryModal
     },
@@ -194,10 +195,10 @@
         return this.campaign.comments !== null && this.campaign.comments.length !== 0 && this.isLoggedIn;
       },
       hasGallery(){
-        return (this.gallery !== null && this.gallery.length !== 0) || campaign.video_url !== null;
+        return (this.gallery !== null && this.gallery.length !== 0) || this.campaign.video_url !== null;
       },
       hasVideo(){
-        return campaign.video_url !== null;
+        return this.campaign.video_url !== null;
       }
     },
     methods:{
