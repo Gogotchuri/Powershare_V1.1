@@ -5,7 +5,7 @@
         <meta name="fragment" content="!">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>{{ config('app.name', 'Laravel') . ($title ?? null ? ' - ' . $title : '')  }}</title>
+        <title>{{ config('app.name', 'Powershare') . ($title ?? null ? ' - ' . $title : '')  }}</title>
 
         <!--Favicon-->
         <link rel="shortcut icon" type="image/png" href="/favicon.png"/>

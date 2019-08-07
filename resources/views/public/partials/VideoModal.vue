@@ -1,9 +1,9 @@
 <template>
-    <div :style="{'background-image': 'url(https://img.youtube.com/vi/' + getVideoId() + '/sddefault.jpg )'}">
+    <div :style="{'background-image': 'url(https://img.youtube.com/vi/' + videoId + '/sddefault.jpg )'}">
         <mdb-btn class="gallery-btn" @click.native="modal = true"></mdb-btn>
         <mdb-modal :show="modal" @close="modal = false" class="modal-gallery-container">
         <mdb-modal-body  class="modal-gallery">
-            <iframe :show="modal" @close="modal = false" :src="this.campaign_video_url"></iframe>
+            <iframe :show="modal" @close="modal = false" :src="this.EmbdedLink"></iframe>
         </mdb-modal-body>
         <mdb-modal-footer>
             <mdb-btn color="secondary" @click.native="modal = false">Close</mdb-btn>
@@ -18,7 +18,8 @@ import { mdbModal, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
     components: {
       mdbModal,
       mdbModalBody,
-      mdbBtn
+      mdbBtn,
+      mdbModalFooter
     },
     data() {
       return {
@@ -27,11 +28,11 @@ import { mdbModal, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
     },
     props: ["campaign_video_url"],
     computed: {
-        getVideoId(){
-            return campaign_vide_url.substr(campaign_video_url.indexOf('=')+1);
+        videoId(){
+            return this.campaign_video_url.substr(this.campaign_video_url.indexOf('v=')+2);
         },
-        getEmbdedLink(){
-            return 'http://www.youtube.com/embed/'+getVideoId();
+        EmbdedLink(){
+            return "http://www.youtube.com/embed/"+ this.videoId + "?autoplay=1&fs=1";
         }
     }
 };

@@ -57,6 +57,10 @@ return [
     "recaptcha" => [
         "client_id" => env("RECAPTCHA_KEY"),
         "client_secret" => env("RECAPTCHA_SECRET"),
+    ],
+
+    "analytics" => [
+        "tracking_id" => env("GOOGLE_ANALYTICS_ID"),
     ]
 
 ];

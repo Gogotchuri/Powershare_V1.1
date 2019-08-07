@@ -18,7 +18,9 @@
     components: {
       mdbModal,
       mdbModalBody,
-      mdbBtn
+      mdbBtn,
+      mdbModalFooter
+
     },
     data() {
       return {

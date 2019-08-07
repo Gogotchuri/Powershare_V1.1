@@ -95,4 +95,9 @@ router.beforeEach(async (to, from, next) => {
 
 });
 
+router.afterEach((to) => {
+    ga('set', 'page', to.path);
+    ga('send', 'pageview');
+});
+
 export default router;
