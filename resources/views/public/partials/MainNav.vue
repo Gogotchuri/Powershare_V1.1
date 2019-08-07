@@ -12,10 +12,10 @@
             <ul id="Sidenav" class="navbar-nav ml-auto sideNav navigation-menu" v-bind:class="{ visible : smallMedia }">
                 <!-- Authentication Links -->
                 <span class="closeNav" @click="changeWidth">&#10095;</span>
-                <router-link :to="{ name: 'Home'}" class="nav-link">მთავარი</router-link>
-                <router-link :to="{ name: 'Campaigns' }" class="nav-link">ყველა პროექტი</router-link>
-                <router-link :to="{ name: 'About'}" class="nav-link">ჩვენ შესახებ</router-link>
-                <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link" id="create-link">პროექტის დამატება</router-link>
+                <router-link :to="{ name: 'Home'}" class="nav-link">{{$t("titles.home")}}</router-link>
+                <router-link :to="{ name: 'Campaigns' }" class="nav-link">{{$t("titles.campaigns")}}</router-link>
+                <router-link :to="{ name: 'About'}" class="nav-link">{{$t("titles.about")}}</router-link>
+                <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link" id="create-link">{{$t("titles.create-campaign")}}</router-link>
                 <router-link
                         :to="{ name: 'User.Campaigns' }"
                         class="nav-link"
@@ -25,7 +25,7 @@
                 <register-modal v-if="!isLoggedIn"/>
                 <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">
                     <img src="/img/log-out.svg" class="log-out-icon">
-                    <div class="logout-on-phone">გასვლა</div>
+                    <div class="logout-on-phone">{{$t("titles.logout")}}</div>
                 </a>
             </ul>
         </div>
@@ -53,6 +53,7 @@
                 this.smallMedia = false;
             }
         },
+
         computed: {
             isLoggedIn() {
                 return this.$store.getters.isAuthenticated;
@@ -61,6 +62,7 @@
                 return this.$store.getters.currentUser;
             }
         },
+
         methods: {
             logout() {
                 this.$router.push({name: "Logout"});

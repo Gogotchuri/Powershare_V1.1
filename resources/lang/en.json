@@ -1,0 +1,17 @@
+{
+  "errors" : {
+
+  },
+
+  "titles" : {
+    "home" : "Home",
+    "campaigns" : "Campaigns",
+    "about" : "About Us",
+    "create-campaign" : "Create Campaign",
+    "logout" : "Logout"
+  },
+
+  "texts" : {
+
+  }
+}

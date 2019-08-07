@@ -2,11 +2,7 @@
     <div class="landing-main-container">
         <div class="landing-illustration">
             <div class="landing-header">
-               <h2> 
-                    დაუჭირე მხარი <br>
-                    მნიშვნელოვან პროექტებს <br> 
-                    თანხის გადაუხდელად
-                </h2> 
+               <h2 v-html="$t('texts.home.main')"></h2>
                 <div class="header-links">
                     <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn">დაეხმარე უფასოდ</router-link>
                     <br>
