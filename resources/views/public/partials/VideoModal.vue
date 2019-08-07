@@ -32,8 +32,7 @@ import { mdbModal, mdbModalBody, mdbModalFooter, mdbBtn } from 'mdbvue';
             return this.campaign_video_url.substr(this.campaign_video_url.indexOf('v=')+2);
         },
         EmbdedLink(){
-            console.log("http://www.youtube.com/embed/"+ this.videoId + "?autoplay=1");
-            return "http://www.youtube.com/embed/"+ "S3h8sy9Yoik" + "?autoplay=1&fs=1";
+            return "http://www.youtube.com/embed/"+ this.videoId + "?autoplay=1&fs=1";
         }
     }
 };
