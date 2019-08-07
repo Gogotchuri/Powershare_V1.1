@@ -781,7 +781,7 @@ p.donate-header{
 	max-width: 420px;
 	height: 400px;
 	margin: auto;
-	margin-top: 100px;
+	//margin-top: 100px;
 	text-align: center;
 }
 main > div > div > div > .card-default{
@@ -801,9 +801,7 @@ main > div > div > div > .card-default > .card-body > form{
 	background-color: #f4f4f4;
 }
 .modal-body{
-	padding-top:70px;
-
-	padding-bottom:70px;
+	padding: 40px 0; 
 }
 .card{
 	border:none;
@@ -814,7 +812,7 @@ main > div > div > div > .card-default > .card-body > form{
 	border: none;
 	padding-top: 0;
 	padding-bottom: 0;
-	margin-bottom: 25px;
+	margin-bottom: 15px;
 	padding: 0;
 	text-align: center;
 }
@@ -844,7 +842,7 @@ div.card-body{
     color: #373737;
 }
 div.card-body > form{
-	width: 275px;
+	width: 100%;
 	margin: auto
 }
 .form-group{
@@ -898,8 +896,8 @@ div.card-body > form{
 	text-decoration: none;
 }
 input#remember{
-	width: 6.6px;
-	height: 6.6px;
+	width: 16.6px;
+	height: 16.6px;
 	border-radius: 2px;
 	border: solid 0.5px #707070;
 	background-color: #ffffff;
@@ -931,9 +929,11 @@ input#remember{
 }
 .fb-login{
 	background-color: #3c5a99;
+	width: 100%;
 }
 .g-login{
 	background-color: #db4437;
+	width: 100%;
 }
 .fb-login:hover{
 	background-color: #25417d;
@@ -942,12 +942,17 @@ input#remember{
 	background-color: #be3428;
 }
 @media(min-width:768px){
+	.social-login{
+		width: 342px;
+		height: 50px;
+	}
 	.modal-dialog{
 		width:611px;
 		max-width: 611px;
 		margin-top:120px;
 	}
 	.modal-body{
+		padding: 1rem;
 		padding-top:123px;
 		padding-bottom:123px;
 	}

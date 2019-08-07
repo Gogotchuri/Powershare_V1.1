@@ -10,8 +10,7 @@
                     <div class="card-body">
                         <social-auth-button provider="facebook" class="social-login fb-login"></social-auth-button>
                         <social-auth-button provider="google" class="social-login g-login"></social-auth-button>
-                        <p>ან</p>
-                        შეავსეთ ფორმა
+                        <p>ან <br/> შეავსეთ ფორმა</p>
                         <form @submit.prevent="register">
                             <div class="form-group row">
                                 <label for="name" class="col-md-12 col-form-label auth-label">სახელი</label>
