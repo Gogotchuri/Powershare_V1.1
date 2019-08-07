@@ -31,3 +31,6 @@ export const app = new Vue({
 	router
 });
 HTTP.initializeInterceptors(store, router, app.$Progress);
+
+ga('set', 'page', router.currentRoute.path);
+ga('send', 'pageview');
