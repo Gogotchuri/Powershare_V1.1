@@ -802,6 +802,7 @@ main > div > div > div > .card-default > .card-body > form{
 }
 .modal-body{
 	padding: 40px 0; 
+	padding-top: 0;
 }
 .card{
 	border:none;
@@ -863,7 +864,7 @@ div.card-body > form{
 .btn-auth{
 	width: 100%;
 	height: 47px;
-	padding: 10px 90px;
+	padding: 10px 0;
 	border-radius: 8px;
 	border: solid 2px #652f8d;
 	background-color: transparent;
@@ -941,9 +942,18 @@ input#remember{
 .g-login:hover{
 	background-color: #be3428;
 }
+.closePop{
+	position: absolute;
+	cursor: pointer;
+	color: #662f92;
+	font-size: 24px;
+	font-weight: bold;
+	right: 5%;
+	transform: translateY(-80%);
+}
 @media(min-width:768px){
 	.social-login{
-		width: 342px;
+		width: 300px;
 		height: 50px;
 	}
 	.modal-dialog{
@@ -1003,6 +1013,10 @@ input#remember{
 	}
 }
 @media(min-width:1280px){
+	.social-login{
+		width: 342px;
+		height: 50px;
+	}
 	.modal-dialog{
 		width:795px;
 		max-width: 795px;
@@ -1124,7 +1138,7 @@ select.collection{
 .campaignThumbnail > a {
 	text-decoration: none;
 }
-.campaigns > .campaignThumbnail:first-child,
+.campaigns > .campaignThumbnail,
 .campaigns > .campaignThumbnail:nth-child(4n){	
 	width: 100%;
 	max-width: 380px;
@@ -1133,7 +1147,7 @@ select.collection{
 	margin-top: 10px;
 	border-radius: 2px;
 }
-.campaignThumbnail:first-child > a >.campaignThBackground,
+.campaignThumbnail > a >.campaignThBackground,
 .campaignThumbnail:nth-child(4n) > a >.campaignThBackground{
 	width: 100%;
 	max-width: 380px;
@@ -1144,7 +1158,7 @@ select.collection{
 	border-top-left-radius: 2px;
 	border-top-right-radius: 2px; 
 }
-.campaignThumbnail:first-child > a >.campaignThText,
+.campaignThumbnail > a >.campaignThText,
 .campaignThumbnail:nth-child(4n) > a >.campaignThText{
 	width: 100%;
 	max-width: 380px;
@@ -1756,7 +1770,7 @@ a#create-link{
 		color: #f1f1f1;
 	}
 	.visible {
-		width: 250px;
+		width: 100%;
 	}
 	a#create-link{
 		font-weight: normal!important;
@@ -2304,7 +2318,7 @@ textarea#contact-us-text{
 	left: 0;
 }
 .landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-holder-left{
-	width: 290px;
+	width: 100%;
 	font-size: 16px;
 }
 .landing-campaigns > div > .campaignThumbnail > a > .campaignThText > .explore-card-text > .campaign-desc{
