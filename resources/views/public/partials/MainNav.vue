@@ -13,7 +13,7 @@
                 <!-- Authentication Links -->
                 <span class="closeNav" @click="changeWidth">&#10095;</span>
                 <router-link :to="{ name: 'Home'}" class="nav-link">{{$t("titles.home")}}</router-link>
-                <router-link :to="{ name: 'Campaigns' }" class="nav-link">{{$t("titles.campaigns")}}</router-link>
+                <router-link :to="{ name: 'Campaigns' }" class="nav-link">{{$t("titles.campaign-explore")}}</router-link>
                 <router-link :to="{ name: 'About'}" class="nav-link">{{$t("titles.about")}}</router-link>
                 <router-link :to="{ name: 'User.Campaigns.Create' }" class="nav-link" id="create-link">{{$t("titles.create-campaign")}}</router-link>
                 <router-link
