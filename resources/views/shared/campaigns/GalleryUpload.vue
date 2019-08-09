@@ -1,6 +1,6 @@
 <template>
     <div>
-        <label>გალერიის სურათები:</label>
+        <label>{{$t("snippets.gallery")}}:</label>
         <table>
             <tr>
                 <th>ID</th>

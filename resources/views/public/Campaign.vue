@@ -13,7 +13,7 @@
             <p class="header-text">{{campaign.name}}</p>
             <p class="header-date">{{campaign.date}}</p>
           </div>
-          <p class="header-left">ძალაშია: {{campaign.due_date}}</p>
+          <p class="header-left">{{$t("snippets.due-date")}}: {{campaign.due_date}}</p>
         </div>
         <div class="owner">
           <div class="owner-icon ">
@@ -25,13 +25,13 @@
               <a :href="shareLink" target="_blank">
               <!-- change with svg -->
                 <img src="/img/share-2.svg" alt="">
-                  გაზიარება
+                  {{$t("snippets.share")}}
               </a>
               <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
                 <!-- change with svg -->
                 <img v-if="favourite" src="/img/heart-red.svg" alt="">
                 <img v-else src="/img/heart.svg" alt="">
-                შეინახე
+                {{$t("snippets.save")}}
               </a>
             </span>
           </div>
