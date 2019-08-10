@@ -41,7 +41,7 @@
         </div>
       </div>
       <div class="completion">
-        <p class="completion-donators">{{campaign.num_surveys_filled}} მოხალისე მხარდამჭერი</p>
+        <p class="completion-donators">{{campaign.num_surveys_filled}} მხარდამჭერი</p>
         <div class="fillable-bar">
           <div class="filled-bar" v-bind:style="{ width : realizedPercentage+'%'}"></div>
         </div>
