@@ -41,18 +41,18 @@
         </div>
       </div>
       <div class="completion">
-        <p class="completion-donators">{{campaign.num_surveys_filled}} მოხალისე მხარდამჭერი</p>
+        <p class="completion-donators">{{campaign.num_surveys_filled}} {{$t("snippets.contributor")}}</p>
         <div class="fillable-bar">
           <div class="filled-bar" v-bind:style="{ width : realizedPercentage+'%'}"></div>
         </div>
-        <span>{{campaign.required_funding}}GEL<br> საჭიროა</span>
+        <span>{{campaign.required_funding}}GEL<br> {{$t("snippets.required")}}</span>
       </div>
       <div class="about hided-on-ms">
-        <p class="about-header">კამპანიის შესახებ</p>
+        <p class="about-header">{{$t("snippets.about-campaign")}}</p>
         <p class="about-content"> {{campaign.details}}</p>
       </div>
       <div v-if="hasGallery" class="gallery hided-on-ms">
-        <p class="gallery-header">გალერეა</p>
+        <p class="gallery-header">{{$t("snippets.gallery")}}</p>
         <div class="gallery-content" v-if="gallery && !hasVideo">
           <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url"></gallery-modal>
         </div>
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="comments hided-on-ms">
-        <p class="comments-header">კომენტარები</p>
+        <p class="comments-header">{{$t("snippets.comments")}}</p>
         <div class="comment" v-for="comment in campaign.comments" v-bind:key="comment.id">
           <div class="icon"></div>
           <p class="comment-name">{{comment.author_name}}</p>

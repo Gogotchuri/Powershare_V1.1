@@ -23,7 +23,16 @@
     "crop" : "მოჭრა",
     "crop-is-required" : "მოჭრა სავალდებულოა",
     "save" : "შეინახე",
-    "share" : "გაზიარება"
+    "share" : "გაზიარება",
+    "name" : "თქვენი სახელი",
+    "email" : "ელ.ფოსტის მისამართი",
+    "subject" : "წერილის სათაური",
+    "text" : "ტექსტი",
+    "letter" : "წერილი",
+    "send" : "გაგზავნა",
+    "contributor" : "მხარდამჭერი",
+    "required" : "საჭიროა",
+    "comments" : "კომენტარები"
   },
 
   "titles" : {
@@ -42,7 +51,8 @@
     "take-action" : "იმოქმედე",
     "our-team" : "ჩვენი გუნდი",
     "search" : "ძებნა",
-    "all-categories" : "ყველა კატეგორია"
+    "all-categories" : "ყველა კატეგორია",
+    "contact" : "მოგვწერეთ"
   },
 
   "texts" : {
@@ -84,6 +94,12 @@
         "shota" : "SHOTA CHINCHALADZE",
         "shota-desc" : "Chief Branding Consultant"
       }
+    },
+
+    "contact" : {
+      "we-ready" : "ჩვენ ყოველთვის მზად ვართ გიპასუხოთ",
+      "success" : "წერილი წარმატებით იქნა გაგზავნილი, გმადლობთ!"
+
     }
   }
 }
