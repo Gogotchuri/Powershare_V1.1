@@ -25,7 +25,7 @@
                 <register-modal v-if="!isLoggedIn"/>
                 <a href="#" @click.prevent="logout" class="nav-link" v-if="isLoggedIn">
                     <img src="/img/log-out.svg" class="log-out-icon">
-                    <div class="logout-on-phone">{{$t("titles.logout")}}</div>
+                    <div class="logout-on-phone">{{$t("words.logout")}}</div>
                 </a>
             </ul>
         </div>

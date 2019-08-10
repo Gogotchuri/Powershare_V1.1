@@ -1,15 +1,15 @@
 <template>
     <span class="donate-span">
-        <mdb-btn v-if="!is_logged_in" @click="redirect">დაეხმარე უფასოდ</mdb-btn>
-        <mdb-btn v-else @click.native="isActive = true" style="margin-right:0">დაეხმარე უფასოდ</mdb-btn>
+        <mdb-btn v-if="!is_logged_in" @click="redirect">{{$t("snippets.donate-for-free")}}</mdb-btn>
+        <mdb-btn v-else @click.native="isActive = true" style="margin-right:0">{{$t("snippets.donate-for-free")}}</mdb-btn>
         <mdb-modal :show="isActive" @close="isActive = false">
             <mdb-modal-body class="donate-captcha">
                 <div v-if="!verified">
                     <vue-recaptcha :sitekey="CAPTCHA_KEY" :loadRecaptchaScript="true" @verify="verifyToken"/>
                 </div>
                 <div v-else>
-                    <input type="button" value="Survey" @click="goToSurvey">
-                    <input type="button" value="Video Ad" @click="goToVideo">
+                    <input type="button" :value="$t('words.survey')" @click="goToSurvey">
+                    <input type="button" :value="$t('words.video-ad')" @click="goToVideo">
                 </div>
             </mdb-modal-body>
         </mdb-modal>

@@ -27,7 +27,7 @@
         </label>
         <label>
           <input type="checkbox" v-model="question.required" value="Single" name="subType" />
-          <span class="">Required</span>
+          <span class="">{{$t("words.required")}}</span>
         </label>
       </div>
       <div v-if="selectedType === 'MULTI_CHOICE'">
@@ -43,7 +43,7 @@
         </div>
         <label>
           <input type="checkbox" v-model="question.required" value="Single" name="subType" />
-          <span class="">Required</span>
+          <span class="">{{$t("words.required")}}</span>
         </label>
       </div>
       <div v-if="selectedType === 'SINGLE_CHOICE'">
@@ -59,7 +59,7 @@
         </div>
         <label>
           <input type="checkbox" v-model="question.required" value="Single" name="subType" />
-          <span class="">Required</span>
+          <span class="">{{$t("words.required")}}</span>
         </label>
       </div>
       <div v-if="selectedType === 'TEXT'">
@@ -69,11 +69,11 @@
         </label>
         <label>
           <input type="checkbox" v-model="question.required" value="Single" name="subType" />
-          <span class="">Required</span>
+          <span class="">{{$t("words.required")}}</span>
         </label>
       </div>
       <div>
-        <button type="button" @click="saveQuestion(question)">Save</button>
+        <button type="button" @click="saveQuestion(question)">{{$t("words.save")}}</button>
       </div>
     </div>
   </div>

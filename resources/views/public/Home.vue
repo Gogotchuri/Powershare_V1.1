@@ -33,25 +33,25 @@
           <div class="how-to-cards">
             <div>
               <img src="img/loop.png" alt="" class="loopl">
-              <h3>{{$t("titles.find")}}</h3>
+              <h3>{{$t("words.find")}}</h3>
               <p>{{$t("texts.home.find-desc")}}</p>
             </div>
             <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/create.png" alt="" class="createl">
-              <h3>{{$t("titles.create")}}</h3>
+              <h3>{{$t("words.create")}}</h3>
               <p>{{$t("texts.home.create-desc")}}</p>
             </div>
             <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/promote.png" alt="" class="promotel">
-              <h3>{{$t("titles.share")}}</h3>
+              <h3>{{$t("words.share")}}</h3>
               <p>{{$t("texts.home.share-desc")}}</p>
             </div>
             <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/collect.png" alt="" class="collectl">
-              <h3>{{$t("titles.collect")}}</h3>
+              <h3>{{$t("words.collect")}}</h3>
               <p>{{$t("texts.home.collect-desc")}}</p>
             </div>
             <img src="img/arrow.svg" alt="" class="arrow">

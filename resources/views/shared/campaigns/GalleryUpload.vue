@@ -1,26 +1,26 @@
 <template>
     <div>
-        <label>{{$t("snippets.gallery")}}:</label>
+        <label>{{$t("words.gallery")}}:</label>
         <table>
             <tr>
                 <th>ID</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Actions</th>
+                <th>{{$t("words.image")}}</th>
+                <th>{{$t("words.name")}}</th>
+                <th>{{$t("words.action")}}</th>
             </tr>
             <tr v-for="image in gallery" v-bind:key="image.id">
                 <td>{{image.id}}</td>
                 <td><img :src="image.thumbnail_url" alt=""></td>
                 <td><a target="_blank" :href="image.url">{{image.name.substr(0,50)}}</a></td>
                 <td>
-                    <input type="button" value="DELETE" style="color:red" @click="deleteImage(image.id)">
-                    <input type="button" value="VIEW" style="color:grey" @click="viewImage(image.url)">
+                    <input type="button" :value="$t('words.delete')" style="color:red" @click="deleteImage(image.id)">
+                    <input type="button" :value="$t('words.view')" style="color:grey" @click="viewImage(image.url)">
                 </td>
             </tr>
         </table>
         <form @submit.prevent="uploadImage">
             <input type="file" name="image" accept="image/*" @change="setImage" style="font-size: 1.2em; padding: 10px 0;"/>
-            <button v-if="curImage" type="submit">Upload</button>
+            <button v-if="curImage" type="submit">{{$t("words.upload")}}</button>
         </form>
     </div>
 </template>

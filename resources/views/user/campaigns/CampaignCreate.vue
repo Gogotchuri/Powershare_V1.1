@@ -7,7 +7,7 @@
                 <input id = "campaign-name"
                        type = "text" 
                        v-model="campaignName"
-                       :placeholder = "$t('snippets.fill-form')"
+                       :placeholder = "$t('snippets.fill-field')"
                        maxlength = "30"
                        required
                 />
@@ -30,7 +30,7 @@
                           required>
                 </textarea>
             </div>
-            <button type="submit" @click="continueEdit=true">{{$t("snippets.continue")}}</button>
+            <button type="submit" @click="continueEdit=true">{{$t("words.continue")}}</button>
             <button type="submit">{{$t("snippets.save-draft")}}</button>
         </form>
     </div>

@@ -1,6 +1,6 @@
 <template>
     <div v-if="campaign" class="edit-campaign">
-        <h2>კამპანიის შეცვლა</h2>
+        <h2>{{$t("snippets.campaign-edit")}}</h2>
         <form @submit.prevent="updateCampaign">
             <div>
                 <label for="edit-name">{{$t("snippets.campaign-name")}}:</label>
@@ -44,7 +44,7 @@
             <br>
             <button type="submit" @click="campaign.status_id=3">{{$t("snippets.save-draft")}}</button>
             <button type="submit" @click="campaign.status_id=2">{{$t("snippets.submit-for-review")}}</button>
-            <button v-if="isAdmin" type="submit" @click="campaign.status_id=1">{{$t("snippets.publish")}}</button>
+            <button v-if="isAdmin" type="submit" @click="campaign.status_id=1">{{$t("words.publish")}}</button>
         </form>
     </div>
 </template>

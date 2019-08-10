@@ -10,7 +10,7 @@
                             {{article.name}}
                         </div>
                         <div class="blog-important">
-                            <h6>თარითი:<span style="font-weight:200"> {{article.date}}</span></h6>
+                            <h6>{{$t("words.date")}}:<span style="font-weight:200"> {{article.date}}</span></h6>
                         </div>
                         <div class="campaign-desc" v-html="article.body.substring(0,100)+'...'">
                         </div>

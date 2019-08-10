@@ -1,7 +1,7 @@
 <template>
     <div>
-        <p v-if="errors === null">You have been successfully logged out!</p>
-        <p v-else>There was a problem during logout <br> {{errors}}</p>
+        <p v-if="errors === null">{{$t("messages.logout-success")}}!</p>
+        <p v-else>{{$t("messages.logout-fail")}}</p>
     </div>
 </template>
 
@@ -44,7 +44,3 @@
 
     }
 </script>
-
-<style scoped>
-
-</style>

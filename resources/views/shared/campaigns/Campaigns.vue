@@ -1,56 +1,56 @@
 <template>
     <div class="profile-campaigns">
         <div v-if="!campaigns || campaigns.length == 0">
-            <p>No Campaigns To display!</p>
+            <p>{{$t("snippets.no-campaigns")}}</p>
         </div>
         <div v-else> 
             <table style="width:100%">
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Author</th>
-                    <th>Status</th>
-                    <th v-if="atAdmin">Realized funding</th>
-                    <th>Actions</th>
+                    <th>{{$t("words.name")}}</th>
+                    <th>{{$t("words.description")}}</th>
+                    <th>{{$t("words.author")}}</th>
+                    <th>{{$t("words.status")}}</th>
+                    <th v-if="atAdmin">{{$t("snippets.realized-funding")}}</th>
+                    <th>{{$t("words.action")}}</th>
                 </tr>
                 <tr v-for="campaign in campaigns">
                     <td>{{campaign.id}}</td>
                     <td>{{campaign.name}}</td>
                     <td>{{campaign.description.substr(0,50)}}</td>
                     <td>{{campaign.author_name}}</td>
-                    <td v-if="campaign.status_id == 1">APPROVED</td>
-                    <td v-else-if="campaign.status_id == 2">PROPOSED</td>
-                    <td v-else>DRAFT</td>
+                    <td v-if="campaign.status_id == 1">{{$t("words.approved")}}</td>
+                    <td v-else-if="campaign.status_id == 2">{{$t("words.proposed")}}</td>
+                    <td v-else>{{$t("words.drafted")}}</td>
                     <td v-if="atAdmin">{{campaign.realized_funding}}₾</td>
                     <td v-if="atAdmin">
                         <button style="color: yellow"
                                 @click="adminEdit(campaign.id)">
-                            EDIT
+                            {{$t("words.edit")}}
                         </button>
                         <button style="color: red"
-                                @click="adminDelete(campaign.id)">DELETE</button>
+                                @click="adminDelete(campaign.id)">{{$t("words.delete")}}</button>
                         <button v-if="campaign.status_id != 1" style="color: green"
-                                @click="approveCampaign(campaign.id)">APPROVE</button>
+                                @click="approveCampaign(campaign.id)">{{$t("words.approve")}}</button>
                         <button v-else style="color: blue"
                                 @click="viewCampaign(campaign.id)">
-                            VIEW
+                            {{$t("words.view")}}
                         </button>
                     </td>
                     <td v-if="campaign.status_id == 1 && !atAdmin">
                         <button style="color: green"
                                 @click="viewCampaign(campaign.id)">
-                            VIEW
+                            {{$t("words.view")}}
                         </button>
                     </td>
                     <td v-else-if="!atAdmin">
                         <button style="color: yellow"
                                 @click="userEdit(campaign.id)">
-                            EDIT
+                            {{$t("words.edit")}}
                         </button>
                         <button style="color: red"
                                 @click="userDelete(campaign.id)">
-                            DELETE
+                            {{$t("words.delete")}}
                         </button>
                     </td>
                 </tr>

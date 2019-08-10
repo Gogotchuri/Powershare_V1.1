@@ -1,16 +1,16 @@
 <template>
     <div class="profile-saved">
         <div v-if="!savedCampaigns || savedCampaigns.length == 0">
-            <p>No Campaigns To display!</p>
+            <p>{{$t("snippets.no-campaigns")}}</p>
         </div>
         <div v-else>
             <table>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Author name</th>
-                    <th>Actions</th>
+                    <th>{{$t("words.name")}}</th>
+                    <th>{{$t("words.description")}}</th>
+                    <th>{{$t("words.author")}}</th>
+                    <th>{{$t("words.action")}}</th>
                 </tr>
                 <tr v-for="saved in savedCampaigns">
                     <td>{{saved.campaign.id}}</td>
@@ -18,8 +18,8 @@
                     <td>{{saved.campaign.description.substr(0,50)}}</td>
                     <td>{{saved.campaign.author_name}}</td>
                     <td>
-                        <input type="button" value="VIEW" @click="viewCampaign(saved.campaign.id)">
-                        <input type="button" value="DELETE" style="color: red" @click="deleteCampaign(saved.campaign.id)">
+                        <input type="button" :value="$t('words.view')" @click="viewCampaign(saved.campaign.id)">
+                        <input type="button" :value="$t('words.delete')" style="color: red" @click="deleteCampaign(saved.campaign.id)">
                     </td>
                 </tr>
             </table>

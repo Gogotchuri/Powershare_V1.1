@@ -18,10 +18,10 @@
         </div>
         <div class="footer-menu">
             <ul class="footer-nav">
-                <a href="/articles" target="_blank">ბლოგი</a>
-                <a href="/contact" target="_blank">კონტაქტი</a>
-                <a href="/terms-conditions" target="_blank">წესები და პირობები</a>
-                <a href="/privacy-policy" target="_blank">უსაფრთხოების პოლიტიკა</a>
+                <a href="/articles" target="_blank">{{$t("words.blog")}}</a>
+                <a href="/contact" target="_blank">{{$t("words.contact")}}</a>
+                <a href="/terms-conditions" target="_blank">{{$t("snippets.terms-conditions")}}</a>
+                <a href="/privacy-policy" target="_blank">{{$t("snippets.privacy-policy")}}</a>
                 <p>© 2019 | Powershare</p>
             </ul>
         </div>

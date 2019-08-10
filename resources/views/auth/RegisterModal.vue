@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mdb-btn @click.native="modal = true">რეგისტრაცია</mdb-btn>
+    <mdb-btn @click.native="modal = true">{{$t("words.register")}}</mdb-btn>
     <mdb-modal :show="modal" @close="modalOff">
       <mdb-modal-body>
         <register v-on:modaloff="modal = false"/>

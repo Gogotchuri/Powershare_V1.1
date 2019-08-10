@@ -25,13 +25,13 @@
               <a :href="shareLink" target="_blank">
               <!-- change with svg -->
                 <img src="/img/share-2.svg" alt="">
-                  {{$t("snippets.share")}}
+                  {{$t("words.share")}}
               </a>
               <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
                 <!-- change with svg -->
                 <img v-if="favourite" src="/img/heart-red.svg" alt="">
                 <img v-else src="/img/heart.svg" alt="">
-                {{$t("snippets.save")}}
+                {{$t("words.save")}}
               </a>
             </span>
           </div>
@@ -41,18 +41,18 @@
         </div>
       </div>
       <div class="completion">
-        <p class="completion-donators">{{campaign.num_surveys_filled}} {{$t("snippets.contributor")}}</p>
+        <p class="completion-donators">{{campaign.num_surveys_filled}} {{$t("words.contributor")}}</p>
         <div class="fillable-bar">
           <div class="filled-bar" v-bind:style="{ width : realizedPercentage+'%'}"></div>
         </div>
-        <span>{{campaign.required_funding}}GEL<br> {{$t("snippets.required")}}</span>
+        <span>{{campaign.required_funding}}GEL<br> {{$t("words.required")}}</span>
       </div>
       <div class="about hided-on-ms">
         <p class="about-header">{{$t("snippets.about-campaign")}}</p>
         <p class="about-content"> {{campaign.details}}</p>
       </div>
       <div v-if="hasGallery" class="gallery hided-on-ms">
-        <p class="gallery-header">{{$t("snippets.gallery")}}</p>
+        <p class="gallery-header">{{$t("words.gallery")}}</p>
         <div class="gallery-content" v-if="gallery && !hasVideo">
           <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url"></gallery-modal>
         </div>
@@ -65,7 +65,7 @@
         </div>
       </div>
       <div class="comments hided-on-ms">
-        <p class="comments-header">{{$t("snippets.comments")}}</p>
+        <p class="comments-header">{{$t("words.comments")}}</p>
         <div class="comment" v-for="comment in campaign.comments" v-bind:key="comment.id">
           <div class="icon"></div>
           <p class="comment-name">{{comment.author_name}}</p>
@@ -73,21 +73,21 @@
         </div>
           <form v-if="isLoggedIn" @submit.prevent="addComment" style="display:flex;flex-wrap:wrap">
               <label class="comment-label">
-                  დაამატე კომენტარი
+                {{$t("words.add") + " " + $t("words.comment")}}
               </label>
               <textarea v-model="newComment" required class="comment-textarea"></textarea>
-              <button type="submit" class="comment-submit">დამატება</button>
+              <button type="submit" class="comment-submit">{{$t("words.to-add")}}</button>
 
           </form>
       </div>
     </div>
     <div class="about hided-on-l">
-        <p class="about-header">About the campaign</p>
+        <p class="about-header">{{$t("titles.about-campaign")}}</p>
         <p class="about-content"> {{campaign.details}}
         </p>
         </div>
     <div v-if="hasGallery" class="gallery hided-on-l">
-        <p class="gallery-header">გალერეა</p>
+        <p class="gallery-header">{{$t("words.gallery")}}</p>
         <div class="gallery-content" v-if="gallery && !hasVideo">
           <gallery-modal v-for="image in gallery" v-bind:key="image.id" :campaign_photo_url="image.url"></gallery-modal>
         </div>
@@ -100,7 +100,7 @@
         </div>
     </div>
     <div class="comments hided-on-l">
-      <p class="comments-header">კომენტარები</p>
+      <p class="comments-header">{{$t("words.comments")}}</p>
         <div class="comment" v-for="comment in campaign.comments" v-bind:key="comment.id">
           <div class="icon"></div>
           <p class="comment-name">{{comment.author_name}}</p>
@@ -108,10 +108,10 @@
         </div>
         <form v-if="isLoggedIn" @submit.prevent="addComment" style="display:flex;flex-wrap:wrap">
               <label class="comment-label">
-                  დაამატე კომენტარი
+                {{$t("words.add") + " " + $t("words.comment")}}
               </label>
               <textarea v-model="newComment" required class="comment-textarea"></textarea>
-              <button type="submit" class="comment-submit">დამატება</button>
+              <button type="submit" class="comment-submit">{{$t("words.to-add")}}</button>
 
           </form>
     </div>
@@ -124,13 +124,13 @@
           <a :href="shareLink" target="_blank">
           <!-- change with svg -->
             <img src="/img/share-2.svg" alt="">
-              გაზიარება
+              {{$t("words.share")}}
           </a>
           <a v-if="isLoggedIn" style="cursor:pointer;" @click="changeFavouriteStatus">
           <!-- change with svg -->
             <img v-if="favourite" src="/img/heart-red.svg" alt="">
             <img v-else src="/img/heart.svg" alt="">
-                შეინახე
+                {{$t("words.save")}}
           </a>
         </span>
         <donation-modal class="btn-donate" :campaign_id="campaign.id" :is_logged_in="isLoggedIn"/>
