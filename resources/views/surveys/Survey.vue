@@ -9,7 +9,7 @@
         <div>
           <div>
             <div>
-              <p>Question
+              <p>{{$t("words.question")}}
                 <span>{{ index + 1 }}:</span>
               </p>
               <p>{{question.body}}</p>

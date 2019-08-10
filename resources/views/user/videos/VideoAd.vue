@@ -1,17 +1,17 @@
 <template>
     <div v-if="videoAd">
         <p v-if="counter < videoAd.required_duration">
-            {{counter}} seconds
+            {{counter}} {{$t("words.seconds")}}
         </p>
         <p v-else>
             <input type="button" value="submit!" @click="submitWatched">
         </p>
         <video id="player" @click="goToPage" style="cursor: pointer" width="600" height="400">
             <source :src="videoAd.video_url" type="video/mp4">
-            Video player isn't supported
+            {{$t("messages.player-not-supported")}}
         </video>
     </div>
-    <div v-else>No ad found...</div>
+    <div v-else>{{$t("messages.no-more-ad")}}</div>
 </template>
 
 <script>

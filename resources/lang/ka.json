@@ -12,7 +12,12 @@
     "couldn't-be-sent" : "გაგზავნა ვერ მოხერხდა",
     "try-later" : "სცადეთ მოგვიანებით",
     "wrong-credentials" : "არასწორი მონაცემები",
-    "no-more-surveys" : "გამოკითხვები ამ დროისთვის ამოიწურა, შეავსე მოგვიანებით"
+    "no-more-surveys" : "გამოკითხვები ამ დროისთვის ამოიწურა, შეავსე მოგვიანებით",
+    "player-not-supported" : "Video player isn't supported",
+    "no-more-ad" : "No ad found...",
+    "email-verified" : "Email has been verified!",
+    "email-not-verified" : "Couldn't verify try to contact administration or resend verification",
+    "verification-prog" : "Verification in progress"
   },
 
   "words" : {
@@ -66,7 +71,15 @@
     "update" : "განახლება",
     "donations" : "დამხარებები",
     "survey" : "გამოკითხვა",
-    "video-ad" : "ვიდეო რეკლამა"
+    "video-ad" : "ვიდეო რეკლამა",
+    "question" : "კითხვა",
+    "to" : "მდე",
+    "remove" : "წაშლა",
+    "seconds" : "წამი",
+    "created" : "შექმნილი",
+    "saved" : "შენახული",
+    "donated" : "დახმარებული",
+    "statistics" : "სტატისტიკა"
   },
 
   "snippets" : {
@@ -85,7 +98,7 @@
     "featured-image" : "მთავარი სურათი",
     "crop-is-required" : "მოჭრა სავალდებულოა",
     "no-articles" : "სტატიები ამ ეტაპზე არ გვაქვს",
-    "no-campaigns" : "კამპანიები ვერ მოიძევნა",
+    "no-campaigns" : "კამპანიები ვერ მოიძებნა",
     "terms-conditions" : "წესები და პირობები",
     "privacy-policy" : "უსაფრთხოების პოლიტიკა",
     "campaign-edit" : "პროექტის შეცვლა",
@@ -98,7 +111,10 @@
     "password-mismatch" : "პაროლი არ ემთხვევა",
     "confirm-password" : "პაროლის დადასტურება",
     "register-to-continue" : "დარეგისტრირდით რათა გააგრძელოთ",
-    "donate-for-free" : "დაეხმარე უფასოდ"
+    "donate-for-free" : "დაეხმარე უფასოდ",
+    "char-limit" : "სიმბოლოების ლიმიტი",
+    "desc-short" : "მოკლე აღწერა",
+    "admin-panel" : "ადმინის პანელი"
   },
 
   "titles" : {
@@ -160,7 +176,12 @@
     "contact" : {
       "we-ready" : "ჩვენ ყოველთვის მზად ვართ გიპასუხოთ",
       "success" : "წერილი წარმატებით გაიგზავნა, გმადლობთ!"
+    },
 
+    "surveybuilder" : {
+      "enter-question-text" : "Enter question text",
+      "add-answer" : "Add another answer",
+      "min-max" : "Min/max value"
     }
   }
 }

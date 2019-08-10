@@ -10,14 +10,14 @@
                     </div>
                     <div class="profile-header-container">
                         <h3 class="user-name">{{user.name}}</h3>
-                        <h3 class="user-header-profile">Description, short summary</h3>
-                        <router-link v-if="user.role_id == 1" :to="{name: 'Admin.Dash'}">Admin Panel</router-link>
+                        <h3 class="user-header-profile">{{$t("snippets.desc-short")}}</h3>
+                        <router-link v-if="user.role_id == 1" :to="{name: 'Admin.Dash'}">{{$t("snippets.admin-panel")}}</router-link>
                     </div>
                     <div class="profile-tabs">
-                        <router-link :to="{name: 'User.Campaigns'}" class="nav-link">Created</router-link>
-                        <router-link :to="{name: 'User.SavedCampaigns'}" class="nav-link">Saved</router-link>
-                        <router-link :to="{name: 'User.DonatedCampaigns'}" class="nav-link">Donated</router-link>
-                        <router-link v-if="false" :to="{name: 'User.'}" class="nav-link">Statistics</router-link>
+                        <router-link :to="{name: 'User.Campaigns'}" class="nav-link">{{$t("words.created")}}</router-link>
+                        <router-link :to="{name: 'User.SavedCampaigns'}" class="nav-link">{{$t("words.saved")}}</router-link>
+                        <router-link :to="{name: 'User.DonatedCampaigns'}" class="nav-link">{{$t("words.donated")}}</router-link>
+                        <router-link v-if="false" :to="{name: 'User.'}" class="nav-link">{{$t("words.statistics")}}</router-link>
                     </div>
                 </div>
             </div>
