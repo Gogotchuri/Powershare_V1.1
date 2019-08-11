@@ -2,8 +2,11 @@
   <div>
     <mdb-btn @click.native="modal = true">{{$t("words.login")}}</mdb-btn>
     <mdb-modal  :show="modal" @close="modalOff">
+      <mdb-modal-header>
+        <mdb-modal-title></mdb-modal-title>
+      </mdb-modal-header>
       <mdb-modal-body>
-          <login v-on:modalOff="modal = false"/>
+        <login v-on:modalOff="modal = false"/>
       </mdb-modal-body>
     </mdb-modal>
   </div>

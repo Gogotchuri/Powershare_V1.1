@@ -2,6 +2,9 @@
   <div>
     <mdb-btn @click.native="modal = true">{{$t("words.register")}}</mdb-btn>
     <mdb-modal :show="modal" @close="modalOff">
+      <mdb-modal-header>
+        <mdb-modal-title></mdb-modal-title>
+      </mdb-modal-header>
       <mdb-modal-body>
         <register v-on:modaloff="modal = false"/>
       </mdb-modal-body>
