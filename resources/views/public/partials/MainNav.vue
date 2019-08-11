@@ -27,6 +27,8 @@
                     <img src="/img/log-out.svg" class="log-out-icon">
                     <div class="logout-on-phone">{{$t("words.logout")}}</div>
                 </a>
+                <a href="#" class="nav-link lang left">EN</a>
+                <a href="#" class="nav-link lang">GE</a>
             </ul>
         </div>
     </nav>
