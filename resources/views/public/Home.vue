@@ -2,15 +2,11 @@
     <div class="landing-main-container">
         <div class="landing-illustration">
             <div class="landing-header">
-               <h2> 
-                    დაუჭირე მხარი <br>
-                    მნიშვნელოვან პროექტებს <br> 
-                    თანხის გადაუხდელად
-                </h2> 
+               <h2 v-html="$t('texts.home.main')"></h2>
                 <div class="header-links">
-                    <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn">დაეხმარე უფასოდ</router-link>
+                    <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn">{{$t("titles.free-crowdfunding")}}</router-link>
                     <br>
-                    <router-link :to="{ name: 'User.Campaigns.Create' }" class="landing-header-btn">დაამატე პროექტი</router-link>
+                    <router-link :to="{ name: 'User.Campaigns.Create' }" class="landing-header-btn">{{$t("titles.create-campaign")}}</router-link>
                 </div>
             </div>
             <img src="img/landing.png">
@@ -18,65 +14,65 @@
         <div class="landing-illustration-under"></div>
 
         <div class="landing-campaigns">
-            <h2>პროექტები</h2>
+            <h2>{{$t("titles.campaigns")}}</h2>
             <div>
                 <campaign-thumbnail
-              v-for="campaign in campaigns.slice(0, 5)"
-              :key="campaign.id"
-              :campaign="campaign"
-            />  
+                  v-for="campaign in campaigns.slice(0, 5)"
+                  :key="campaign.id"
+                  :campaign="campaign"
+                />
             </div>
-            <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn cp">სრულად ნახვა</router-link>
+            <router-link :to="{ name: 'Campaigns' }" class="landing-header-btn cp">{{$t("titles.see-more")}}</router-link>
         </div>
         <div class="landing-campaigns-under">
         </div>
 
         <div class="how-to">
-          <h2 class="howtohead">როგორ მოვიპოვოთ დაფინანსება</h2>
+          <h2 class="howtohead">{{$t("texts.home.how-to-fundrise")}}</h2>
 
           <div class="how-to-cards">
             <div>
               <img src="img/loop.png" alt="" class="loopl">
-              <h3>იპოვე</h3>
-              <p>მიზანი, რომელიც მნიშვნელოვანია შენთვის, სხვებისთვის, ან მსოფლიოსთვის.</p>
+              <h3>{{$t("words.find")}}</h3>
+              <p>{{$t("texts.home.find-desc")}}</p>
             </div>
             <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/create.png" alt="" class="createl">
-              <h3>შექმენი</h3>
-              <p>პროექტის ხარისხიანი გვერდი ემოციური ტექსტით</p>
+              <h3>{{$t("words.create")}}</h3>
+              <p>{{$t("texts.home.create-desc")}}</p>
             </div>
             <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/promote.png" alt="" class="promotel">
-              <h3>გააზიარე</h3>
-              <p>მეგობრებსა და ოჯახის წევრებში; სოციალურ ქსელში და ქსელს გარეთ</p>
+              <h3>{{$t("words.share")}}</h3>
+              <p>{{$t("texts.home.share-desc")}}</p>
             </div>
             <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/collect.png" alt="" class="collectl">
-              <h3>შეაგროვე</h3>
-              <p>ყოველი თეთრი, რომელსაც შენი პროექტი ააგროვებს</p>
+              <h3>{{$t("words.collect")}}</h3>
+              <p>{{$t("texts.home.collect-desc")}}</p>
             </div>
             <img src="img/arrow.svg" alt="" class="arrow">
             <div>
               <img src="img/act.png" alt="" class="actl">
-              <h3>იმოქმედე</h3>
-              <p>განახორციელე შენი პროექტი და მიეცი მოტივაცია სხვებს</p>
+              <h3>{{$t("titles.take-action")}}</h3>
+              <p>{{$t("texts.home.take-action-desc")}}</p>
             </div>
           </div>
 
           <div>
             <div>
-              დაიტოვე ყველაფერი
+              {{$t("texts.home.take-all")}}
               <div>
-                მაშინაც კი, თუ ვერ მიაღწევთ სასურველ მიზანს, თქვენ მთლიანად მიიღებთ იმ თანხას, რასაც თქვენი პროექტით მოაგროვებთ.
+                  {{$t("texts.home.take-all-desc")}}
               </div>
             </div>
             <div>
-              არანაირი საკომისიო
+                {{$t("texts.home.no-commission")}}
               <div>
-              პლატფორმა არ იტოვებს სერვისის საკომისიოს. პროექტებს სრულად ერიცხებათ ის თანხა, რომელიც მათთვისაა განკუთვნილი.
+                  {{$t("texts.home.no-commission-desc")}}
               </div>
             </div>
           </div>

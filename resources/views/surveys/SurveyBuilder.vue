@@ -5,17 +5,17 @@
     </select>
     <div v-if="selectedType !== 'DEFAULT'">
       <div>
-        <div>Question</div>
+        <div>{{$t("words.question")}}</div>
         <input type="text" placeholder="Enter question text" v-model="question.body">
       </div>
       <div class="" v-if="selectedType === 'NUMBER'">
         <label>
           <input type="checkbox" v-model="question.hasUnits" name="hasUnits" />
-          <span>Answer label <input type="text" class="width-10" placeholder="ex. mins, lbs, days" v-model="question.units" :disabled="!question.hasUnits"></span>
+          <span>{{$t("texts.surveybuilder.answer-lb")}}<input type="text" class="width-10" placeholder="ex. mins, lbs, days" v-model="question.units" :disabled="!question.hasUnits"></span>
         </label>
         <label>
           <input type="checkbox" v-model="question.hasMinMax" name="subType" />
-          <span>Min/max value
+          <span>{{$t("texts.surveybuilder.min-max")}}
             <input type="number" class="width-10" v-model="question.minValue" placeholder="min" min="1" max="2048" :disabled="!question.hasMinMax">
             <span class="width-10">to</span>
             <input type="number" class="width-10" v-model="question.maxValue" placeholder="max" min="1" max="2048" :disabled="!question.hasMinMax">
@@ -23,57 +23,57 @@
         </label>
         <label>
           <input type="checkbox" v-model="question.allowDecimals" value="Single" name="subType" />
-          <span class="">Allow decimals</span>
+          <span class="">{{$t("texts.surveybuilder.allow-dc")}}</span>
         </label>
         <label>
           <input type="checkbox" v-model="question.required" value="Single" name="subType" />
-          <span class="">Required</span>
+          <span class="">{{$t("words.required")}}</span>
         </label>
       </div>
       <div v-if="selectedType === 'MULTI_CHOICE'">
-        <div>Answer Choices</div>
+        <div>{{$t("texts.surveybuilder.answer-choice")}}</div>
         <div v-for="(option, index) in question.options" :key="index">
           <div>
             <input type="text" placeholder="Enter an answer choice" v-model="option.body">
-            <button v-on:click="deleteQuestionOptionItem(question.options, index)" v-if="index > 1">Remove</button>
+            <button v-on:click="deleteQuestionOptionItem(question.options, index)" v-if="index > 1">{{$t("words.remove")}}</button>
           </div>
         </div>
         <div>
-          <button v-on:click="addAnotherAnswer()">Add another answer</button>
+          <button v-on:click="addAnotherAnswer()">{{$t("texts.surveybuilder.add-answer")}}</button>
         </div>
         <label>
           <input type="checkbox" v-model="question.required" value="Single" name="subType" />
-          <span class="">Required</span>
+          <span class="">{{$t("words.required")}}</span>
         </label>
       </div>
       <div v-if="selectedType === 'SINGLE_CHOICE'">
-        <div>Answer Choices</div>
+        <div>{{$t("texts.surveybuilder.answer-choice")}}</div>
         <div v-for="(option, index) in question.options" :key="index">
           <div>
             <input type="text" placeholder="Enter an answer choice" v-model="option.body">
-            <button v-on:click="deleteQuestionOptionItem(question.options, index)" v-if="index > 1">Remove</button>
+            <button v-on:click="deleteQuestionOptionItem(question.options, index)" v-if="index > 1">{{$t("words.remove")}}</button>
           </div>
         </div>
         <div>
-          <button v-on:click="addAnotherAnswer()">Add another answer</button>
+          <button v-on:click="addAnotherAnswer()">{{$t("texts.surveybuilder.add-answer")}}</button>
         </div>
         <label>
           <input type="checkbox" v-model="question.required" value="Single" name="subType" />
-          <span class="">Required</span>
+          <span class="">{{$t("words.required")}}</span>
         </label>
       </div>
       <div v-if="selectedType === 'TEXT'">
         <label>
           <input type="checkbox" v-model="question.characterLimited" name="characterLimited" />
-          <span>Character limit <input type="number" v-model="question.textLimit" placeholder="" min="1" max="2048" :disabled="!question.characterLimited"></span>
+          <span>{{$t("snippets.char-limit")}} <input type="number" v-model="question.textLimit" placeholder="" min="1" max="2048" :disabled="!question.characterLimited"></span>
         </label>
         <label>
           <input type="checkbox" v-model="question.required" value="Single" name="subType" />
-          <span class="">Required</span>
+          <span class="">{{$t("words.required")}}</span>
         </label>
       </div>
       <div>
-        <button type="button" @click="saveQuestion(question)">Save</button>
+        <button type="button" @click="saveQuestion(question)">{{$t("words.save")}}</button>
       </div>
     </div>
   </div>

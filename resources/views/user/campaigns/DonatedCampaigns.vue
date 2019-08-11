@@ -1,17 +1,17 @@
 <template>
     <div class="profile-donated">
         <div v-if="!campaigns || campaigns.length == 0">
-                <p>No Campaigns To display!</p>
+                <p>{{$t("snippets.no-campaigns")}}</p>
         </div>
         <div v-else> 
             <table>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
-                    <th>Description</th>
-                    <th>Author name</th>
-                    <th>Donation count</th>
-                    <th>Actions</th>
+                    <th>{{$t("words.name")}}</th>
+                    <th>{{$t("words.description")}}</th>
+                    <th>{{$t("words.author")}}</th>
+                    <th>{{$t("words.donations")}}</th>
+                    <th>{{$t("words.action")}}</th>
                 </tr>
                 <tr v-for="campaign in campaigns">
                     <td>{{campaign.id}}</td>
@@ -20,7 +20,7 @@
                     <td>{{campaign.author_name}}</td>
                     <td>{{campaign.num_donated}}</td>
                     <td>
-                        <input type="button" value="VIEW" @click="viewCampaign(campaign.id)">
+                        <input type="button" :value="$t('words.view')" @click="viewCampaign(campaign.id)">
                     </td>
                 </tr>
             </table>

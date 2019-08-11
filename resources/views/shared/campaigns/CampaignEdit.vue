@@ -1,50 +1,50 @@
 <template>
     <div v-if="campaign" class="edit-campaign">
-        <h2>კამპანიის შეცვლა</h2>
+        <h2>{{$t("snippets.campaign-edit")}}</h2>
         <form @submit.prevent="updateCampaign">
             <div>
-                <label for="edit-name">სახელი:</label>
+                <label for="edit-name">{{$t("snippets.campaign-name")}}:</label>
                 <input id="edit-name" type="text" v-model="campaign.name" required>
             </div>
             <br>
             <div>
-                <label for="edit-category">კატეგორია:</label>
+                <label for="edit-category">{{$t("snippets.choose-category")}}:</label>
                 <select id="edit-category" type="text" class="category" v-model="campaign.category_id">
                     <option v-for="category in categories" :value="category.id">{{category.name}}</option>
                 </select>
             </div>
             <br>
             <div>
-                <label for="edit-desc">მოკლე აღწერა (მაქსიმუმ 200 სიმბოლო)</label>
+                <label for="edit-desc">{{$t("snippets.description")}} ({{$t("snippets.max-chars", ["200"])}}):</label>
                 <textarea id="edit-desc" type="text" v-model="campaign.description" maxlength="200" required></textarea>
             </div>
             <br>
             <div>
-                <label for="edit-ldesc">აღწერა (მაქსიმუმ 3000 სიმბოლო):</label>
+                <label for="edit-ldesc">{{$t("snippets.about-campaign")}} ({{$t("snippets.max-chars", ["3000"])}}):</label>
                 <textarea id="edit-ldesc" type="text" v-model="campaign.details" maxlength="3000" required></textarea>
             </div>
             <br>
             <div>
-                <label for="req-fund">საჭირო დაფინანსება:</label>
+                <label for="req-fund">{{$t("snippets.required-funding")}}:</label>
                 <input type="number" id="req-fund" v-model="campaign.required_funding" required>
             </div>
             <br>
             <div>
-                <label for="vid-url">ვიდეოს მისამართი:</label>
+                <label for="vid-url">{{$t("snippets.video-link")}}:</label>
                 <input type="url" id="vid-url" v-model="campaign.video_url">
             </div>
             <br>
             <div>
-                <label for="due-date">ვადა:</label>
+                <label for="due-date">{{$t("snippets.due-date")}}:</label>
                 <input id="due-date" type="date" v-model="campaign.due_date">
             </div>
             <photo-upload v-on:ImageCropped="featuredImage" :image-src="campaign.featured_image_url"/>
             <br>
             <gallery-upload :isAdmin="isAdmin" :campaign="campaign"/>
             <br>
-            <button type="submit" @click="campaign.status_id=3">შენახვა</button>
-            <button type="submit" @click="campaign.status_id=2">დადასტურება განსახილველად</button>
-            <button v-if="isAdmin" type="submit" @click="campaign.status_id=1">გამოქვეყნება</button>
+            <button type="submit" @click="campaign.status_id=3">{{$t("snippets.save-draft")}}</button>
+            <button type="submit" @click="campaign.status_id=2">{{$t("snippets.submit-for-review")}}</button>
+            <button v-if="isAdmin" type="submit" @click="campaign.status_id=1">{{$t("words.publish")}}</button>
         </form>
     </div>
 </template>

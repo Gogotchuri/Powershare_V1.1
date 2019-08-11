@@ -9,7 +9,7 @@
         <div>
           <div>
             <div>
-              <p>Question
+              <p>{{$t("words.question")}}
                 <span>{{ index + 1 }}:</span>
               </p>
               <p>{{question.body}}</p>
@@ -47,8 +47,8 @@
             </div>
           </div>
           <div v-if="editable">
-            <button type="button" v-on:click="editQuestion(question, index)">Edit</button>
-            <button type="button" v-on:click="deleteQuestion(question, index)">Delete</button>
+            <button type="button" v-on:click="editQuestion(question, index)">{{$t("words.edit")}}</button>
+            <button type="button" v-on:click="deleteQuestion(question, index)">{{$t("words.delete")}}</button>
           </div>
         </div>
       </div>

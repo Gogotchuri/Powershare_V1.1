@@ -1,10 +1,10 @@
 <template>
     <div>
-        <label>მთავარი სურათი:</label>
-        <input type="file" data-buttonText="აირჩიე ფაილი" name="image" accept="image/*" @change="setImage" style="font-size: 1.1em; padding: 0;"/>
+        <label>{{$t("snippets.featured-image")}}:</label>
+        <input type="file" name="image" accept="image/*" @change="setImage" style="font-size: 1.1em; padding: 0;"/>
         <br>
         <div v-if="imgSrc">
-            <label>*სურათის მოჭრა სავალდებულოა!</label>
+            <label>*{{$t("snippets.crop-is-required")}}</label>
             <vue-cropper
                 v-if="imgSrc"
                 ref="cropper"
@@ -13,7 +13,7 @@
                 alt="Source Image"
                 style="width: 500px; height:281px;"
             />
-            <input type="button" value="მოჭერი" @click="cropImage" style="margin-right: 40px;">
+            <input type="button" :value="$t('words.crop')" @click="cropImage" style="margin-right: 40px;">
             <br>
             <img v-if="cropImg" :src="cropImg" alt="" style="width: 250px; height: 350px;">
         </div>

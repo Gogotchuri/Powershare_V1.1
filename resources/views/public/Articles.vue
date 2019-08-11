@@ -11,7 +11,7 @@
       ></article-thumbnail>
     </div>
   </div>
-  <div v-else> No Article to display</div>
+  <div v-else>{{$t("snippets.no-articles")}}</div>
 </template>
 
 

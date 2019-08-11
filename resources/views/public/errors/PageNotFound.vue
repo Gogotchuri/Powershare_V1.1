@@ -1,5 +1,5 @@
 <template>
-    <H1>404! Page not found! Sorry</H1>
+    <H1>{{$t("errors.404")}}</H1>
 </template>
 
 <script>

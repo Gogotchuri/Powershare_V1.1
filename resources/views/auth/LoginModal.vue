@@ -1,6 +1,6 @@
 <template>
   <div>
-    <mdb-btn @click.native="modal = true"> შესვლა</mdb-btn>
+    <mdb-btn @click.native="modal = true">{{$t("words.login")}}</mdb-btn>
     <mdb-modal  :show="modal" @close="modalOff">
       <mdb-modal-header>
         <mdb-modal-title></mdb-modal-title>

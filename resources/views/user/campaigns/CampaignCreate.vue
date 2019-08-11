@@ -1,38 +1,37 @@
 <template>
     <div class="create-campaign">
-        <h2>პროექტის შექმნა</h2>
+        <h2>{{$t("snippets.create-campaign")}}</h2>
         <form @submit.prevent="storeCampaign">
             <div>
-                <label for = "campaign-name">პროექტის სახელი <br> (მაქსიმუმ 30 სიმბოლო)</label>
+                <label for = "campaign-name">{{$t("snippets.campaign-name")}} <br> ({{$t("snippets.max-chars", ["30"])}})</label>
                 <input id = "campaign-name"
                        type = "text" 
                        v-model="campaignName"
-                       placeholder = "შეავსე ველი"
+                       :placeholder = "$t('snippets.fill-field')"
                        maxlength = "30"
                        required
                 />
             </div>
             <div>
-                <label for="category-select">ვისთვის არის პროექტი მნიშვნელოვანი</label>
+                <label for="category-select">{{$t("snippets.choose-category")}}</label>
                 <select id="category-select" type="text" class="category" v-model="curCategory">
-                    <option value="0" disabled>All Categories</option>
+                    <option value="0" disabled>{{$t("titles.all-categories")}}</option>
                     <option v-for="category in categories" :value="category.id">{{category.name}}</option>
                 </select>
             </div>
             <div>
-                <label for="short-description">მოკლე აღწერა
-(მაქსიმუმ 200 სიმბოლო)</label>
+                <label for="short-description">{{$t("snippets.description")}} ({{$t("snippets.max-chars", ["200"])}})</label>
                 <br>
                 <textarea id="short-description"
-                          placeholder="კამპანიის შესახებ"
+                          :placeholder="$t('snippets.about-campaign')"
                           v-model="campaignDesc"
                           maxlength="200"
                           rows="5"
                           required>
                 </textarea>
             </div>
-            <button type="submit" @click="continueEdit=true">გაგრძელება</button>
-            <button type="submit">შენახვა</button>
+            <button type="submit" @click="continueEdit=true">{{$t("words.continue")}}</button>
+            <button type="submit">{{$t("snippets.save-draft")}}</button>
         </form>
     </div>
 </template>

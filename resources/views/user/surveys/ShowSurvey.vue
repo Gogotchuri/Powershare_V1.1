@@ -1,6 +1,5 @@
 <template>
-    <div v-if="surveyLimit">You can't have anymore surveys for today, come back tomorrow.</div>
-    <div v-else-if="noMoreSurveys">There are no more surveys available, you have filled all! come back later!</div>
+    <div v-if="noMoreSurveys">{{$t("messages.no-more-surveys")}}</div>
     <div v-else>
         <questions-view :questions="questionsList" :readOnly="false"
             :editable="false" :submittable="true" v-on:submitted="submitSurvey"/>

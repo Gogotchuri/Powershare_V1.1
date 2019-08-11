@@ -1,8 +1,8 @@
 <template>
     <div>
-        Name {{user.name}}
+        {{$t("words.name")}} {{user.name}}
         <br>
-        Email {{user.email}}
+        {{$t("words.email")}} {{user.email}}
     </div>
 </template>
 

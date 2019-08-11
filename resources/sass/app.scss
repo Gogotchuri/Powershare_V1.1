@@ -1656,6 +1656,12 @@ div.explore-input > select{
 a.nav-link{
 	font-weight: normal;
 }
+a.nav-link.lang{
+	margin: 0;
+}
+a.nav-link.lang.left{
+	padding-right: 5px;
+}
 .log-out-icon{
 	width: 23px;
 	height: 23px;

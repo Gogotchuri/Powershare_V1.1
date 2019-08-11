@@ -1,8 +1,8 @@
 <template>
     <div>
-        <p v-if="verified">Email has been verified!</p>
-        <p v-else-if="verified === null">Verification in progress</p>
-        <p v-else>Couldn't verify try to contact administration or resend verification</p>
+        <p v-if="verified">{{$t("messages.email-verified")}}</p>
+        <p v-else-if="verified === null">{{$t("messages.verification-prog")}}</p>
+        <p v-else>{{$t("messages.email-not-verified")}}</p>
     </div>
 </template>
 
