@@ -10,7 +10,7 @@
                                 <label for="email">{{$t("words.email")}}</label>
                                 <input id="email" type="email" class="form-control" placeholder="user@example.com" v-model="email" required>
                             </div>
-                            <button type="submit" class="btn btn-primary">{{$t("send-reset-link")}}</button>
+                            <button type="submit" class="btn btn-primary">{{$t("snippets.send-reset-link")}}</button>
                         </form>
                     </div>
                     <div v-if="success === null"></div>

@@ -39,7 +39,7 @@
                                 <div class="form-group row mb-0">
                                     <div class="col-md-12">
                                         <button type="submit" class="btn btn-primary btn-auth">
-                                            {{$t("words.login")}}
+                                            {{$t("words.sign-in")}}
                                         </button>
                                         <a style="cursor: pointer" class="forgot" @click="passwordForgotten">{{$t("forgot-password?")}}</a>
                                         <div>
