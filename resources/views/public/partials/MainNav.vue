@@ -27,8 +27,8 @@
                     <img src="/img/log-out.svg" class="log-out-icon">
                     <div class="logout-on-phone">{{$t("words.logout")}}</div>
                 </a>
-                <a href="#" class="nav-link lang left">EN</a>
-                <a href="#" class="nav-link lang">GE</a>
+                <a style="cursor: pointer" class="nav-link lang left" @click="changeLocale('en')">EN</a>
+                <a style="cursor: pointer" class="nav-link lang" @click="changeLocale('ka')">KA</a>
             </ul>
         </div>
     </nav>
@@ -72,6 +72,11 @@
 
             changeWidth() {
                 this.smallMedia = !this.smallMedia;
+            },
+            changeLocale(loc) {
+                if(loc !== "ka" && loc !== "en")
+                    return;
+                this.$i18n.locale = loc;
             }
         }
     };
