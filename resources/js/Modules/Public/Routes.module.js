@@ -8,6 +8,7 @@ import About from "@views/public/About";
 import Faq from "@views/public/Faq";
 import PrivacyPolicy from "@views/public/PrivacyPolicy";
 import TermsConditions from "@views/public/TermsConditions";
+import Advertising from "@views/public/Advertising";
 
 export default [
     {
@@ -60,6 +61,11 @@ export default [
         path: "/terms-conditions",
         name: "TermsConditions",
         component: TermsConditions,
+    },
+    {
+        path: "/advertising",
+        name: "advertising",
+        component: Advertising,
     }
 ];
 

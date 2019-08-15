@@ -309,7 +309,6 @@ main > div > div> div.about-mini{
 	letter-spacing: normal;
 	text-align: left;
 	color: #000000;
-	max-width: 320px;
 }
 .about-mini > .owner {
 	display: grid;
@@ -3719,3 +3718,160 @@ h3.about-header{
 	}
 }
 // end of about us
+
+// Advertising start
+.advertising > .advertising-header-upper{
+	background-color: #662f92;
+	color: #ffffff;
+	text-align: center;
+	font-size: 26px;
+	font-weight: bold;
+	padding: 60px 0;
+	
+	width: 100%;
+	min-height: 205px;
+
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+.advertising > .advertising-header-under{
+	height: 300px;
+	width: 100%;
+}
+
+.advertising > .advertising-header-upper > p {
+	width: 95%;
+	max-width: 374px;
+	margin: auto;
+}
+.advertising-form{
+	margin-top:30px;
+}
+.advertising-form > form > label{
+	margin-top: 20px;
+	margin-bottom: 0;
+	font-size: 20px;
+	color: #1d1d1d;
+}
+.advertising-btn-container > button{
+	margin-top: 20px;
+	border-radius: 8px;
+    height: 60px;
+    background-color: #faac18;
+	color: #ffffff;
+	padding: 20px 0;
+    font-size: 16px;
+	font-weight: 100;
+	width: 100%;
+	
+}
+.advertising-form > form > p{
+	margin-top: 15px;
+	color: #1d1d11;
+	font-size: 14px;
+}
+.advertising-boxes{
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+.advertising-boxes > div{
+	width: 100%;
+	min-height: 200px;
+
+	border-radius: 10px;
+	background-color: #ffffff;
+	color: #662f92;
+	margin: 20px 0;
+	padding: 10px 30px;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+	line-height: 2.25;
+}
+.advertising-boxes > div:first-of-type{
+	padding-top: 43px;
+}
+.play-icon{
+	width: 70px;
+	height: 70px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+.magnifier,
+.puzzle-pieces,
+.add-group,
+.hand{
+	width: 65px;
+	height: 65px;
+	margin: auto;
+	margin-bottom: 20px;
+}
+.hand{
+	height: 70px;
+	width: 65px;
+}
+.puzzle-pieces{
+	width: 90px;
+}
+@media (min-width: 768px){
+	.play-icon,
+	.magnifier,
+	.puzzle-pieces,
+	.add-group,
+	.hand{
+		margin-bottom : 30px;
+	}
+	
+	.advertising-boxes > div{
+		width: 48%;
+		min-height: 300px;
+		margin: 10px 0;
+	}
+	.advertising-boxes > div:first-of-type{
+		width: 100%;
+		min-height: 300px;
+	}
+	.advertising > .advertising-header-upper > p {
+		width: 712px;
+		max-width: none;
+	}
+	.advertising > .advertising-header-under{
+		height: 200px
+	}
+	.advertising-form > form {
+		width: 100%;
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+	}
+	.advertising-form{
+		width: 100%;
+	}
+	.advertising-form > form > div{
+		width: 30%;
+	}
+	.advertising-form > form > label,
+	.advertising-form > form > input,
+	.advertising-btn-container > button{
+		width: 100%;
+		font-size: 16px;
+		max-width: 303px;
+	}
+	.advertising-btn-container > button{
+		margin-top: 30px;
+		max-width: 225px;
+	}
+}
+@media (min-width: 1280px){
+	.advertising > .advertising-header-upper > p {
+		width: 70%;
+		max-width: 1230px;
+	}
+	.advertising > .advertising-header-under{
+		height: 205px;
+	}
+}
+// Advertising end

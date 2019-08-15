@@ -114,14 +114,15 @@
     "donate-for-free" : "Donate for Free",
     "char-limit" : "Character limit",
     "desc-short" : "Description, short summary",
-    "admin-panel" : "Admin Panel"
+    "admin-panel" : "Admin Panel",
+    "contact-number" : "Contact number"
   },
 
   "titles" : {
     "home" : "Home",
     "campaign-explore" : "Explore",
     "campaigns" : "Campaigns",
-    "about" : "About ut",
+    "about" : "About us",
     "create-campaign" : "Create campaign",
     "see-more" : "See more",
     "free-crowdfunding" : "Free crowdfunding",
@@ -185,6 +186,32 @@
       "answer-lb" : "Answer label",
       "allow-dc" : "Allow decimals",
       "answer-choice": "Answer Choices"
+    },
+
+    "advertising" :{
+      "header" : "Reshape your advertising campaign and consumer survey into social responsibility",
+      "tip" : "* მიუთითეთ თქვენი საკონტაქტო ინფორმაცია და ჩვენი წარმომადგენელი დაგიკავშირდებათ",
+      "effect" :{
+         "first" : "English - Effective user engagement -  ",
+         "second" : "a) 20 second long video views with 3%+ CTR  ",
+         "third" : "b) Voluntary participation in surveys and reliable data"
+      },
+      "inovation" : {
+         "first" : "Innovative marketing channel to",
+         "second" : "improve your brand awareness."
+      },
+      "campaign" : {
+        "first" : "Brand-focused advertising campaign",
+        "second" : " (video ads, registrations, surveys)."
+      },
+      "visitors" : {
+        "first" : " More than  500 unique visitors ",
+        "second" : "on the website."
+      },
+      "costs" : {
+        "first" : "Three times cheaper  ",
+        "second" : " than on the market."
+      }
     }
   }
 }
