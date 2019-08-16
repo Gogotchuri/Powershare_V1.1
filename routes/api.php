@@ -24,6 +24,8 @@ Route::middleware("throttle:200,1")->namespace("General")->group(function (){
 
     //Posts contact message to the server
     Route::post("/contact", "ContactController@store");
+
+    Route::post("/advertising-request", "AdvertisingController@send");
 });
 
 //Authentication Routes

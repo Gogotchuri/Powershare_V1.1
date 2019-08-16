@@ -115,7 +115,8 @@
     "char-limit" : "Character limit",
     "desc-short" : "Description, short summary",
     "admin-panel" : "Admin Panel",
-    "contact-number" : "Contact number"
+    "contact-number" : "Contact number",
+    "type-here" : "Type Here..."
   },
 
   "titles" : {

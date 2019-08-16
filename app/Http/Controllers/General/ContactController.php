@@ -7,6 +7,7 @@ use App\Mail\Contact\ContactMessageSubmitted;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
+use Mail;
 
 class ContactController extends Controller
 {
@@ -29,11 +30,11 @@ class ContactController extends Controller
 
         $info = $request->all();
 
-        \Mail::to($info["email"])->queue(
+        Mail::to($info["email"])->queue(
             new ContactMessageSubmitted()
         );
 
-        \Mail::to(config("mail.to_email"))->queue(
+        Mail::to(config("mail.to_email"))->queue(
             new ContactMessage($info)
         );
 

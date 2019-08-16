@@ -6,11 +6,11 @@
             <form @submit.prevent="send">
                 <div>
                 <label for="mail-ad">{{$t("words.email")}}</label>
-                <input type="text" id="mail-ad" v-model="form.name" class="form-control" placeholder="Type here" required>
+                <input type="email" id="mail-ad" v-model="form.email" class="form-control" :placeholder="$t('snippets.type-here')" required>
                 </div>
                 <div>
-                <label for="mail-ad">{{$t("snippets.contact-number")}}</label>
-                <input type="text" id="mail-ad" v-model="form.name" class="form-control" placeholder="Type here" required>
+                <label for="phone-ad">{{$t("snippets.contact-number")}}</label>
+                <input type="tel" id="phone-ad" v-model="form.phone" class="form-control" :placeholder="$t('snippets.type-here')" required>
                 </div>
                 <div class="advertising-btn-container">
                     <button type="submit" class="btn advertising-submit">{{$t("words.send")}}</button>
@@ -50,21 +50,26 @@
 </template>
 
 <script>
+    import HTTP from "@js/Common/Http.service";
     export default {
         name: "Advertising",
         data(){
             return{
                 form:{
                     email: "",
-                    contact: ""
-                }
+                    phone: ""
+                },
+                //0 - starting, 1 - sending, 2 - sent, 3 - error occurred
+                state : 0
             }
         },
+
         methods: {
             send(){
-                this.$store.dispatch("postLetter", this.form)
-                    .then(() => this.success = true)
-                    .catch(errors => this.errors = errors);
+                this.state = 1;
+                HTTP.POST("/advertising-request", this.form)
+                    .then(() => this.state = 2)
+                    .catch(() => this.state = 3);
             }
         }
     };

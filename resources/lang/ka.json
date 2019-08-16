@@ -115,7 +115,8 @@
     "char-limit" : "სიმბოლოების ლიმიტი",
     "desc-short" : "მოკლე აღწერა",
     "admin-panel" : "ადმინის პანელი",
-    "contact-number" : "საკონტაქტო ნომერი"
+    "contact-number" : "საკონტაქტო ნომერი",
+    "type-here" : "ჩაწერე აქ..."
   },
 
   "titles" : {
