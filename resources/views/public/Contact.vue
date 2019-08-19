@@ -32,6 +32,9 @@
                 </div>
             </form>
         </div>
+        <div v-if="state == 1">
+            <contact-modal></contact-modal>
+        </div>
         <div v-if="errors !== null && errors.length !== 0">
             {{errors}}
         </div>
@@ -39,8 +42,12 @@
 </template>
 
 <script>
+    import ContactModal from "@views/public/partials/ContactModal";
     export default {
         name: "Contact",
+        components: {
+            ContactModal
+        },
         data(){
             return {
                 form:{
@@ -50,13 +57,17 @@
                     text: ""
                 },
                 errors : [],
-                success : false
+                success : false,
+                state : 0
             }
         },
         methods: {
             send(){
                 this.$store.dispatch("postLetter", this.form)
-                    .then(() => this.success = true)
+                    .then(() => {
+                        this.state = 1;
+                        this.success = true
+                    })
                     .catch(errors => this.errors = errors);
             }
         }

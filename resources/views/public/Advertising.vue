@@ -21,7 +21,7 @@
                 <p>{{$t("texts.advertising.tip")}}</p>
             </form>
             <div v-else>
-                <p v-bind:class="getClass(state)">{{$t("texts.advertising.success")}}</p>
+                <contact-modal></contact-modal>
             </div>
         </div>
         <div class="advertising-boxes">
@@ -57,8 +57,12 @@
 
 <script>
     import HTTP from "@js/Common/Http.service";
+    import ContactModal from "@views/public/partials/ContactModal";
     export default {
         name: "Advertising",
+        components: {
+            ContactModal
+        },
         data(){
             return{
                 form:{
@@ -66,7 +70,7 @@
                     phone: ""
                 },
                 //0 - starting, 1 - sending, 2 - sent, 3 - error occurred
-                state : 0
+                state : 0,
             }
         },
 
