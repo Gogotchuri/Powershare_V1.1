@@ -79,7 +79,8 @@
     "created" : "Created",
     "saved" : "Saved",
     "donated" : "Donated",
-    "statistics" : "Statistics"
+    "statistics" : "Statistics",
+    "sending" : "sending"
   },
 
   "snippets" : {
@@ -212,7 +213,8 @@
       "costs" : {
         "first" : "Three times cheaper  ",
         "second" : " than on the market."
-      }
+      },
+      "success" : "მადლობა, თქვენი საკონტაქტო ინფორმაცია მიღებულია. ჩვენი წარმომადგენელი უმოკლეს ვადაში დაგიკავშირდებათ"
     }
   }
 }
